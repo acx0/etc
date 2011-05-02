@@ -1,0 +1,119 @@
+/* URxvt */
+URxvt*font:      -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
+URxvt*boldFont:  -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*font:      -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+!URxvt*boldFont:  -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+URxvt*scrollBar: false
+URxvt*saveLines: 12000
+
+/* pattern matching */
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher:     firefox
+URxvt.matcher.button:  1
+
+/* gnome-terminal 'linux-console' colours */
+URxvt*foreground: #AAAAAA
+URxvt*background: #000000
+
+URxvt*cursorColor: #FFFFFF
+
+! black
+URxvt.color0:  #000000
+URxvt.color8:  #555555
+! red
+URxvt.color1:  #AA0000
+URxvt.color9:  #FF5555
+! green
+URxvt.color2:  #00AA00
+URxvt.color10: #55FF55
+! yellow
+URxvt.color3:  #AA5500
+URxvt.color11: #FFFF55
+! blue
+URxvt.color4:  #0000AA
+URxvt.color12: #5555FF
+! magenta
+URxvt.color5:  #AA00AA
+URxvt.color13: #FF55FF
+! cyan
+URxvt.color6:  #00AAAA
+URxvt.color14: #55FFFF
+! white
+URxvt.color7:  #AAAAAA
+URxvt.color15: #FFFFFF
+
+/* zenburn colours */
+!URxvt*background: #3F3F3F
+!URxvt*foreground: #DCDCCC
+
+!URxvt*colorUL:        #C5F779
+!URxvt*underlineColor: #C5F779
+
+!URxvt*color0:  #3F3F3F
+!URxvt*color1:  #705050
+!URxvt*color2:  #60B48A
+!URxvt*color3:  #DFAF8F
+!URxvt*color4:  #506070
+!URxvt*color5:  #DC8CC3
+!URxvt*color6:  #8CD0D3
+!URxvt*color7:  #DCDCCC
+!URxvt*color8:  #709080
+!URxvt*color9:  #CC9393
+!URxvt*color10: #7F9F7F
+!URxvt*color11: #F0DFAF
+!URxvt*color12: #94BFF3
+!URxvt*color13: #EC93D3
+!URxvt*color14: #93E0E3
+!URxvt*color15: #FFFFFF
+
+/* molokai colours */
+!URxvt*background:  #101010
+!URxvt*foreground:  #D0D0D0
+
+!URxvt*cursorColor: #D0D0D0
+
+!URxvt*color0:  #101010
+!URxvt*color1:  #960050
+!URxvt*color2:  #66AA11
+!URxvt*color3:  #C47F2C
+!URxvt*color4:  #30309B
+!URxvt*color5:  #7E40A5
+!URxvt*color6:  #3579A8
+!URxvt*color7:  #9999AA
+!URxvt*color8:  #303030
+!URxvt*color9:  #FF0090
+!URxvt*color10: #80FF00
+!URxvt*color11: #FFBA68
+!URxvt*color12: #5F5FEE
+!URxvt*color13: #BB88DD
+!URxvt*color14: #4EB4FA
+!URxvt*color15: #D0D0D0
+
+/* xterm */
+xterm*font: -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
+
+/* zenburn colours */
+!black
+xterm*color0:  #353535
+xterm*color8:  #666666
+!red
+xterm*color1:  #AE4747
+xterm*color9:  #EE6363
+!green
+xterm*color2:  #556B2F
+xterm*color10: #9ACD32
+!brown/yellow
+xterm*color3:  #DAA520
+xterm*color11: #FFC125
+!blue
+xterm*color4:  #6F99B4
+xterm*color12: #7C96B0
+!magenta
+xterm*color5:  #8B7B8B
+xterm*color13: #D8BFD8
+!cyan
+xterm*color6:  #A7A15E
+xterm*color14: #F0E68C
+!white
+xterm*color7:  #DDDDDD
+xterm*color15: #FFFFFF

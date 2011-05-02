@@ -1,0 +1,6 @@
+gtk-theme-name="Clearlooks"
+gtk-icon-theme-name="gnome"
+#gtk-font-name="Sans 9"
+gtk-font-name="Sans 8"
+gtk-toolbar-style=2
+#include "/home/sam/.gtkrc-2.0.mine"

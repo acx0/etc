@@ -1,0 +1,5 @@
+set completion-ignore-case on
+# override default binding of unix-word-rubout so that '/' is also used as a
+# delimiter; bind-tty-special-chars must be off
+set bind-tty-special-chars off
+"\C-w": unix-filename-rubout

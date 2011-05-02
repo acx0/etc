@@ -1,0 +1,9 @@
+[user]
+	name = Sam Lidder
+	email = sam.lidder@gmail.com
+[color]
+	ui = true
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff

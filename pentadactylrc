@@ -1,0 +1,21 @@
+"1.0b2 (created: 2010/10/02 22:50:54)
+
+set runtimepath=/home/sam/.pentadactyl
+
+set mapleader=","
+
+set complete=l
+set guioptions=rbBs
+"set wildoptions=auto
+
+" menu toolbar
+map <C-F1> :set guioptions!=m<CR>
+" bookmarks toolbar
+map <C-F2> :set guioptions!=B<CR>
+
+map <C-k> -builtin -silent :t google.ca<CR>
+
+" view native size of image without clicking it
+map <leader>z :js window.content.document.toggleImageSize();<CR>
+
+" vim: set ft=pentadactyl:
