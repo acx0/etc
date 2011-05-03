@@ -3,40 +3,40 @@
 	url = http://github.com/gmarik/vundle.git
 [submodule "vim/bundle/bufkill.vim"]
 	path = vim/bundle/bufkill.vim
-	url = http://github.com/vim-scripts/bufkill.vim
+	url = http://github.com/vim-scripts/bufkill.vim.git
 [submodule "vim/bundle/Conque-Shell"]
 	path = vim/bundle/Conque-Shell
-	url = http://github.com/vim-scripts/Conque-Shell
+	url = http://github.com/vim-scripts/Conque-Shell.git
 [submodule "vim/bundle/CSApprox"]
 	path = vim/bundle/CSApprox
-	url = http://github.com/vim-scripts/CSApprox
+	url = http://github.com/vim-scripts/CSApprox.git
 [submodule "vim/bundle/EasyMotion"]
 	path = vim/bundle/EasyMotion
-	url = http://github.com/vim-scripts/EasyMotion
+	url = http://github.com/vim-scripts/EasyMotion.git
 [submodule "vim/bundle/Indent-Guides"]
 	path = vim/bundle/Indent-Guides
-	url = http://github.com/vim-scripts/Indent-Guides
+	url = http://github.com/vim-scripts/Indent-Guides.git
 [submodule "vim/bundle/javacomplete"]
 	path = vim/bundle/javacomplete
-	url = http://github.com/vim-scripts/javacomplete
+	url = http://github.com/vim-scripts/javacomplete.git
 [submodule "vim/bundle/snipMate"]
 	path = vim/bundle/snipMate
-	url = http://github.com/vim-scripts/snipMate
+	url = http://github.com/vim-scripts/snipMate.git
 [submodule "vim/bundle/surround.vim"]
 	path = vim/bundle/surround.vim
-	url = http://github.com/vim-scripts/surround.vim
+	url = http://github.com/vim-scripts/surround.vim.git
 [submodule "vim/bundle/taglist.vim"]
 	path = vim/bundle/taglist.vim
-	url = http://github.com/vim-scripts/taglist.vim
+	url = http://github.com/vim-scripts/taglist.vim.git
 [submodule "vim/bundle/The-NERD-Commenter"]
 	path = vim/bundle/The-NERD-Commenter
-	url = http://github.com/vim-scripts/The-NERD-Commenter
+	url = http://github.com/vim-scripts/The-NERD-Commenter.git
 [submodule "vim/bundle/The-NERD-tree"]
 	path = vim/bundle/The-NERD-tree
-	url = http://github.com/vim-scripts/The-NERD-tree
+	url = http://github.com/vim-scripts/The-NERD-tree.git
 [submodule "vim/bundle/VimCoder.jar"]
 	path = vim/bundle/VimCoder.jar
-	url = http://github.com/vim-scripts/VimCoder.jar
+	url = http://github.com/vim-scripts/VimCoder.jar.git
 [submodule "vim/bundle/Vim-JDE"]
 	path = vim/bundle/Vim-JDE
-	url = http://github.com/vim-scripts/Vim-JDE
+	url = http://github.com/vim-scripts/Vim-JDE.git
