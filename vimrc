@@ -66,7 +66,7 @@ if has("gui_running")
         if &guioptions =~# "m"
             set guioptions-=m
         else
-            set go+=m
+            set guioptions+=m
         endif
     endfunction
 
