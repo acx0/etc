@@ -1,6 +1,6 @@
 " ================================================
 " => Sam's vimrc
-" => 11/05/02
+" => 11/05/03
 " ================================================
 
 " ================================================
@@ -28,9 +28,10 @@ set history=500
 set undolevels=500
 let g:mapleader = ","
 
-" quickly edit/source vimrc
-nmap <Leader>er :edit $MYVIMRC<CR>
-nmap <Leader>sr :source $MYVIMRC<CR>
+" setup pathogen to manage all other plugins
+filetype off    " temporarily disable; required (enabled below)
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 
 " ================================================
@@ -123,6 +124,10 @@ set matchtime=2 " length of time for 'showmatch'
 set lazyredraw  " don't redraw screen when executing macros
 set noerrorbells    " no sound on errors
 set novisualbell    " no screen flash on errors
+
+" quickly edit/source vimrc
+nmap <Leader>er :edit $MYVIMRC<CR>
+nmap <Leader>sr :source $MYVIMRC<CR>
 
 " swap functionality of ' and ` since ' is easier to reach
 nnoremap ' `
@@ -218,28 +223,6 @@ map <Leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
 " ================================================
 " Plugin setup
 " ================================================
-" setup vundle to manage all other plugins
-filetype off    " temporarily disable; required (enabled below)
-set runtimepath+=~/.vim/vundle.git/
-call vundle#rc()
-
-" vim-scripts repos
-Bundle "bufkill.vim"
-Bundle "Conque-Shell"
-Bundle "CSApprox"
-Bundle "EasyMotion"
-Bundle "Indent-Guides"
-Bundle "javacomplete"
-Bundle "The-NERD-Commenter"
-Bundle "The-NERD-tree"
-Bundle "snipMate"
-Bundle "surround.vim"
-Bundle "taglist.vim"
-Bundle "VimCoder.jar"
-Bundle "Vim-JDE"
-
-" plugin specific settings
-
 " =======================
 " The-NERD-tree
 " =======================
@@ -281,16 +264,16 @@ if !has("gui_running")
     augroup indent_guides_custom
         autocmd!
         " light grey
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+        autocmd VimEnter,Colorscheme * highlight IndentGuidesEven ctermbg=236
         " dark grey
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
+        autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd ctermbg=235
     augroup end
 endif
 
 " =======================
 " javacomplete
 " =======================
-augroup java
+augroup javacomplete_custom
     autocmd!
     " support for java omnicomplete using javacomplete plugin
     autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -306,6 +289,7 @@ augroup end
 "set noswapfile " keeps everything in memory
 set hidden  " allow buffer to be changed without writing to disk
 set autoread    " update file when externally modified
+set autochdir   " change to directory of active buffer
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.o
 
 set fileformats=unix,dos,mac    " support all three, in this order
@@ -318,8 +302,8 @@ set expandtab   " use spaces instead of tab characters
 filetype plugin indent on   " let vim detect filetype and load appropriate scripts
 set cindent " automatic indenting; see ':h C-indenting' for comparison
 
-" toggle expandtab
-nmap <Leader>xt :set expandtab!<CR>
+" toggle expandtab and show current value
+nmap <Leader>xt :set expandtab! expandtab?<CR>
 
 " write to root-owned file when running as non-root by piping through tee using sudo
 cmap w!! write !sudo tee % > /dev/null
