@@ -1,39 +1,54 @@
+; untracked files are ignored since pathogen generates helptags for all submodules
+
 [submodule "vim/bundle/bufkill.vim"]
 	path = vim/bundle/bufkill.vim
 	url = http://github.com/vim-scripts/bufkill.vim.git
+    ignore = untracked
 [submodule "vim/bundle/Conque-Shell"]
 	path = vim/bundle/Conque-Shell
 	url = http://github.com/vim-scripts/Conque-Shell.git
+    ignore = untracked
 [submodule "vim/bundle/CSApprox"]
 	path = vim/bundle/CSApprox
 	url = http://github.com/vim-scripts/CSApprox.git
+    ignore = untracked
 [submodule "vim/bundle/EasyMotion"]
 	path = vim/bundle/EasyMotion
 	url = http://github.com/vim-scripts/EasyMotion.git
+    ignore = untracked
 [submodule "vim/bundle/Indent-Guides"]
 	path = vim/bundle/Indent-Guides
 	url = http://github.com/vim-scripts/Indent-Guides.git
+    ignore = untracked
 [submodule "vim/bundle/javacomplete"]
 	path = vim/bundle/javacomplete
 	url = http://github.com/vim-scripts/javacomplete.git
+    ignore = untracked
 [submodule "vim/bundle/snipMate"]
 	path = vim/bundle/snipMate
 	url = http://github.com/vim-scripts/snipMate.git
+    ignore = untracked
 [submodule "vim/bundle/surround.vim"]
 	path = vim/bundle/surround.vim
 	url = http://github.com/vim-scripts/surround.vim.git
+    ignore = untracked
 [submodule "vim/bundle/taglist.vim"]
 	path = vim/bundle/taglist.vim
 	url = http://github.com/vim-scripts/taglist.vim.git
+    ignore = untracked
 [submodule "vim/bundle/The-NERD-Commenter"]
 	path = vim/bundle/The-NERD-Commenter
 	url = http://github.com/vim-scripts/The-NERD-Commenter.git
+    ignore = untracked
 [submodule "vim/bundle/The-NERD-tree"]
 	path = vim/bundle/The-NERD-tree
 	url = http://github.com/vim-scripts/The-NERD-tree.git
+    ignore = untracked
 [submodule "vim/bundle/VimCoder.jar"]
 	path = vim/bundle/VimCoder.jar
 	url = http://github.com/vim-scripts/VimCoder.jar.git
+    ignore = untracked
 [submodule "vim/bundle/Vim-JDE"]
 	path = vim/bundle/Vim-JDE
 	url = http://github.com/vim-scripts/Vim-JDE.git
+    ignore = untracked
