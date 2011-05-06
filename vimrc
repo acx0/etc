@@ -209,6 +209,9 @@ set hidden  " allow buffer to be changed without writing to disk
 set autoread    " update file when externally modified
 "set autochdir   " change to directory of active buffer
 
+" cd into directory of active buffer and display it
+nmap <Leader>cd :lcd %:p:h<CR> <Bar> :pwd<CR>
+
 " --indenting
 set fileformats=unix,dos,mac    " try recognizing line endings in this order
 set tabstop=4   " width of a tab character in spaces
