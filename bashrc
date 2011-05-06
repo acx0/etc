@@ -117,12 +117,8 @@ fi
 # use vi editing mode for bash
 set -o vi
 
-# cycle through auto-complete suggestions instead of listing them
-# must be placed after setting vi editing mode
-bind '"\C-i": menu-complete'
-
 # enable 256 colour support
-#export TERM=xterm # uncomment for uni
+#export TERM=xterm # uncomment for uni servers
 #export TERM=xterm-256color
 
 # allows java graphical programs to run in tiling window managers by impersonating

@@ -1,67 +1,108 @@
-" ================================================
-" => Sam's vimrc
-" => 11/05/03
-" ================================================
+" ---> Sam's vimrc
+" ---> 11/05/06
 
-" ================================================
-" Sections:
-"
-"   ~ General
-"   ~ User interface
-"   ~ Insert mode related
-"   ~ Normal mode related
-"   ~ Visual mode related
-"   ~ Command mode related
-"   ~ Plugin setup
-"   ~ File settings and management
-"
-"   ~ Configuration variables
-"
-" ================================================
+" Notes:
+"   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
+"   ~ mappings and functions are placed next to their related settings
 
-" ================================================
-" General
-" ================================================
-" prevents vim from emulating the original vi's bugs and limitations
+" ---> Startup {{{
+" prevents vim from emulating vi's bugs and limitations
 set nocompatible    " enabled when (g)vimrc is found
-set history=500
-set undolevels=500
-let g:mapleader = ","
 
-" setup pathogen to manage all other plugins
-filetype off    " temporarily disable; required (enabled below)
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" setup vundle to manage all other plugins
+set runtimepath+=$HOME/.vim/vundle.git  " add vundle to runtimepath
+call vundle#rc()
+" }}}
 
+" ---> User interface {{{
+" easier to reach than \
+let mapleader = ","
+" easier to reach than Esc or Ctrl-[
+imap jk <Esc>
 
-" ================================================
-" User interface
-" ================================================
-set title   " set title to filename
-set showmode    " show current mode (insert, visual, etc)
+set backspace=start,indent,eol  " make backspace work like 'normal' text editors
+
+" --history
+set history=500 " history of commands and searches
+set undolevels=500  " changes to be remembered
+
+" --interface appearence
+syntax on   " enable syntax highlighting and allow custom highlighting
+set title   " set title to filename and modification status
 set number  " show line numbers
-set showcmd " show the command being typed
 set ruler   " always show current position
-set scrolloff=5 " scrolling starts 5 lines before window border
+set showcmd " show the command being typed
+set showmode    " show current mode (insert, visual, etc.)
 set wildmenu    " enhanced command-line completion
 set laststatus=2    " always show status line
-syntax on   " enable syntax highlighting and allow custom highlighting
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.o    " filetypes to ignore in file operations
 
+" useful, but can be slow at times
+"set cursorline  " highlight current line
+"set cursorcolumn    " highlight current column
+
+" --searching
+set ignorecase  " ignore case when searching
+set smartcase   " case sensitive only when capital letter in expression
+set hlsearch    " highlight search terms
+set incsearch   " show matches as they are found
+
+" toggle hlsearch and show current value
+nmap <Space> :set hlsearch! hlsearch?<CR>
+
+" --feedback
+set showmatch   " show matching braces when text indicator is over them
+set matchtime=2 " length of time for 'showmatch'
+
+" --redrawing / warnings
+set lazyredraw  " don't redraw screen when executing macros
+set noerrorbells    " no sound on errors
+set novisualbell    " no screen flash on errors
+
+" --insert completion
+set completeopt-=preview    " disable 'preview' for insert mode completion
+
+" --spell checking
+set spelllang=en_ca " set region to Canadian English
+
+" toggle spell checking and show current value
+" z-= on highlighted word gives correction suggestions
+nmap <Leader>ss :setlocal spell! spell?<CR>
+
+" --visual theme and appearence
 set background=dark
 
-if has("gui_running")
-    " set font according to system
+if has("gui_running")   " gVim specific
+    " font setup
+    " set according to system
     if has("unix")
-        set gfn=Terminus\ 9
-        "set gfn=Monospace\ 11
+        set guifont=Terminus\ 9
+        "set guifont=Monospace\ 11
     elseif has("win32")
-        set gfn=ter-112n:h9
-        "set gfn=Lucida_Console:h9:cANSI
+        set guifont=ter-112n:h9
+        "set guifont=Lucida_Console:h9:cANSI
     endif
 
+    if has("unix")
+        colorscheme neverland
+    elseif has("win32")
+        colorscheme neverland-nobold
+    endif
+
+    let g:molokai_original = 1  " lighter background for molokai colorscheme
+
+    " gVim interface modification
+    set guioptions-=m   " remove menu bar
+    set guioptions-=T   " remove toolbar
+    set guioptions-=r   " remove right scrollbar
+    set guioptions-=R
+    set guioptions-=l   " remove left scrollbar
+    set guioptions-=L
+    set guioptions-=b   " remove bottom scrollbar
+
     " toggle menu bar and toolbar, respectively
-    nnoremap <C-F1> :call ToggleMenuBar()<CR>
-    nnoremap <C-F2> :call ToggleToolbar()<CR>
+    nmap <C-F1> :call ToggleMenuBar()<CR>
+    nmap <C-F2> :call ToggleToolbar()<CR>
 
     function! ToggleMenuBar()
         if &guioptions =~# "m"
@@ -78,23 +119,7 @@ if has("gui_running")
             set guioptions+=T
         endif
     endfunction
-
-    let g:molokai_original = 1  " lighter background for molokai colourscheme
-
-    if has("unix")
-        colorscheme neverland
-    elseif has("win32")
-        colorscheme neverland-nobold
-    endif
-
-    set guioptions-=m   " remove menu bar
-    set guioptions-=T   " remove toolbar
-    set guioptions-=r   " remove right scrollbar
-    set guioptions-=R
-    set guioptions-=l   " remove left scrollbar
-    set guioptions-=L
-    set guioptions-=b   " remove bottom scrollbar
-else
+else    " terminal vim specific
     if &term == "xterm" || &term == "rxvt-256color" || &term == "screen-bce"
         set t_Co=256    " use 256 colours
         colorscheme neverland
@@ -103,31 +128,8 @@ else
     endif
 endif
 
-
-" ================================================
-" Insert mode related
-" ================================================
-inoremap jk <Esc>
-set backspace=start,indent,eol  " make backspace work like 'normal' text editors
-set completeopt-=preview    " disable 'preview' for insert mode completion
-
-
-" ================================================
-" Normal mode related
-" ================================================
-set ignorecase  " ignore case when searching
-set smartcase   " case sensitive only when capital letter in expression
-set hlsearch    " highlight search terms
-set incsearch   " show matches as they are found
-set showmatch   " show matching braces when text indicator is over them
-set matchtime=2 " length of time for 'showmatch'
-set lazyredraw  " don't redraw screen when executing macros
-set noerrorbells    " no sound on errors
-set novisualbell    " no screen flash on errors
-
-" quickly edit/source vimrc
-nmap <Leader>er :edit $MYVIMRC<CR>
-nmap <Leader>sr :source $MYVIMRC<CR>
+" --navigation
+set scrolloff=5 " scrolling starts 5 lines before window border
 
 " swap functionality of ' and ` since ' is easier to reach
 nnoremap ' `
@@ -142,59 +144,12 @@ nnoremap n nzz
 nnoremap N Nzz
 
 " easier window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 
-" useful, but can be slow at times
-"set cursorline
-"set cursorcolumn
-
-" allow vim commands to copy to system clipboard (*)
-" for X11:
-"   + is the clipboard register (ctrl-{c,v})
-"   * is the selection register (middle click, shift-insert)
-set clipboard=unnamed
-
-" prevent unexpected code formatting when pasting text, and show status of 'paste'
-nnoremap <Leader>p :set invpaste paste?<CR>
-set pastetoggle=<Leader>p
-
-" toggle hlsearch
-nmap <Space> :set hlsearch!<CR>
-
-" pressing ,ss will toggle spell checking, z-= on word for correction suggestions
-map <Leader>ss :setlocal spell!<CR>
-
-" set region to Canadian English
-set spelllang=en_ca
-
-
-" ================================================
-" Visual mode related
-" ================================================
-map <F12> :call ToggleMouse()<CR>
-
-function! ToggleMouse()
-    if !exists("s:oldMouse")
-        let s:oldMouse = "a"
-    endif
-
-    if &mouse == ""
-        let &mouse = s:oldMouse
-        echo "Mouse is for Vim (" . &mouse . ")"
-    else
-        let s:oldMouse = &mouse
-        let &mouse = ""
-        echo "Mouse is for terminal"
-    endif
-endfunction
-
-
-" ================================================
-" Command mode related
-" ================================================
+" --screen management
 " window split shortcuts
 nmap <Leader>swh :topleft vnew<CR>
 nmap <Leader>swl :botright vnew<CR>
@@ -207,117 +162,74 @@ nmap <Leader>sk :leftabove new<CR>
 nmap <Leader>sj :rightbelow new<CR>
 
 " tab creation shortcuts
-map <Leader>tt :tabs<CR>
-map <Leader>tn :tabnew<CR>
-map <Leader>te :tabedit
-map <Leader>tc :tabclose<CR>
-map <Leader>tm :tabmove
+nmap <Leader>tt :tabs<CR>
+nmap <Leader>tn :tabnew<CR>
+nmap <Leader>te :tabedit
+nmap <Leader>tc :tabclose<CR>
+nmap <Leader>tm :tabmove
 
 " auto-expand path to parent of current file; for windows, (v)splits, and tabs
-map <Leader>ew :edit <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>es :split <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>ev :vsplit <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
+nmap <Leader>ew :edit <C-R>=expand("%:p:h") . "/" <CR>
+nmap <Leader>es :split <C-R>=expand("%:p:h") . "/" <CR>
+nmap <Leader>ev :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+nmap <Leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
 
+" --mouse input
+" toggle mouse support; when enabled, mouse selection goes into visual mode
+nmap <F12> :call ToggleMouse()<CR>
 
-" ================================================
-" Plugin setup
-" ================================================
-" =======================
-" The-NERD-tree
-" =======================
-" quickly open NERDTree
-map <F2> :call OpenNERDTree()<CR>
+function! ToggleMouse()
+    if !exists("s:old_mouse")
+        let s:old_mouse = "a"
+    endif
 
-function! OpenNERDTree()
-    if has("unix")
-        NERDTreeToggle
-    elseif has("win32")
-        NERDTree $HOME
+    if &mouse == ""
+        let &mouse = s:old_mouse
+        echo "Mouse is for Vim (" . &mouse . ")"
+    else
+        let s:old_mouse = &mouse
+        let &mouse = ""
+        echo "Mouse is for terminal"
     endif
 endfunction
+" }}}
 
-" =======================
-" snipMate
-" =======================
-" use custom snippets
-let g:snippets_dir = "~/.vim/snippets/"
+" ---> File settings {{{
+" --filetype detection
+filetype plugin indent on   " let vim detect filetype and load appropriate scripts
 
-" =======================
-" taglist.vim
-" =======================
-let g:Tlist_Use_Right_Window = 1
-
-" toggle taglist plugin
-map <Leader><F2> :TlistToggle<CR>
-
-" =======================
-" Indent-Guides
-" =======================
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_enable_on_vim_startup = 1
-
-if !has("gui_running")
-    let g:indent_guides_auto_colors = 0
-
-    augroup indent_guides_custom
-        autocmd!
-        " light grey
-        autocmd VimEnter,Colorscheme * highlight IndentGuidesEven ctermbg=236
-        " dark grey
-        autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd ctermbg=235
-    augroup end
-endif
-
-" =======================
-" javacomplete
-" =======================
-augroup javacomplete_custom
-    autocmd!
-    " support for java omnicomplete using javacomplete plugin
-    autocmd FileType java setlocal omnifunc=javacomplete#Complete
-augroup end
-
-
-" ================================================
-" File settings and management
-" ================================================
-" multiple permutations for backups, see ':h backup-table'
+" --backup / swap
+" multiple combinations for backups, see ':h backup-table'
 "set nobackup   " won't leave additional files after vim is closed
 "set nowritebackup  " keeps backup file while editing, deleted after
 "set noswapfile " keeps everything in memory
+
+" --buffer management
 set hidden  " allow buffer to be changed without writing to disk
 set autoread    " update file when externally modified
-set autochdir   " change to directory of active buffer
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.o
+"set autochdir   " change to directory of active buffer
 
-set fileformats=unix,dos,mac    " support all three, in this order
+" --indenting
+set fileformats=unix,dos,mac    " try recognizing line endings in this order
 set tabstop=4   " width of a tab character in spaces
 set softtabstop=4   " defines number of spaces for when adding/removing tabs
 set shiftwidth=4    " number of spaces to use for autoindent
-set expandtab   " use spaces instead of tab characters
-" to insert real tab, use <C-v><Tab>
-
-filetype plugin indent on   " let vim detect filetype and load appropriate scripts
+set expandtab   " use spaces instead of tab characters; to insert real tab, use <C-v><Tab>
 set cindent " automatic indenting; see ':h C-indenting' for comparison
 
 " toggle expandtab and show current value
 nmap <Leader>xt :set expandtab! expandtab?<CR>
 
-" write to root-owned file when running as non-root by piping through tee using sudo
-cmap w!! write !sudo tee % > /dev/null
-
 " set tabstop, softtabstop, and shiftwidth to the same value
-map <Leader>st :call SetTab()<CR>
+nmap <Leader>st :call SetTab()<CR>
 
 function! SetTab()
-    let l:newTabSize = input("set tabstop = softtabstop = shiftwidth = ")
+    let l:new_tab_size = input("set tabstop = softtabstop = shiftwidth = ")
 
-    if l:newTabSize > 0
-        let &l:softtabstop = l:newTabSize
-        let &l:tabstop = l:newTabSize
-        let &l:shiftwidth = l:newTabSize
+    if l:new_tab_size > 0
+        let &l:softtabstop = l:new_tab_size
+        let &l:tabstop = l:new_tab_size
+        let &l:shiftwidth = l:new_tab_size
     endif
 
     call SummarizeTabs()
@@ -340,8 +252,47 @@ function! SummarizeTabs()
     endtry
 endfunction
 
+" --copying / pasting
+" allow vim commands to copy to system clipboard (*)
+" for X11:
+"   + is the clipboard register (Ctrl-{c,v})
+"   * is the selection register (middle click, Shift-Insert)
+if v:version >= 703
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed
+endif
+
+" set paste to prevent unexpected code formatting when pasting text
+" toggle paste and show current value
+nnoremap <Leader>p :set paste! paste?<CR>
+"set pastetoggle=<Leader>p
+
+" --file / text manipulation functions
+" quickly edit/source vimrc
+nmap <Leader>er :edit $MYVIMRC<CR>
+nmap <Leader>sr :source $MYVIMRC<CR>
+
+" remove trailing whitespace
+nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+
+function! Preserve(command)
+    " save last search, and cursor position
+    let search = @/
+    let line = line(".")
+    let column = col(".")
+
+    execute a:command
+    " restore previous search history, and cursor position
+    let @/ = search
+    call cursor(line, column)
+endfunction
+
+" write to root-owned file when running as non-root by piping through tee using sudo
+cmap w!! write !sudo tee % > /dev/null
+
 " append modeline after last line in buffer
-" use substitute() instead of printf() to handle '%%s' modeline in LaTeX files
+" use substitute() instead of printf() to handle "%%s" modeline in LaTeX files
 nnoremap <Leader>ml :call AppendModeline()<CR>
 
 function! AppendModeline()
@@ -351,141 +302,84 @@ function! AppendModeline()
     call append(line("$"), l:modeline)
 endfunction
 
-" remove trailing whitespace
-nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
-
-function! Preserve(command)
-    " save last search, and cursor position
-    let _s = @/
-    let l = line(".")
-    let c = col(".")
-
-    execute a:command
-    " restore previous search history, and cursor position
-    let @/ = _s
-    call cursor(l, c)
-endfunction
-
 if has("unix")
     " make doc, odt, pdf, and rtf readable (linux only)
     augroup doctypes
         autocmd!
         autocmd BufReadPost *.doc silent %!antiword "%"
         autocmd BufReadPost *.odt,*.odp silent %!odt2txt "%"
-        autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" - | fmt -w78
+        autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" - | fmt -w 78
         autocmd BufReadPost *.rtf silent %!unrtf --text "%"
     augroup end
 endif
+" }}}
 
-" =======================
-" Filetype specific
-" =======================
-map <F3> :call Compile()<CR>
+" ---> Plugin configuration {{{
+" --plugins
+filetype off    " temporarily disabled (required)
 
-function! Compile()
-    if &filetype == "c"
-        call CompileC()
-    elseif &filetype == "cpp"
-        call CompileCpp()
-    elseif &filetype == "java"
-        call CompileJava()
-    else
-        echo "Compile function for '" . &filetype . "' not found"
+" vim-scripts repository
+Bundle "bufkill.vim"
+Bundle "Conque-Shell"
+Bundle "CSApprox"
+Bundle "EasyMotion"
+Bundle "Indent-Guides"
+Bundle "javacomplete"
+Bundle "snipMate"
+Bundle "surround.vim"
+Bundle "taglist.vim"
+Bundle "The-NERD-Commenter"
+Bundle "The-NERD-tree"
+Bundle "VimCoder.jar"
+Bundle "Vim-JDE"
+
+filetype plugin indent on   " re-enabled
+
+" --plugin settings
+" --The-NERD-tree
+" quickly open NERDTree
+nmap <F2> :call OpenNERDTree()<CR>
+
+function! OpenNERDTree()
+    if has("unix")
+        NERDTreeToggle
+    elseif has("win32")
+        NERDTree $HOME
     endif
 endfunction
 
-map <F4> :call RunFile()<CR>
+" --snipMate
+" use custom snippets
+let g:snippets_dir = "~/.vim/snippets/"
 
-function! RunFile()
-    if &filetype == "c" || &filetype == "cpp"
-        call RunExec()
-    elseif &filetype == "java"
-        call RunClass()
-    elseif &filetype == "python"
-        call RunPython()
-    else
-        echo "Run function for '" . &filetype . "' not found"
-    endif
-endfunction
+" --taglist.vim
+let g:Tlist_Use_Right_Window = 1
 
-map <Leader><F4> :call ChangeRunSettings()<CR>
+" toggle taglist plugin
+nmap <Leader><F2> :TlistToggle<CR>
 
-function! ChangeRunSettings()
-    if &filetype == "java"
-        " change class file
-        if exists("b:class")
-            echo "class = '" . b:class . "'"
-        endif
+" --Indent-Guides
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 1
 
-        let b:class = input("class = ")
-    else
-        echo "RunSettings function for '" . &filetype . "' not found"
-    endif
-endfunction
+if !has("gui_running")
+    let g:indent_guides_auto_colors = 0
 
-" =======================
-" C section
-" =======================
-function! CompileC()
-    write
+    augroup indent_guides_custom
+        autocmd!
+        " custom colors for indent guide lines
+        " light grey
+        autocmd VimEnter,Colorscheme * highlight IndentGuidesEven ctermbg=236
+        " dark grey
+        autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd ctermbg=235
+    augroup end
+endif
+" }}}
 
-    if glob("Makefile") != ""
-        make
-    else
-        execute '!' . g:CC . ' "%" -o "%:p:r"'
-    endif
-endfunction
-
-" run system executable file - used for C and C++
-function! RunExec()
-    execute '!"%:p:r"'
-endfunction
-
-" =======================
-" C++ section
-" =======================
-function! CompileCpp()
-    write
-
-    if glob("Makefile") != ""
-        make
-    else
-        execute '!g++ "%" -o "%:p:r"'
-    endif
-endfunction
-
-" =======================
-" Java section
-" =======================
-function! CompileJava()
-    write
-
-    setlocal makeprg=javac\ -cp\ \"%:p:h\"\ %\ $*
-    make
-endfunction
-
-function! RunClass()
-    if !exists("b:class")
-        let b:class = expand("%:t:r")
-    endif
-
-    execute '!java -cp "%:p:h" ' . b:class
-endfunction
-
-" =======================
-" Python section
-" =======================
-function! RunPython()
-    write
-
-    setlocal makeprg=python\ %\ $*
-    make
-endfunction
-
-
-" ================================================
-" Configuration variables
-" ================================================
+" ---> Configuration variables {{{
+" compiler to use for custom C ftplugin
 let g:CC = "clang"
+" }}}
 
 " vim: set ts=4 sw=4 sts=4 et :
