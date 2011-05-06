@@ -227,8 +227,8 @@ function! SetTab()
     let l:new_tab_size = input("set tabstop = softtabstop = shiftwidth = ")
 
     if l:new_tab_size > 0
-        let &l:softtabstop = l:new_tab_size
         let &l:tabstop = l:new_tab_size
+        let &l:softtabstop = l:new_tab_size
         let &l:shiftwidth = l:new_tab_size
     endif
 
@@ -238,9 +238,9 @@ endfunction
 function! SummarizeTabs()
     try
         echohl ModeMsg
-        echon "tabstop=".&l:tabstop
-        echon " shiftwidth=".&l:shiftwidth
-        echon " softtabstop=".&l:softtabstop
+        echon "tabstop=" . &l:tabstop
+        echon " softtabstop=" . &l:softtabstop
+        echon " shiftwidth=" . &l:shiftwidth
 
         if &l:expandtab
             echon " expandtab"
@@ -296,7 +296,8 @@ cmap w!! write !sudo tee % > /dev/null
 nnoremap <Leader>ml :call AppendModeline()<CR>
 
 function! AppendModeline()
-    let l:modeline = printf(" vim: set ts=%d sw=%d sts=%d %s :", &tabstop, &shiftwidth, &softtabstop, &expandtab ? "et" : "noet")
+    let l:modeline = printf(" vim: set ts=%d sts=%d sw=%d ft=%s %s :",
+                \ &tabstop, &softtabstop, &shiftwidth, &filetype, &expandtab ? "et" : "noet")
     let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
     call append(line("$"), "")
     call append(line("$"), l:modeline)
@@ -382,4 +383,4 @@ endif
 let g:CC = "clang"
 " }}}
 
-" vim: set ts=4 sw=4 sts=4 et :
+" vim: set ts=4 sts=4 sw=4 ft=vim et :
