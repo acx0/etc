@@ -15,7 +15,7 @@ if version > 580
         syntax reset
     endif
 endif
-let g:colors_name="neverland"
+let g:colors_name="neverland-orig"
 
 " Setting normal before any other highlight group is a good idea
 hi Normal          guifg=#ffd7ff guibg=#121212
@@ -80,11 +80,6 @@ hi SpecialComment  guifg=#8a8a8a               gui=bold
 hi Special         guifg=#5fd7ff guibg=#080808
 hi SpecialKey      guifg=#8a8a8a
 
-hi SpellBad        guifg=#ff0000 guibg=#080808  gui=bold
-hi SpellCap        guifg=#ff0000 guibg=#080808  gui=bold
-hi SpellRare       guifg=#ff0000 guibg=#080808  gui=bold
-hi SpellLocal      guifg=#ff0000 guibg=#141414  gui=bold
-
 hi Statement       guifg=#d78700               gui=bold
 hi StatusLine      guifg=#1c1c1c guibg=#af8700
 hi StatusLineNC    guifg=#1c1c1c guibg=#878700
@@ -105,7 +100,6 @@ hi WarningMsg      guifg=#0000ff guibg=#444444 gui=bold
 hi WildMenu        guifg=#5fd7ff guibg=#000000
 
 hi Comment         guifg=#af875f
-hi ColorColumn                   guibg=#202020
 hi CursorLine                    guibg=#1c1c1c gui=none
 hi CursorColumn                  guibg=#121212
 hi LineNr          guifg=#626262 guibg=#121212
@@ -162,10 +156,10 @@ if &t_Co > 255
    hi Operator        ctermfg=148
 
    " complete menu
-   hi Pmenu           ctermfg=137 ctermbg=000 cterm=none
-   hi PmenuSel        ctermfg=196 ctermbg=235 cterm=bold
-   hi PmenuSbar       ctermfg=000 ctermbg=233 cterm=none
-   hi PmenuThumb      ctermfg=137 ctermbg=000 cterm=none
+   hi Pmenu           ctermfg=81  ctermbg=233
+   hi PmenuSel                    ctermbg=235
+   hi PmenuSbar                   ctermbg=232
+   hi PmenuThumb      ctermfg=81
 
    hi PreCondit       ctermfg=118               cterm=bold
    hi PreProc         ctermfg=218
@@ -179,11 +173,6 @@ if &t_Co > 255
    hi SpecialComment  ctermfg=245               cterm=bold
    hi Special         ctermfg=81  ctermbg=232
    hi SpecialKey      ctermfg=245
-
-   hi SpellBad        ctermfg=196 ctermbg=233  cterm=bold
-   hi SpellCap        ctermfg=196 ctermbg=233  cterm=bold
-   hi SpellRare       ctermfg=196 ctermbg=233  cterm=bold
-   hi SpellLocal      ctermfg=196 ctermbg=235  cterm=bold
 
    hi Statement       ctermfg=172               cterm=bold
    hi StatusLine      ctermfg=234 ctermbg=136
@@ -205,7 +194,6 @@ if &t_Co > 255
    hi WildMenu        ctermfg=81  ctermbg=16
 
    hi Comment         ctermfg=137
-   hi ColorColumn                 ctermbg=235
    hi CursorLine                  ctermbg=234   cterm=none
    hi CursorColumn                ctermbg=233
    hi LineNr          ctermfg=241 ctermbg=233

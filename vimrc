@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/05/06
+" ---> 11/05/07
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -10,6 +10,7 @@
 set nocompatible    " enabled when (g)vimrc is found
 
 " setup vundle to manage all other plugins
+filetype off    " temporarily disabled (required); enabled below
 set runtimepath+=$HOME/.vim/vundle.git  " add vundle to runtimepath
 call vundle#rc()
 " }}}
@@ -72,6 +73,11 @@ nmap <Leader>ss :setlocal spell! spell?<CR>
 " --visual theme and appearence
 set background=dark
 
+" colorscheme modification
+let g:molokai_original = 1  " lighter background in gVim
+let g:solarized_termcolors = 256    " use degraded colors in terminal
+let g:zenburn_high_Contrast = 1 " darker colors
+
 if has("gui_running")   " gVim specific
     " font setup
     " set according to system
@@ -88,8 +94,6 @@ if has("gui_running")   " gVim specific
     elseif has("win32")
         colorscheme neverland-nobold
     endif
-
-    let g:molokai_original = 1  " lighter background for molokai colorscheme
 
     " gVim interface modification
     set guioptions-=m   " remove menu bar
@@ -320,24 +324,19 @@ endif
 
 " ---> Plugin configuration {{{
 " --plugins
-filetype off    " temporarily disabled (required)
-
-" vim-scripts repository
 Bundle "bufkill.vim"
 Bundle "Conque-Shell"
-Bundle "CSApprox"
-Bundle "EasyMotion"
-Bundle "Indent-Guides"
+Bundle "godlygeek/csapprox"
 Bundle "javacomplete"
-Bundle "snipMate"
-Bundle "surround.vim"
+Bundle "Lokaltog/vim-easymotion"
+Bundle "msanders/snipmate.vim"
+Bundle "nathanaelkane/vim-indent-guides"
+Bundle "scrooloose/nerdcommenter"
+Bundle "scrooloose/nerdtree"
 Bundle "taglist.vim"
-Bundle "The-NERD-Commenter"
-Bundle "The-NERD-tree"
+Bundle "tpope/vim-surround"
 Bundle "VimCoder.jar"
 Bundle "Vim-JDE"
-
-filetype plugin indent on   " re-enabled
 
 " --plugin settings
 " --The-NERD-tree
