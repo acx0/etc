@@ -327,6 +327,7 @@ endif
 Bundle "bufkill.vim"
 Bundle "Conque-Shell"
 Bundle "godlygeek/csapprox"
+Bundle "indentpython.vim"
 Bundle "javacomplete"
 Bundle "Lokaltog/vim-easymotion"
 Bundle "msanders/snipmate.vim"
