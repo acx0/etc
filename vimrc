@@ -124,8 +124,8 @@ if has("gui_running")   " gVim specific
         endif
     endfunction
 else    " terminal vim specific
-    if &term == "xterm" || &term == "rxvt-256color" || &term == "screen-bce"
-        set t_Co=256    " use 256 colours
+    if &term == "xterm" || &term == "rxvt-unicode-256color" || &term == "screen-bce"
+        set t_Co=256    " force 256 colours (required for xterm and screen-bce" $TERMs)
         colorscheme neverland
     else
         colorscheme desert
