@@ -216,7 +216,7 @@ nmap <Leader>sk :leftabove new<CR>
 nmap <Leader>sj :rightbelow new<CR>
 
 " tab creation shortcuts
-nmap <Leader>tt :tabs<CR>
+"nmap <Leader>tt :tabs<CR>
 nmap <Leader>tn :tabnew<CR>
 nmap <Leader>te :tabedit
 nmap <Leader>tc :tabclose<CR>
@@ -374,6 +374,7 @@ endif
 
 " ---> Plugin configuration {{{
 " --plugins
+Bundle "Align"
 Bundle "bufkill.vim"
 Bundle "Conque-Shell"
 Bundle "godlygeek/csapprox"
