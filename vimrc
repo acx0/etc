@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/05/07
+" ---> 11/05/08
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -28,7 +28,7 @@ set history=500 " history of commands and searches
 set undolevels=500  " changes to be remembered
 
 " --interface appearence
-syntax on   " enable syntax highlighting and allow custom highlighting
+syntax enable   " enable syntax highlighting and allow custom highlighting
 set title   " set title to filename and modification status
 set number  " show line numbers
 set ruler   " always show current position
@@ -131,6 +131,56 @@ else    " terminal vim specific
         colorscheme desert
     endif
 endif
+
+" --smart statusline
+set statusline=%!MyStatusLine('Enter')
+
+highlight StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+highlight Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
+
+augroup smart_statusline
+    autocmd!
+    autocmd WinEnter * setlocal statusline=%!MyStatusLine('Enter')
+    autocmd WinLeave * setlocal statusline=%!MyStatusLine('Leave')
+
+    autocmd InsertEnter * call InsertStatuslineColor(v:insertmode)
+    autocmd InsertLeave * highlight StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+    autocmd InsertLeave * highlight Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
+augroup end
+
+function! MyStatusLine(mode)
+    let statusline = ""
+    if a:mode == "Enter"
+        let statusline .= "%#StatColor#"
+    endif
+
+    let statusline .= "\(%n\)\ %f\ "
+    if a:mode == "Enter"
+        let statusline .= "%*"
+    endif
+
+    let statusline .= "%#Modified#%m"
+    if a:mode == "Leave"
+        let statusline .= "%*%r"
+    elseif a:mode == "Enter"
+        let statusline .= "%r%*"
+    endif
+
+    let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
+    return statusline
+endfunction
+
+function! InsertStatuslineColor(mode)
+    if a:mode == "i"
+        hi StatColor guibg=orange ctermbg=lightred
+    elseif a:mode == "r"
+        hi StatColor guibg=#e454ba ctermbg=magenta
+    elseif a:mode == "v"
+        hi StatColor guibg=#e454ba ctermbg=magenta
+    else
+        hi StatColor guibg=red ctermbg=red
+    endif
+endfunction
 
 " --navigation
 set scrolloff=5 " scrolling starts 5 lines before window border
