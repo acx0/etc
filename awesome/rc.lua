@@ -427,15 +427,15 @@ globalkeys = awful.util.table.join(
 
     -- Custom
     -- Print sreen
-    awful.key({                   }, "Print",  function () awful.util.spawn("scrot -e 'mv $f ~/Pictures/ 2> /dev/null'") end),
+    awful.key({                   }, "Print",  function () awful.util.spawn("scrot -e 'mv $f ~/Pictures/ 2> /dev/null'", false) end),
 
     -- Volume
-    awful.key({ modkey, "Shift"   }, "Up",     function () awful.util.spawn("amixer -q sset Master 2dB+") end),
-    awful.key({ modkey, "Shift"   }, "Down",   function () awful.util.spawn("amixer -q sset Master 2dB-") end),
-    awful.key({ modkey, "Shift"   }, "Left",   function () awful.util.spawn("amixer -q sset Master toggle") end),
+    awful.key({ modkey, "Shift"   }, "Up",     function () awful.util.spawn("amixer -q sset Master 2dB+", false) end),
+    awful.key({ modkey, "Shift"   }, "Down",   function () awful.util.spawn("amixer -q sset Master 2dB-", false) end),
+    awful.key({ modkey, "Shift"   }, "Left",   function () awful.util.spawn("amixer -q sset Master toggle", false) end),
     -- set Capture to max (default 35) for Digital=42% to work
-    awful.key({ modkey, "Shift"   }, "Right",  function () awful.util.spawn("amixer -q sset Digital 0%") end),
-    awful.key({ modkey, "Control", "Shift" }, "Right", function () awful.util.spawn("amixer -q sset Digital 42%") end)
+    awful.key({ modkey, "Shift"   }, "Right",  function () awful.util.spawn("amixer -q sset Digital 0%", false) end),
+    awful.key({ modkey, "Control", "Shift" }, "Right", function () awful.util.spawn("amixer -q sset Digital 42%", false) end)
 )
 
 clientkeys = awful.util.table.join(
