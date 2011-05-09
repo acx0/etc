@@ -12,6 +12,7 @@ CONFIG_DIR_FILES=(
 # configuration files which reside in ~/
 HOME_DIR_FILES=(
     bashrc
+    dircolors
     emacs
     gitconfig
     gtkrc-2.0
