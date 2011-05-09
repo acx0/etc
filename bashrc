@@ -114,9 +114,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# use vi editing mode for bash
-set -o vi
-
 # enable 256 colour support
 #export TERM=xterm # uncomment for uni servers
 #export TERM=xterm-256color

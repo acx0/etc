@@ -1,10 +1,14 @@
-set completion-ignore-case on
+set editing-mode vi
 
-# override default binding of unix-word-rubout so that '/' is also used as a
-# delimiter; bind-tty-special-chars must be off
+set completion-ignore-case on
+set expand-tilde off
+set match-hidden-files off
+
+# override default binding of unix-word-rubout so that '/' is also used as a delimiter
+# bind-tty-special-chars must be off
 set bind-tty-special-chars off
 "\C-w": unix-filename-rubout
 
-# cycle through auto-complete suggestions instead of listing them must be
-# placed after setting vi editing mode
+# cycle through auto-complete suggestions instead of listing them
+# must be placed after setting vi editing-mode
 "\C-i": menu-complete
