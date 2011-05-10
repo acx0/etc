@@ -138,7 +138,7 @@ endif
 set statusline=%!MyStatusLine('Enter')
 
 highlight StatColor guibg=LightGreen guifg=Black ctermbg=LightGreen ctermfg=Black
-highlight Modified guibg=Orange guifg=Black ctermbg=LightRed ctermfg=Black
+highlight Modified guibg=Red guifg=Black ctermbg=Red ctermfg=Black
 
 augroup smart_statusline
     autocmd!
@@ -147,7 +147,7 @@ augroup smart_statusline
 
     autocmd InsertEnter * call InsertStatuslineColor(v:insertmode)
     autocmd InsertLeave * highlight StatColor guibg=LightGreen guifg=Black ctermbg=LightGreen ctermfg=Black
-    autocmd InsertLeave * highlight Modified guibg=Orange guifg=Black ctermbg=LightRed ctermfg=Black
+    autocmd InsertLeave * highlight Modified guibg=Red guifg=Black ctermbg=Red ctermfg=Black
 augroup end
 
 function! MyStatusLine(mode)
@@ -174,11 +174,11 @@ endfunction
 
 function! InsertStatuslineColor(mode)
     if a:mode == "i"
-        highlight StatColor guibg=Orange ctermbg=LightRed
+        highlight StatColor guibg=Red ctermbg=Red
     elseif a:mode == "r"
-        highlight StatColor guibg=Magenta ctermbg=Magenta
+        highlight StatColor guibg=Cyan ctermbg=Cyan
     elseif a:mode == "v"
-        highlight StatColor guibg=Magenta ctermbg=Magenta
+        highlight StatColor guibg=Cyan ctermbg=Cyan
     else
         highlight StatColor guibg=Red ctermbg=Red
     endif
