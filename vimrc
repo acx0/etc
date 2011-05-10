@@ -10,8 +10,8 @@
 set nocompatible    " enabled when (g)vimrc is found
 
 " setup vundle to manage all other plugins
-filetype off    " temporarily disabled (required); enabled below
-set runtimepath+=$HOME/.vim/vundle.git  " add vundle to runtimepath
+filetype off                           " temporarily disabled (required); enabled below
+set runtimepath+=$HOME/.vim/vundle.git " add vundle to runtimepath
 call vundle#rc()
 " }}}
 
@@ -24,29 +24,28 @@ imap jk <Esc>
 set backspace=start,indent,eol  " make backspace work like 'normal' text editors
 
 " --history
-set history=500 " history of commands and searches
-set undolevels=500  " changes to be remembered
+set history=500    " history of commands and searches
+set undolevels=500 " changes to be remembered
 
 " --interface appearence
-syntax enable   " enable syntax highlighting and allow custom highlighting
-set title   " set title to filename and modification status
-set number  " show line numbers
-set ruler   " always show current position
-set showcmd " show the command being typed
-set showmode    " show current mode (insert, visual, etc.)
-set wildmenu    " enhanced command-line completion
-set laststatus=2    " always show status line
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.o    " filetypes to ignore in file operations
+syntax enable    " enable syntax highlighting and allow custom highlighting
+set title        " set title to filename and modification status
+set number       " show line numbers
+set ruler        " always show current position
+set showcmd      " show the command being typed
+set showmode     " show current mode (insert, visual, etc.)
+set wildmenu     " enhanced command-line completion
+set laststatus=2 " always show status line
 
 " useful, but can be slow at times
-"set cursorline  " highlight current line
-"set cursorcolumn    " highlight current column
+"set cursorline   " highlight current line
+"set cursorcolumn " highlight current column
 
 " --searching
-set ignorecase  " ignore case when searching
-set smartcase   " case sensitive only when capital letter in expression
-set hlsearch    " highlight search terms
-set incsearch   " show matches as they are found
+set ignorecase " ignore case when searching
+set smartcase  " case sensitive only when capital letter in expression
+set hlsearch   " highlight search terms
+set incsearch  " show matches as they are found
 
 " toggle hlsearch and show current value
 nmap <Space> :set hlsearch! hlsearch?<CR>
@@ -56,12 +55,15 @@ set showmatch   " show matching braces when text indicator is over them
 set matchtime=2 " length of time for 'showmatch'
 
 " --redrawing / warnings
-set lazyredraw  " don't redraw screen when executing macros
-set noerrorbells    " no sound on errors
-set novisualbell    " no screen flash on errors
+set lazyredraw   " don't redraw screen when executing macros
+set noerrorbells " no sound on errors
+set novisualbell " no screen flash on errors
 
 " --insert completion
 set completeopt-=preview    " disable 'preview' for insert mode completion
+
+" --command-line completion
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.o    " filetypes to ignore in file operations
 
 " --spell checking
 set spelllang=en_ca " set region to Canadian English
@@ -74,9 +76,9 @@ nmap <Leader>ss :setlocal spell! spell?<CR>
 set background=dark
 
 " colorscheme modification
-let g:molokai_original = 1  " lighter background in gVim
-let g:solarized_termcolors = 256    " use degraded colors in terminal
-let g:zenburn_high_Contrast = 1 " darker colors
+let g:molokai_original = 1       " lighter background in gVim
+let g:solarized_termcolors = 256 " use degraded colors in terminal
+let g:zenburn_high_Contrast = 1  " darker colors
 
 if has("gui_running")   " gVim specific
     " font setup
@@ -96,13 +98,13 @@ if has("gui_running")   " gVim specific
     endif
 
     " gVim interface modification
-    set guioptions-=m   " remove menu bar
-    set guioptions-=T   " remove toolbar
-    set guioptions-=r   " remove right scrollbar
+    set guioptions-=m " remove menu bar
+    set guioptions-=T " remove toolbar
+    set guioptions-=r " remove right scrollbar
     set guioptions-=R
-    set guioptions-=l   " remove left scrollbar
+    set guioptions-=l " remove left scrollbar
     set guioptions-=L
-    set guioptions-=b   " remove bottom scrollbar
+    set guioptions-=b " remove bottom scrollbar
 
     " toggle menu bar and toolbar, respectively
     nmap <C-F1> :call ToggleMenuBar()<CR>
@@ -254,25 +256,25 @@ filetype plugin indent on   " let vim detect filetype and load appropriate scrip
 
 " --backup / swap
 " multiple combinations for backups, see ':h backup-table'
-"set nobackup   " won't leave additional files after vim is closed
-"set nowritebackup  " keeps backup file while editing, deleted after
-"set noswapfile " keeps everything in memory
+"set nobackup      " won't leave additional files after vim is closed
+"set nowritebackup " keeps backup file while editing, deleted after
+"set noswapfile    " keeps everything in memory
 
 " --buffer management
-set hidden  " allow buffer to be changed without writing to disk
-set autoread    " update file when externally modified
-"set autochdir   " change to directory of active buffer
+set hidden    " allow buffer to be changed without writing to disk
+set autoread  " update file when externally modified
+"set autochdir " change to directory of active buffer
 
 " cd into directory of active buffer and display it
 nmap <Leader>cd :lcd %:p:h<CR> <Bar> :pwd<CR>
 
 " --indenting
-set fileformats=unix,dos,mac    " try recognizing line endings in this order
-set tabstop=4   " width of a tab character in spaces
-set softtabstop=4   " defines number of spaces for when adding/removing tabs
-set shiftwidth=4    " number of spaces to use for autoindent
-set expandtab   " use spaces instead of tab characters; to insert real tab, use <C-v><Tab>
-set cindent " automatic indenting; see ':h C-indenting' for comparison
+set fileformats=unix,dos,mac " try recognizing line endings in this order
+set tabstop=4                " width of a tab character in spaces
+set softtabstop=4            " defines number of spaces for when adding/removing tabs
+set shiftwidth=4             " number of spaces to use for autoindent
+set expandtab                " use spaces instead of tab characters; to insert real tab, use <C-v><Tab>
+set cindent                  " automatic indenting; see ':h C-indenting' for comparison
 
 " toggle expandtab and show current value
 nmap <Leader>xt :set expandtab! expandtab?<CR>
