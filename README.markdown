@@ -10,8 +10,8 @@ To setup the symlinks, run the provided shell script:
 
     ./link.sh
 
-If the script warns of existing files, back them up with and then force write
-the symlinks using:
+If the script warns of existing files, back them up and then force write the
+symlinks using:
 
     ./link.sh -b
     ./link.sh -f
