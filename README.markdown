@@ -10,17 +10,15 @@ To setup the symlinks, run the provided shell script:
 
     ./link.sh
 
-If the script warns of existing files, back them up with:
+If the script warns of existing files, back them up with and then force write
+the symlinks using:
 
-    ./link -b
-
-Then force write the symlinks using:
-
-    ./link -f
+    ./link.sh -b
+    ./link.sh -f
 
 Use the `-h` flag to see an overview of all available options:
 
-    ./link -h
+    ./link.sh -h
 
 ## Vim Setup
 Instead of managing [Vim] plugins as git submodules, [Vundle] is used to
