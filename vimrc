@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/05/08
+" ---> 11/05/11
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -176,9 +176,9 @@ function! InsertStatuslineColor(mode)
     if a:mode == "i"
         highlight StatColor guibg=Red ctermbg=Red
     elseif a:mode == "r"
-        highlight StatColor guibg=Cyan ctermbg=Cyan
+        highlight StatColor guibg=Magenta ctermbg=Magenta
     elseif a:mode == "v"
-        highlight StatColor guibg=Cyan ctermbg=Cyan
+        highlight StatColor guibg=Magenta ctermbg=Magenta
     else
         highlight StatColor guibg=Red ctermbg=Red
     endif
