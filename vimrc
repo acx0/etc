@@ -387,6 +387,7 @@ Bundle "msanders/snipmate.vim"
 Bundle "nathanaelkane/vim-indent-guides"
 Bundle "scrooloose/nerdcommenter"
 Bundle "scrooloose/nerdtree"
+Bundle "sjl/gundo.vim"
 Bundle "taglist.vim"
 Bundle "tpope/vim-surround"
 Bundle "VimCoder.jar"
@@ -432,6 +433,12 @@ if !has("gui_running")
         autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd ctermbg=235
     augroup end
 endif
+
+" --gundo.vim
+nmap <F5> :GundoToggle<CR>
+
+let g:gundo_width = 33
+let g:gundo_preview_bottom = 1
 " }}}
 
 " ---> Configuration variables {{{
