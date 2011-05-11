@@ -75,7 +75,6 @@ delete() {
 }
 
 list_type() {
-    RED=$(tput setaf 1)
     LIGHT_RED=$(tput bold ; tput setaf 1)
     LIGHT_GREEN=$(tput bold ; tput setaf 2)
     LIGHT_BLUE=$(tput bold ; tput setaf 4)
@@ -182,6 +181,8 @@ usage() {
     echo -e >&2 "\n\t-h  display this help and exit"
     exit 1
 }
+
+### main
 
 while getopts bdfhlr OPT; do
     case "$OPT" in
