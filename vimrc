@@ -355,8 +355,8 @@ cmap w!! write !sudo tee % > /dev/null
 nnoremap <Leader>ml :call AppendModeline()<CR>
 
 function! AppendModeline()
-    let l:modeline = printf(" vim: set ts=%d sts=%d sw=%d ft=%s %s :",
-                \ &tabstop, &softtabstop, &shiftwidth, &filetype, &expandtab ? "et" : "noet")
+    let l:modeline = printf(" vim: set ts=%d sts=%d sw=%d %s ft=%s :",
+                \ &tabstop, &softtabstop, &shiftwidth, &expandtab ? "et" : "noet", &filetype)
     let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
     call append(line("$"), "")
     call append(line("$"), l:modeline)
@@ -446,4 +446,4 @@ let g:gundo_preview_bottom = 1
 let g:CC = "clang"
 " }}}
 
-" vim: set ts=4 sts=4 sw=4 ft=vim et :
+" vim: set ts=4 sts=4 sw=4 et ft=vim :
