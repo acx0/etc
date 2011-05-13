@@ -6,15 +6,28 @@ Configurations files may be placed in a location other than `~/etc`. To do so,
 rename the folder and update the value of `SOURCE_DIR` in `link.sh` to reflect
 this change.
 
-To setup the symlinks, run the provided shell script:
+Run the provided shell script without any arguments (or with the `-l` flag) to
+see the current status of the files defined in `HOME_DIR_FILES` and
+`CONFIG_DIR_FILES`:
 
     ./link.sh
 
-If the script warns of existing files, back them up and then force write the
-symlinks using:
+If the script shows existing files, back them up with:
 
     ./link.sh -b
-    ./link.sh -f
+
+The default backup directory is `~/dotfiles.bak`; modify the value of
+`BACKUP_DIR` to change this.
+
+To write the symlinks for files that don't exist, use the `-w` flag, otherwise,
+force write them by adding the `-f` flag:
+
+    ./link.sh -w
+    ./link.sh -wf
+
+To restore the backed up files, use:
+
+    ./link.sh -r
 
 Use the `-h` flag to see an overview of all available options:
 
@@ -37,3 +50,5 @@ Install plugins using `BundleInstall` command:
 
 [Vim]:http://vim.org
 [Vundle]:http://github.com/gmarik/vundle
+
+>  vim: set ts=4 sts=4 sw=4 et ft=markdown :

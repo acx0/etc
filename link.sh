@@ -34,6 +34,7 @@ DFLAG=0
 FFLAG=0
 LFLAG=0
 RFLAG=0
+WFLAG=0
 
 backup() {
     if [ -d "$BACKUP_DIR" -a "$FFLAG" == 0 ]; then
@@ -74,7 +75,7 @@ delete() {
     done
 }
 
-list_type() {
+list() {
     LIGHT_RED=$(tput bold ; tput setaf 1)
     LIGHT_GREEN=$(tput bold ; tput setaf 2)
     LIGHT_BLUE=$(tput bold ; tput setaf 4)
@@ -140,7 +141,7 @@ restore() {
     fi
 }
 
-link() {
+write() {
     for f in "${CONFIG_DIR_FILES[@]}"; do
         SRC=$SOURCE_DIR/$f
         DST=$CONFIG_DIR/$f
@@ -171,20 +172,22 @@ link() {
 }
 
 usage() {
-    echo -e >&2 "usage: $(basename $0) [-bdhlr] [-f]"
+    echo -e >&2 "usage: $(basename $0) [-bdhlrw] [-f]"
     echo -e >&2 "\t-b  backup existing files"
-    echo -e >&2 "\t-d  delete symlinks for files in CONFIG_DIR_FILES and HOME_DIR_FILES"
+    echo -e >&2 "\t-d  delete symlinks"
     echo -e >&2 "\t-f  force removal of existing files"
-    echo -e >&2 "\t-l  list type of files in CONFIG_DIR_FILES and HOME_DIR_FILES and exit"
+    echo -e >&2 "\t-l  list file types and exit"
     echo -e >&2 "\t-r  restore from backup if it exists"
+    echo -e >&2 "\t-w  write symlinks"
 
     echo -e >&2 "\n\t-h  display this help and exit"
+
+    echo -e >&2 "\nnote: files must be defined in HOME_DIR_FILES and CONFIG_DIR_FILES arrays"
     exit 1
 }
 
 ### main
-
-while getopts bdfhlr OPT; do
+while getopts bdfhlrw OPT; do
     case "$OPT" in
         h)  usage;;
         b)  BFLAG=1;;
@@ -192,6 +195,7 @@ while getopts bdfhlr OPT; do
         f)  FFLAG=1;;
         l)  LFLAG=1;;
         r)  RFLAG=1;;
+        w)  WFLAG=1;;
         ?)  usage;;
     esac
 done
@@ -201,9 +205,11 @@ if [ "$BFLAG" == 1 ]; then
 elif [ "$DFLAG" == 1 ]; then
     delete
 elif [ "$LFLAG" == 1 ]; then
-    list_type
+    list
 elif [ "$RFLAG" == 1 ]; then
     restore
+elif [ "$WFLAG" == 1 ]; then
+    write
 else
-    link
+    list
 fi
