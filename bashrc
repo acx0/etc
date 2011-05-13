@@ -32,12 +32,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
+# aliases
 alias ll='ls -l'
 alias lh='ls -lh'
 alias la='ls -A'
 alias llha='ls -lhA'
 alias l='ls -CF'
+
+alias g='git'
 
 # allows java graphical programs to run in tiling window managers by impersonating
 # a window manager in JVM's list of allowed non-re-parenting window managers
