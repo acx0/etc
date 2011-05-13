@@ -8,25 +8,26 @@
 [merge]
 	tool = vimdiff
 [alias]
-	st = status
+	br = branch
 	ci = commit
 	;cia = commit --amend
 	co = checkout
-	br = branch
-	;sb = show-branch
 	;cp = cherry-pick
-	;staged = diff --cached
+	di = diff
 	;rb = rebase
 	;rbc = rebase --continue
 	;rbs = rebase --skip
 	;rl = reflog
+	;rp = remote prune
 	;rs = remote show
 	rt = remote
 	;ru = remote update
-	;rp = remote prune
+	;sb = show-branch
 	sm = submodule
+	st = status
+	;staged = diff --cached
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
 
-; vim: set ts=4 sts=4 sw=4 ft=gitconfig noet :
+; vim: set ts=4 sts=4 sw=4 noet ft=gitconfig :
