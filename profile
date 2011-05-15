@@ -22,3 +22,6 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# add super-user binaries to PATH
+PATH="$PATH:/sbin:/usr/sbin"
