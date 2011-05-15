@@ -316,10 +316,9 @@ endfunction
 " for X11:
 "   + is the clipboard register (Ctrl-{c,v})
 "   * is the selection register (middle click, Shift-Insert)
+set clipboard=unnamed
 if v:version >= 703
-    set clipboard=unnamedplus
-else
-    set clipboard=unnamed
+    set clipboard+=unnamedplus
 endif
 
 " set paste to prevent unexpected code formatting when pasting text
