@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/05/11
+" ---> 11/05/16
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -317,7 +317,9 @@ endfunction
 "   + is the clipboard register (Ctrl-{c,v})
 "   * is the selection register (middle click, Shift-Insert)
 set clipboard=unnamed
-if v:version >= 703
+
+" use clipboard register in linux when supported
+if has("unix") && v:version >= 703
     set clipboard+=unnamedplus
 endif
 
