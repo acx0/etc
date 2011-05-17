@@ -10,8 +10,14 @@
 set nocompatible    " enabled when (g)vimrc is found
 
 " setup vundle to manage all other plugins
-filetype off                           " temporarily disabled (required); enabled below
-set runtimepath+=$HOME/.vim/vundle.git " add vundle to runtimepath
+filetype off    " temporarily disabled (required); enabled below
+
+" use '.vim' directory instead of 'vimfiles' under windows
+if has("win32")
+    set runtimepath=~/.vim,$VIMRUNTIME
+endif
+
+set runtimepath+=~/.vim/vundle.git  " add vundle to runtimepath
 call vundle#rc()
 " }}}
 
