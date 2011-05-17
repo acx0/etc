@@ -403,15 +403,7 @@ Bundle "Vim-JDE"
 " --plugin settings
 " --The-NERD-tree
 " quickly open NERDTree
-nmap <F2> :call OpenNERDTree()<CR>
-
-function! OpenNERDTree()
-    if has("unix")
-        NERDTreeToggle
-    elseif has("win32")
-        NERDTree $HOME
-    endif
-endfunction
+nmap <F2> :NERDTreeToggle<CR>
 
 " --snipMate
 " use custom snippets
