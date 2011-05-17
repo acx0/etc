@@ -6,7 +6,7 @@
 "   ~ mappings and functions are placed next to their related settings
 
 " ---> Startup {{{
-" prevents vim from emulating vi's bugs and limitations
+" prevent vim from emulating vi
 set nocompatible    " enabled when (g)vimrc is found
 
 " setup vundle to manage all other plugins
@@ -402,7 +402,7 @@ Bundle "Vim-JDE"
 
 " --plugin settings
 " --The-NERD-tree
-" quickly open NERDTree
+" quickly toggle The-NERD-tree
 nmap <F2> :NERDTreeToggle<CR>
 
 " --snipMate
@@ -434,6 +434,7 @@ if !has("gui_running")
 endif
 
 " --gundo.vim
+" quickly toggle gundo.vim
 nmap <F5> :GundoToggle<CR>
 
 let g:gundo_width = 33
