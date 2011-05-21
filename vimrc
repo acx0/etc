@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/05/16
+" ---> 11/05/20
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -143,8 +143,13 @@ endif
 " --smart statusline
 set statusline=%!MyStatusLine('Enter')
 
-highlight StatColor guibg=LightGreen guifg=Black ctermbg=LightGreen ctermfg=Black
-highlight Modified guibg=Red guifg=Black ctermbg=Red ctermfg=Black
+" colours
+" 113 / #87d75f : light-green
+" 203 / #ff5f5f : red
+" 208 / #ff8700 : orange
+" 212 / #ff87d7 : pink
+highlight StatColor guibg=#87d75f guifg=Black ctermbg=113 ctermfg=Black
+highlight Modified guibg=#ff8700 guifg=Black ctermbg=208 ctermfg=Black
 
 augroup smart_statusline
     autocmd!
@@ -152,8 +157,8 @@ augroup smart_statusline
     autocmd WinLeave * setlocal statusline=%!MyStatusLine('Leave')
 
     autocmd InsertEnter * call InsertStatuslineColor(v:insertmode)
-    autocmd InsertLeave * highlight StatColor guibg=LightGreen guifg=Black ctermbg=LightGreen ctermfg=Black
-    autocmd InsertLeave * highlight Modified guibg=Red guifg=Black ctermbg=Red ctermfg=Black
+    autocmd InsertLeave * highlight StatColor guibg=#87d75f guifg=Black ctermbg=113 ctermfg=Black
+    autocmd InsertLeave * highlight Modified guibg=#ff8700 guifg=Black ctermbg=208 ctermfg=Black
 augroup end
 
 function! MyStatusLine(mode)
@@ -180,13 +185,13 @@ endfunction
 
 function! InsertStatuslineColor(mode)
     if a:mode == "i"
-        highlight StatColor guibg=Red ctermbg=Red
+        highlight StatColor guibg=#ff5f5f ctermbg=203
     elseif a:mode == "r"
-        highlight StatColor guibg=Magenta ctermbg=Magenta
+        highlight StatColor guibg=#ff87d7 ctermbg=212
     elseif a:mode == "v"
-        highlight StatColor guibg=Magenta ctermbg=Magenta
+        highlight StatColor guibg=#ff87d7 ctermbg=212
     else
-        highlight StatColor guibg=Red ctermbg=Red
+        highlight StatColor guibg=#ff5f5f ctermbg=203
     endif
 endfunction
 
