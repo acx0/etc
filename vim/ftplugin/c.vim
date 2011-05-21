@@ -1,4 +1,4 @@
-" Custom C settings
+" Custom C(++) settings
 
 " quick compile/run functions
 nmap <buffer> <F3> :call CompileC()<CR>
@@ -9,7 +9,11 @@ function! CompileC()
     if glob("Makefile") != ""
         make
     else
-        execute '!' . g:CC . ' "%" -o "%:p:r"'
+        if &filetype == "c"
+            execute '!' . g:CC . ' "%" -o "%:p:r"'
+        elseif &filetype == "cpp"
+            execute '!g++ "%" -o "%:p:r"'
+        endif
     endif
 endfunction
 
