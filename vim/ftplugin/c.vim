@@ -2,7 +2,7 @@
 
 " add custom tags for cpp
 if &filetype == "cpp"
-    set tags+=~/.tags/cpp
+    setlocal tags+=~/.tags/cpp
 endif
 
 " generate ctags for directory of active buffer
