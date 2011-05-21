@@ -2,7 +2,7 @@
 
 " add custom tags for cpp
 if &filetype == "cpp"
-    set tags+=~/.vim/tags/cpp
+    set tags+=~/.tags/cpp
 endif
 
 " generate ctags for directory of active buffer
