@@ -1,5 +1,13 @@
 " Custom C(++) settings
 
+" add custom tags for cpp
+if &filetype == "cpp"
+    set tags+=~/.vim/tags/cpp
+endif
+
+" generate ctags for directory of active buffer
+nmap <F11> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q "%:p:h"<CR>
+
 " quick compile/run functions
 nmap <buffer> <F3> :call CompileC()<CR>
 
