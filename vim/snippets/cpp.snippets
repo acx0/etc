@@ -1,3 +1,15 @@
+# #include <...>
+snippet inc
+	#include <${1:iostream}>${2}
+# cout
+snippet co
+	std::cout << ${1};${2}
+# cout with newline
+snippet con
+	std::cout << ${1} << std::endl;${2}
+# cin
+snippet cin
+	std::cin >> ${1};${2}
 # Read File Into Vector
 snippet readfile
 	std::vector<char> v;

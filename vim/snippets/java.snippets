@@ -103,5 +103,7 @@ snippet as
 	assert ${1:test} : "${2:Failure message}";${3}
 snippet print
 	System.out.print(${1});${2}
+snippet printf
+	System.out.printf("${1:%s}\n"${2});${3}
 snippet println
 	System.out.println(${1});${2}
