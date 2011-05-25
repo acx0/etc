@@ -1,13 +1,13 @@
 startup_message off
 vbell off
+altscreen on    # remove risidual editor text
 
-# terminfo and termcap for 256 colour terminal
-# allow bold colours - necessary for some reason
-attrcolor b ".I"
-# tell screen how to set colours. AB=background, AF=foreground
+# enable 256 colours
+attrcolor b ".I"    # allow bold colours - necessary for some reason
+# tell screen how to set colours; AB=background, AF=foreground
+terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-# erase background with current bg colour
-defbce "on"
+defbce on   # use current bg colour for erased chars
 
 #hardstatus alwayslastline
 #hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
