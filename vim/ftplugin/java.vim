@@ -1,5 +1,8 @@
 " Custom Java settings
 
+" ':make' support
+setlocal makeprg=javac\ -cp\ \"%:p:h\"\ %\ $*
+
 " java-related plugin settings
 " support for java omnicomplete using javacomplete plugin
 setlocal omnifunc=javacomplete#Complete
@@ -9,8 +12,6 @@ nmap <buffer> <F3> :call CompileJava()<CR>
 
 function! CompileJava()
     write
-
-    setlocal makeprg=javac\ -cp\ \"%:p:h\"\ %\ $*
     make
 endfunction
 
