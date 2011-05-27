@@ -110,8 +110,8 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- }}}
 
 -- {{{ Wibox
-
 -- {{{ Widgets configuration
+
 -- {{{ Reusable separators
 spacer    = widget({ type = "textbox"  })
 separator = widget({ type = "imagebox" })
@@ -119,12 +119,15 @@ spacer.text     = " "
 separator.image = image(beautiful.widget_sep)
 -- }}}
 
+
 -- {{{ CPU usage and temperature
 cpuicon = widget({ type = "imagebox" })
 cpuicon.image = image(beautiful.widget_cpu)
+
 -- Initialize widgets
 cpugraph  = awful.widget.graph()
 tzswidget = widget({ type = "textbox" })
+
 -- Graph properties
 cpugraph:set_width(40)
 cpugraph:set_height(14)
@@ -132,17 +135,22 @@ cpugraph:set_background_color(beautiful.fg_off_widget)
 cpugraph:set_color(beautiful.fg_end_widget)
 cpugraph:set_gradient_angle(0)
 cpugraph:set_gradient_colors({ beautiful.fg_end_widget,
-   beautiful.fg_center_widget, beautiful.fg_widget
-}) -- Register widgets
+    beautiful.fg_center_widget, beautiful.fg_widget
+})
+
+-- Register widgets
 vicious.register(cpugraph,  vicious.widgets.cpu,     "$1")
 vicious.register(tzswidget, vicious.widgets.thermal, "$1C", 19, "thermal_zone0")
 -- }}}
 
+
 -- {{{ Battery state
 baticon = widget({ type = "imagebox" })
 baticon.image = image(beautiful.widget_bat)
+
 -- Initialize widget
 batwidget = widget({ type = "textbox" })
+
 -- Register widget
 if hostname == "zappa" then
     vicious.register(batwidget, vicious.widgets.bat, "$1$2%", 61, "BAT1")
@@ -151,11 +159,14 @@ elseif hostname == "euclid" then
 end
 -- }}}
 
+
 -- {{{ Memory usage
 memicon = widget({ type = "imagebox" })
 memicon.image = image(beautiful.widget_mem)
+
 -- Initialize widget
 membar = awful.widget.progressbar()
+
 -- Pogressbar properties
 membar:set_width(10)
 membar:set_height(12)
@@ -164,70 +175,80 @@ membar:set_background_color(beautiful.fg_off_widget)
 membar:set_border_color(beautiful.border_widget)
 membar:set_color(beautiful.fg_widget)
 membar:set_gradient_colors({ beautiful.fg_widget,
-   beautiful.fg_center_widget, beautiful.fg_end_widget
-}) -- Register widget
+    beautiful.fg_center_widget, beautiful.fg_end_widget
+})
+
+-- Register widget
 vicious.register(membar, vicious.widgets.mem, "$1", 13)
 -- }}}
+
 
 -- {{{ File system usage
 fsicon = widget({ type = "imagebox" })
 fsicon.image = image(beautiful.widget_fs)
+
 -- Initialize widgets
 fs = {
-  r = awful.widget.progressbar(),
-  h = awful.widget.progressbar(),
-  s = awful.widget.progressbar(),
-  b = awful.widget.progressbar()
+    r = awful.widget.progressbar(),
+    h = awful.widget.progressbar(),
+    s = awful.widget.progressbar(),
+    b = awful.widget.progressbar()
 }
+
 -- Progressbar properties
 for _, w in pairs(fs) do
-  w:set_width(5)
-  w:set_height(12)
-  w:set_vertical(true)
-  w:set_background_color(beautiful.fg_off_widget)
-  w:set_border_color(beautiful.border_widget)
-  w:set_color(beautiful.fg_widget)
-  w:set_gradient_colors({ beautiful.fg_widget,
-     beautiful.fg_center_widget, beautiful.fg_end_widget
-  }) -- Register buttons
-  w.widget:buttons(awful.util.table.join(
-    awful.button({ }, 1, function () exec("rox", false) end)
-  ))
-end -- Enable caching
+    w:set_width(5)
+    w:set_height(12)
+    w:set_vertical(true)
+    w:set_background_color(beautiful.fg_off_widget)
+    w:set_border_color(beautiful.border_widget)
+    w:set_color(beautiful.fg_widget)
+    w:set_gradient_colors({ beautiful.fg_widget,
+        beautiful.fg_center_widget, beautiful.fg_end_widget
+    })
+end
+
+-- Enable caching
 vicious.cache(vicious.widgets.fs)
+
 -- Register widgets
+vicious.register(fs.r, vicious.widgets.fs, "${/ used_p}",              599)
 if hostname == "zappa" then
-    vicious.register(fs.r, vicious.widgets.fs, "${/ used_p}",              599)
     vicious.register(fs.h, vicious.widgets.fs, "${/media/Data used_p}",    599)
     vicious.register(fs.s, vicious.widgets.fs, "${/media/Windows used_p}", 599)
     vicious.register(fs.b, vicious.widgets.fs, "${/media/device used_p}",  113)
 elseif hostname == "euclid" then
-    vicious.register(fs.r, vicious.widgets.fs, "${/ used_p}",              599)
     vicious.register(fs.h, vicious.widgets.fs, "${/media/data used_p}",    599)
     vicious.register(fs.s, vicious.widgets.fs, "${/media/win-hd used_p}",  599)
     vicious.register(fs.b, vicious.widgets.fs, "${/media/device used_p}",  113)
 end
 -- }}}
 
+
 -- {{{ Network usage
 dnicon = widget({ type = "imagebox" })
 upicon = widget({ type = "imagebox" })
 dnicon.image = image(beautiful.widget_net)
 upicon.image = image(beautiful.widget_netup)
+
 -- Initialize widget
 netwidget = widget({ type = "textbox" })
+
 -- Register widget
 vicious.register(netwidget, vicious.widgets.net, '<span color="'
-  .. beautiful.fg_netdn_widget ..'">${' .. net_device .. ' down_kb}</span> <span color="'
-  .. beautiful.fg_netup_widget ..'">${' .. net_device .. ' up_kb}</span>', 3)
+    .. beautiful.fg_netdn_widget ..'">${' .. net_device .. ' down_kb}</span> <span color="'
+    .. beautiful.fg_netup_widget ..'">${' .. net_device .. ' up_kb}</span>', 3)
 -- }}}
+
 
 -- {{{ Volume level
 volicon = widget({ type = "imagebox" })
 volicon.image = image(beautiful.widget_vol)
+
 -- Initialize widgets
 volbar    = awful.widget.progressbar()
 volwidget = widget({ type = "textbox" })
+
 -- Progressbar properties
 volbar:set_width(10)
 volbar:set_height(12)
@@ -236,33 +257,32 @@ volbar:set_background_color(beautiful.fg_off_widget)
 volbar:set_border_color(beautiful.border_widget)
 volbar:set_color(beautiful.fg_widget)
 volbar:set_gradient_colors({ beautiful.fg_widget,
-   beautiful.fg_center_widget, beautiful.fg_end_widget
-}) -- Enable caching
+    beautiful.fg_center_widget, beautiful.fg_end_widget
+})
+
+-- Enable caching
 vicious.cache(vicious.widgets.volume)
+
 -- Register widgets
 vicious.register(volbar,    vicious.widgets.volume, "$1",  2, "Master")
 vicious.register(volwidget, vicious.widgets.volume, "$1%", 2, "Master")
--- Register buttons
---volbar.widget:buttons(awful.util.table.join(
-   --awful.button({ }, 1, function () exec("gnome-volume-control") end),
-   --awful.button({ }, 2, function () exec("amixer -q sset Master toggle")   end),
-   --awful.button({ }, 4, function () exec("amixer -q sset Master 2dB+", false) end),
-   --awful.button({ }, 5, function () exec("amixer -q sset Master 2dB-", false) end)
---)) -- Register assigned buttons
---volwidget:buttons(volbar.widget:buttons())
 -- }}}
+
 
 -- {{{ Date and time
 dateicon = widget({ type = "imagebox" })
 dateicon.image = image(beautiful.widget_date)
+
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 -- }}}
+
 
 -- {{{ System tray
 -- Create a systray
 mysystray = widget({ type = "systray" })
 --- }}}
+
 
 -- {{{ Wibox initialisation
 -- Create a wibox for each screen and add it
@@ -528,6 +548,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][tag_im] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[1][tag_im] } },
+    { rule = { class = "Vlc" },
+      properties = { tag = tags[1][tag_media] } },
     { rule = { class = "Transmission" },
       properties = { tag = tags[1][tag_dl] } }
 }
