@@ -1,12 +1,12 @@
 startup_message off
 vbell off
 altscreen on    # remove risidual editor text
+defscrollback 5000
 
-# enable 256 colours
-attrcolor b ".I"    # allow bold colours - necessary for some reason
-# tell screen how to set colours; AB=background, AF=foreground
+# enable 256 colours; AB=background, AF=foreground
 terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+attrcolor b ".I"    # allow bold colours - necessary for some reason
 defbce on   # use current bg colour for erased chars
 
 #hardstatus alwayslastline
