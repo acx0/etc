@@ -99,7 +99,7 @@ list() {
         elif [ -f "$f" ]; then
             echo -e "[${LIGHT_GREEN}FILE${ATTR_RESET}]\t$f"
         elif [ -d "$f" ]; then
-            echo -e "[${LIGHT_BLUE}DIR${ATTR_RESET}]\t$f"
+            echo -e "[${LIGHT_BLUE}DIR ${ATTR_RESET}]\t$f"
         elif [ ! -e "$f" ]; then
             echo -e "[${LIGHT_RED}NONE${ATTR_RESET}]\t$f"
         else
