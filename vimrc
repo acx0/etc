@@ -281,7 +281,7 @@ set autoread  " update file when externally modified
 "set autochdir " change to directory of active buffer
 
 " cd into directory of active buffer and display it
-nnoremap <Leader>cd :lcd %:p:h<CR> <Bar> :pwd<CR>
+nnoremap <Leader>cd :lcd %:p:h<CR> :pwd<CR>
 
 " --indenting
 set fileformats=unix,dos,mac " try recognizing line endings in this order
