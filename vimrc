@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/05/20
+" ---> 11/06/02
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -264,6 +264,10 @@ endfunction
 " ---> File settings {{{
 " --filetype detection
 filetype plugin indent on   " let vim detect filetype and load appropriate scripts
+
+" --character encoding
+set encoding=utf-8                             " encoding used within vim
+set fileencodings=ucs-bom,utf-8,default,latin1 " encodings to try when editing a file
 
 " --backup / swap
 " multiple combinations for backups, see ':h backup-table'
