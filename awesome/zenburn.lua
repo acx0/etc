@@ -32,11 +32,12 @@ theme.bg_urgent = "#3F3F3F"
 -- }}}
 
 -- {{{ Borders
---theme.border_width  = "2" -- default
-theme.border_width  = "1"
+theme.border_width  = "2" -- default
+--theme.border_width  = "1"
 theme.border_normal = "#3F3F3F"
+-- active window border colour
 --theme.border_focus  = "#6F6F6F" -- default
-theme.border_focus  = "#CE2929" -- red border around active window
+theme.border_focus  = "#CE2929" -- red
 theme.border_marked = "#CC9393"
 -- }}}
 
