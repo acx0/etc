@@ -25,7 +25,7 @@ call vundle#rc()
 " easier to reach than \
 let mapleader = ","
 " easier to reach than Esc or Ctrl-[
-imap jk <Esc>
+inoremap jk <Esc>
 
 set backspace=start,indent,eol  " make backspace work like 'normal' text editors
 
@@ -54,7 +54,7 @@ set hlsearch   " highlight search terms
 set incsearch  " show matches as they are found
 
 " toggle hlsearch and show current value
-nmap <Space> :set hlsearch! hlsearch?<CR>
+nnoremap <Space> :set hlsearch! hlsearch?<CR>
 
 " --feedback
 set showmatch   " show matching braces when text indicator is over them
@@ -76,7 +76,7 @@ set spelllang=en_ca " set region to Canadian English
 
 " toggle spell checking and show current value
 " z-= on highlighted word gives correction suggestions
-nmap <Leader>ss :setlocal spell! spell?<CR>
+nnoremap <Leader>ss :setlocal spell! spell?<CR>
 
 " --visual theme and appearence
 set background=dark
@@ -113,8 +113,8 @@ if has("gui_running")   " gVim specific
     set guioptions-=b " remove bottom scrollbar
 
     " toggle menu bar and toolbar, respectively
-    nmap <C-F1> :call ToggleMenuBar()<CR>
-    nmap <C-F2> :call ToggleToolbar()<CR>
+    nnoremap <C-F1> :call ToggleMenuBar()<CR>
+    nnoremap <C-F2> :call ToggleToolbar()<CR>
 
     function! ToggleMenuBar()
         if &guioptions =~# "m"
@@ -211,39 +211,39 @@ nnoremap n nzz
 nnoremap N Nzz
 
 " easier window navigation
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " --screen management
 " window split shortcuts
-nmap <Leader>swh :topleft vnew<CR>
-nmap <Leader>swl :botright vnew<CR>
-nmap <Leader>swk :topleft new<CR>
-nmap <Leader>swj :botright new<CR>
+nnoremap <Leader>swh :topleft vnew<CR>
+nnoremap <Leader>swl :botright vnew<CR>
+nnoremap <Leader>swk :topleft new<CR>
+nnoremap <Leader>swj :botright new<CR>
 
-nmap <Leader>sh :leftabove vnew<CR>
-nmap <Leader>sl :rightbelow vnew<CR>
-nmap <Leader>sk :leftabove new<CR>
-nmap <Leader>sj :rightbelow new<CR>
+nnoremap <Leader>sh :leftabove vnew<CR>
+nnoremap <Leader>sl :rightbelow vnew<CR>
+nnoremap <Leader>sk :leftabove new<CR>
+nnoremap <Leader>sj :rightbelow new<CR>
 
 " tab creation shortcuts
-"nmap <Leader>tt :tabs<CR>
-nmap <Leader>tn :tabnew<CR>
-nmap <Leader>te :tabedit
-nmap <Leader>tc :tabclose<CR>
-nmap <Leader>tm :tabmove
+"nnoremap <Leader>tt :tabs<CR>
+nnoremap <Leader>tn :tabnew<CR>
+nnoremap <Leader>te :tabedit
+nnoremap <Leader>tc :tabclose<CR>
+nnoremap <Leader>tm :tabmove
 
 " auto-expand path to parent of current file; for windows, (v)splits, and tabs
-nmap <Leader>ew :edit <C-R>=expand("%:p:h") . "/" <CR>
-nmap <Leader>es :split <C-R>=expand("%:p:h") . "/" <CR>
-nmap <Leader>ev :vsplit <C-R>=expand("%:p:h") . "/" <CR>
-nmap <Leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <Leader>ew :edit <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <Leader>es :split <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <Leader>ev :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <Leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
 
 " --mouse input
 " toggle mouse support; when enabled, mouse selection goes into visual mode
-nmap <F12> :call ToggleMouse()<CR>
+nnoremap <F12> :call ToggleMouse()<CR>
 
 function! ToggleMouse()
     if !exists("s:old_mouse")
@@ -281,7 +281,7 @@ set autoread  " update file when externally modified
 "set autochdir " change to directory of active buffer
 
 " cd into directory of active buffer and display it
-nmap <Leader>cd :lcd %:p:h<CR> <Bar> :pwd<CR>
+nnoremap <Leader>cd :lcd %:p:h<CR> <Bar> :pwd<CR>
 
 " --indenting
 set fileformats=unix,dos,mac " try recognizing line endings in this order
@@ -292,10 +292,10 @@ set expandtab                " use spaces instead of tab characters; to insert r
 set cindent                  " automatic indenting; see ':h C-indenting' for comparison
 
 " toggle expandtab and show current value
-nmap <Leader>xt :set expandtab! expandtab?<CR>
+nnoremap <Leader>xt :set expandtab! expandtab?<CR>
 
 " set tabstop, softtabstop, and shiftwidth to the same value
-nmap <Leader>st :call SetTab()<CR>
+nnoremap <Leader>st :call SetTab()<CR>
 
 function! SetTab()
     let l:new_tab_size = input("set tabstop = softtabstop = shiftwidth = ")
@@ -345,11 +345,11 @@ nnoremap <Leader>p :set paste! paste?<CR>
 
 " --file / text manipulation functions
 " quickly edit/source vimrc
-nmap <Leader>er :edit $MYVIMRC<CR>
-nmap <Leader>sr :source $MYVIMRC<CR>
+nnoremap <Leader>er :edit $MYVIMRC<CR>
+nnoremap <Leader>sr :source $MYVIMRC<CR>
 
 " remove trailing whitespace
-nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
 function! Preserve(command)
     " save last search, and cursor position
@@ -364,7 +364,7 @@ function! Preserve(command)
 endfunction
 
 " write to root-owned file when running as non-root by piping through tee using sudo
-cmap w!! write !sudo tee % > /dev/null
+cnoremap w!! write !sudo tee % > /dev/null
 
 " append modeline after last line in buffer
 " use substitute() instead of printf() to handle "%%s" modeline in LaTeX files
@@ -413,7 +413,7 @@ Bundle "Vim-JDE"
 " --plugin settings
 " --The-NERD-tree
 " quickly toggle The-NERD-tree
-nmap <F2> :NERDTreeToggle<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
 
 " --snipMate
 " use custom snippets
@@ -423,7 +423,7 @@ let g:snippets_dir = "~/.vim/snippets/"
 let g:Tlist_Use_Right_Window = 1
 
 " toggle taglist plugin
-nmap <Leader><F2> :TlistToggle<CR>
+nnoremap <Leader><F2> :TlistToggle<CR>
 
 " --Indent-Guides
 let g:indent_guides_guide_size = 1
@@ -445,7 +445,7 @@ endif
 
 " --gundo.vim
 " quickly toggle gundo.vim
-nmap <F5> :GundoToggle<CR>
+nnoremap <F5> :GundoToggle<CR>
 
 let g:gundo_width = 33
 let g:gundo_preview_bottom = 1

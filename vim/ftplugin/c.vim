@@ -6,10 +6,10 @@ if &filetype == "cpp"
 endif
 
 " generate ctags for directory of active buffer
-nmap <F11> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q "%:p:h"<CR>
+nnoremap <F11> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q "%:p:h"<CR>
 
 " quick compile/run functions
-nmap <buffer> <F3> :call CompileC()<CR>
+nnoremap <buffer> <F3> :call CompileC()<CR>
 
 function! CompileC()
     write
@@ -25,7 +25,7 @@ function! CompileC()
     endif
 endfunction
 
-nmap <buffer> <F4> :call RunExec()<CR>
+nnoremap <buffer> <F4> :call RunExec()<CR>
 
 function! RunExec()
     execute '!"%:p:r"'

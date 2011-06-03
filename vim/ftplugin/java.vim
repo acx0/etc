@@ -8,14 +8,14 @@ setlocal makeprg=javac\ -cp\ \"%:p:h\"\ %\ $*
 setlocal omnifunc=javacomplete#Complete
 
 " quick compile/run functions
-nmap <buffer> <F3> :call CompileJava()<CR>
+nnoremap <buffer> <F3> :call CompileJava()<CR>
 
 function! CompileJava()
     write
     make
 endfunction
 
-nmap <buffer> <F4> :call RunClass()<CR>
+nnoremap <buffer> <F4> :call RunClass()<CR>
 
 function! RunClass()
     if !exists("b:class")

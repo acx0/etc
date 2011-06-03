@@ -4,7 +4,7 @@
 setlocal makeprg=python\ %\ $*
 
 " quick run function
-nmap <buffer> <F4> :call RunPython()<CR>
+nnoremap <buffer> <F4> :call RunPython()<CR>
 
 function! RunPython()
     write
