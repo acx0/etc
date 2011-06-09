@@ -26,6 +26,7 @@ HOME_DIR_FILES=(
     vimrc
     Xresources
     xsession
+    zshrc
 )
 
 ### functions
