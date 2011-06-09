@@ -1,6 +1,6 @@
 # ~/.zshrc
 
-PS1='%n@%m:%1~ %{$VIMODE%} $ '
+PS1='%n@%m:%1~ %{$VIMODE%}$ '
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
