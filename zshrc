@@ -7,6 +7,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 setopt promptsubst
+setopt menucomplete
 setopt appendhistory
 setopt histignorealldups
 setopt sharehistory
