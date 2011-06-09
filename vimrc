@@ -17,7 +17,7 @@ if has("win32")
     set runtimepath=~/.vim,$VIMRUNTIME
 endif
 
-set runtimepath+=~/.vim/bundle/vundle   " add vundle to runtimepath
+set runtimepath+=~/.vim/vundle   " add vundle to runtimepath
 call vundle#rc()
 " }}}
 
@@ -395,7 +395,6 @@ endif
 Bundle "Align"
 Bundle "bufkill.vim"
 Bundle "Conque-Shell"
-Bundle "gmarik/vundle"
 Bundle "godlygeek/csapprox"
 Bundle "indentpython.vim"
 Bundle "javacomplete"
