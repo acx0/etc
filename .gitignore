@@ -1,4 +1,7 @@
 *.swp
 ~*
 vim/.netrwhist
-vim/bundle
+
+# ignore everything in bundle/ except for vundle
+vim/bundle/*
+!vim/bundle/vundle

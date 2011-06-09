@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/06/02
+" ---> 11/06/08
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -17,7 +17,7 @@ if has("win32")
     set runtimepath=~/.vim,$VIMRUNTIME
 endif
 
-set runtimepath+=~/.vim/vundle.git  " add vundle to runtimepath
+set runtimepath+=~/.vim/bundle/vundle   " add vundle to runtimepath
 call vundle#rc()
 " }}}
 
@@ -395,6 +395,7 @@ endif
 Bundle "Align"
 Bundle "bufkill.vim"
 Bundle "Conque-Shell"
+Bundle "gmarik/vundle"
 Bundle "godlygeek/csapprox"
 Bundle "indentpython.vim"
 Bundle "javacomplete"
