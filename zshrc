@@ -1,11 +1,12 @@
 # ~/.zshrc
 
-PS1='%n@%m:%1~$ '
+PS1='%n@%m:%1~ $VIMODE $ '
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+setopt promptsubst
 setopt appendhistory
 setopt histignorealldups
 setopt sharehistory
@@ -16,6 +17,16 @@ unsetopt beep
 
 # use Vi editing mode
 bindkey -v
+
+# update PS1 to show current Vi-mode
+function zle-line-init zle-keymap-select {
+    VIMODE="${${KEYMAP/vicmd/[$fg[green]c$reset_color]}/(main|viins)/[$fg[red]i$reset_color]}"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # enable backwards search
 bindkey '^R' history-incremental-search-backward
 
@@ -27,6 +38,10 @@ zstyle :compinstall filename '/home/sam/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+# enable zsh colours
+autoload -U colors
+colors
 
 # enable colour support of ls and add handy aliases
 if [ -x /usr/bin/dircolors ]; then
