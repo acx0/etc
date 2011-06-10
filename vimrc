@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/06/08
+" ---> 11/06/09
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -411,21 +411,21 @@ Bundle "VimCoder.jar"
 Bundle "Vim-JDE"
 
 " --plugin settings
-" --The-NERD-tree
-" quickly toggle The-NERD-tree
+" --nerdtree
+" quickly toggle nerdtree
 nnoremap <F2> :NERDTreeToggle<CR>
 
-" --snipMate
+" --snipmate.vim
 " use custom snippets
 let g:snippets_dir = "~/.vim/snippets/"
 
 " --taglist.vim
 let g:Tlist_Use_Right_Window = 1
 
-" toggle taglist plugin
+" quickly toggle taglist.vim
 nnoremap <Leader><F2> :TlistToggle<CR>
 
-" --Indent-Guides
+" --vim-indent-guides
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
