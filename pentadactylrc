@@ -2,19 +2,22 @@
 
 set mapleader=","
 
+" use listed characters to enumerate quickhint elements
 set hintkeys=asdfg;lkjh
+" display hints in uppercase
+highlight -a Hint text-transform: uppercase;
+
 set complete=l
 set guioptions=rbBs
-"set wildoptions=auto
 
-" menu toolbar
+" toggle menu toolbar
 nmap <C-F1> :set guioptions!=m<CR>
-" bookmarks toolbar
+" toggle bookmarks toolbar
 nmap <C-F2> :set guioptions!=B<CR>
 
 nmap <C-k> -builtin -silent :t google.ca<CR>
 
 " view native size of image without clicking it
-nmap <leader>z :js window.content.document.toggleImageSize();<CR>
+nmap <Leader>z :javascript window.content.document.toggleImageSize();<CR>
 
 " vim: set ts=4 sts=4 sw=4 et ft=vim :
