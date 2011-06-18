@@ -6,15 +6,15 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-setopt promptsubst
-setopt menucomplete
-setopt appendhistory
-setopt histignorealldups
-setopt sharehistory
-setopt autocd
-setopt extendedglob
+setopt PROMPT_SUBST
+setopt MENU_COMPLETE
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
+setopt AUTO_CD
+setopt EXTENDED_GLOB
 
-unsetopt beep
+unsetopt BEEP
 
 # use Vi editing mode
 bindkey -v
