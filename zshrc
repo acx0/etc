@@ -2,7 +2,7 @@
 
 PS1='%n@%m:%1~ %{$VIMODE%}$ '
 
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
