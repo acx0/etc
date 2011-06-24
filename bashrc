@@ -41,16 +41,6 @@ alias l='ls -CF'
 
 alias g='git'
 
-# temporary fix for screen's '$TERM too long' error for $TERM = 'rxvt-unicode-256color'
-if [ "$TERM" = "rxvt-unicode-256color" ]; then
-    screen () {
-        ORIG=$TERM
-        TERM=rxvt-unicode
-        /usr/bin/screen
-        TERM=$ORIG
-    }
-fi
-
 # allows java graphical programs to run in tiling window managers by impersonating
 # a window manager in JVM's list of allowed non-re-parenting window managers
 if [ -x /usr/bin/wmname ]; then
