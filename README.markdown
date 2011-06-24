@@ -1,6 +1,6 @@
 ## Installation
 
-    git clone git://github.com/acx0/etc.git
+    git clone git://github.com/acx0/etc.git ~/etc
 
 Configurations files may be placed in a location other than `~/etc`. To do so,
 rename the folder and update the value of `SOURCE_DIR` in `link.sh` to reflect
