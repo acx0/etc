@@ -4,6 +4,6 @@
 nnoremap <buffer> <F4> :call RunPython()<CR>
 
 function! RunPython()
-    write
+    update
     !python "%"
 endfunction

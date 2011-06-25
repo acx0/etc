@@ -11,7 +11,7 @@ setlocal omnifunc=javacomplete#Complete
 nnoremap <buffer> <F3> :call CompileJava()<CR>
 
 function! CompileJava()
-    write
+    update
     make
 endfunction
 

@@ -12,7 +12,7 @@ nnoremap <F11> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q "%:p:h"<CR>
 nnoremap <buffer> <F3> :call CompileC()<CR>
 
 function! CompileC()
-    write
+    update
 
     if glob("Makefile") != ""
         make
