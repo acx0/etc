@@ -1,9 +1,8 @@
 " ---> Sam's vimrc
-" ---> 11/06/09
+" ---> 11/06/26
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
-"   ~ mappings and functions are placed next to their related settings
 
 " ---> Startup {{{
 " prevent vim from emulating vi
@@ -179,7 +178,7 @@ function! MyStatusLine(mode)
         let statusline .= "%r%*"
     endif
 
-    let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
+    let statusline .= "\ (%l,%v)\ [%P\ of\ %L]%=%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
     return statusline
 endfunction
 
