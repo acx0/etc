@@ -15,7 +15,11 @@ nmap <C-F1> :set guioptions!=m<CR>
 " toggle bookmarks toolbar
 nmap <C-F2> :set guioptions!=B<CR>
 
+" open Google in new tab
 nmap <C-k> -builtin -silent :t google.ca<CR>
+
+" move current tab to end of list
+nmap <Leader>tm :tabmove 100<CR>
 
 " view native size of image without clicking it
 nmap <Leader>z :javascript window.content.document.toggleImageSize();<CR>
