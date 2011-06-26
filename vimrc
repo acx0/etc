@@ -274,6 +274,18 @@ set fileencodings=ucs-bom,utf-8,default,latin1 " encodings to try when editing a
 "set nowritebackup " keeps backup file while editing, deleted after
 "set noswapfile    " keeps everything in memory
 
+" --session restore
+function! RestorePosition()
+    if line("'\"") > 1 && line("'\"") <= line("$")
+        normal! g`"
+    endif
+endfunction
+
+augroup restore_position
+    autocmd!
+    autocmd BufReadPost * call RestorePosition()
+augroup end
+
 " --buffer management
 set hidden    " allow buffer to be changed without writing to disk
 set autoread  " update file when externally modified
@@ -348,9 +360,9 @@ nnoremap <Leader>er :edit $MYVIMRC<CR>
 nnoremap <Leader>sr :source $MYVIMRC<CR>
 
 " remove trailing whitespace
-nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+nnoremap _$ :call PreservePosition("%s/\\s\\+$//e")<CR>
 
-function! Preserve(command)
+function! PreservePosition(command)
     " save last search, and cursor position
     let search = @/
     let line = line(".")
