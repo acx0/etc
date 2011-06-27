@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/06/26
+" ---> 11/06/27
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -32,7 +32,7 @@ set backspace=start,indent,eol  " make backspace work like 'normal' text editors
 set history=500    " history of commands and searches
 set undolevels=500 " changes to be remembered
 
-" --interface appearence
+" --interface appearance
 syntax enable    " enable syntax highlighting and allow custom highlighting
 set title        " set title to filename and modification status
 set number       " show line numbers
@@ -77,7 +77,7 @@ set spelllang=en_ca " set region to Canadian English
 " z-= on highlighted word gives correction suggestions
 nnoremap <Leader>ss :setlocal spell! spell?<CR>
 
-" --visual theme and appearence
+" --visual theme and appearance
 set background=dark
 
 " colorscheme modification
@@ -350,7 +350,7 @@ if has("unix") && v:version >= 703
 endif
 
 " set paste to prevent unexpected code formatting when pasting text
-" toggle paste and show current value
+" toggle paste and show current value ('pastetoggle' doesn't)
 nnoremap <Leader>p :set paste! paste?<CR>
 "set pastetoggle=<Leader>p
 
