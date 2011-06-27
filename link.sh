@@ -22,6 +22,7 @@ HOME_DIR_FILES=(
     pentadactylrc
     profile
     screenrc
+    tmux.conf
     vim
     vimrc
     Xresources
