@@ -205,7 +205,7 @@ nnoremap ` '
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
-" redraw screen so search terms are centered
+" redraw window so search terms are centered
 nnoremap n nzz
 nnoremap N Nzz
 
