@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/06/27
+" ---> 11/06/29
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -161,25 +161,25 @@ augroup smart_statusline
 augroup end
 
 function! MyStatusLine(mode)
-    let statusline = ""
+    let l:statusline = ""
     if a:mode == "Enter"
-        let statusline .= "%#StatColor#"
+        let l:statusline .= "%#StatColor#"
     endif
 
-    let statusline .= "\(%n\)\ %f\ "
+    let l:statusline .= "\(%n\)\ %f\ "
     if a:mode == "Enter"
-        let statusline .= "%*"
+        let l:statusline .= "%*"
     endif
 
-    let statusline .= "%#Modified#%m"
+    let l:statusline .= "%#Modified#%m"
     if a:mode == "Leave"
-        let statusline .= "%*%r"
+        let l:statusline .= "%*%r"
     elseif a:mode == "Enter"
-        let statusline .= "%r%*"
+        let l:statusline .= "%r%*"
     endif
 
-    let statusline .= "\ (%l,%v)\ [%P\ of\ %L]%=%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
-    return statusline
+    let l:statusline .= "\ (%l,%v)\ [%P\ of\ %L]%=%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
+    return l:statusline
 endfunction
 
 function! InsertStatuslineColor(mode)
@@ -245,17 +245,17 @@ nnoremap <Leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <F12> :call ToggleMouse()<CR>
 
 function! ToggleMouse()
-    if !exists("s:old_mouse")
-        let s:old_mouse = "a"
+    if !exists("l:old_mouse")
+        let l:old_mouse = "a"
     endif
 
     if &mouse == ""
-        let &mouse = s:old_mouse
-        echo "Mouse is for Vim (" . &mouse . ")"
+        let &mouse = l:old_mouse
+        echo "mouse enabled (" . &mouse . ")"
     else
-        let s:old_mouse = &mouse
+        let l:old_mouse = &mouse
         let &mouse = ""
-        echo "Mouse is for terminal"
+        echo "mouse disabled"
     endif
 endfunction
 " }}}
@@ -364,14 +364,14 @@ nnoremap _$ :call PreservePosition("%s/\\s\\+$//e")<CR>
 
 function! PreservePosition(command)
     " save last search, and cursor position
-    let search = @/
-    let line = line(".")
-    let column = col(".")
+    let l:search = @/
+    let l:line = line(".")
+    let l:column = col(".")
 
     execute a:command
     " restore previous search history, and cursor position
-    let @/ = search
-    call cursor(line, column)
+    let @/ = l:search
+    call cursor(l:line, l:column)
 endfunction
 
 " write to root-owned file when running as non-root by piping through tee using sudo
