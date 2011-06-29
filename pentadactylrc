@@ -24,4 +24,7 @@ nmap <Leader>tm :tabmove 100<CR>
 " view native size of image without clicking it
 nmap <Leader>z :javascript window.content.document.toggleImageSize();<CR>
 
+" shortcut for accessing subreddits
+cnoremap /r/ reddit.com/r/
+
 " vim: set ts=4 sts=4 sw=4 et ft=vim :
