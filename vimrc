@@ -359,6 +359,38 @@ nnoremap <Leader>p :set paste! paste?<CR>
 nnoremap <Leader>er :edit $MYVIMRC<CR>
 nnoremap <Leader>sr :source $MYVIMRC<CR>
 
+" view diff between current buffer and original file it was loaded from
+nnoremap <Leader>df :call DiffOrig()<CR>
+
+function! DiffOrig()
+    if !exists("b:diff_active") && &buftype == "nofile"
+        echoerr "E: Cannot diff a scratch buffer"
+        return -1
+    elseif expand("%") == ""
+        echoerr "E: Buffer doesn't exist on disk"
+        return -1
+    endif
+
+    if !exists("b:diff_active") || b:diff_active == 0
+        let b:diff_active = 1
+        let l:orig_filetype = &l:filetype
+
+        leftabove vnew
+        set buftype=nofile
+        read #
+        0delete_
+        let &l:filetype = l:orig_filetype
+        diffthis
+        wincmd p
+        diffthis
+    else
+        diffoff
+        wincmd p
+        bdelete
+        let b:diff_active = 0
+    endif
+endfunction
+
 " remove trailing whitespace
 nnoremap _$ :call PreservePosition("%s/\\s\\+$//e")<CR>
 
