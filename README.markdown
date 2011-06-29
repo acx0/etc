@@ -44,9 +44,10 @@ Initialize and update [Vundle] submodule:
     git submodule init
     git submodule update
 
-Install plugins using `BundleInstall` command:
+Install plugins using `BundleInstall` command; update them using `BundleInstall!`:
 
     vim -c BundleInstall
+    :BundleInstall!
 
 [Vim]:http://vim.org
 [Vundle]:http://github.com/gmarik/vundle
