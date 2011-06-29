@@ -376,17 +376,19 @@ function! DiffOrig()
         let l:orig_filetype = &l:filetype
 
         leftabove vnew
+        let t:diff_buffer = bufnr("%")
         set buftype=nofile
+
         read #
         0delete_
         let &l:filetype = l:orig_filetype
+
         diffthis
         wincmd p
         diffthis
     else
         diffoff
-        wincmd p
-        bdelete
+        execute "bdelete " . t:diff_buffer
         let b:diff_active = 0
     endif
 endfunction
