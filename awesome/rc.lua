@@ -68,7 +68,7 @@ tags = {
     names  = {
         tag_term  .. ":term",
         tag_vim   .. ":vim",
-        tag_www   .. ":www", 
+        tag_www   .. ":www",
         tag_im    .. ":im",
         tag_media .. ":media",
         tag_dl    .. ":dl",
