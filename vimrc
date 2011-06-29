@@ -106,9 +106,9 @@ if has("gui_running")   " gVim specific
     set guioptions-=m " remove menu bar
     set guioptions-=T " remove toolbar
     set guioptions-=r " remove right scrollbar
-    set guioptions-=R
+    set guioptions-=R " remove right vertical split scrollbar
     set guioptions-=l " remove left scrollbar
-    set guioptions-=L
+    set guioptions-=L " remove left vertical split scrollbar
     set guioptions-=b " remove bottom scrollbar
 
     " toggle menu bar and toolbar, respectively
