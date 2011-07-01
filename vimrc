@@ -39,7 +39,6 @@ set number       " show line numbers
 set ruler        " always show current position
 set showcmd      " show the command being typed
 set showmode     " show current mode (insert, visual, etc.)
-set wildmenu     " enhanced command-line completion
 set laststatus=2 " always show status line
 
 " useful, but can be slow at times
@@ -68,7 +67,10 @@ set novisualbell " no screen flash on errors
 set completeopt-=preview    " disable 'preview' for insert mode completion
 
 " --command-line completion
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.o    " filetypes to ignore in file operations
+set wildmenu                                 " enhanced command-line completion
+set wildignorecase                           " ignore case when completing filenames and directories
+set wildmode=list:longest,full               " list matches and complete till longest common string, then cycle through them
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.o " filetypes to ignore in file related operations
 
 " --spell checking
 set spelllang=en_ca " set region to Canadian English
