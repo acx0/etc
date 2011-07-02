@@ -18,7 +18,6 @@ set number       " show line numbers
 set ruler        " always show current position
 set showcmd      " show the command being typed
 set showmode     " show current mode (insert, visual, etc.)
-set wildmenu     " enhanced command-line completion
 set laststatus=2 " always show status line
 
 " --searching
@@ -33,8 +32,21 @@ set matchtime=2 " length of time for 'showmatch'
 
 " --redrawing / warnings
 set lazyredraw   " don't redraw screen when executing macros
-set noerrorbells " no sound on errors
-set novisualbell " no screen flash on errors
+set noerrorbells " no bell for error messages
+set visualbell   " use whatever 't_vb' is set to as a bell
+set t_vb=        " set to nothing (disable)
+
+" restore 't_vb' since it is reset after the GUI starts
+if has("gui_running")
+    augroup disable_gui_visualbell
+        autocmd!
+        autocmd GUIEnter * set t_vb=
+    augroup end
+endif
+
+" --command-line completion
+set wildmenu       " enhanced command-line completion
+set wildignorecase " ignore case when completing filenames and directories
 
 " --visual theme and appearance
 " preferred colorscheme

@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/06/29
+" ---> 11/07/01
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -60,8 +60,17 @@ set matchtime=2 " length of time for 'showmatch'
 
 " --redrawing / warnings
 set lazyredraw   " don't redraw screen when executing macros
-set noerrorbells " no sound on errors
-set novisualbell " no screen flash on errors
+set noerrorbells " no bell for error messages
+set visualbell   " use whatever 't_vb' is set to as a bell
+set t_vb=        " set to nothing (disable)
+
+" restore 't_vb' since it is reset after the GUI starts
+if has("gui_running")
+    augroup disable_gui_visualbell
+        autocmd!
+        autocmd GUIEnter * set t_vb=
+    augroup end
+endif
 
 " --insert completion
 set completeopt-=preview    " disable 'preview' for insert mode completion
