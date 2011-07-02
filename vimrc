@@ -209,8 +209,8 @@ endfunction
 set scrolloff=5 " scrolling starts 5 lines before window border
 
 " swap functionality of ' and ` since ' is easier to reach
-nnoremap ' `
-nnoremap ` '
+"nnoremap ' `
+"nnoremap ` '
 
 "prevent jumping over wrapped lines
 nnoremap <silent> j gj
