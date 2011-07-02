@@ -286,16 +286,17 @@ set fileencodings=ucs-bom,utf-8,default,latin1 " encodings to try when editing a
 "set noswapfile    " keeps everything in memory
 
 " --session restore
+" jump to last position when reopening a file
+augroup restore_position
+    autocmd!
+    autocmd BufReadPost * call RestorePosition()
+augroup end
+
 function! RestorePosition()
     if line("'\"") > 1 && line("'\"") <= line("$")
         normal! g`"
     endif
 endfunction
-
-augroup restore_position
-    autocmd!
-    autocmd BufReadPost * call RestorePosition()
-augroup end
 
 " --buffer management
 set hidden    " allow buffer to be changed without writing to disk
