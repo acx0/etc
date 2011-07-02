@@ -93,12 +93,13 @@ set background=dark
 
 " colorscheme modification
 let g:molokai_original = 1       " lighter background in gVim
-let g:solarized_termcolors = 256 " use degraded colors in terminal
+let g:solarized_termcolors = 256 " use degraded colors in terminal vim
 let g:zenburn_high_Contrast = 1  " darker colors
 
-if has("gui_running")   " gVim specific
+if has("gui_running")
+    " gVim specific
+
     " font setup
-    " set according to system
     if has("unix")
         set guifont=Terminus\ 9
         "set guifont=Monospace\ 11
@@ -141,7 +142,9 @@ if has("gui_running")   " gVim specific
             set guioptions+=T
         endif
     endfunction
-else    " terminal vim specific
+else
+    " terminal vim specific
+
     if &term == "xterm" || &term == "rxvt-unicode-256color" || &term =~# "screen"
         set t_Co=256    " force 256 colours (required for xterm and screen{,-bce} $TERMs)
         colorscheme neverland
