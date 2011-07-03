@@ -153,60 +153,65 @@ else
     endif
 endif
 
-" --smart statusline
-set statusline=%!MyStatusLine('Enter')
+" --statusline
+" use smart statusline if 256 colours are available or if gVim is running
+if &t_Co == 256 || has("gui_running")
+    set statusline=%!MyStatusLine('Enter')
 
-" colours
-" 113 / #87d75f : light-green
-" 203 / #ff5f5f : red
-" 208 / #ff8700 : orange
-" 212 / #ff87d7 : pink
-highlight StatColor guibg=#87d75f guifg=Black ctermbg=113 ctermfg=Black
-highlight Modified guibg=#ff8700 guifg=Black ctermbg=208 ctermfg=Black
+    " colours
+    " 113 / #87d75f : light-green
+    " 203 / #ff5f5f : red
+    " 208 / #ff8700 : orange
+    " 212 / #ff87d7 : pink
+    highlight StatColor guibg=#87d75f guifg=Black ctermbg=113 ctermfg=Black
+    highlight Modified guibg=#ff8700 guifg=Black ctermbg=208 ctermfg=Black
 
-augroup smart_statusline
-    autocmd!
-    autocmd WinEnter * setlocal statusline=%!MyStatusLine('Enter')
-    autocmd WinLeave * setlocal statusline=%!MyStatusLine('Leave')
+    augroup smart_statusline
+        autocmd!
+        autocmd WinEnter * setlocal statusline=%!MyStatusLine('Enter')
+        autocmd WinLeave * setlocal statusline=%!MyStatusLine('Leave')
 
-    autocmd InsertEnter * call InsertStatuslineColor(v:insertmode)
-    autocmd InsertLeave * highlight StatColor guibg=#87d75f guifg=Black ctermbg=113 ctermfg=Black
-    autocmd InsertLeave * highlight Modified guibg=#ff8700 guifg=Black ctermbg=208 ctermfg=Black
-augroup end
+        autocmd InsertEnter * call InsertStatuslineColor(v:insertmode)
+        autocmd InsertLeave * highlight StatColor guibg=#87d75f guifg=Black ctermbg=113 ctermfg=Black
+        autocmd InsertLeave * highlight Modified guibg=#ff8700 guifg=Black ctermbg=208 ctermfg=Black
+    augroup end
 
-function! MyStatusLine(mode)
-    let l:statusline = ""
-    if a:mode == "Enter"
-        let l:statusline .= "%#StatColor#"
-    endif
+    function! MyStatusLine(mode)
+        let l:statusline = ""
+        if a:mode == "Enter"
+            let l:statusline .= "%#StatColor#"
+        endif
 
-    let l:statusline .= "\(%n\)\ %f\ "
-    if a:mode == "Enter"
-        let l:statusline .= "%*"
-    endif
+        let l:statusline .= "\(%n\)\ %f\ "
+        if a:mode == "Enter"
+            let l:statusline .= "%*"
+        endif
 
-    let l:statusline .= "%#Modified#%m"
-    if a:mode == "Leave"
-        let l:statusline .= "%*%r"
-    elseif a:mode == "Enter"
-        let l:statusline .= "%r%*"
-    endif
+        let l:statusline .= "%#Modified#%m"
+        if a:mode == "Leave"
+            let l:statusline .= "%*%r"
+        elseif a:mode == "Enter"
+            let l:statusline .= "%r%*"
+        endif
 
-    let l:statusline .= "\ (%l,%v)\ [%P\ of\ %L]%=%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
-    return l:statusline
-endfunction
+        let l:statusline .= "\ (%l,%v)\ [%P\ of\ %L]%=%w\ %y\ [%{&encoding}:%{&fileformat}]"
+        return l:statusline
+    endfunction
 
-function! InsertStatuslineColor(mode)
-    if a:mode == "i"
-        highlight StatColor guibg=#ff5f5f ctermbg=203
-    elseif a:mode == "r"
-        highlight StatColor guibg=#ff87d7 ctermbg=212
-    elseif a:mode == "v"
-        highlight StatColor guibg=#ff87d7 ctermbg=212
-    else
-        highlight StatColor guibg=#ff5f5f ctermbg=203
-    endif
-endfunction
+    function! InsertStatuslineColor(mode)
+        if a:mode == "i"
+            highlight StatColor guibg=#ff5f5f ctermbg=203
+        elseif a:mode == "r"
+            highlight StatColor guibg=#ff87d7 ctermbg=212
+        elseif a:mode == "v"
+            highlight StatColor guibg=#ff87d7 ctermbg=212
+        else
+            highlight StatColor guibg=#ff5f5f ctermbg=203
+        endif
+    endfunction
+else
+    set statusline=\(%n\)\ %f\ %m%r\ (%l,%v)\ [%P\ of\ %L]%=%w\ %y\ [%{&encoding}:%{&fileformat}]
+endif
 
 " --navigation
 set scrolloff=5 " scrolling starts 5 lines before window border
