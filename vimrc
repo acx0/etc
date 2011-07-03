@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/07/01
+" ---> 11/07/02
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -460,16 +460,16 @@ endif
 Bundle "Align"
 Bundle "bufkill.vim"
 Bundle "Conque-Shell"
-Bundle "godlygeek/csapprox"
+"Bundle "godlygeek/csapprox"
 Bundle "indentpython.vim"
 Bundle "javacomplete"
-Bundle "Lokaltog/vim-easymotion"
+"Bundle "Lokaltog/vim-easymotion"
 Bundle "msanders/snipmate.vim"
 Bundle "nathanaelkane/vim-indent-guides"
-Bundle "OmniCppComplete"
+"Bundle "OmniCppComplete"
 Bundle "scrooloose/nerdcommenter"
 Bundle "scrooloose/nerdtree"
-Bundle "sjl/gundo.vim"
+"Bundle "sjl/gundo.vim"
 Bundle "taglist.vim"
 Bundle "tpope/vim-surround"
 Bundle "VimCoder.jar"
