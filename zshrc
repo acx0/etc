@@ -71,6 +71,9 @@ alias l='ls -CF'
 alias g='git'
 alias tm='tmux'
 
+# list processes which are using a deleted map file after a system update and need to be restarted
+alias dm="sudo lsof | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
+
 # allows java graphical programs to run in tiling window managers by impersonating
 # a window manager in JVM's list of allowed non-re-parenting window managers
 if [ -x /usr/bin/wmname ]; then
