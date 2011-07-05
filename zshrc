@@ -1,7 +1,5 @@
 # ~/.zshrc
 
-PS1='%n@%m:%1~ %{$VIMODE%}$ '
-
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
@@ -12,22 +10,30 @@ setopt EXTENDED_GLOB
 #setopt HIST_IGNORE_ALL_DUPS
 setopt INC_APPEND_HISTORY
 setopt MENU_COMPLETE
-setopt PROMPT_SUBST
+#setopt PROMPT_SUBST
 setopt SHARE_HISTORY
 
 unsetopt BEEP
 
-# use Vi editing mode
+# use vi editing mode
 bindkey -v
 
-# update PS1 to show current Vi-mode
+# display current vi-mode in prompt string
+VI_MODE="i"
 function zle-line-init zle-keymap-select {
-    VIMODE="${${KEYMAP/vicmd/[$fg[green]c$reset_color]}/(main|viins)/[$fg[red]i$reset_color]}"
+    VI_MODE="${${KEYMAP/vicmd/c}/(main|viins)/i}"
+    if [ $VI_MODE = "i" ]; then
+        PROMPT="%n@%m:%1~ [%{$fg[red]%}${VI_MODE}%{$reset_color%}]$ "
+    else
+        PROMPT="%n@%m:%1~ [%{$fg[green]%}${VI_MODE}%{$reset_color%}]$ "
+    fi
     zle reset-prompt
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+PROMPT="%n@%m:%1~ [%{$fg[red]%}${VI_MODE}%{$reset_color%}]$ "
 
 # enable backwards search
 bindkey '^R' history-incremental-search-backward
