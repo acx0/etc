@@ -27,4 +27,12 @@ nmap <Leader>z :javascript window.content.document.toggleImageSize();<CR>
 " shortcut for accessing subreddits
 cnoremap /r/ reddit.com/r/
 
+" quickly change hintkeys
+"   1: default
+"   2: left hand keys only
+"   3: numbers keys only (allow link names to be typed)
+nmap <Leader>f1 :set hintkeys=asdfg;lkjh<CR>
+nmap <Leader>f2 :set hintkeys=asdfgwert<CR>
+nmap <Leader>f3 :set hintkeys=0123456789<CR>
+
 " vim: set ts=4 sts=4 sw=4 et ft=vim :
