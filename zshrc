@@ -6,13 +6,14 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
-setopt PROMPT_SUBST
-setopt MENU_COMPLETE
 setopt APPEND_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
-setopt SHARE_HISTORY
 setopt AUTO_CD
 setopt EXTENDED_GLOB
+#setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
+setopt MENU_COMPLETE
+setopt PROMPT_SUBST
+setopt SHARE_HISTORY
 
 unsetopt BEEP
 
@@ -37,12 +38,10 @@ zstyle ':completion:*' expand prefix
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*'
 zstyle :compinstall filename '/home/sam/.zshrc'
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 # enable zsh colours
-autoload -U colors
-colors
+autoload -U colors && colors
 
 # enable colour support of ls and add handy aliases
 if [ -x /usr/bin/dircolors ]; then
