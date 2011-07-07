@@ -1,5 +1,8 @@
 " Custom C(++) settings
 
+" Notes:
+"   ~ 'omnifunc' automatically set when 'filetype plugin on' is set
+
 " add custom tags for cpp
 if &filetype == "cpp"
     setlocal tags+=~/.tags/cpp

@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/07/02
+" ---> 11/07/07
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
