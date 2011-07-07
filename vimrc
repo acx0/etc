@@ -55,7 +55,7 @@ set incsearch  " show matches as they are found
 nnoremap <Space> :set hlsearch! hlsearch?<CR>
 
 " --feedback
-set showmatch    " show matching braces when text indicator is over them
+set showmatch    " show matching braces when typed or under cursor
 set matchtime=2  " length of time for 'showmatch'
 set cpoptions+=$ " put '$' at end of changed text instead of removing it
 

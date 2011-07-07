@@ -27,7 +27,7 @@ set hlsearch   " highlight search terms
 set incsearch  " show matches as they are found
 
 " --feedback
-set showmatch   " show matching braces when text indicator is over them
+set showmatch   " show matching braces when typed or under cursor
 set matchtime=2 " length of time for 'showmatch'
 
 " --redrawing / warnings
