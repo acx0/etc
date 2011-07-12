@@ -48,11 +48,14 @@ endif
 set wildmenu    " enhanced command-line completion
 
 " --visual theme and appearance
-" preferred colorscheme
-"colorscheme desert
+"colorscheme desert  " preferred colorscheme
 
 if has("gui_running")
-    " place gVim settings here (instead of in .gvimrc)
+    " gVim specific
+
+    " gVim interface modification
+    "set guioptions-=m " remove menu bar
+    "set guioptions-=T " remove toolbar
 endif
 
 " force 256 colours (required for xterm and screen-bce $TERMs)
