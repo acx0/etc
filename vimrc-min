@@ -47,11 +47,6 @@ endif
 " --command-line completion
 set wildmenu    " enhanced command-line completion
 
-" ignore case when completing filenames and directories
-if v:version >= 703
-    set wildignorecase
-endif
-
 " --visual theme and appearance
 " preferred colorscheme
 "colorscheme desert
