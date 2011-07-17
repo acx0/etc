@@ -10,10 +10,10 @@
 [alias]
 	br = branch
 	ci = commit
-	;cia = commit --amend
+	cia = commit --amend
 	co = checkout
 	;cp = cherry-pick
-	di = diff
+	df = diff
 	;rb = rebase
 	;rbc = rebase --continue
 	;rbs = rebase --skip
@@ -25,7 +25,6 @@
 	;sb = show-branch
 	sm = submodule
 	st = status
-	;staged = diff --cached
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
