@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/07/07
+" ---> 11/07/19
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -82,7 +82,7 @@ set wildmode=list:longest,full               " list matches and complete till lo
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.o " filetypes to ignore in file related operations
 
 " ignore case when completing filenames and directories
-if v:version >= 703
+if has("wildignorecase")
     set wildignorecase
 endif
 
