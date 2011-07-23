@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/07/19
+" ---> 11/07/22
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -114,6 +114,8 @@ if has("gui_running")
     elseif has("win32")
         colorscheme neverland-nobold
     endif
+
+    set guicursor+=a:blinkon0   " disable blinking cursor for gVim
 
     " gVim interface modification
     set guioptions-=m " remove menu bar
