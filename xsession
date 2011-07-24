@@ -3,7 +3,7 @@
 SESSION=awesome
 
 xrdb -merge .Xresources &
-urxvtd -q -f &
+urxvtd -q -o -f &
 
 # use theme settings from gnome; not needed if settings in .gtkrc-2.0
 #gnome-settings-daemon &
