@@ -18,6 +18,15 @@ unsetopt BEEP
 # use vi editing mode
 bindkey -v
 
+# break default vi insert mode character deletion behaviour
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^U' backward-kill-line
+
+# enable backwards search in insert mode
+bindkey -M viins '^R' history-incremental-search-backward
+
 # display current vi-mode in prompt string
 VI_MODE="i"
 function zle-line-init zle-keymap-select {
@@ -34,9 +43,6 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 PROMPT="%n@%m:%1~ [%{$fg[red]%}${VI_MODE}%{$reset_color%}]$ "
-
-# enable backwards search
-bindkey '^R' history-incremental-search-backward
 
 # completion settings
 zstyle ':completion:*' completer _complete _ignored
