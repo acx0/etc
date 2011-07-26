@@ -1,5 +1,5 @@
 " ---> Sam's vimrc
-" ---> 11/07/23
+" ---> 11/07/26
 
 " Notes:
 "   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
@@ -216,8 +216,9 @@ else
     set statusline=\(%n\)\ %f\ %m%r\ (%l,%v)\ [%P\ of\ %L]%=%w\ %y\ [%{&encoding}:%{&fileformat}]
 endif
 
-" --navigation
-set scrolloff=5 " scrolling starts 5 lines before window border
+" --movement / navigation
+set scrolloff=5       " scrolling starts 5 lines before window border
+set virtualedit=block " allow cursor to move past last character on line in visual block mode
 
 " swap functionality of ' and ` since ' is easier to reach
 "nnoremap ' `
@@ -289,6 +290,9 @@ filetype plugin indent on   " let vim detect filetype and load appropriate scrip
 " --character encoding
 set encoding=utf-8                             " encoding used within vim
 set fileencodings=ucs-bom,utf-8,default,latin1 " encodings to try when editing a file
+
+" --code folding
+set foldmethod=marker
 
 " --backup / swap
 " multiple combinations for backups, see ':h backup-table'
