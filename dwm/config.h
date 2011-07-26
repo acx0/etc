@@ -48,6 +48,7 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", "-b", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 
+#include "movestack.c"
 #include "shiftview.c"
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -56,6 +57,8 @@ static Key keys[] = {
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+    { MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
     { MODKEY,                       XK_h,      shiftview,      {.i = -1 } },
     { MODKEY,                       XK_l,      shiftview,      {.i = +1 } },
     { MODKEY,                       XK_Left,   setmfact,       {.f = -0.05} },
