@@ -281,7 +281,8 @@ mytextclock = awful.widget.textclock({ align = "right" })
 -- {{{ System tray
 -- Create a systray
 mysystray = widget({ type = "systray" })
---- }}}
+-- }}}
+-- }}}
 
 
 -- {{{ Wibox initialisation
