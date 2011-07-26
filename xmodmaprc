@@ -1,0 +1,3 @@
+! remap Alt_R to Super_L
+remove mod1 = Alt_R
+keysym Alt_R = Super_L

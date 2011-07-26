@@ -2,17 +2,15 @@
 
 SESSION=awesome
 
-xrdb -merge .Xresources &
+xrdb -merge ~/.Xresources & # load X resource preferences
+xmodmap ~/.xmodmaprc &      # load custom keyboard mappings
+xsetroot -solid black &     # set root window background
+
 urxvtd -q -o -f &
-
-# use theme settings from gnome; not needed if settings in .gtkrc-2.0
-#gnome-settings-daemon &
-gnome-power-manager &
-
 wicd-client &
 xflux -l 43 &
-
-xsetroot -solid black   # set root window background
+gnome-power-manager &
+#gnome-settings-daemon & # not required if settings in ~/.gtkrc-2.0
 
 if [ "$SESSION" = "awesome" ]; then
     exec awesome
