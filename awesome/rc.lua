@@ -449,7 +449,7 @@ globalkeys = awful.util.table.join(
     -- use dmenu to run programs
     awful.key({ modkey },            "r",
               function ()
-                  awful.util.spawn("dmenu_run -i -b -fn '" .. dmenu_font .. "' -nb '" ..
+                  awful.util.spawn("dmenu_run -i -fn '" .. dmenu_font .. "' -nb '" ..
                       beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal ..
                       "' -sb '" .. beautiful.bg_focus ..
                       "' -sf '" .. beautiful.fg_focus .. "'", false)
