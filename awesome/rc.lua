@@ -22,6 +22,7 @@ beautiful.init(awful.util.getdir("config") .. "/zenburn.lua")
 -- used for machine-specific options
 hostname = vicious.widgets.os()[4]
 net_device = "wlan0"
+dmenu_font = "-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -444,7 +445,15 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    --awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    -- use dmenu to run programs
+    awful.key({ modkey },            "r",
+              function ()
+                  awful.util.spawn("dmenu_run -i -b -fn '" .. dmenu_font .. "' -nb '" ..
+                      beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal ..
+                      "' -sb '" .. beautiful.bg_focus ..
+                      "' -sf '" .. beautiful.fg_focus .. "'")
+              end),
 
     awful.key({ modkey }, "x",
               function ()
