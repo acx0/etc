@@ -28,14 +28,17 @@ static const Bool resizehints = False; /* True means respect size hints in tiled
 
 #include "bstack.c"
 #include "bstackhoriz.c"
+#include "fibonacci.c"
 static const Layout layouts[] = {
     /* symbol     arrange function */
     { "[]=",      tile },    /* first entry is default */
     { "TTT",      bstack },
     { "===",      bstackhoriz },
+    { "[@]",      spiral },
+    { "[\\]",     dwindle },
     { "[M]",      monocle },
     { "><>",      NULL },    /* no layout function means floating behavior */
-    { NULL,       NULL },
+    { NULL,       NULL },    /* NULL termination required for layout cycle patch */
 };
 
 /* key definitions */
