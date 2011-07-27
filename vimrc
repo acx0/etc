@@ -531,6 +531,9 @@ let OmniCpp_MayCompleteDot = 0      " autocomplete after .
 let OmniCpp_MayCompleteArrow = 0    " autocomplete after ->
 let OmniCpp_MayCompleteScope = 0    " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+
+" --Conque-Shell
+let g:ConqueTerm_Color = 1  " only enable colours for the most recent 200 lines
 " }}}
 
 " ---> Configuration variables {{{
