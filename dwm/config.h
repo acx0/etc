@@ -26,11 +26,15 @@ static const Rule rules[] = {
 static const float mfact      = 0.50; /* factor of master area size [0.05..0.95] */
 static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
 
+#include "bstack.c"
+#include "bstackhoriz.c"
 static const Layout layouts[] = {
     /* symbol     arrange function */
     { "[]=",      tile },    /* first entry is default */
-    { "><>",      NULL },    /* no layout function means floating behavior */
+    { "TTT",      bstack },
+    { "===",      bstackhoriz },
     { "[M]",      monocle },
+    { "><>",      NULL },    /* no layout function means floating behavior */
     { NULL,       NULL },
 };
 
