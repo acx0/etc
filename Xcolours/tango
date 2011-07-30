@@ -1,0 +1,23 @@
+! author: Thayer Williams - http://cinderwick.ca
+
+*background: #2A2A2A
+*foreground: #888888
+
+*color0:  #000000
+*color1:  #FF6565
+*color2:  #93D44F
+*color3:  #EAB93D
+*color4:  #204A87
+*color5:  #CE5C00
+*color6:  #89B6E2
+*color7:  #CCCCCC
+*color8:  #555753
+*color9:  #FF8D8D
+*color10: #C8E7A8
+*color11: #FFC123
+*color12: #3465A4
+*color13: #F57900
+*color14: #46A4FF
+*color15: #FFFFFF
+
+/* vim: set ts=4 sts=4 sw=4 et ft=xdefaults :*/

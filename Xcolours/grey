@@ -1,0 +1,23 @@
+*foreground: #333333
+*background: #FFFFFF
+
+*cursorColor: #969696
+
+*color0:  #000000
+*color1:  #434343
+*color2:  #6B6B6B
+*color3:  #969696
+*color4:  #4A4A4A
+*color5:  #707070
+*color6:  #A9A9A9
+*color7:  #FFFFFF
+*color8:  #222222
+*color9:  #434343
+*color10: #A5A5A5
+*color11: #E5E5E5
+*color12: #4D4D4D
+*color13: #747474
+*color14: #C4C4C4
+*color15: #DEDEDE
+
+/* vim: set ts=4 sts=4 sw=4 et ft=xdefaults :*/

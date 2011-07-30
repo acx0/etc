@@ -3,6 +3,8 @@
 #include ".Xcolours/basic"
 #include ".Xcolours/linux-console"
 
+*customization: -color
+
 /* --- URxvt --- */
 URxvt*font:      -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
 URxvt*boldFont:  -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
@@ -16,5 +18,5 @@ URxvt*perl-ext-common: default,matcher
 URxvt*urlLauncher:     firefox
 URxvt*matcher.button:  1
 
-/* --- xterm --- */
-xterm*font: -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
+/* --- XTerm --- */
+XTerm*font: -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
