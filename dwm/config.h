@@ -19,7 +19,11 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
     /* class      instance    title       tags mask     isfloating   monitor */
     { "Gimp",     NULL,       NULL,       0,            True,        -1 },
-    { "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
+    { "Iceweasel", NULL,      NULL,       1 << 2,       False,       -1 },
+    { "Emesene",  NULL,       NULL,       1 << 3,       False,       -1 },
+    { "Skype",    NULL,       NULL,       1 << 3,       False,       -1 },
+    { "Vlc",      NULL,       NULL,       1 << 4,       False,       -1 },
+    { "Transmission", NULL,   NULL,       1 << 5,       False,       -1 },
 };
 
 /* layout(s) */
