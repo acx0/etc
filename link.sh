@@ -25,6 +25,7 @@ HOME_DIR_FILES=(
     tmux.conf
     vim
     vimrc
+    Xcolours
     xmodmaprc
     Xresources
     xsession

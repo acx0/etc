@@ -1,0 +1,6 @@
+! set some basic values in case colourscheme does not
+
+*background: #000000
+*foreground: #AAAAAA
+
+*cursorColor: #FFFFFF
