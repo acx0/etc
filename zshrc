@@ -15,6 +15,14 @@ setopt SHARE_HISTORY
 
 unsetopt BEEP
 
+# add ~/bin to PATH if it exists
+if [ -d "$HOME/bin" ]; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# add super-user binaries to PATH
+PATH="$PATH:/sbin:/usr/sbin"
+
 # use vi editing mode
 bindkey -v
 

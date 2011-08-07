@@ -15,6 +15,14 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# add ~/bin to PATH if it exists
+if [ -d "$HOME/bin" ]; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# add super-user binaries to PATH
+PATH="$PATH:/sbin:/usr/sbin"
+
 # enable bash completion
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
