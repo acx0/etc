@@ -26,11 +26,15 @@ PATH="$PATH:/sbin:/usr/sbin"
 # use vi editing mode
 bindkey -v
 
-# break default vi insert mode character deletion behaviour
+# break default vi insert mode character deletion behaviour (like 'set backspace+=start' in vim)
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^H' backward-delete-char
 bindkey -M viins '^W' backward-kill-word
 bindkey -M viins '^U' backward-kill-line
+
+# changing viins keymap's default '^W' binding seems to break vi-mode word delimiter settings
+# the following somewhat fixes this
+autoload -U select-word-style && select-word-style bash
 
 # enable backwards search in insert mode
 bindkey -M viins '^R' history-incremental-search-backward
