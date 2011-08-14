@@ -63,7 +63,6 @@ tag_www   = 3
 tag_im    = 4
 tag_media = 5
 tag_dl    = 6
-tag_tmp   = 7
 
 tags = {
     names  = {
@@ -73,7 +72,9 @@ tags = {
         tag_im    .. ":im",
         tag_media .. ":media",
         tag_dl    .. ":dl",
-        tag_tmp   .. ":tmp"
+        7,
+        8,
+        9
     },
     layout = {
         layouts[2], -- term
@@ -82,7 +83,9 @@ tags = {
         layouts[2], -- im
         layouts[2], -- media
         layouts[2], -- dl
-        layouts[1]  -- tmp
+        layouts[2],
+        layouts[2],
+        layouts[2]
     }
 }
 for s = 1, screen.count() do
