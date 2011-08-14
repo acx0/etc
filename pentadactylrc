@@ -27,6 +27,9 @@ nmap <Leader>z :javascript window.content.document.toggleImageSize();<CR>
 " shortcut for accessing subreddits
 cnoremap /r/ reddit.com/r/
 
+" shortcut for viewing debian packages (all branches)
+cnoremap deb/ packages.debian.org/
+
 " quickly change hintkeys
 "   1: default
 "   2: left hand keys only
