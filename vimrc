@@ -467,6 +467,7 @@ endif
 Bundle "Align"
 Bundle "bufkill.vim"
 Bundle "Conque-Shell"
+Bundle "DrawIt"
 "Bundle "godlygeek/csapprox"
 Bundle "indentpython.vim"
 Bundle "javacomplete"
