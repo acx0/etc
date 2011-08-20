@@ -1,36 +1,33 @@
 #!/bin/bash
 
 ### configurable settings
-SOURCE_DIR=~/etc
-CONFIG_DIR=~/.config
-HOME_DIR=~
-BACKUP_DIR=$HOME_DIR/dotfiles.bak
+SOURCE_DIR=$HOME/etc
+BACKUP_DIR=$SOURCE_DIR.bak
 
-# configuration files which reside in ~/.config
-CONFIG_DIR_FILES=(
-    awesome
+# files to be managed
+#   index 2k is source
+#   index 2k+1 is destination
+FILES=(
+    "awesome" "$HOME/.config/awesome"
+    "bashrc" "$HOME/.bashrc"
+    "dircolors" "$HOME/.dircolors"
+    "emacs" "$HOME/.emacs"
+    "gitconfig" "$HOME/.gitconfig"
+    "gtkrc-2.0" "$HOME/.gtkrc-2.0"
+    "inputrc" "$HOME/.inputrc"
+    "pentadactylrc" "$HOME/.pentadactylrc"
+    "profile" "$HOME/.profile"
+    "screenrc" "$HOME/.screenrc"
+    "tmux.conf" "$HOME/.tmux.conf"
+    "vim" "$HOME/.vim"
+    "vimrc" "$HOME/.vimrc"
+    "Xcolours" "$HOME/.Xcolours"
+    "xmodmaprc" "$HOME/.xmodmaprc"
+    "Xresources" "$HOME/.Xresources"
+    "xsession" "$HOME/.xsession"
+    "zshrc" "$HOME/.zshrc"
 )
-
-# configuration files which reside in ~/
-HOME_DIR_FILES=(
-    bashrc
-    dircolors
-    emacs
-    gitconfig
-    gtkrc-2.0
-    inputrc
-    pentadactylrc
-    profile
-    screenrc
-    tmux.conf
-    vim
-    vimrc
-    Xcolours
-    xmodmaprc
-    Xresources
-    xsession
-    zshrc
-)
+FSIZE=$(( ${#FILES[@]} / 2 ))
 
 ### functions
 BFLAG=0
@@ -41,41 +38,53 @@ RFLAG=0
 WFLAG=0
 
 backup() {
-    if [ -d "$BACKUP_DIR" -a "$FFLAG" == 0 ]; then
+    if [ -e "$BACKUP_DIR" -a "$FFLAG" = 0 ]; then
         echo >&2 "$(basename $0): error: backup directory already exists"
         exit 1
-    elif [ ! -d "$BACKUP_DIR" ]; then
+    else
+        if [ -e "$BACKUP_DIR" ]; then
+            rm -rf $BACKUP_DIR
+        fi
         mkdir -v $BACKUP_DIR
     fi
 
-    for f in "${CONFIG_DIR_FILES[@]}"; do
-        SRC=$CONFIG_DIR/$f
+    for (( i = 0; i < $FSIZE; i++ )); do
+        # $SRC and $DST are reversed since we're backing up
+        SRC=${FILES[2 * $i + 1]}
+        DST=${FILES[2 * $i]}
 
-        cp -vrd $SRC $BACKUP_DIR
+        if [ "$(echo $DST | grep "/")" -a -e "$SRC" ]; then
+            mkdir -p $BACKUP_DIR/$(dirname $DST)
+        fi
+        if [ -e "$SRC" ]; then
+            cp -vrd $SRC $BACKUP_DIR/$DST
+        fi
     done
+}
 
-    for f in "${HOME_DIR_FILES[@]}"; do
-        SRC=$HOME_DIR/.$f
+remove_parents() {
+    SRC=$1
+    DST=$2
 
-        cp -vrd $SRC $BACKUP_DIR
+    # use $SRC to keep track of how many directories to remove
+    while [ "$(echo $SRC | grep "/")" ]; do
+        SRC=$(dirname $SRC)
+        DST=$(dirname $DST)
+        if [ -e "$DST" ]; then
+            rmdir -v $DST
+        fi
     done
 }
 
 delete() {
-    for f in "${CONFIG_DIR_FILES[@]}"; do
-        FILE=$CONFIG_DIR/$f
+    for (( i = 0; i < $FSIZE; i++ )); do
+        SRC=${FILES[2 * $i]}
+        DST=${FILES[2 * $i + 1]}
 
-        if [ -L "$FILE" ]; then
-            rm -v $FILE
+        if [ -L "$DST" ]; then
+            rm -v $DST
         fi
-    done
-
-    for f in "${HOME_DIR_FILES[@]}"; do
-        FILE=$HOME_DIR/.$f
-
-        if [ -L "$FILE" ]; then
-            rm -v $FILE
-        fi
+        remove_parents $SRC $DST
     done
 }
 
@@ -84,30 +93,21 @@ list() {
     LIGHT_GREEN=$(tput bold ; tput setaf 2)
     LIGHT_BLUE=$(tput bold ; tput setaf 4)
     LIGHT_CYAN=$(tput bold ; tput setaf 6)
-    ATTR_RESET=$(tput sgr0)
+    RESET=$(tput sgr0)
 
-    # add all files to a single array
-    ALL_FILES=( )
+    for (( i = 0; i < $FSIZE; i++ )); do
+        DST=${FILES[2 * $i + 1]}
 
-    for f in "${CONFIG_DIR_FILES[@]}"; do
-        ALL_FILES[${#ALL_FILES[*]}]=$CONFIG_DIR/$f
-    done
-
-    for f in "${HOME_DIR_FILES[@]}"; do
-        ALL_FILES[${#ALL_FILES[*]}]=$HOME_DIR/.$f
-    done
-
-    for f in "${ALL_FILES[@]}"; do
-        if [ -L "$f" ]; then
-            echo -e "[${LIGHT_CYAN}LINK${ATTR_RESET}]\t$f"
-        elif [ -f "$f" ]; then
-            echo -e "[${LIGHT_GREEN}FILE${ATTR_RESET}]\t$f"
-        elif [ -d "$f" ]; then
-            echo -e "[${LIGHT_BLUE}DIR ${ATTR_RESET}]\t$f"
-        elif [ ! -e "$f" ]; then
-            echo -e "[${LIGHT_RED}NONE${ATTR_RESET}]\t$f"
+        if [ -L "$DST" ]; then
+            echo -e "[${LIGHT_CYAN}LINK${RESET}]\t$DST"
+        elif [ -f "$DST" ]; then
+            echo -e "[${LIGHT_GREEN}FILE${RESET}]\t$DST"
+        elif [ -d "$DST" ]; then
+            echo -e "[${LIGHT_BLUE}DIR ${RESET}]\t$DST"
+        elif [ ! -e "$DST" ]; then
+            echo -e "[${LIGHT_RED}NONE${RESET}]\t$DST"
         else
-            echo -e "[OTHER]\t$f"
+            echo -e "[OTHER]\t$DST"
         fi
     done
 }
@@ -118,24 +118,20 @@ restore() {
         exit 1
     fi
 
-    for f in "${CONFIG_DIR_FILES[@]}"; do
-        SRC=$BACKUP_DIR/$f
-        DST=$CONFIG_DIR/$f
+    for (( i = 0; i < $FSIZE; i++ )); do
+        SRC=${FILES[2 * $i]}
+        DST=${FILES[2 * $i + 1]}
 
-        if [ -e $DST ]; then
+        if [ -e "$DST" ]; then
             rm -rf $DST
         fi
-        mv -v $SRC $DST
-    done
-
-    for f in "${HOME_DIR_FILES[@]}"; do
-        SRC=$BACKUP_DIR/.$f
-        DST=$HOME_DIR/.$f
-
-        if [ -e $DST ]; then
-            rm -rf $DST
+        if [ -e "$BACKUP_DIR/$SRC" ]; then
+            if [ "$(echo $SRC | grep "/")" ]; then
+                mkdir -p $(dirname $DST)
+            fi
+            mv -v $BACKUP_DIR/$SRC $DST
         fi
-        mv -v $SRC $DST
+        remove_parents $SRC $BACKUP_DIR/$SRC
     done
 
     if [ "$(ls -A $BACKUP_DIR)" ]; then
@@ -146,27 +142,15 @@ restore() {
 }
 
 write() {
-    for f in "${CONFIG_DIR_FILES[@]}"; do
-        SRC=$SOURCE_DIR/$f
-        DST=$CONFIG_DIR/$f
+    for (( i = 0; i < $FSIZE; i++ )); do
+        SRC=$SOURCE_DIR/${FILES[2 * $i]}
+        DST=${FILES[2 * $i + 1]}
 
-        if [ ! -e $DST -o "$FFLAG" == 1 ]; then
-            if [ -e $DST ]; then
+        if [ ! -e "$DST" -o "$FFLAG" = 1 ]; then
+            if [ -e "$DST" ]; then
                 rm -rf $DST
-            fi
-            ln -vfs $SRC $DST
-        else
-            echo >&2 "$(basename $0): warning: \`$DST' already exists"
-        fi
-    done
-
-    for f in "${HOME_DIR_FILES[@]}"; do
-        SRC=$SOURCE_DIR/$f
-        DST=$HOME_DIR/.$f
-
-        if [ ! -e $DST -o "$FFLAG" == 1 ]; then
-            if [ -e $DST ]; then
-                rm -rf $DST
+            elif [ "$(echo $SRC | grep "/")" ]; then
+                mkdir -p $(dirname $DST)
             fi
             ln -vfs $SRC $DST
         else
@@ -176,43 +160,48 @@ write() {
 }
 
 usage() {
-    echo -e >&2 "usage: $(basename $0) [-bdhlrw] [-f]"
+    echo -e >&2 "usage: $(basename $0) [-bdhrw] [-f]"
     echo -e >&2 "\t-b  backup existing files"
     echo -e >&2 "\t-d  delete symlinks"
     echo -e >&2 "\t-f  force removal of existing files"
-    echo -e >&2 "\t-l  list file types and exit"
-    echo -e >&2 "\t-r  restore from backup if it exists"
+    echo -e >&2 "\t-r  restore from backup"
     echo -e >&2 "\t-w  write symlinks"
 
     echo -e >&2 "\n\t-h  display this help and exit"
 
-    echo -e >&2 "\nnote: files must be defined in HOME_DIR_FILES and CONFIG_DIR_FILES arrays"
+    echo -e >&2 "\nnote: files to be managed must be defined in FILES array"
     exit 1
 }
 
+check_array() {
+    if (( ${#FILES[@]} % 2 != 0 )); then
+        echo >&2 "$(basename $0): error: FILES array is missing a source or destination"
+        exit 1
+    fi
+}
+
 ### main
-while getopts bdfhlrw OPT; do
+check_array
+
+while getopts bdfhrw OPT; do
     case "$OPT" in
         h)  usage;;
         b)  BFLAG=1;;
         d)  DFLAG=1;;
         f)  FFLAG=1;;
-        l)  LFLAG=1;;
         r)  RFLAG=1;;
         w)  WFLAG=1;;
         ?)  usage;;
     esac
 done
 
-if [ "$BFLAG" == 1 ]; then
+if [ "$BFLAG" = 1 ]; then
     backup
-elif [ "$DFLAG" == 1 ]; then
+elif [ "$DFLAG" = 1 ]; then
     delete
-elif [ "$LFLAG" == 1 ]; then
-    list
-elif [ "$RFLAG" == 1 ]; then
+elif [ "$RFLAG" = 1 ]; then
     restore
-elif [ "$WFLAG" == 1 ]; then
+elif [ "$WFLAG" = 1 ]; then
     write
 else
     list
