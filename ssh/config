@@ -1,0 +1,17 @@
+# ~/.ssh/config
+
+# enable connection sharing - if master not specified, first client becomes
+# master and doesn't close until all other sessions using it close
+ControlMaster auto
+ControlPath /tmp/ssh_mux_%h_%p_%r
+
+# enable persistent connections
+ControlPersist 1h
+
+# avoid delay when connecting to servers where enabled
+GSSAPIAuthentication no
+
+#Compression yes
+
+# in case you forget '-X'
+#ForwardX11 yes
