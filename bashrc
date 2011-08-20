@@ -8,12 +8,9 @@ PS1='\u@\h:\W\$ '
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+shopt -s histappend   # append to the history file, don't overwrite it
+shopt -s autocd       # cd by typing name of directory
+shopt -s checkwinsize # update the values of LINES and COLUMNS after each command if altered
 
 # add ~/bin to PATH if it exists
 if [ -d "$HOME/bin" ]; then
