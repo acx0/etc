@@ -57,7 +57,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # list processes which are using a deleted map file after a system update and need to be restarted
-alias dm="sudo lsof | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
+alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
 
 # allows java graphical programs to run in tiling window managers by impersonating
 # a window manager in JVM's list of allowed non-re-parenting window managers
