@@ -196,7 +196,7 @@ if &t_Co == 256 || has("gui_running")
             let l:statusline .= "%r%*"
         endif
 
-        let l:statusline .= "\ (%l,%v)\ [%P\ of\ %L]%=%w\ %y\ [%{&encoding}:%{&fileformat}]"
+        let l:statusline .= "\ [%{&encoding}:%{&fileformat}]\ %y\ %w%=(%l,%v)\ [%P\ of\ %L]"
         return l:statusline
     endfunction
 
@@ -212,7 +212,7 @@ if &t_Co == 256 || has("gui_running")
         endif
     endfunction
 else
-    set statusline=\(%n\)\ %f\ %m%r\ (%l,%v)\ [%P\ of\ %L]%=%w\ %y\ [%{&encoding}:%{&fileformat}]
+    set statusline=\(%n\)\ %f\ %m%r\ [%{&encoding}:%{&fileformat}]\ %y\ %w%=(%l,%v)\ [%P\ of\ %L]
 endif
 
 " --movement / navigation
