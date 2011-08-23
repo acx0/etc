@@ -39,11 +39,11 @@ RFLAG=0
 WFLAG=0
 
 backup() {
-    if [ -e "$BACKUP_DIR" -a "$FFLAG" = 0 ]; then
+    if [[ -e $BACKUP_DIR && $FFLAG == 0 ]]; then
         echo >&2 "$(basename $0): error: backup directory already exists"
         exit 1
     else
-        if [ -e "$BACKUP_DIR" ]; then
+        if [[ -e $BACKUP_DIR ]]; then
             rm -rf $BACKUP_DIR
         fi
         mkdir -v $BACKUP_DIR
@@ -54,10 +54,10 @@ backup() {
         SRC=${FILES[2 * $i + 1]}
         DST=${FILES[2 * $i]}
 
-        if [ "$(echo $DST | grep "/")" -a -e "$SRC" ]; then
+        if [[ $(echo $DST | grep "/") && -e $SRC ]]; then
             mkdir -p $BACKUP_DIR/$(dirname $DST)
         fi
-        if [ -e "$SRC" ]; then
+        if [[ -e $SRC ]]; then
             cp -vrd $SRC $BACKUP_DIR/$DST
         fi
     done
@@ -68,10 +68,10 @@ remove_parents() {
     DST=$2
 
     # use $SRC to keep track of how many directories to remove
-    while [ "$(echo $SRC | grep "/")" ]; do
+    while [[ $(echo $SRC | grep "/") ]]; do
         SRC=$(dirname $SRC)
         DST=$(dirname $DST)
-        if [ -e "$DST" ]; then
+        if [[ -e $DST ]]; then
             rmdir -v $DST
         fi
     done
@@ -82,7 +82,7 @@ delete() {
         SRC=${FILES[2 * $i]}
         DST=${FILES[2 * $i + 1]}
 
-        if [ -L "$DST" ]; then
+        if [[ -L $DST ]]; then
             rm -v $DST
         fi
         remove_parents $SRC $DST
@@ -99,13 +99,13 @@ list() {
     for (( i = 0; i < $FSIZE; i++ )); do
         DST=${FILES[2 * $i + 1]}
 
-        if [ -L "$DST" ]; then
+        if [[ -L $DST ]]; then
             echo -e "[${LIGHT_CYAN}LINK${RESET}]\t$DST"
-        elif [ -f "$DST" ]; then
+        elif [[ -f $DST ]]; then
             echo -e "[${LIGHT_GREEN}FILE${RESET}]\t$DST"
-        elif [ -d "$DST" ]; then
+        elif [[ -d $DST ]]; then
             echo -e "[${LIGHT_BLUE}DIR ${RESET}]\t$DST"
-        elif [ ! -e "$DST" ]; then
+        elif [[ ! -e $DST ]]; then
             echo -e "[${LIGHT_RED}NONE${RESET}]\t$DST"
         else
             echo -e "[OTHER]\t$DST"
@@ -114,7 +114,7 @@ list() {
 }
 
 restore() {
-    if [ ! -d "$BACKUP_DIR" ]; then
+    if [[ ! -d $BACKUP_DIR ]]; then
         echo >&2 "$(basename $0): error: backup directory does not exist"
         exit 1
     fi
@@ -123,11 +123,11 @@ restore() {
         SRC=${FILES[2 * $i]}
         DST=${FILES[2 * $i + 1]}
 
-        if [ -e "$DST" ]; then
+        if [[ -e $DST ]]; then
             rm -rf $DST
         fi
-        if [ -e "$BACKUP_DIR/$SRC" ]; then
-            if [ "$(echo $SRC | grep "/")" ]; then
+        if [[ -e $BACKUP_DIR/$SRC ]]; then
+            if [[ $(echo $SRC | grep "/") ]]; then
                 mkdir -p $(dirname $DST)
             fi
             mv -v $BACKUP_DIR/$SRC $DST
@@ -135,7 +135,7 @@ restore() {
         remove_parents $SRC $BACKUP_DIR/$SRC
     done
 
-    if [ "$(ls -A $BACKUP_DIR)" ]; then
+    if [[ $(ls -A $BACKUP_DIR) ]]; then
         echo >&2 "$(basename $0): warning: backup directory not empty; not removing"
     else
         rmdir -v $BACKUP_DIR
@@ -147,10 +147,10 @@ write() {
         SRC=$SOURCE_DIR/${FILES[2 * $i]}
         DST=${FILES[2 * $i + 1]}
 
-        if [ ! -e "$DST" -o "$FFLAG" = 1 ]; then
-            if [ -e "$DST" ]; then
+        if [[ ! -e $DST || $FFLAG == 1 ]]; then
+            if [[ -e $DST ]]; then
                 rm -rf $DST
-            elif [ "$(echo $SRC | grep "/")" ]; then
+            elif [[ $(echo $SRC | grep "/") ]]; then
                 mkdir -p $(dirname $DST)
             fi
             ln -vfs $SRC $DST
@@ -196,13 +196,13 @@ while getopts bdfhrw OPT; do
     esac
 done
 
-if [ "$BFLAG" = 1 ]; then
+if [[ $BFLAG == 1 ]]; then
     backup
-elif [ "$DFLAG" = 1 ]; then
+elif [[ $DFLAG == 1 ]]; then
     delete
-elif [ "$RFLAG" = 1 ]; then
+elif [[ $RFLAG == 1 ]]; then
     restore
-elif [ "$WFLAG" = 1 ]; then
+elif [[ $WFLAG == 1 ]]; then
     write
 else
     list
