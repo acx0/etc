@@ -46,46 +46,22 @@ layouts =
     awful.layout.suit.tile.top,         -- 5
     awful.layout.suit.fair,             -- 6
     awful.layout.suit.fair.horizontal,  -- 7
-    --awful.layout.suit.spiral,         --
-    --awful.layout.suit.spiral.dwindle, --
-    awful.layout.suit.max,              -- 8
-    awful.layout.suit.max.fullscreen,   -- 9
-    awful.layout.suit.magnifier         -- 10
+    awful.layout.suit.spiral,           -- 8
+    awful.layout.suit.spiral.dwindle,   -- 9
+    awful.layout.suit.max,              -- 10
+    awful.layout.suit.max.fullscreen,   -- 11
+    awful.layout.suit.magnifier         -- 12
 }
 -- }}}
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
--- store tag location in variables to make rule management more flexible
-tag_term  = 1
-tag_vim   = 2
-tag_www   = 3
-tag_im    = 4
-tag_media = 5
-tag_dl    = 6
-
 tags = {
-    names  = {
-        tag_term  .. ":term",
-        tag_vim   .. ":vim",
-        tag_www   .. ":www",
-        tag_im    .. ":im",
-        tag_media .. ":media",
-        tag_dl    .. ":dl",
-        7,
-        8,
-        9
-    },
+    names  = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
     layout = {
-        layouts[2], -- term
-        layouts[2], -- vim
-        layouts[8], -- www
-        layouts[2], -- im
-        layouts[2], -- media
-        layouts[2], -- dl
-        layouts[2],
-        layouts[2],
-        layouts[2]
+        layouts[10], layouts[2], layouts[2],
+        layouts[2], layouts[2], layouts[2],
+        layouts[2], layouts[2], layouts[2]
     }
 }
 for s = 1, screen.count() do
@@ -568,17 +544,15 @@ awful.rules.rules = {
     -- Fix programs to certain tags
     --{ rule = { class = "Firefox" },
     { rule = { class = "Iceweasel" },
-      properties = { tag = tags[1][tag_www] } },
+      properties = { tag = tags[1][1] } },
     { rule = { class = "Emesene" },
-      properties = { tag = tags[1][tag_im] } },
+      properties = { tag = tags[1][2] } },
     { rule = { class = "Xchat" },
-      properties = { tag = tags[1][tag_im] } },
+      properties = { tag = tags[1][2] } },
     { rule = { class = "Skype" },
-      properties = { tag = tags[1][tag_im] } },
-    { rule = { class = "Vlc" },
-      properties = { tag = tags[1][tag_media] } },
+      properties = { tag = tags[1][2] } },
     { rule = { class = "Transmission" },
-      properties = { tag = tags[1][tag_dl] } }
+      properties = { tag = tags[1][9] } }
 }
 -- }}}
 
