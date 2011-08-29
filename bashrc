@@ -5,12 +5,13 @@
 
 PS1='\u@\h:\W\$ '
 
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth  # ignore lines starting with a space and consecutive duplicates
 HISTSIZE=1000
 
 shopt -s histappend   # append to the history file, don't overwrite it
 shopt -s autocd       # cd by typing name of directory
 shopt -s checkwinsize # update the values of LINES and COLUMNS after each command if altered
+shopt -s no_empty_cmd_completion
 
 # add ~/bin to PATH if it exists
 if [ -d "$HOME/bin" ]; then
