@@ -8,6 +8,9 @@ set show-all-if-ambiguous on
 set expand-tilde off
 set match-hidden-files off
 
+# append slash to tab-completed directory symlinks
+set mark-symlinked-directories on
+
 # override default binding of unix-word-rubout so that '/' is also used as a
 # delimiter; bind-tty-special-chars must be off
 set bind-tty-special-chars off
