@@ -1,4 +1,4 @@
--- Sam's rc.lua
+-- ~/.config/awesome/rc.lua
 
 -- Standard awesome library
 require("awful")
@@ -59,7 +59,7 @@ layouts =
 tags = {
     names  = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
     layout = {
-        layouts[10], layouts[2], layouts[2],
+        layouts[2], layouts[2], layouts[2],
         layouts[2], layouts[2], layouts[2],
         layouts[2], layouts[2], layouts[2]
     }
@@ -544,13 +544,13 @@ awful.rules.rules = {
     -- Fix programs to certain tags
     --{ rule = { class = "Firefox" },
     { rule = { class = "Iceweasel" },
-      properties = { tag = tags[1][1] } },
+      properties = { tag = tags[1][2] } },
     { rule = { class = "Emesene" },
-      properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][1] } },
     { rule = { class = "Xchat" },
-      properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][1] } },
     { rule = { class = "Skype" },
-      properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][1] } },
     { rule = { class = "Transmission" },
       properties = { tag = tags[1][9] } }
 }
