@@ -538,7 +538,11 @@ let g:ConqueTerm_Color = 1  " only enable colours for the most recent 200 lines
 
 " ---> Configuration variables {{{
 " compiler to use for custom C ftplugin
-let g:CC = "clang"
+if has("unix") && filereadable("/usr/bin/clang")
+    let g:CC = "clang"
+else
+    let g:CC = "gcc"
+endif
 " }}}
 
 " vim: set ts=4 sts=4 sw=4 et ft=vim :
