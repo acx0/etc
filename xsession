@@ -15,6 +15,8 @@ gnome-power-manager &
 if [ "$SESSION" = "awesome" ]; then
     exec awesome
 elif [ "$SESSION" = "dwm" ]; then
+    trayer --edge bottom --widthtype request &
+
     while true; do
         xsetroot -name "$(date +"%a %b %d %H:%M %Z %Y")"
         sleep 60

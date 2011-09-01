@@ -24,6 +24,7 @@ static const Rule rules[] = {
     { "Xchat",    NULL,       NULL,       1 << 0,       False,       -1 },
     { "Skype",    NULL,       NULL,       1 << 0,       False,       -1 },
     { "Transmission", NULL,   NULL,       1 << 8,       False,       -1 },
+    { "trayer",   NULL,       NULL,       1 << 8,       True,        -1 },
 };
 
 /* layout(s) */
