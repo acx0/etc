@@ -73,10 +73,10 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+    { "manual", terminal .. " -e man awesome" },
+    { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
+    { "restart", awesome.restart },
+    { "quit", awesome.quit }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -98,7 +98,6 @@ separator = widget({ type = "imagebox" })
 spacer.text     = " "
 separator.image = image(beautiful.widget_sep)
 -- }}}
-
 
 -- {{{ CPU usage and temperature
 cpuicon = widget({ type = "imagebox" })
@@ -123,7 +122,6 @@ vicious.register(cpugraph,  vicious.widgets.cpu,     "$1")
 vicious.register(tzswidget, vicious.widgets.thermal, "$1C", 19, "thermal_zone0")
 -- }}}
 
-
 -- {{{ Battery state
 baticon = widget({ type = "imagebox" })
 baticon.image = image(beautiful.widget_bat)
@@ -139,7 +137,6 @@ elseif hostname == "euclid" then
 end
 -- }}}
 
-
 -- {{{ Memory usage
 memicon = widget({ type = "imagebox" })
 memicon.image = image(beautiful.widget_mem)
@@ -147,7 +144,7 @@ memicon.image = image(beautiful.widget_mem)
 -- Initialize widget
 membar = awful.widget.progressbar()
 
--- Pogressbar properties
+-- Progressbar properties
 membar:set_width(10)
 membar:set_height(12)
 membar:set_vertical(true)
@@ -161,7 +158,6 @@ membar:set_gradient_colors({ beautiful.fg_widget,
 -- Register widget
 vicious.register(membar, vicious.widgets.mem, "$1", 13)
 -- }}}
-
 
 -- {{{ File system usage
 fsicon = widget({ type = "imagebox" })
@@ -204,7 +200,6 @@ elseif hostname == "euclid" then
 end
 -- }}}
 
-
 -- {{{ Network usage
 dnicon = widget({ type = "imagebox" })
 upicon = widget({ type = "imagebox" })
@@ -219,7 +214,6 @@ vicious.register(netwidget, vicious.widgets.net, '<span color="'
     .. beautiful.fg_netdn_widget ..'">${' .. net_device .. ' down_kb}</span> <span color="'
     .. beautiful.fg_netup_widget ..'">${' .. net_device .. ' up_kb}</span>', 3)
 -- }}}
-
 
 -- {{{ Volume level
 volicon = widget({ type = "imagebox" })
@@ -248,7 +242,6 @@ vicious.register(volbar,    vicious.widgets.volume, "$1",  2, "Master")
 vicious.register(volwidget, vicious.widgets.volume, "$1%", 2, "Master")
 -- }}}
 
-
 -- {{{ Date and time
 dateicon = widget({ type = "imagebox" })
 dateicon.image = image(beautiful.widget_date)
@@ -257,13 +250,11 @@ dateicon.image = image(beautiful.widget_date)
 mytextclock = awful.widget.textclock({ align = "right" })
 -- }}}
 
-
 -- {{{ System tray
 -- Create a systray
 mysystray = widget({ type = "systray" })
 -- }}}
 -- }}}
-
 
 -- {{{ Wibox initialisation
 -- Create a wibox for each screen and add it
