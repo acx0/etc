@@ -463,11 +463,11 @@ endif
 
 " ---> Plugin configuration {{{
 " --plugins
-Bundle "Align"
 Bundle "bufkill.vim"
 Bundle "Conque-Shell"
-Bundle "DrawIt"
+"Bundle "DrawIt"
 "Bundle "godlygeek/csapprox"
+Bundle "godlygeek/tabular"
 Bundle "indentpython.vim"
 Bundle "javacomplete"
 "Bundle "Lokaltog/vim-easymotion"
@@ -517,7 +517,7 @@ endif
 
 " --gundo.vim
 " quickly toggle gundo.vim
-nnoremap <F5> :GundoToggle<CR>
+"nnoremap <F5> :GundoToggle<CR>
 
 let g:gundo_width = 33
 let g:gundo_preview_bottom = 1
