@@ -17,6 +17,37 @@ endif
 
 set runtimepath+=~/.vim/vundle   " add vundle to runtimepath
 call vundle#rc()
+
+" --managed / active plugins
+Bundle "altercation/vim-colors-solarized"
+Bundle "bufkill.vim"
+Bundle "ciaranm/inkpot"
+Bundle "Conque-Shell"
+"Bundle "DrawIt"
+Bundle "github-theme"
+"Bundle "godlygeek/csapprox"
+Bundle "godlygeek/tabular"
+Bundle "indentpython.vim"
+Bundle "javacomplete"
+"Bundle "Lokaltog/vim-easymotion"
+Bundle "msanders/snipmate.vim"
+Bundle "nathanaelkane/vim-indent-guides"
+"Bundle "OmniCppComplete"
+Bundle "scrooloose/nerdcommenter"
+Bundle "scrooloose/nerdtree"
+"Bundle "sjl/gundo.vim"
+Bundle "Sorcerer"
+Bundle "taglist.vim"
+Bundle "tomasr/molokai"
+Bundle "tpope/vim-surround"
+Bundle "trapd00r/neverland-vim-theme"
+Bundle "VimCoder.jar"
+Bundle "Vim-JDE"
+Bundle "Wombat"
+Bundle "wombat256.vim"
+Bundle "xoria256.vim"
+Bundle "Zenburn"
+Bundle "zenesque.vim"
 " }}}
 
 " ---> User interface {{{
@@ -462,27 +493,6 @@ endif
 " }}}
 
 " ---> Plugin configuration {{{
-" --plugins
-Bundle "bufkill.vim"
-Bundle "Conque-Shell"
-"Bundle "DrawIt"
-"Bundle "godlygeek/csapprox"
-Bundle "godlygeek/tabular"
-Bundle "indentpython.vim"
-Bundle "javacomplete"
-"Bundle "Lokaltog/vim-easymotion"
-Bundle "msanders/snipmate.vim"
-Bundle "nathanaelkane/vim-indent-guides"
-"Bundle "OmniCppComplete"
-Bundle "scrooloose/nerdcommenter"
-Bundle "scrooloose/nerdtree"
-"Bundle "sjl/gundo.vim"
-Bundle "taglist.vim"
-Bundle "tpope/vim-surround"
-Bundle "VimCoder.jar"
-Bundle "Vim-JDE"
-
-" --plugin settings
 " --nerdtree
 " quickly toggle nerdtree
 nnoremap <F2> :NERDTreeToggle<CR>
