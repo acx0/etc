@@ -89,6 +89,11 @@ alias l='ls -CF'
 alias g='git'
 alias tm='tmux'
 
+alias vimupdate="vim -c 'BundleInstall!' -c 'qall'"
+
+# list processes which are using a deleted map file after a system update and need to be restarted
+alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
+
 # enable colours in less for man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -97,9 +102,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-
-# list processes which are using a deleted map file after a system update and need to be restarted
-alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
 
 # allows java graphical programs to run in tiling window managers by impersonating
 # a window manager in JVM's list of allowed non-re-parenting window managers
