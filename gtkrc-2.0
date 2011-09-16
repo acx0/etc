@@ -1,5 +1,5 @@
 gtk-theme-name="Clearlooks"
-gtk-icon-theme-name="gnome"
+#gtk-icon-theme-name="gnome"
 #gtk-font-name="Sans 9"
 gtk-font-name="Sans 8"
 gtk-toolbar-style=2

@@ -12,6 +12,9 @@ xflux -l 43 &
 gnome-power-manager &
 #gnome-settings-daemon & # not required if settings in ~/.gtkrc-2.0
 
+# required for qtconfig to load gtk theme
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
 if [ "$SESSION" = "awesome" ]; then
     exec awesome
 elif [ "$SESSION" = "dwm" ]; then
