@@ -29,6 +29,7 @@ Bundle "github-theme"
 Bundle "godlygeek/tabular"
 Bundle "indentpython.vim"
 Bundle "javacomplete"
+Bundle "LaTeX-Suite-aka-Vim-LaTeX"
 "Bundle "Lokaltog/vim-easymotion"
 Bundle "msanders/snipmate.vim"
 Bundle "nathanaelkane/vim-indent-guides"
@@ -544,6 +545,12 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 " --Conque-Shell
 let g:ConqueTerm_Color = 1  " only enable colours for the most recent 200 lines
+
+" --LaTeX-Suite-aka-Vim-LaTeX
+let g:tex_flavor = "latex"
+let g:Tex_DefaultTargetFormat = "pdf"
+let g:Tex_ViewRule_dvi = "evince"
+let g:Tex_ViewRule_pdf = "evince"
 " }}}
 
 " ---> Configuration variables {{{
