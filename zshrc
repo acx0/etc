@@ -89,7 +89,7 @@ alias l='ls -CF'
 alias g='git'
 alias tm='tmux'
 
-alias vimupdate="vim -c 'BundleInstall!' -c 'qall'"
+alias vimupdate="vim -c 'BundleInstall!'"
 
 # list processes which are using a deleted map file after a system update and need to be restarted
 alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
