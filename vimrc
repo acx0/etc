@@ -67,7 +67,7 @@ set undolevels=500 " changes to be remembered
 syntax enable    " enable syntax highlighting and allow custom highlighting
 set title        " set title to filename and modification status
 set number       " show line numbers
-set ruler        " always show current position
+"set ruler        " always show current position
 set showcmd      " show the command being typed
 set showmode     " show current mode (insert, visual, etc.)
 set laststatus=2 " always show status line
