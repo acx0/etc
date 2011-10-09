@@ -382,20 +382,10 @@ function! SetTab()
 endfunction
 
 function! SummarizeTabs()
-    try
-        echohl ModeMsg
-        echon "tabstop=" . &l:tabstop
-        echon " softtabstop=" . &l:softtabstop
-        echon " shiftwidth=" . &l:shiftwidth
-
-        if &l:expandtab
-            echon " expandtab"
-        else
-            echon " noexpandtab"
-        endif
-    finally
-        echohl None
-    endtry
+    echo "tabstop=" . &l:tabstop
+    echon " softtabstop=" . &l:softtabstop
+    echon " shiftwidth=" . &l:shiftwidth
+    echon &l:expandtab == 1 ? " expandtab" : " noexpandtab"
 endfunction
 
 " --copying / pasting
