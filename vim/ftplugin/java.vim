@@ -12,7 +12,7 @@ nnoremap <buffer> <F3> :call CompileJava()<CR>
 
 function! CompileJava()
     update
-    make
+    make!
 endfunction
 
 nnoremap <buffer> <F4> :call RunClass()<CR>

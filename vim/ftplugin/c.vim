@@ -18,7 +18,7 @@ function! CompileC()
     update
 
     if glob("Makefile") != ""
-        make
+        make!
     else
         if &filetype == "c"
             execute '!' . g:CC . ' "%" -o "%:p:r"'
