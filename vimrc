@@ -188,6 +188,9 @@ else
 endif
 
 " --statusline
+" default statusline: '%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P'
+let s:common_status = "\ [%{&encoding}:%{&fileformat}]\ %y\ %w%=%-14.(%l,%c%V%)\ %P\ [%L]"
+
 " use smart statusline if 256 colours are available or if gVim is running
 if &t_Co == 256 || has("gui_running")
     set statusline=%!MyStatusLine('Enter')
@@ -228,7 +231,7 @@ if &t_Co == 256 || has("gui_running")
             let l:statusline .= "%r%*"
         endif
 
-        let l:statusline .= "\ [%{&encoding}:%{&fileformat}]\ %y\ %w%=(%l,%v)\ [%P\ of\ %L]"
+        let l:statusline .= s:common_status
         return l:statusline
     endfunction
 
@@ -244,7 +247,7 @@ if &t_Co == 256 || has("gui_running")
         endif
     endfunction
 else
-    set statusline=\(%n\)\ %f\ %m%r\ [%{&encoding}:%{&fileformat}]\ %y\ %w%=(%l,%v)\ [%P\ of\ %L]
+    let &statusline = "\(%n\)\ %f\ %m%r" . s:common_status
 endif
 
 " --movement / navigation
