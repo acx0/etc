@@ -299,18 +299,18 @@ nnoremap <Leader>et :tabedit <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <F12> :call ToggleMouse()<CR>
 
 function! ToggleMouse()
-    if !exists("l:old_mouse")
-        let l:old_mouse = "a"
+    if !exists("s:old_mouse")
+        let s:old_mouse = "a"
     endif
 
     if &mouse == ""
-        let &mouse = l:old_mouse
-        echo "mouse enabled (" . &mouse . ")"
+        let &mouse = s:old_mouse
     else
-        let l:old_mouse = &mouse
+        let s:old_mouse = &mouse
         let &mouse = ""
-        echo "mouse disabled"
     endif
+
+    echo "  mouse=" . &mouse
 endfunction
 " }}}
 
