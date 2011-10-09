@@ -412,6 +412,35 @@ endif
 nnoremap <Leader>p :set paste! paste?<CR>
 "set pastetoggle=<Leader>p
 
+" --prose writing
+nnoremap <leader>tp :call ToggleProse()<CR>
+
+function! ToggleProse()
+    if !exists("b:prose")
+        let b:prose = 0
+        let b:old_formatoptions = &formatoptions
+        let b:old_textwidth = &textwidth
+    endif
+
+    if b:prose == 0
+        setlocal nonumber
+        setlocal wrap
+        setlocal spell
+        setlocal textwidth=78
+        setlocal formatoptions+=tqa
+        echo "  prose"
+        let b:prose = 1
+    else
+        setlocal number
+        setlocal nowrap
+        setlocal nospell
+        let &l:textwidth = b:old_textwidth
+        let &l:formatoptions = b:old_formatoptions
+        echo "noprose"
+        let b:prose = 0
+    endif
+endfunction
+
 " --file / text manipulation functions
 " quickly edit/source vimrc
 nnoremap <Leader>er :edit $MYVIMRC<CR>
