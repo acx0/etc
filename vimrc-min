@@ -63,7 +63,7 @@ if &term == "xterm" || &term == "screen-bce"
     set t_Co=256
 endif
 
-" --navigation
+" --movement / navigation
 set scrolloff=5 " scrolling starts 5 lines before window border
 
 " easier window navigation
@@ -71,6 +71,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" --mouse input
+"set mouse=a " enable mouse support
 
 " --filetype detection
 filetype plugin indent on   " let vim detect filetype and load appropriate scripts
