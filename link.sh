@@ -18,6 +18,7 @@ FILES=(
     "pentadactylrc" "$HOME/.pentadactylrc"
     "profile" "$HOME/.profile"
     "screenrc" "$HOME/.screenrc"
+    "shellrc" "$HOME/.shellrc"
     "ssh/config" "$HOME/.ssh/config"
     "tmux.conf" "$HOME/.tmux.conf"
     "vim" "$HOME/.vim"
