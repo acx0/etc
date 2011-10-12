@@ -27,7 +27,7 @@ alias l='ls -CF'
 
 alias g='git'
 alias tm='tmux'
-
+alias fm='python2.6 $(which ranger)'
 alias vimupdate="vim -c 'BundleInstall!'"
 
 # list processes which are using a deleted map file after a system update and need to be restarted
