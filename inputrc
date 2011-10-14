@@ -5,6 +5,7 @@ set editing-mode vi
 
 set completion-ignore-case on
 set show-all-if-ambiguous on
+#set show-all-if-unmodified on
 set expand-tilde off
 set match-hidden-files off
 
