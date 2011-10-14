@@ -37,6 +37,10 @@ bindkey -M viins '^U' backward-kill-line
 # enable backwards search in insert mode
 bindkey -M viins '^R' history-incremental-search-backward
 
+# set alternative keys for tab completion
+bindkey -M viins '^J' menu-complete
+bindkey -M viins '^K' reverse-menu-complete
+
 # display current vi-mode in prompt string
 VI_MODE="i"
 function zle-line-init zle-keymap-select {
