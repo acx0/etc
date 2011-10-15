@@ -1,11 +1,3 @@
-# add ~/bin to PATH if it exists
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# add super-user binaries to PATH
-PATH="$PATH:/sbin:/usr/sbin"
-
 # enable colour support of ls and add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

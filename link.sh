@@ -9,6 +9,7 @@ BACKUP_DIR=$SOURCE_DIR.bak
 #   index 2k+1 is destination
 FILES=(
     "awesome" "$HOME/.config/awesome"
+    "bash_profile" "$HOME/.bash_profile"
     "bashrc" "$HOME/.bashrc"
     "dircolors" "$HOME/.dircolors"
     "emacs" "$HOME/.emacs"
@@ -27,6 +28,7 @@ FILES=(
     "xmodmaprc" "$HOME/.xmodmaprc"
     "Xresources" "$HOME/.Xresources"
     "xsession" "$HOME/.xsession"
+    "zprofile" "$HOME/.zprofile"
     "zshrc" "$HOME/.zshrc"
 )
 FSIZE=$(( ${#FILES[@]} / 2 ))
