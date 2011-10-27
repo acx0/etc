@@ -10,7 +10,6 @@ xsetroot -solid black &     # set root window background
 xdotool mousemove $(xrandr | grep '*' | awk '{ print $1 }' | tr 'x' ' ') &
 
 urxvtd -q -o -f &
-wicd-client &
 xflux -l 43 &
 xfce4-power-manager &
 
