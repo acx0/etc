@@ -6,6 +6,9 @@ xrdb -merge ~/.Xresources & # load X resource preferences
 xmodmap ~/.xmodmaprc &      # load custom keyboard mappings
 xsetroot -solid black &     # set root window background
 
+# move cursor to bottom right corner of screen
+xdotool mousemove $(xrandr | grep '*' | awk '{ print $1 }' | tr 'x' ' ') &
+
 urxvtd -q -o -f &
 wicd-client &
 xflux -l 43 &
