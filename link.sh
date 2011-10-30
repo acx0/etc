@@ -5,8 +5,8 @@ SOURCE_DIR=$HOME/etc
 BACKUP_DIR=$SOURCE_DIR.bak
 
 # files to be managed
-#   index 2k is source
-#   index 2k+1 is destination
+#   index 2k is key (source)
+#   index 2k+1 is value (destination)
 FILES=(
     "awesome" "$HOME/.config/awesome"
     "bash_profile" "$HOME/.bash_profile"
@@ -31,15 +31,48 @@ FILES=(
     "zprofile" "$HOME/.zprofile"
     "zshrc" "$HOME/.zshrc"
 )
-FSIZE=$(( ${#FILES[@]} / 2 ))
 
 ### functions
+FSIZE=$(( ${#FILES[@]} / 2 ))
+declare -a ARG_FILES
+
+OPTIONS=0
+ALL=1
+
+FFLAG=0
 BFLAG=0
 DFLAG=0
-FFLAG=0
-LFLAG=0
 RFLAG=0
 WFLAG=0
+
+check_options() {
+    if [[ $OPTIONS == 1 ]]; then
+        echo >&2 "$(basename $0): error: too many options specified"
+        usage
+    fi
+}
+
+check_arg_files() {
+    if [[ -n $@ ]]; then
+        read -ra ARG_FILES <<< "$@"
+        FSIZE=$(( ${#ARG_FILES[@]} ))
+        ALL=0
+    fi
+}
+
+get_value() {
+    KEY=$1
+
+    for (( i = 0; i < ${#FILES[@]}; i++ )); do
+        if [[ $KEY == ${FILES[2 * $i]} ]]; then
+            echo ${FILES[2 * $i + 1]}
+            return 0
+        fi
+    done
+
+    echo >&2 "$(basename $0): error: key \`$KEY' not found"
+    return 1
+}
 
 backup() {
     if [[ -e $BACKUP_DIR && $FFLAG == 0 ]]; then
@@ -82,8 +115,16 @@ remove_parents() {
 
 delete() {
     for (( i = 0; i < $FSIZE; i++ )); do
-        SRC=${FILES[2 * $i]}
-        DST=${FILES[2 * $i + 1]}
+        if [[ $ALL == 1 ]]; then
+            SRC=${FILES[2 * $i]}
+            DST=${FILES[2 * $i + 1]}
+        else
+            SRC=${ARG_FILES[$i]}
+            DST=$(get_value $SRC)
+            if [[ $? == 1 ]]; then
+                exit
+            fi
+        fi
 
         if [[ -L $DST ]]; then
             rm -v $DST
@@ -123,8 +164,16 @@ restore() {
     fi
 
     for (( i = 0; i < $FSIZE; i++ )); do
-        SRC=${FILES[2 * $i]}
-        DST=${FILES[2 * $i + 1]}
+        if [[ $ALL == 1 ]]; then
+            SRC=${FILES[2 * $i]}
+            DST=${FILES[2 * $i + 1]}
+        else
+            SRC=${ARG_FILES[$i]}
+            DST=$(get_value $SRC)
+            if [[ $? == 1 ]]; then
+                exit
+            fi
+        fi
 
         if [[ -e $DST ]]; then
             rm -rf $DST
@@ -133,22 +182,36 @@ restore() {
             if [[ $(echo $SRC | grep "/") ]]; then
                 mkdir -p $(dirname $DST)
             fi
-            mv -v $BACKUP_DIR/$SRC $DST
+            if [[ $ALL == 1 ]]; then
+                mv -v $BACKUP_DIR/$SRC $DST
+            else
+                cp -Pv $BACKUP_DIR/$SRC $DST
+            fi
         fi
         remove_parents $SRC $BACKUP_DIR/$SRC
     done
 
-    if [[ $(ls -A $BACKUP_DIR) ]]; then
-        echo >&2 "$(basename $0): warning: backup directory not empty; not removing"
-    else
-        rmdir -v $BACKUP_DIR
+    if [[ $ALL == 1 ]]; then
+        if [[ $(ls -A $BACKUP_DIR) ]]; then
+            echo >&2 "$(basename $0): warning: backup directory not empty; not removing"
+        else
+            rmdir -v $BACKUP_DIR
+        fi
     fi
 }
 
 write() {
     for (( i = 0; i < $FSIZE; i++ )); do
-        SRC=$SOURCE_DIR/${FILES[2 * $i]}
-        DST=${FILES[2 * $i + 1]}
+        if [[ $ALL == 1 ]]; then
+            SRC=$SOURCE_DIR/${FILES[2 * $i]}
+            DST=${FILES[2 * $i + 1]}
+        else
+            SRC=$SOURCE_DIR/${ARG_FILES[$i]}
+            DST=$(get_value ${ARG_FILES[$i]})
+            if [[ $? == 1 ]]; then
+                exit
+            fi
+        fi
 
         if [[ ! -e $DST || $FFLAG == 1 ]]; then
             if [[ -e $DST ]]; then
@@ -164,7 +227,7 @@ write() {
 }
 
 usage() {
-    echo -e >&2 "usage: $(basename $0) [-bdhrw] [-f]"
+    echo -e >&2 "\nusage: $(basename $0) [-b] [-d [files]] [-r [files]] [-w [files]] [-f]"
     echo -e >&2 "\t-b  backup existing files"
     echo -e >&2 "\t-d  delete symlinks"
     echo -e >&2 "\t-f  force removal of existing files"
@@ -179,7 +242,7 @@ usage() {
 
 check_array() {
     if (( ${#FILES[@]} % 2 != 0 )); then
-        echo >&2 "$(basename $0): error: FILES array is missing a source or destination"
+        echo >&2 "$(basename $0): error: FILES array is missing a key or value"
         exit 1
     fi
 }
@@ -187,17 +250,40 @@ check_array() {
 ### main
 check_array
 
+# process flags
 while getopts bdfhrw OPT; do
     case "$OPT" in
-        h)  usage;;
-        b)  BFLAG=1;;
-        d)  DFLAG=1;;
-        f)  FFLAG=1;;
-        r)  RFLAG=1;;
-        w)  WFLAG=1;;
-        ?)  usage;;
+        h)
+            usage
+            ;;
+        f)
+            FFLAG=1
+            ;;
+        b)
+            check_options && OPTIONS=1
+            BFLAG=1
+            ;;
+        d)
+            check_options && OPTIONS=1
+            DFLAG=1
+            ;;
+        r)
+            check_options && OPTIONS=1
+            RFLAG=1
+            ;;
+        w)
+            check_options && OPTIONS=1
+            WFLAG=1
+            ;;
+        ?)
+            usage
+            ;;
     esac
 done
+
+# process any optional arguments
+shift $(( $OPTIND - 1 ))
+check_arg_files "$@"
 
 if [[ $BFLAG == 1 ]]; then
     backup
