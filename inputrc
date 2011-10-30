@@ -3,6 +3,7 @@
 
 set editing-mode vi
 
+set bell-style none
 set completion-ignore-case on
 set show-all-if-ambiguous on
 #set show-all-if-unmodified on
@@ -17,10 +18,10 @@ set mark-symlinked-directories on
 set bind-tty-special-chars off
 "\C-w": unix-filename-rubout
 
-# cycle through auto-complete suggestions instead of listing them; must be
-# placed after setting vi editing-mode
+# set tab to cycle through auto-complete suggestions instead of listing them;
+# must be placed after setting vi editing-mode
 "\C-i": menu-complete
 
 # set alternative keys for tab completion
-"\C-j": menu-complete
-"\C-k": menu-complete-backward
+"\C-n": menu-complete
+"\C-p": menu-complete-backward
