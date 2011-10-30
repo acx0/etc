@@ -141,7 +141,14 @@ list() {
     RESET=$(tput sgr0)
 
     for (( i = 0; i < $FSIZE; i++ )); do
-        DST=${FILES[2 * $i + 1]}
+        if [[ $ALL == 1 ]]; then
+            DST=${FILES[2 * $i + 1]}
+        else
+            DST=$(get_value ${ARG_FILES[$i]})
+            if [[ $? == 1 ]]; then
+                exit
+            fi
+        fi
 
         if [[ -L $DST ]]; then
             echo -e "[${LIGHT_CYAN}LINK${RESET}]\t$DST"
