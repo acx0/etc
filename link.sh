@@ -234,7 +234,7 @@ write() {
 }
 
 usage() {
-    echo -e >&2 "\nusage: $(basename $0) [-b] [-d [files]] [-r [files]] [-w [files]] [-f]"
+    echo -e >&2 "\nusage: $(basename $0) [-b] [-f] [-d [files]] [-r [files]] [-w [files]]"
     echo -e >&2 "\t-b  backup existing files"
     echo -e >&2 "\t-d  delete symlinks"
     echo -e >&2 "\t-f  force removal of existing files"
