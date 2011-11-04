@@ -411,6 +411,7 @@ nnoremap <leader>tp :call ToggleProse()<CR>
 function! ToggleProse()
     if !exists("b:prose")
         let b:prose = 0
+        let b:prose_notes = 1
         let b:old_formatoptions = &formatoptions
         let b:old_textwidth = &textwidth
     endif
@@ -420,8 +421,7 @@ function! ToggleProse()
         setlocal wrap
         setlocal spell
         setlocal textwidth=78
-        setlocal formatoptions+=tqa
-        echo "  prose"
+        setlocal formatoptions+=tq
         let b:prose = 1
     else
         setlocal number
@@ -429,9 +429,33 @@ function! ToggleProse()
         setlocal nospell
         let &l:textwidth = b:old_textwidth
         let &l:formatoptions = b:old_formatoptions
-        echo "noprose"
         let b:prose = 0
     endif
+
+    call SummarizeProse()
+endfunction
+
+command! ToggleProseNotes call ToggleProseNotes()
+
+function! ToggleProseNotes()
+    if !exists("b:prose_notes")
+        let b:prose_notes = 1
+    endif
+
+    if b:prose_notes == 1
+        setlocal formatoptions+=a
+        let b:prose_notes = 0
+    else
+        setlocal formatoptions-=a
+        let b:prose_notes = 1
+    endif
+
+    call SummarizeProse()
+endfunction
+
+function! SummarizeProse()
+    echo b:prose == 1 ? "  prose" : "noprose"
+    echon b:prose_notes == 1 ? " (notes)" : " (nonotes)"
 endfunction
 
 " --file / text manipulation functions
