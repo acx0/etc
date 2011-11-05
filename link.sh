@@ -43,6 +43,7 @@ FFLAG=0
 BFLAG=0
 DFLAG=0
 RFLAG=0
+VFLAG=0
 WFLAG=0
 
 check_options() {
@@ -233,12 +234,27 @@ write() {
     done
 }
 
+view_diff() {
+    KEY=${ARG_FILES[0]}
+    if [[ -z $KEY ]]; then
+        echo >&2 "$(basename $0): error: option requires an argument"
+        exit
+    fi
+    VALUE=$(get_value $KEY)
+    if [[ $? == 1 ]]; then
+        exit
+    fi
+
+    vimdiff $SOURCE_DIR/$KEY $VALUE
+}
+
 usage() {
-    echo -e >&2 "\nusage: $(basename $0) [-b] [-f] [-d [files]] [-r [files]] [-w [files]]"
+    echo -e >&2 "\nusage: $(basename $0) [-b] [-f] [-d [files]] [-r [files]] [-w [files]] [-v file]"
     echo -e >&2 "\t-b  backup existing files"
     echo -e >&2 "\t-d  delete symlinks"
     echo -e >&2 "\t-f  force removal of existing files"
     echo -e >&2 "\t-r  restore from backup"
+    echo -e >&2 "\t-v  view diff"
     echo -e >&2 "\t-w  write symlinks"
 
     echo -e >&2 "\n\t-h  display this help and exit"
@@ -258,7 +274,7 @@ check_array() {
 check_array
 
 # process flags
-while getopts bdfhrw OPT; do
+while getopts bdfhrvw OPT; do
     case "$OPT" in
         h)
             usage
@@ -277,6 +293,10 @@ while getopts bdfhrw OPT; do
         r)
             check_options && OPTIONS=1
             RFLAG=1
+            ;;
+        v)
+            check_options && OPTIONS=1
+            VFLAG=1
             ;;
         w)
             check_options && OPTIONS=1
@@ -298,6 +318,8 @@ elif [[ $DFLAG == 1 ]]; then
     delete
 elif [[ $RFLAG == 1 ]]; then
     restore
+elif [[ $VFLAG == 1 ]]; then
+    view_diff
 elif [[ $WFLAG == 1 ]]; then
     write
 else
