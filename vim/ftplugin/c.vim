@@ -37,7 +37,7 @@ function! CompileC()
     endif
 endfunction
 
-nnoremap <buffer> <F4> :call RunExec()<CR>
+nnoremap <buffer> <F4> :call RunExecutable()<CR>
 
 function! RunExecutable()
     execute '!"%:p:r"'
