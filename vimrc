@@ -520,8 +520,8 @@ cnoremap w!! write !sudo tee % > /dev/null
 nnoremap <Leader>ml :call AppendModeline()<CR>
 
 function! AppendModeline()
-    let l:modeline = printf(" vim: set ts=%d sts=%d sw=%d %s ft=%s :",
-                \ &tabstop, &softtabstop, &shiftwidth, &expandtab ? "et" : "noet", &filetype)
+    let l:modeline = printf(" vim: set ts=%d sts=%d sw=%d %s :",
+                \ &tabstop, &softtabstop, &shiftwidth, &expandtab ? "et" : "noet")
     let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
     call append(line("$"), "")
     call append(line("$"), l:modeline)
@@ -608,4 +608,4 @@ else
 endif
 " }}}
 
-" vim: set ts=4 sts=4 sw=4 et ft=vim :
+" vim: set ts=8 sts=4 sw=4 et :
