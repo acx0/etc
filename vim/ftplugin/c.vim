@@ -18,7 +18,7 @@ if &filetype == "cpp"
 endif
 
 " generate ctags for directory of active buffer
-nnoremap <buffer> <F11> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q "%:p:h"<CR>
+nnoremap <buffer> <F11> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q "%:p:h"<CR>
 
 " quick compile/run functions
 nnoremap <buffer> <F3> :call CompileC()<CR>
