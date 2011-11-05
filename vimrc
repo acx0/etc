@@ -599,13 +599,4 @@ let g:Tex_ViewRule_dvi = "evince"
 let g:Tex_ViewRule_pdf = "evince"
 " }}}
 
-" ---> Configuration variables {{{
-" compiler to use for custom C ftplugin
-if has("unix") && filereadable("/usr/bin/clang")
-    let g:CC = "clang"
-else
-    let g:CC = "gcc"
-endif
-" }}}
-
 " vim: set ts=8 sts=4 sw=4 et :

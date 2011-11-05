@@ -3,6 +3,15 @@
 " Notes:
 "   ~ 'omnifunc' automatically set when 'filetype plugin on' is set
 
+" set default compiler
+if !exists("g:CC")
+    if has("unix") && filereadable("/usr/bin/clang")
+        let g:CC = "clang"
+    else
+        let g:CC = "gcc"
+    endif
+endif
+
 " add custom tags for cpp
 if &filetype == "cpp"
     setlocal tags+=~/.tags/cpp
@@ -30,6 +39,6 @@ endfunction
 
 nnoremap <buffer> <F4> :call RunExec()<CR>
 
-function! RunExec()
+function! RunExecutable()
     execute '!"%:p:r"'
 endfunction
