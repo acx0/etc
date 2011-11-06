@@ -6,7 +6,7 @@
 " set default compiler
 if !exists("g:CC")
     if has("unix") && filereadable("/usr/bin/clang")
-        let g:CC = "clang"
+        let g:CC = "clang -std=gnu89"
     else
         let g:CC = "gcc"
     endif
