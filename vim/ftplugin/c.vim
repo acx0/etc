@@ -7,8 +7,10 @@
 if !exists("g:CC")
     if has("unix") && filereadable("/usr/bin/clang")
         let g:CC = "clang -std=gnu89"
+        let g:CPP = "clang++"
     else
         let g:CC = "gcc"
+        let g:CPP = "g++"
     endif
 endif
 
@@ -32,7 +34,7 @@ function! CompileC()
         if &filetype == "c"
             execute '!' . g:CC . ' "%" -o "%:p:r"'
         elseif &filetype == "cpp"
-            execute '!g++ "%" -o "%:p:r"'
+            execute '!' . g:CPP . ' "%" -o "%:p:r"'
         endif
     endif
 endfunction
