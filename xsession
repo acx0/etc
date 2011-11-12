@@ -10,7 +10,7 @@ xsetroot -solid black &     # set root window background
 xdotool mousemove $(xrandr | grep '*' | awk '{ print $1 }' | tr 'x' ' ') &
 
 urxvtd -q -o -f &
-xflux -l 43 &
+redshift -l 43.7:-79.3 &
 xfce4-power-manager &
 
 # required for qtconfig to load gtk theme
