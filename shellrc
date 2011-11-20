@@ -1,5 +1,11 @@
 # ~/.shellrc - for common *sh settings
 
+if [ "$TERM" = "rxvt-unicode-256color" -a ! -e /usr/share/terminfo/r/rxvt-unicode-256color ]; then
+    TERM=rxvt-256color
+elif [ "$TERM" = "xterm" -a -e /usr/share/terminfo/x/xterm+256color ]; then
+    TERM=xterm+256color
+fi
+
 # enable colour support of ls and add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -44,3 +50,5 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 if [ -x /usr/bin/wmname ]; then
     wmname LG3D 2> /dev/null
 fi
+
+# vim: set ts=8 sts=4 sw=4 et ft=sh:
