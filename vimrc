@@ -22,7 +22,7 @@ call vundle#rc()
 Bundle "altercation/vim-colors-solarized"
 Bundle "bufkill.vim"
 Bundle "ciaranm/inkpot"
-Bundle "Conque-Shell"
+Bundle "acx0/Conque-Shell"
 Bundle "DrawIt"
 Bundle "github-theme"
 "Bundle "godlygeek/csapprox"
