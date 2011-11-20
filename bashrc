@@ -9,9 +9,12 @@ HISTCONTROL=ignoreboth  # ignore lines starting with a space and consecutive dup
 HISTSIZE=1000
 
 shopt -s histappend   # append to the history file, don't overwrite it
-shopt -s autocd       # cd by typing name of directory
 shopt -s checkwinsize # update the values of LINES and COLUMNS after each command if altered
 shopt -s no_empty_cmd_completion
+
+if [ "$BASH_VERSINFO" -gt 3 ]; then
+    shopt -s autocd   # cd by typing name of directory
+fi
 
 if [ -f "$HOME/.shellrc" ]; then
     source "$HOME/.shellrc"
