@@ -11,7 +11,6 @@ FILES=(
     "awesome" "$HOME/.config/awesome"
     "bash_profile" "$HOME/.bash_profile"
     "bashrc" "$HOME/.bashrc"
-    "dircolors" "$HOME/.dircolors"
     "emacs" "$HOME/.emacs"
     "gitconfig" "$HOME/.gitconfig"
     "gtkrc-2.0" "$HOME/.gtkrc-2.0"
