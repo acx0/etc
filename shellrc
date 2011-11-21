@@ -29,6 +29,7 @@ alias vi='vim -u NONE'
 alias vimupdate="vim -c 'BundleInstall!'"
 
 alias g='git'
+alias h='hg'
 alias tm='tmux'
 alias fm='python2.6 $(which ranger)'
 alias io='iotop -o'
