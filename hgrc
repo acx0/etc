@@ -4,6 +4,7 @@ editor = vim
 
 [extensions]
 color =
+pager =
 
 [alias]
 br = branch
@@ -11,3 +12,6 @@ ci = commit
 co = checkout
 df = diff
 st = status
+
+[pager]
+pager = LESS='FSRX' less
