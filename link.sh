@@ -14,6 +14,7 @@ FILES=(
     "emacs" "$HOME/.emacs"
     "gitconfig" "$HOME/.gitconfig"
     "gtkrc-2.0" "$HOME/.gtkrc-2.0"
+    "hgrc" "$HOME/.hgrc"
     "inputrc" "$HOME/.inputrc"
     "pentadactylrc" "$HOME/.pentadactylrc"
     "profile" "$HOME/.profile"

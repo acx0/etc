@@ -1,0 +1,13 @@
+[ui]
+username = Sam Lidder <sam.lidder@gmail.com>
+editor = vim
+
+[extensions]
+color =
+
+[alias]
+br = branch
+ci = commit
+co = checkout
+df = diff
+st = status
