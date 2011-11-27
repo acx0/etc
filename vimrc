@@ -405,12 +405,18 @@ nnoremap <Leader>p :set paste! paste?<CR>
 "set pastetoggle=<Leader>p
 
 " --prose writing
+" modes:
+"   notes - hard wrap at 78 characters, don't reformat text after changes
+"   email - hard wrap at 78 characters, reformat text after changes
+"   essay - soft wrap at end of line (for copying to other word processors)
 nnoremap <leader>tp :call ToggleProse()<CR>
 
 function! ToggleProse()
     if !exists("b:prose")
         let b:prose = 0
-        let b:prose_notes = 1
+        if !exists("b:prose_mode")
+            let b:prose_mode = "notes"
+        endif
         let b:old_formatoptions = &formatoptions
         let b:old_textwidth = &textwidth
     endif
@@ -420,41 +426,34 @@ function! ToggleProse()
         setlocal wrap
         setlocal spell
         setlocal textwidth=78
-        setlocal formatoptions+=tq
+
+        if b:prose_mode == "notes"
+            setlocal formatoptions=tcq
+        elseif b:prose_mode == "email"
+            setlocal formatoptions=tcqa
+        elseif b:prose_mode == "essay"
+            setlocal linebreak
+            setlocal formatoptions=cq
+        else
+            echoerr "E: Prose mode '" . b:prose_mode . "' not defined"
+            let b:prose = 1
+            call ToggleProse()
+            return -1
+        endif
+
         let b:prose = 1
+        echo "  prose (" . b:prose_mode . ")"
     else
         setlocal number
         setlocal nowrap
         setlocal nospell
+
         let &l:textwidth = b:old_textwidth
         let &l:formatoptions = b:old_formatoptions
+
         let b:prose = 0
+        echo "noprose"
     endif
-
-    call SummarizeProse()
-endfunction
-
-command! ToggleProseNotes call ToggleProseNotes()
-
-function! ToggleProseNotes()
-    if !exists("b:prose_notes")
-        let b:prose_notes = 1
-    endif
-
-    if b:prose_notes == 1
-        setlocal formatoptions+=a
-        let b:prose_notes = 0
-    else
-        setlocal formatoptions-=a
-        let b:prose_notes = 1
-    endif
-
-    call SummarizeProse()
-endfunction
-
-function! SummarizeProse()
-    echo b:prose == 1 ? "  prose" : "noprose"
-    echon b:prose_notes == 1 ? " (notes)" : " (nonotes)"
 endfunction
 
 " --file / text manipulation functions
