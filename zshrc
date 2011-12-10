@@ -41,6 +41,10 @@ bindkey -M viins '^R' history-incremental-search-backward
 bindkey -M viins '^N' menu-complete
 bindkey -M viins '^P' reverse-menu-complete
 
+# set alternative keys for history navigation
+bindkey -M viins '^J' down-history
+bindkey -M viins '^K' up-history
+
 # display current vi-mode in prompt string
 VI_MODE="i"
 function zle-line-init zle-keymap-select {

@@ -25,3 +25,7 @@ set bind-tty-special-chars off
 # set alternative keys for tab completion
 "\C-n": menu-complete
 "\C-p": menu-complete-backward
+
+# set alternative keys for history navigation
+"\C-j": next-history
+"\C-k": previous-history
