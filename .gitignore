@@ -1,6 +1,10 @@
 *.swp
+*.pyc
+*.o
 ~*
 vim/.netrwhist
 vim/bundle
 dwm/dwm
-dwm/dwm.o
+ranger/bookmarks
+ranger/history
+ranger/tagged
