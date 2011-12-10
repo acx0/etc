@@ -1,4 +1,4 @@
-" pentadactyl configuration (firefox plugin)
+" ~/.pentadactylrc - firefox plugin
 
 set mapleader=","
 
@@ -9,6 +9,17 @@ highlight -a Hint text-transform: uppercase;
 
 set complete=l
 set guioptions=rbBs
+
+" highlight search terms
+set hlfind
+" show matches as they are found
+set incfind
+
+" always open help in new tab
+set newtab+=help
+
+" remove highlighting
+map <Space> :set nohlfind<CR>
 
 " toggle menu toolbar
 nmap <C-F1> :set guioptions!=m<CR>
@@ -38,4 +49,4 @@ nmap <Leader>f1 :set hintkeys=asdfg;lkjh<CR>
 nmap <Leader>f2 :set hintkeys=asdfgwert<CR>
 nmap <Leader>f3 :set hintkeys=0123456789<CR>
 
-" vim: set ts=4 sts=4 sw=4 et ft=vim :
+" vim: set ts=8 sts=4 sw=4 et ft=vim :
