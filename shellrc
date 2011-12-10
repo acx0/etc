@@ -32,7 +32,7 @@ alias g='git'
 alias h='hg'
 alias tm='tmux'
 alias fm='python2.6 $(which ranger)'
-alias io='iotop -o'
+alias io='sudo iotop -o'
 alias ack='ack-grep'
 
 # list processes which are using a deleted map file after a system update
