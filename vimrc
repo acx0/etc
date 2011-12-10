@@ -468,7 +468,7 @@ function! DiffOrig()
     if !exists("b:diff_active") && &buftype == "nofile"
         echoerr "E: Cannot diff a scratch buffer"
         return -1
-    elseif expand("%") == ""
+    elseif expand("%") == "" || !filereadable(expand("%"))
         echoerr "E: Buffer doesn't exist on disk"
         return -1
     endif
