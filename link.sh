@@ -18,11 +18,11 @@ FILES=(
     inputrc         $HOME/.inputrc
     pentadactylrc   $HOME/.pentadactylrc
     profile         $HOME/.profile
+    ranger          $HOME/.config/ranger
     screenrc        $HOME/.screenrc
     shellrc         $HOME/.shellrc
     ssh/config      $HOME/.ssh/config
     tmux.conf       $HOME/.tmux.conf
-    ranger          $HOME/.config/ranger
     vim             $HOME/.vim
     vimrc           $HOME/.vimrc
     Xcolours        $HOME/.Xcolours
