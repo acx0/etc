@@ -8,28 +8,28 @@ BACKUP_DIR=$SOURCE_DIR.bak
 #   index 2k is key (source)
 #   index 2k+1 is value (destination)
 FILES=(
-    "awesome" "$HOME/.config/awesome"
-    "bash_profile" "$HOME/.bash_profile"
-    "bashrc" "$HOME/.bashrc"
-    "emacs" "$HOME/.emacs"
-    "gitconfig" "$HOME/.gitconfig"
-    "gtkrc-2.0" "$HOME/.gtkrc-2.0"
-    "hgrc" "$HOME/.hgrc"
-    "inputrc" "$HOME/.inputrc"
-    "pentadactylrc" "$HOME/.pentadactylrc"
-    "profile" "$HOME/.profile"
-    "screenrc" "$HOME/.screenrc"
-    "shellrc" "$HOME/.shellrc"
-    "ssh/config" "$HOME/.ssh/config"
-    "tmux.conf" "$HOME/.tmux.conf"
-    "vim" "$HOME/.vim"
-    "vimrc" "$HOME/.vimrc"
-    "Xcolours" "$HOME/.Xcolours"
-    "xmodmaprc" "$HOME/.xmodmaprc"
-    "Xresources" "$HOME/.Xresources"
-    "xsession" "$HOME/.xsession"
-    "zprofile" "$HOME/.zprofile"
-    "zshrc" "$HOME/.zshrc"
+    awesome         $HOME/.config/awesome
+    bash_profile    $HOME/.bash_profile
+    bashrc          $HOME/.bashrc
+    emacs           $HOME/.emacs
+    gitconfig       $HOME/.gitconfig
+    gtkrc-2.0       $HOME/.gtkrc-2.0
+    hgrc            $HOME/.hgrc
+    inputrc         $HOME/.inputrc
+    pentadactylrc   $HOME/.pentadactylrc
+    profile         $HOME/.profile
+    screenrc        $HOME/.screenrc
+    shellrc         $HOME/.shellrc
+    ssh/config      $HOME/.ssh/config
+    tmux.conf       $HOME/.tmux.conf
+    vim             $HOME/.vim
+    vimrc           $HOME/.vimrc
+    Xcolours        $HOME/.Xcolours
+    xmodmaprc       $HOME/.xmodmaprc
+    Xresources      $HOME/.Xresources
+    xsession        $HOME/.xsession
+    zprofile        $HOME/.zprofile
+    zshrc           $HOME/.zshrc
 )
 
 ### functions
