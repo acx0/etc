@@ -433,7 +433,7 @@ function! ToggleProse()
             setlocal formatoptions=tcqa
         elseif b:prose_mode == "essay"
             setlocal linebreak
-            setlocal formatoptions=cq
+            setlocal formatoptions=q
         else
             echoerr "E: Prose mode '" . b:prose_mode . "' not defined"
             let b:prose = 1
