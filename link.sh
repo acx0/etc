@@ -245,7 +245,7 @@ view_diff() {
         exit
     fi
 
-    vimdiff $SOURCE_DIR/$KEY $VALUE
+    vimdiff $VALUE $SOURCE_DIR/$KEY
 }
 
 usage() {
