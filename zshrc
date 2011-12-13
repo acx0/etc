@@ -21,6 +21,9 @@ if [ -f "$HOME/.shellrc" ]; then
     source "$HOME/.shellrc"
 fi
 
+# make zsh's 'time' output similar to bash's
+TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
+
 # use vi editing mode
 bindkey -v
 
