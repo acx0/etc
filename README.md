@@ -7,9 +7,13 @@ rename the folder and update the value of `SOURCE_DIR` in `link.sh` to reflect
 this change.
 
 Run the provided shell script without any arguments to see the current status
-of the files to be managed (defined in the `FILES` array in `link.sh`):
+of the files being managed (defined in the `FILES` array in
+`~/etc/.link-files`, by default):
 
     ./link.sh
+
+If `~/etc/.link-files` does not exist, it will be created on the first run
+containing an empty array.
 
 If the script shows existing files, back them up with:
 
@@ -18,8 +22,8 @@ If the script shows existing files, back them up with:
 The default backup directory is `~/etc.bak`; modify the value of `BACKUP_DIR`
 to change this.
 
-To write the symlinks for files that don't exist, use the `-w` flag, otherwise,
-force write them by adding the `-f` flag:
+To write the symlinks for files that don't exist, use the `-w` flag,
+otherwise, force write them by adding the `-f` flag:
 
     ./link.sh -w
     ./link.sh -wf
@@ -34,8 +38,8 @@ Use the `-h` flag to see an overview of all available options:
 
 ## Vim Setup
 Instead of managing [Vim] plugins as git submodules, [Vundle] is used to
-download and update them. For this reason the `vim/bundle` folder is ignored in
-the `.gitignore` file.
+download and update them. For this reason the `vim/bundle` folder is ignored
+in the `.gitignore` file.
 
 Initialize and update [Vundle] submodule:
 
