@@ -4,36 +4,18 @@
 SOURCE_DIR=$HOME/etc
 BACKUP_DIR=$SOURCE_DIR.bak
 
-# files to be managed
+# files to be managed (defined as array in FILES_DEF)
 #   index 2k is key (source)
 #   index 2k+1 is value (destination)
-FILES=(
-    awesome         $HOME/.config/awesome
-    bash_profile    $HOME/.bash_profile
-    bashrc          $HOME/.bashrc
-    emacs           $HOME/.emacs
-    gitconfig       $HOME/.gitconfig
-    gtkrc-2.0       $HOME/.gtkrc-2.0
-    hgrc            $HOME/.hgrc
-    inputrc         $HOME/.inputrc
-    pentadactylrc   $HOME/.pentadactylrc
-    profile         $HOME/.profile
-    ranger          $HOME/.config/ranger
-    screenrc        $HOME/.screenrc
-    shellrc         $HOME/.shellrc
-    ssh/config      $HOME/.ssh/config
-    tmux.conf       $HOME/.tmux.conf
-    vim             $HOME/.vim
-    vimrc           $HOME/.vimrc
-    Xcolours        $HOME/.Xcolours
-    xmodmaprc       $HOME/.xmodmaprc
-    Xresources      $HOME/.Xresources
-    xsession        $HOME/.xsession
-    zprofile        $HOME/.zprofile
-    zshrc           $HOME/.zshrc
-)
+FILES_DEF=$SOURCE_DIR/.link-files
 
 ### functions
+if [[ ! -e $FILES_DEF ]]; then
+    echo >&2 "$(basename $0): error: \`$FILES_DEF' does not exist; creating it"
+    echo "FILES=( )" > $FILES_DEF
+fi
+
+source $FILES_DEF
 FSIZE=$(( ${#FILES[@]} / 2 ))
 declare -a ARG_FILES
 
@@ -59,6 +41,13 @@ check_arg_files() {
         read -ra ARG_FILES <<< "$@"
         FSIZE=$(( ${#ARG_FILES[@]} ))
         ALL=0
+    fi
+}
+
+check_array() {
+    if (( ${#FILES[@]} % 2 != 0 )); then
+        echo >&2 "$(basename $0): error: FILES array is missing a key or value"
+        exit 1
     fi
 }
 
@@ -262,13 +251,6 @@ usage() {
 
     echo -e >&2 "\nnote: files to be managed must be defined in FILES array"
     exit 1
-}
-
-check_array() {
-    if (( ${#FILES[@]} % 2 != 0 )); then
-        echo >&2 "$(basename $0): error: FILES array is missing a key or value"
-        exit 1
-    fi
 }
 
 ### main

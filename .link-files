@@ -1,0 +1,25 @@
+FILES=(
+    awesome         $HOME/.config/awesome
+    bash_profile    $HOME/.bash_profile
+    bashrc          $HOME/.bashrc
+    emacs           $HOME/.emacs
+    gitconfig       $HOME/.gitconfig
+    gtkrc-2.0       $HOME/.gtkrc-2.0
+    hgrc            $HOME/.hgrc
+    inputrc         $HOME/.inputrc
+    pentadactylrc   $HOME/.pentadactylrc
+    profile         $HOME/.profile
+    ranger          $HOME/.config/ranger
+    screenrc        $HOME/.screenrc
+    shellrc         $HOME/.shellrc
+    ssh/config      $HOME/.ssh/config
+    tmux.conf       $HOME/.tmux.conf
+    vim             $HOME/.vim
+    vimrc           $HOME/.vimrc
+    Xcolours        $HOME/.Xcolours
+    xmodmaprc       $HOME/.xmodmaprc
+    Xresources      $HOME/.Xresources
+    xsession        $HOME/.xsession
+    zprofile        $HOME/.zprofile
+    zshrc           $HOME/.zshrc
+)
