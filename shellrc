@@ -24,6 +24,7 @@ alias lh='ls -lh'
 alias la='ls -A'
 alias lt='ls -lt'
 alias l='ls -CF'
+alias sl='ls'
 
 alias vi='vim -u NONE'
 alias vimupdate="vim -c 'BundleInstall!'"
@@ -34,6 +35,9 @@ alias tm='tmux'
 alias fm='ranger'
 alias io='sudo iotop -o'
 alias ack='ack-grep'
+
+# for playing large files on netbook
+alias splay='mplayer -vfm ffmpeg -lavdopts lowres=1:fast:skiploopfilter=all -autosync 15'
 
 # list processes which are using a deleted map file after a system update
 alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
