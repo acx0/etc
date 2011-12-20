@@ -27,6 +27,7 @@ Bundle "DrawIt"
 "Bundle "github-theme"
 "Bundle "godlygeek/csapprox"
 Bundle "godlygeek/tabular"
+Bundle "IndentConsistencyCop"
 Bundle "indentpython.vim"
 Bundle "javacomplete"
 "Bundle "LaTeX-Suite-aka-Vim-LaTeX"
@@ -362,30 +363,37 @@ set shiftwidth=4             " number of spaces to use for autoindent
 set expandtab                " use spaces instead of tab characters; to insert real tab, use <C-v><Tab>
 set smartindent              " automatic indenting; see ':h C-indenting' for comparison
 
-" toggle expandtab and show current value
-nnoremap <Leader>xt :set expandtab! expandtab?<CR>
-
-" set tabstop, softtabstop, and shiftwidth to the same value
-nnoremap <Leader>st :call SetTab()<CR>
-
-function! SetTab()
-    let l:new_tab_size = input("set tabstop = softtabstop = shiftwidth = ")
-
-    if l:new_tab_size > 0
-        let &l:tabstop = l:new_tab_size
-        let &l:softtabstop = l:new_tab_size
-        let &l:shiftwidth = l:new_tab_size
+" quickly switch between different indentation styles
+command! -nargs=* SetTab call SetTab(<f-args>, 1)
+function! SetTab(size, type, print)
+    if a:type == "soft"
+        let &l:tabstop = 8
+        let &l:softtabstop = a:size
+        let &l:shiftwidth = a:size
+        setlocal expandtab
+    elseif a:type == "hard"
+        let &l:tabstop = a:size
+        let &l:softtabstop = 0
+        let &l:shiftwidth = a:size
+        setlocal noexpandtab
+    else
+        echoerr "E: Tab type '" . a:type . "' not defined"
+        return -1
     endif
 
-    call SummarizeTabs()
+    if a:print == 1
+        call SummarizeTabs()
+    endif
 endfunction
 
 function! SummarizeTabs()
-    echo "tabstop=" . &l:tabstop
+    echon "tabstop=" . &l:tabstop
     echon " softtabstop=" . &l:softtabstop
     echon " shiftwidth=" . &l:shiftwidth
     echon &l:expandtab == 1 ? " expandtab" : " noexpandtab"
 endfunction
+
+"call SetTab(4, "soft", 0)
 
 " --copying / pasting
 " allow vim commands to copy to system clipboard (*)
