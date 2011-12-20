@@ -53,8 +53,8 @@ Bundle "wombat256.vim"
 " }}}
 
 " ---> User interface {{{
-" easier to reach than \
-let mapleader = ","
+" use <Space> as mapleader, easier to reach than \
+let mapleader = " "
 " easier to reach than Esc or Ctrl-[
 inoremap jk <Esc>
 
@@ -84,7 +84,7 @@ set hlsearch   " highlight search terms
 set incsearch  " show matches as they are found
 
 " toggle hlsearch and show current value
-nnoremap <Space> :set hlsearch! hlsearch?<CR>
+nnoremap <leader>h :set hlsearch! hlsearch?<CR>
 
 " --feedback
 set showmatch    " show matching braces when typed or under cursor

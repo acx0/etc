@@ -1,6 +1,6 @@
 " ~/.pentadactylrc - firefox plugin
 
-set mapleader=","
+set mapleader=<Space>
 
 " use listed characters to enumerate quickhint elements
 set hintkeys=asdfg;lkjh
@@ -19,7 +19,7 @@ set incfind
 set newtab+=help
 
 " remove highlighting
-map <Space> :set nohlfind<CR>
+nmap <leader>h :set nohlfind<CR>
 
 " toggle menu toolbar
 nmap <C-F1> :set guioptions!=m<CR>
