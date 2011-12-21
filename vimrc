@@ -417,51 +417,54 @@ nnoremap <Leader>p :set paste! paste?<CR>
 "   notes - hard wrap at 78 characters, don't reformat text after changes
 "   email - hard wrap at 78 characters, reformat text after changes
 "   essay - soft wrap at end of line (for copying to other word processors)
+let g:default_prose_mode = "notes"
+
 nnoremap <leader>tp :call ToggleProse()<CR>
 
 function! ToggleProse()
-    if !exists("b:prose")
-        let b:prose = 0
-        if !exists("b:prose_mode")
-            let b:prose_mode = "notes"
-        endif
+    if exists("b:prose_mode") && b:prose_mode != "off"
+        call SetProse("off")
+    else
+        call SetProse(g:default_prose_mode)
+    endif
+endfunction
+
+command! -nargs=1 SetProse call SetProse(<f-args>)
+function! SetProse(mode)
+    if !exists("b:prose_mode")
+        let b:prose_mode = a:mode
         let b:old_formatoptions = &formatoptions
         let b:old_textwidth = &textwidth
     endif
 
-    if b:prose == 0
-        setlocal nonumber
-        setlocal wrap
-        setlocal spell
-        setlocal textwidth=78
+    setlocal nonumber
+    setlocal wrap
+    setlocal spell
+    setlocal textwidth=78
 
-        if b:prose_mode == "notes"
-            setlocal formatoptions=tcq
-        elseif b:prose_mode == "email"
-            setlocal formatoptions=tcqa
-        elseif b:prose_mode == "essay"
-            setlocal linebreak
-            setlocal formatoptions=q
-        else
-            echoerr "E: Prose mode '" . b:prose_mode . "' not defined"
-            let b:prose = 1
-            call ToggleProse()
-            return -1
-        endif
-
-        let b:prose = 1
-        echo "  prose (" . b:prose_mode . ")"
+    if a:mode == "notes"
+        setlocal formatoptions=tcq
+    elseif a:mode == "email"
+        setlocal formatoptions=tcqa
+    elseif a:mode == "essay"
+        setlocal linebreak
+        setlocal formatoptions=q
     else
         setlocal number
-        setlocal nowrap
         setlocal nospell
+        setlocal nolinebreak
 
         let &l:textwidth = b:old_textwidth
         let &l:formatoptions = b:old_formatoptions
 
-        let b:prose = 0
-        echo "noprose"
+        if a:mode != "off"
+            echoerr "E: Prose mode '" . a:mode . "' not defined"
+            return -1
+        endif
     endif
+
+    let b:prose_mode = a:mode
+    echo a:mode == "off" ? "noprose" : "  prose (" . a:mode . ")"
 endfunction
 
 " --file / text manipulation functions
