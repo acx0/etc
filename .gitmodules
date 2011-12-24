@@ -4,3 +4,6 @@
 [submodule "dwm"]
 	path = dwm
 	url = git://github.com/acx0/dwm.git
+[submodule "link.sh"]
+	path = link.sh
+	url = git://github.com/acx0/link.sh.git
