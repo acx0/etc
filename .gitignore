@@ -1,10 +1,8 @@
 *.swp
 *.py?
-*.o
 ~*
 vim/.netrwhist
 vim/bundle
-dwm/dwm
 ranger/bookmarks
 ranger/history
 ranger/tagged

@@ -1,3 +1,6 @@
 [submodule "vim/vundle"]
 	path = vim/vundle
 	url = git://github.com/gmarik/vundle.git
+[submodule "dwm"]
+	path = dwm
+	url = git@github.com:acx0/dwm.git
