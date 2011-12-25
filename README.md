@@ -1,57 +1,23 @@
 ## Installation
+Clone the repository and initialize the submodules:
 
     git clone git://github.com/acx0/etc.git ~/etc
+    cd ~/etc
+    git submodule update --init
 
-Configurations files may be placed in a location other than `~/etc`. To do so,
-rename the folder and update the value of `SOURCE_DIR` in `link.sh` to reflect
-this change.
-
-Run the provided shell script without any arguments to see the current status
-of the files being managed (defined in the `FILES` array in
-`~/etc/.link-files`, by default):
-
-    ./link.sh
-
-If `~/etc/.link-files` does not exist, it will be created on the first run
-containing an empty array.
-
-If the script shows existing files, back them up with:
-
-    ./link.sh -b
-
-The default backup directory is `~/etc.bak`; modify the value of `BACKUP_DIR`
-to change this.
-
-To write the symlinks for files that don't exist, use the `-w` flag,
-otherwise, force write them by adding the `-f` flag:
-
-    ./link.sh -w
-    ./link.sh -wf
-
-To restore the backed up files, use:
-
-    ./link.sh -r
-
-Use the `-h` flag to see an overview of all available options:
-
-    ./link.sh -h
+## Setup
+[link.sh] is used to link the dotfiles to their native locations.
 
 ## Vim Setup
-Instead of managing [Vim] plugins as git submodules, [Vundle] is used to
-download and update them. For this reason the `vim/bundle` folder is ignored
-in the `.gitignore` file.
+[Vim] plugin files are not tracked since [Vundle] is used to download and
+update them.
 
-Initialize and update [Vundle] submodule:
-
-    cd ~/etc
-    git submodule init
-    git submodule update
-
-Install plugins using `BundleInstall` command; update them using
+Install plugins using the `BundleInstall` Vim command, and update them using
 `BundleInstall!`:
 
     vim -c BundleInstall
     :BundleInstall!
 
+[link.sh]:http://github.com/acx0/link.sh
 [Vim]:http://vim.org
 [Vundle]:http://github.com/gmarik/vundle
