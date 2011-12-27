@@ -10,11 +10,7 @@
 theme = {}
 theme.confdir       = awful.util.getdir("config")
 hostname = vicious.widgets.os()[4]
-if hostname == "zappa" then
-    theme.wallpaper_cmd = { "awsetbg -c /home/sam/Pictures/Wallpapers/cube.jpg" }
-elseif hostname == "euclid" then
-    theme.wallpaper_cmd = { "awsetbg -c /home/sam/Pictures/cube.jpg" }
-end
+theme.wallpaper_cmd = { "awsetbg -c /home/sam/media/pictures/wallpapers/cube.jpg" }
 --theme.wallpaper_cmd = { "awsetbg /usr/share/awesome/themes/zenburn/zenburn-background.png" }
 -- }}}
 

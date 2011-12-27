@@ -189,15 +189,9 @@ vicious.cache(vicious.widgets.fs)
 
 -- Register widgets
 vicious.register(fs.r, vicious.widgets.fs, "${/ used_p}",              599)
-if hostname == "zappa" then
-    vicious.register(fs.h, vicious.widgets.fs, "${/media/Data used_p}",    599)
-    vicious.register(fs.s, vicious.widgets.fs, "${/media/Windows used_p}", 599)
-    vicious.register(fs.b, vicious.widgets.fs, "${/media/device used_p}",  113)
-elseif hostname == "euclid" then
-    vicious.register(fs.h, vicious.widgets.fs, "${/media/data used_p}",    599)
-    vicious.register(fs.s, vicious.widgets.fs, "${/media/win-hd used_p}",  599)
-    vicious.register(fs.b, vicious.widgets.fs, "${/media/device used_p}",  113)
-end
+vicious.register(fs.h, vicious.widgets.fs, "${/media/data used_p}",    599)
+vicious.register(fs.s, vicious.widgets.fs, "${/media/win-hd used_p}",  599)
+vicious.register(fs.b, vicious.widgets.fs, "${/media/sdb1 used_p}",    113)
 -- }}}
 
 -- {{{ Network usage
