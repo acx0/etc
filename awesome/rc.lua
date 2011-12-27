@@ -429,7 +429,7 @@ globalkeys = awful.util.table.join(
 
     -- Custom
     -- Print sreen
-    awful.key({                   }, "Print",  function () awful.util.spawn("scrot -e 'mv $f ~/Pictures/ 2> /dev/null'", false) end),
+    awful.key({                   }, "Print",  function () awful.util.spawn("scrot -e 'mv $f ~/media/pictures/screenshots 2> /dev/null'", false) end),
 
     -- Volume
     awful.key({ modkey, "Shift"   }, "Up",     function () awful.util.spawn("amixer -q sset Master 2dB+", false) end),
