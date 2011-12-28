@@ -521,8 +521,8 @@ function! PreservePosition(command)
     call cursor(l:line, l:column)
 endfunction
 
-" write to root-owned file when running as non-root by piping through tee using sudo
-cnoremap w!! write !sudo tee % > /dev/null
+" write to root-owned file when running as non-root
+command! W write !sudo tee % > /dev/null
 
 " append modeline after last line in buffer
 " use substitute() instead of printf() to handle "%%s" modeline in LaTeX files
