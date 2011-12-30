@@ -509,6 +509,9 @@ endfunction
 " remove trailing whitespace
 nnoremap _$ :call PreservePosition("%s/\\s\\+$//e")<CR>
 
+" auto-indent entire file
+nnoremap _= :call PreservePosition("normal! gg=G")<CR>
+
 function! PreservePosition(command)
     " save last search, and cursor position
     let l:search = @/
