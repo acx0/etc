@@ -14,6 +14,7 @@ FILES=(
     shellrc         $HOME/.shellrc
     ssh/config      $HOME/.ssh/config
     tmux.conf       $HOME/.tmux.conf
+    user-dirs.dirs  $HOME/.config/user-dirs.dirs
     vim             $HOME/.vim
     vimrc           $HOME/.vimrc
     Xcolours        $HOME/.Xcolours
