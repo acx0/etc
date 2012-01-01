@@ -24,7 +24,6 @@ alias lh='ls -lh'
 alias la='ls -A'
 alias lt='ls -lt'
 alias l='ls -CF'
-alias sl='ls'
 
 alias vi='vim -u NONE'
 alias vimupdate="vim -c 'BundleInstall!'"
