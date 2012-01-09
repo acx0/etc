@@ -32,6 +32,7 @@ Bundle "indentpython.vim"
 Bundle "javacomplete"
 "Bundle "LaTeX-Suite-aka-Vim-LaTeX"
 "Bundle "Lokaltog/vim-easymotion"
+Bundle "mileszs/ack.vim"
 Bundle "msanders/snipmate.vim"
 Bundle "nathanaelkane/vim-indent-guides"
 Bundle "OmniCppComplete"
@@ -603,6 +604,9 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 " --Conque-Shell
 let g:ConqueTerm_Color = 1  " only enable colours for the most recent 200 lines
+
+" --ack.vim
+let g:ackprg = "ack-grep -H --nocolor --nogroup --column"
 
 " --LaTeX-Suite-aka-Vim-LaTeX
 let g:tex_flavor = "latex"
