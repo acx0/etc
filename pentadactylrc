@@ -35,6 +35,9 @@ nmap <Leader>tm :tabmove 100<CR>
 " view native size of image without clicking it
 nmap <Leader>z -builtin :javascript window.content.document.toggleImageSize();<CR>
 
+" open up panorama
+nmap ge <C-S-e>
+
 " shortcut for accessing subreddits
 cnoremap /r/ reddit.com/r/
 
