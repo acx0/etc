@@ -557,6 +557,9 @@ endif
 " --vundle
 let g:vundle_default_git_proto = "git"
 
+" --ctrlp.vim
+let g:ctrlp_custom_ignore = "\.git$\\|\.hg$\\|\.svn$"
+
 " --nerdtree
 " quickly toggle nerdtree
 "nnoremap <F2> :NERDTreeToggle<CR>
