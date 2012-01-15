@@ -30,6 +30,7 @@ Bundle "godlygeek/tabular"
 Bundle "IndentConsistencyCop"
 Bundle "indentpython.vim"
 Bundle "javacomplete"
+Bundle "kien/ctrlp.vim"
 "Bundle "LaTeX-Suite-aka-Vim-LaTeX"
 "Bundle "Lokaltog/vim-easymotion"
 Bundle "mileszs/ack.vim"
@@ -37,7 +38,7 @@ Bundle "msanders/snipmate.vim"
 Bundle "nathanaelkane/vim-indent-guides"
 Bundle "OmniCppComplete"
 Bundle "scrooloose/nerdcommenter"
-Bundle "scrooloose/nerdtree"
+"Bundle "scrooloose/nerdtree"
 "Bundle "sjl/gundo.vim"
 "Bundle "Sorcerer"
 Bundle "taglist.vim"
@@ -555,7 +556,7 @@ endif
 " ---> Plugin configuration {{{
 " --nerdtree
 " quickly toggle nerdtree
-nnoremap <F2> :NERDTreeToggle<CR>
+"nnoremap <F2> :NERDTreeToggle<CR>
 
 " --snipmate.vim
 " use custom snippets
