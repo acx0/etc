@@ -554,6 +554,9 @@ endif
 " }}}
 
 " ---> Plugin configuration {{{
+" --vundle
+let g:vundle_default_git_proto = "git"
+
 " --nerdtree
 " quickly toggle nerdtree
 "nnoremap <F2> :NERDTreeToggle<CR>
