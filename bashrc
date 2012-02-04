@@ -6,7 +6,7 @@
 PS1='\u@\h:\W\$ '
 
 HISTCONTROL=ignoreboth  # ignore lines starting with a space and consecutive duplicates
-HISTSIZE=1000
+HISTSIZE=10000
 
 shopt -s histappend   # append to the history file, don't overwrite it
 shopt -s checkwinsize # update the values of LINES and COLUMNS after each command if altered
