@@ -1,3 +1,11 @@
+! ~/.xmodmaprc
+
 ! remap Alt_R to Super_L
 remove mod1 = Alt_R
 keysym Alt_R = Super_L
+
+! swap Caps_Lock and Escape
+remove Lock = Caps_Lock
+keysym Escape = Caps_Lock
+keysym Caps_Lock = Escape
+add Lock = Caps_Lock
