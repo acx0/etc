@@ -14,6 +14,9 @@ urxvtd -q -o -f &
 redshift -l 43.7:-79.3 &
 xfce4-power-manager &
 
+# ~/bin scripts
+tp off &    # disable touchpad
+
 # required for qtconfig to load gtk theme
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
