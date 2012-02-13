@@ -7,9 +7,6 @@ xmodmap ~/.xmodmaprc &      # load custom keyboard mappings
 xsetroot -solid black &     # set root window background
 xset r rate 580 40 &        # set keyboard delay and repeat rate
 
-# move cursor to bottom right corner of screen
-xdotool mousemove $(xrandr | grep '*' | awk '{ print $1 }' | tr 'x' ' ') &
-
 urxvtd -q -o -f &
 redshift -l 43.7:-79.3 &
 xfce4-power-manager &
