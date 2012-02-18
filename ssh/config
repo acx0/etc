@@ -3,10 +3,10 @@
 # enable connection sharing - if master not specified, first client becomes
 # master and doesn't close until all other sessions using it close
 ControlMaster auto
-ControlPath /tmp/ssh_mux_%h_%p_%r
+ControlPath ~/.ssh/ssh_mux_%h_%p_%r
 
 # enable persistent connections
-ControlPersist 1h
+ControlPersist 2h
 
 # avoid delay when connecting to servers where enabled
 GSSAPIAuthentication no
