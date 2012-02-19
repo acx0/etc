@@ -1,8 +1,8 @@
-! set some basic values in case colourscheme does not
+! set some basic values in case colourscheme does not specify
 
 *background: #000000
 *foreground: #AAAAAA
 
 *cursorColor: #FFFFFF
 
-/* vim: set ts=4 sts=4 sw=4 et ft=xdefaults :*/
+/* vim: set ft=xdefaults :*/
