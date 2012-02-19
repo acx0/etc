@@ -17,7 +17,7 @@ require("debian.menu")
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 --beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init(awful.util.getdir("config") .. "/zenburn.lua")
+beautiful.init(awful.util.getdir("config") .. "/custom.lua")
 
 -- used for machine-specific options
 hostname = vicious.widgets.os()[4]
@@ -57,7 +57,8 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names  = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" },
+    names  = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
+    --names  = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" },
     layout = {
         layouts[2], layouts[2], layouts[2],
         layouts[2], layouts[2], layouts[2],
