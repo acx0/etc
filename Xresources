@@ -1,7 +1,7 @@
 ! ~/.Xresources
 
 #include ".Xcolours/basic"
-#include ".Xcolours/linux-console"
+#include ".Xcolours/photons-mod"
 
 *customization: -color
 
