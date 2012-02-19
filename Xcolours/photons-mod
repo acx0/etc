@@ -1,0 +1,25 @@
+! modified version of photons
+! - makes distinguishing symlinks from dirs easier
+! - modified shades of orange to be more distinctive
+
+*background: #1A1A1A
+*foreground: #DDCCBB
+
+*color0: #393939
+*color1: #C72D41
+*color2: #85C600
+*color3: #FFA600
+*color4: #11386B
+*color5: #5B1E35
+*color6: #0099BC
+*color7: #4F585D
+*color8: #2E3537
+*color9: #FF5D4A
+*color10: #B3FF1D
+*color11: #FEED6C
+*color12: #3465A4
+*color13: #BE4773
+*color14: #5CDEDE
+*color15: #85919B
+
+/* vim: set ft=xdefaults :*/
