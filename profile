@@ -8,6 +8,7 @@
 #umask 022
 
 export EDITOR=vim
+export BROWSER=firefox
 
 # add ~/bin to PATH if it exists
 if [ -d "$HOME/bin" ]; then
