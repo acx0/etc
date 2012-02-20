@@ -29,6 +29,9 @@ TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
 # use vi editing mode
 bindkey -v
 
+# use jk to exit insert mode
+bindkey -M viins 'jk' vi-cmd-mode
+
 # break default vi insert mode character deletion behaviour (like 'set backspace+=start' in vim)
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^H' backward-delete-char
@@ -71,7 +74,7 @@ PROMPT="%n@%m:%1~ [%{$fg[red]%}${VI_MODE}%{$reset_color%}]$ "
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' expand prefix
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*'
-zstyle :compinstall filename '/home/sam/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit && compinit
 
