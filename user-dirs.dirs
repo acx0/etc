@@ -1,10 +1,10 @@
 # ~/.config/user-dirs.dirs
 # This file is written by xdg-user-dirs-update
 
-XDG_DESKTOP_DIR="$HOME"
+XDG_DESKTOP_DIR="$HOME/var/downloads"
 XDG_DOWNLOAD_DIR="$HOME/var/downloads"
-XDG_TEMPLATES_DIR="$HOME"
-XDG_PUBLICSHARE_DIR="$HOME"
+XDG_TEMPLATES_DIR="$HOME/var/downloads"
+XDG_PUBLICSHARE_DIR="$HOME/var/downloads"
 XDG_DOCUMENTS_DIR="$HOME/media/documents"
 XDG_MUSIC_DIR="$HOME/media/music"
 XDG_PICTURES_DIR="$HOME/media/pictures"
