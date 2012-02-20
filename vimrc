@@ -86,7 +86,7 @@ set hlsearch   " highlight search terms
 set incsearch  " show matches as they are found
 
 " toggle hlsearch and show current value
-nnoremap <leader>h :set hlsearch! hlsearch?<CR>
+nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
 
 " --feedback
 set showmatch    " show matching braces when typed or under cursor
@@ -260,7 +260,7 @@ set virtualedit=block " allow cursor to move past last character on line in visu
 "nnoremap ' `
 "nnoremap ` '
 
-"prevent jumping over wrapped lines
+" prevent jumping over wrapped lines
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
@@ -421,7 +421,7 @@ nnoremap <Leader>p :set paste! paste?<CR>
 "   essay - soft wrap at end of line (for copying to other word processors)
 let g:default_prose_mode = "notes"
 
-nnoremap <leader>tp :call ToggleProse()<CR>
+nnoremap <Leader>tp :call ToggleProse()<CR>
 
 function! ToggleProse()
     if exists("b:prose_mode") && b:prose_mode != "off"
@@ -506,6 +506,18 @@ function! DiffOrig()
         execute "bdelete " . t:diff_buffer
         let b:diff_active = 0
     endif
+endfunction
+
+" toggle diff option for window
+nnoremap <Leader>td :call ToggleDiff()<CR>
+
+function! ToggleDiff()
+    if &l:diff == 0
+        diffthis
+    else
+        diffoff
+    endif
+    set diff?
 endfunction
 
 " remove trailing whitespace
