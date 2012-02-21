@@ -127,6 +127,7 @@ nnoremap <Leader>ss :setlocal spell! spell?<CR>
 set background=dark
 
 " colorscheme modification
+let g:neverland_bold = 0         " disable bold
 let g:molokai_original = 1       " lighter background in gVim
 let g:solarized_termcolors = 256 " use degraded colors in terminal vim
 let g:zenburn_high_Contrast = 1  " darker colors
@@ -143,11 +144,7 @@ if has("gui_running")
         "set guifont=Lucida_Console:h9:cANSI
     endif
 
-    if has("unix")
-        colorscheme neverland
-    elseif has("win32")
-        colorscheme neverland-nobold
-    endif
+    colorscheme neverland-mod
 
     set guicursor+=a:blinkon0   " disable blinking cursor for gVim
 
@@ -183,7 +180,7 @@ else
     " terminal vim specific
 
     if &t_Co == 256
-        colorscheme neverland
+        colorscheme neverland-mod
     else
         colorscheme desert
     endif
