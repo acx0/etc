@@ -29,4 +29,4 @@
 	remote = origin
 	merge = refs/heads/master
 
-; vim: set ts=4 sts=4 sw=4 noet ft=gitconfig :
+; vim: set ts=8 sts=0 sw=8 noet ft=gitconfig :
