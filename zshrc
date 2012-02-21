@@ -6,6 +6,7 @@ SAVEHIST=10000
 
 setopt APPEND_HISTORY
 setopt AUTO_CD
+setopt AUTO_PUSHD
 #setopt CORRECT_ALL
 setopt EXTENDED_GLOB
 setopt HASH_LIST_ALL
