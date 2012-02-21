@@ -24,7 +24,7 @@ elif [ "$SESSION" = "dwm" ]; then
 
     while true; do
         xsetroot -name "$(date +"%a %b %d %H:%M %Z %Y")"
-        sleep 60
+        sleep 10
     done &
 
     exec ~/etc/dwm/dwm
