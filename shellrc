@@ -30,11 +30,11 @@ alias vimupdate="vim -c 'BundleInstall!'"
 
 alias g='git'
 alias h='hg'
-alias tm='tmux'
 alias fm='ranger'
 alias io='sudo iotop -o'
 alias ack='ack-grep'
 alias etlog='sudo etckeeper vcs log $*'
+alias wee='tm weechat-curses'
 
 # for playing large files on netbook
 alias splay='mplayer -vfm ffmpeg -lavdopts lowres=1:fast:skiploopfilter=all -autosync 15'
