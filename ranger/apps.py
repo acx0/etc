@@ -9,7 +9,7 @@ class CustomApplications(DefaultApps):
 
 		if f.extension is not None:
 			if f.extension in ('pdf', ):
-				return self.either(c, 'apvlv', 'evince', 'zathura')
+				return self.either(c, 'zathura', 'apvlv', 'evince')
 			if f.extension in ('odt', 'ods', 'odp', 'odf', 'odg',
 					'doc', 'xls', 'ppt', 'docx', 'xlsx', 'pptx'):
 				return self.either(c, 'libreoffice', 'soffice', 'ooffice')
