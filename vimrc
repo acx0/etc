@@ -439,11 +439,12 @@ function! SetProse(mode)
     setlocal nonumber
     setlocal wrap
     setlocal spell
-    setlocal textwidth=78
 
     if a:mode == "notes"
+        setlocal textwidth=78
         setlocal formatoptions=tcq
     elseif a:mode == "email"
+        setlocal textwidth=72
         setlocal formatoptions=tcqa
     elseif a:mode == "essay"
         setlocal linebreak
