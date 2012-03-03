@@ -14,6 +14,10 @@ if !exists("g:CC")
     endif
 endif
 
+if !exists("b:cflags")
+    let b:cflags = ""
+endif
+
 " add custom tags for cpp
 if &filetype == "cpp"
     setlocal tags+=~/.tags/cpp
@@ -32,11 +36,18 @@ function! CompileC()
         make!
     else
         if &filetype == "c"
-            execute '!' . g:CC . ' "%" -o "%:p:r"'
+            execute '!' . g:CC . ' "%" -o "%:p:r" ' . b:cflags
         elseif &filetype == "cpp"
-            execute '!' . g:CPP . ' "%" -o "%:p:r"'
+            execute '!' . g:CPP . ' "%" -o "%:p:r" ' . b:cflags
         endif
     endif
+endfunction
+
+nnoremap <buffer> <Leader><F3> :call GetCFlags()<CR>
+
+function! GetCFlags()
+    echo 'b:cflags = "' . b:cflags . '"'
+    let b:cflags = input("let b:cflags = ", b:cflags)
 endfunction
 
 nnoremap <buffer> <F4> :call RunExecutable()<CR>
