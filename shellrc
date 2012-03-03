@@ -35,6 +35,7 @@ alias io='sudo iotop -o'
 alias ack='ack-grep'
 alias etlog='sudo etckeeper vcs log $*'
 alias wee='tm weechat-curses'
+alias xlock='xscreensaver-command -lock'
 
 # for playing large files on netbook
 alias splay='mplayer -vfm ffmpeg -lavdopts lowres=1:fast:skiploopfilter=all -autosync 15'
