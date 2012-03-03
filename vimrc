@@ -283,6 +283,12 @@ nnoremap <Leader>sl :rightbelow vnew<CR>
 nnoremap <Leader>sk :leftabove new<CR>
 nnoremap <Leader>sj :rightbelow new<CR>
 
+" window management shortcuts
+nnoremap <Leader>H <C-w>H
+nnoremap <Leader>J <C-w>J
+nnoremap <Leader>K <C-w>K
+nnoremap <Leader>L <C-w>L
+
 " tab creation shortcuts
 "nnoremap <Leader>tt :tabs<CR>
 nnoremap <Leader>tn :tabnew<CR>
