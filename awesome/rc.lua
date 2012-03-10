@@ -119,8 +119,13 @@ cpugraph:set_gradient_colors({ beautiful.fg_end_widget,
 })
 
 -- Register widgets
-vicious.register(cpugraph,  vicious.widgets.cpu,     "$1")
-vicious.register(tzswidget, vicious.widgets.thermal, "$1C", 19, "thermal_zone0")
+-- note: using custom thermal.lua widget
+vicious.register(cpugraph, vicious.widgets.cpu, "$1")
+if hostname == "zora" then
+    vicious.register(tzswidget, vicious.widgets.thermal, "$1C", 19, { "coretemp.0", "core" })
+else
+    vicious.register(tzswidget, vicious.widgets.thermal, "$1C", 19, "thermal_zone0")
+end
 -- }}}
 
 -- {{{ Battery state
