@@ -21,6 +21,7 @@ call vundle#rc()
 " --managed / active plugins
 Bundle "acx0/Conque-Shell"
 "Bundle "altercation/vim-colors-solarized"
+Bundle "Arduino-syntax-file"
 Bundle "bufkill.vim"
 "Bundle "ciaranm/inkpot"
 Bundle "DrawIt"
@@ -52,6 +53,7 @@ Bundle "wombat256.vim"
 "Bundle "xoria256.vim"
 "Bundle "Zenburn"
 "Bundle "zenesque.vim"
+
 " }}}
 
 " ---> User interface {{{
