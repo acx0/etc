@@ -1,5 +1,7 @@
 # ~/.config/zathura/zathurac
 
-# less-style navigation
-map d scroll half_down normal
-map u scroll half_up normal
+# less-style navigation (no ctrl)
+map d scroll half-down normal
+map u scroll half-up normal
+map e scroll down normal
+map y scroll up normal
