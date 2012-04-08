@@ -440,6 +440,7 @@ globalkeys = awful.util.table.join(
     -- ncmpcpp
     awful.key({ modkey, "Shift"   }, ".",      function () awful.util.spawn("ncmpcpp next", false) end),
     awful.key({ modkey, "Shift"   }, ",",      function () awful.util.spawn("ncmpcpp prev", false) end),
+    awful.key({ modkey, "Shift"   }, "p",      function () awful.util.spawn("ncmpcpp toggle", false) end),
 
     -- Volume
     awful.key({ modkey, "Shift"   }, "Up",     function () awful.util.spawn("amixer -q sset Master 2dB+", false) end),
