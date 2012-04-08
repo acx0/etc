@@ -437,6 +437,10 @@ globalkeys = awful.util.table.join(
     -- Print sreen
     awful.key({                   }, "Print",  function () awful.util.spawn("scrot -e 'mv $f ~/media/pictures/screenshots 2> /dev/null'", false) end),
 
+    -- ncmpcpp
+    awful.key({ modkey, "Shift"   }, ".",      function () awful.util.spawn("ncmpcpp next", false) end),
+    awful.key({ modkey, "Shift"   }, ",",      function () awful.util.spawn("ncmpcpp prev", false) end),
+
     -- Volume
     awful.key({ modkey, "Shift"   }, "Up",     function () awful.util.spawn("amixer -q sset Master 2dB+", false) end),
     awful.key({ modkey, "Shift"   }, "Down",   function () awful.util.spawn("amixer -q sset Master 2dB-", false) end),
