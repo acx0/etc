@@ -114,9 +114,13 @@ set completeopt-=preview    " disable 'preview' for insert mode completion
 
 " --command-line completion
 set wildmenu                                 " enhanced command-line completion
-"set wildignorecase                           " ignore case when completing filenames and directories
 "set wildmode=list:longest,full               " list matches and complete till longest common string, then cycle through them
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.o " filetypes to ignore in file related operations
+
+" ignore case when completing filenames and directories when supported
+if v:version > 703 || (v:version == 703 && has("patch72"))
+    set wildignorecase
+endif
 
 " --spell checking
 set spelllang=en_ca " set region to Canadian English
