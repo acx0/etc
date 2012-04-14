@@ -409,8 +409,8 @@ endfunction
 "   * is the selection register (middle click, Shift-Insert)
 set clipboard=unnamed
 
-" use clipboard register in linux when supported
-if has("unix") && v:version >= 703
+" use clipboard register when supported (X11 only)
+if has("unnamedplus")
     set clipboard+=unnamedplus
 endif
 
