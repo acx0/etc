@@ -3,10 +3,12 @@
 -- for reference: http://colorschemedesigner.com/
 
 -- {{{ Main
+version = 1
 theme = {}
 theme.confdir       = awful.util.getdir("config")
 hostname = vicious.widgets.os()[4]
-theme.wallpaper_cmd = { "awsetbg -c /home/sam/media/pictures/wallpapers/cube.jpg" }
+--theme.wallpaper_cmd = { "awsetbg -c /home/sam/media/pictures/wallpapers/cube.jpg" }
+theme.wallpaper_cmd = { "awsetbg -c /home/sam/media/pictures/wallpapers/mqFoR.jpg" }
 -- }}}
 
 -- {{{ Styles
@@ -20,14 +22,17 @@ theme.fg_urgent = "#EEEEEE"
 theme.bg_normal = "#222222"
 theme.bg_focus  = "#005577"
 theme.bg_urgent = "#BE2100"
---theme.bg_urgent = "#549FBB"
 -- }}}
 
 -- {{{ Borders
 theme.border_width  = "2"
 theme.border_normal = "#444444"
 -- active window border colour
-theme.border_focus  = "#005577"
+if version == 0 then
+    theme.border_focus = "#005577"
+elseif version ==1 then
+    theme.border_focus = "#DEAE38"
+end
 theme.border_marked = "#CC9393"
 -- }}}
 
