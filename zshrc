@@ -50,15 +50,15 @@ bindkey -M viins '^R' history-incremental-search-backward
 bindkey -M viins '^N' menu-complete
 bindkey -M viins '^P' reverse-menu-complete
 
-# set alternative keys for history navigation
-bindkey -M viins '^J' down-history
-bindkey -M viins '^K' up-history
+# search history based on first word in buffer
+bindkey -M viins '^J' history-search-forward
+bindkey -M viins '^K' history-search-backward
 
 # display current vi-mode in prompt string
 VI_MODE="i"
 function zle-line-init zle-keymap-select {
     VI_MODE="${${KEYMAP/vicmd/c}/(main|viins)/i}"
-    if [ $VI_MODE = "i" ]; then
+    if [ "$VI_MODE" = "i" ]; then
         PROMPT="%n@%m:%1~ [%{$fg[red]%}${VI_MODE}%{$reset_color%}]$ "
     else
         PROMPT="%n@%m:%1~ [%{$fg[green]%}${VI_MODE}%{$reset_color%}]$ "
