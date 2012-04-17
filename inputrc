@@ -33,9 +33,12 @@ $if mode=vi
     "\C-n": menu-complete
     "\C-p": menu-complete-backward
 
-    # set alternative keys for history navigation
-    "\C-j": next-history
-    "\C-k": previous-history
+    # search history for string up to cursor position
+    "\C-j": history-search-forward
+    "\C-k": history-search-backward
+
+    # only works in command mode by default
+    "\C-l": clear-screen
 
     # command mode bindings
     #set keymap vi-command
