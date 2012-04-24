@@ -1,0 +1,11 @@
+# ~/.asoundrc
+
+# fixes growling/low octave voice when using mic in skype
+# note:
+#   - use 'skype (asym)' for microphone device
+#   - may have to delete ~/.Skype/shared.xml for changes to take effect
+pcm.skype {
+    type asym
+    playback.pcm "skypeout"
+    capture.pcm "skypein"
+}
