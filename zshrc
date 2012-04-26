@@ -54,6 +54,11 @@ bindkey -M viins '^P' reverse-menu-complete
 bindkey -M viins '^J' history-search-forward
 bindkey -M viins '^K' history-search-backward
 
+# leave menu selection and accept entire command line after '^M'
+# default behaviour only leaves menuselect; doesn't execute command line
+zmodload zsh/complist
+bindkey -M menuselect '^M' .accept-line
+
 # display current vi-mode in prompt string
 VI_MODE="i"
 function zle-line-init zle-keymap-select {
@@ -72,9 +77,19 @@ zle -N zle-keymap-select
 PROMPT="%n@%m:%1~ [%{$fg[red]%}${VI_MODE}%{$reset_color%}]$ "
 
 # completion settings
+#zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' expand prefix
-zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*'
+#zstyle ':completion:*' format 'completing: %d'
+#zstyle ':completion:*' group-name ''    # organize completion list in groups
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt '%Sat %p: hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select=1    # shows highlight for selected completion item
+zstyle ':completion:*' original true    # offer original string as possible match
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' select-prompt '%Sscrolling active: current selection at %p%s'
 zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit && compinit
