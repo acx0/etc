@@ -85,7 +85,8 @@ zstyle ':completion:*' expand prefix
 zstyle ':completion:*' insert-unambiguous true
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt '%Sat %p: hit TAB for more, or the character to insert%s'
-zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*'
+#zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'   # with substring matching
 zstyle ':completion:*' menu select=1    # shows highlight for selected completion item
 zstyle ':completion:*' original true    # offer original string as possible match
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
