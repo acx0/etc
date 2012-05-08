@@ -2,7 +2,9 @@
 
 if !exists("g:pdf_viewer")
     if has("unix")
-        if filereadable("/usr/bin/apvlv")
+        if filereadable("/usr/bin/zathura")
+            let g:pdf_viewer = "zathura"
+        elseif filereadable("/usr/bin/apvlv")
             let g:pdf_viewer = "apvlv"
         elseif filereadable("/usr/bin/evince")
             let g:pdf_viewer = "evince"
