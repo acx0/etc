@@ -152,7 +152,7 @@ membar = awful.widget.progressbar()
 
 -- Progressbar properties
 membar:set_width(10)
-membar:set_height(12)
+membar:set_height(14)
 membar:set_vertical(true)
 membar:set_background_color(beautiful.fg_off_widget)
 membar:set_border_color(beautiful.border_widget)
@@ -180,7 +180,7 @@ fs = {
 -- Progressbar properties
 for _, w in pairs(fs) do
     w:set_width(5)
-    w:set_height(12)
+    w:set_height(14)
     w:set_vertical(true)
     w:set_background_color(beautiful.fg_off_widget)
     w:set_border_color(beautiful.border_widget)
@@ -225,7 +225,7 @@ volwidget = widget({ type = "textbox" })
 
 -- Progressbar properties
 volbar:set_width(10)
-volbar:set_height(12)
+volbar:set_height(14)
 volbar:set_vertical(true)
 volbar:set_background_color(beautiful.fg_off_widget)
 volbar:set_border_color(beautiful.border_widget)
@@ -323,7 +323,7 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 12 })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 14 })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -345,7 +345,7 @@ for s = 1, screen.count() do
     }
 
     -- Create bottom wibox
-    mywiboxbottom[s] = awful.wibox({ position = "bottom", screen = s, height = 12 })
+    mywiboxbottom[s] = awful.wibox({ position = "bottom", screen = s, height = 14 })
     mywiboxbottom[s].widgets = {
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
