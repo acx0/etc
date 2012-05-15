@@ -31,6 +31,7 @@ Bundle "godlygeek/tabular"
 Bundle "IndentConsistencyCop"
 Bundle "indentpython.vim"
 Bundle "javacomplete"
+Bundle "kana/vim-submode"
 "Bundle "kien/ctrlp.vim"
 "Bundle "LaTeX-Suite-aka-Vim-LaTeX"
 "Bundle "Lokaltog/vim-easymotion"
@@ -643,6 +644,21 @@ let g:ConqueTerm_Color = 1  " only enable colours for the most recent 200 lines
 
 " --ack.vim
 let g:ackprg = "ack-grep -H --nocolor --nogroup --column"
+
+" --vim-submode
+let g:submode_timeoutlen=2000
+
+if exists("*submode#map")
+    " submode for resizing windows
+    call submode#enter_with('resize-window', 'n', '', '<C-w>+', '<C-w>+')
+    call submode#enter_with('resize-window', 'n', '', '<C-w>-', '<C-w>-')
+    call submode#enter_with('resize-window', 'n', '', '<C-w>>', '<C-w>>')
+    call submode#enter_with('resize-window', 'n', '', '<C-w><', '<C-w><')
+    call submode#map('resize-window', 'n', '', '+', '<C-w>+')
+    call submode#map('resize-window', 'n', '', '-', '<C-w>-')
+    call submode#map('resize-window', 'n', '', '<', '<C-w><')
+    call submode#map('resize-window', 'n', '', '>', '<C-w>>')
+endif
 
 " --LaTeX-Suite-aka-Vim-LaTeX
 let g:tex_flavor = "latex"
