@@ -37,7 +37,6 @@ Bundle "javacomplete"
 Bundle "mileszs/ack.vim"
 Bundle "msanders/snipmate.vim"
 Bundle "nathanaelkane/vim-indent-guides"
-Bundle "OmniCppComplete"
 Bundle "scrooloose/nerdcommenter"
 "Bundle "scrooloose/nerdtree"
 "Bundle "sjl/gundo.vim"
@@ -54,6 +53,11 @@ Bundle "wombat256.vim"
 "Bundle "Zenburn"
 "Bundle "zenesque.vim"
 
+if filereadable("/usr/bin/clang")
+    Bundle "Rip-Rip/clang_complete"
+else
+    Bundle "OmniCppComplete"
+endif
 " }}}
 
 " ---> User interface {{{
@@ -620,6 +624,9 @@ endif
 
 "let g:gundo_width = 33
 "let g:gundo_preview_bottom = 1
+
+" --clang_complete
+let g:clang_complete_auto = 0
 
 " --OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
