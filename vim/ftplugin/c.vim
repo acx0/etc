@@ -1,7 +1,9 @@
 " Custom C(++) settings
-
 " Notes:
-"   ~ 'omnifunc' automatically set when 'filetype plugin on' is set
+"   - 'omnifunc' automatically set when 'filetype plugin on' is set
+
+" put scope declarations (public, private, protected) 0 characters away from indent of surrounding block
+set cinoptions+=g0
 
 " set default compiler
 if !exists("g:CC")
