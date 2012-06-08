@@ -31,6 +31,7 @@ alias vimupdate="vim -c 'BundleInstall!'"
 alias g='git'
 alias h='hg'
 alias fm='ranger'
+alias py='ipython'
 alias io='sudo iotop -o'
 alias ack='ack-grep'
 alias etlog='sudo etckeeper vcs log $*'
