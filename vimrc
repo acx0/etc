@@ -1,11 +1,11 @@
 " ~/.vimrc
 
 " Notes:
-"   ~ filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
+"   - filetype specific functions and settings are placed in ~/.vim/ftplugin/<ft>.vim
 
 " ---> Startup {{{
 " prevent vim from emulating vi
-set nocompatible    " enabled when (g)vimrc is found
+set nocompatible    " set explicitly since not set when vimrc sourced with '-u' flag
 
 " setup vundle to manage all other plugins
 filetype off    " temporarily disabled (required); enabled below
@@ -21,18 +21,20 @@ call vundle#rc()
 " --managed / active plugins
 if exists(":Bundle")
     Bundle "acx0/Conque-Shell"
-    "Bundle "altercation/vim-colors-solarized"
-    Bundle "Arduino-syntax-file"
+    Bundle "acx0/Vim-JDE"
+    Bundle "altercation/vim-colors-solarized"
+    "Bundle "Arduino-syntax-file"
     Bundle "bufkill.vim"
     "Bundle "ciaranm/inkpot"
-    Bundle "DrawIt"
+    "Bundle "DrawIt"
     "Bundle "github-theme"
     "Bundle "godlygeek/csapprox"
     Bundle "godlygeek/tabular"
     Bundle "IndentConsistencyCop"
+    Bundle "indenthaskell.vim"
     Bundle "indentpython.vim"
     Bundle "javacomplete"
-    Bundle "kana/vim-submode"
+    "Bundle "kana/vim-submode"
     "Bundle "kien/ctrlp.vim"
     "Bundle "LaTeX-Suite-aka-Vim-LaTeX"
     "Bundle "Lokaltog/vim-easymotion"
@@ -48,7 +50,6 @@ if exists(":Bundle")
     Bundle "tpope/vim-surround"
     Bundle "trapd00r/neverland-vim-theme"
     Bundle "VimCoder.jar"
-    Bundle "Vim-JDE"
     "Bundle "Wombat"
     Bundle "wombat256.vim"
     "Bundle "xoria256.vim"
@@ -69,7 +70,7 @@ let mapleader = " "
 " easier to reach than Esc or Ctrl-[
 inoremap jk <Esc>
 
-set backspace=start,indent,eol  " make backspace work like 'normal' text editors
+set backspace=indent,eol,start  " make backspace work like 'normal' text editors
 
 " --history
 set history=500    " history of commands and searches
@@ -133,7 +134,7 @@ endif
 set spelllang=en_ca " set region to Canadian English
 
 " toggle spell checking and show current value
-" z-= on highlighted word gives correction suggestions
+" z= on highlighted word gives correction suggestions
 nnoremap <Leader>ss :setlocal spell! spell?<CR>
 
 " --visual theme and appearance
@@ -564,7 +565,7 @@ nnoremap <Leader>ml :call AppendModeline()<CR>
 
 function! AppendModeline()
     let l:modeline = printf(" vim: set ts=%d sts=%d sw=%d %s :",
-                \ &tabstop, &softtabstop, &shiftwidth, &expandtab ? "et" : "noet")
+                \ &l:tabstop, &l:softtabstop, &l:shiftwidth, &l:expandtab ? "et" : "noet")
     let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
     call append(line("$"), "")
     call append(line("$"), l:modeline)
