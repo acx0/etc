@@ -45,6 +45,7 @@ if exists(":Bundle")
     "Bundle "scrooloose/nerdtree"
     "Bundle "sjl/gundo.vim"
     "Bundle "Sorcerer"
+    Bundle "SyntaxAttr.vim"
     Bundle "taglist.vim"
     "Bundle "tomasr/molokai"
     Bundle "tpope/vim-surround"
@@ -662,6 +663,9 @@ if exists("*submode#map")
     call submode#map('resize-window', 'n', '', '<', '<C-w><')
     call submode#map('resize-window', 'n', '', '>', '<C-w>>')
 endif
+
+" --SyntaxAttr.vim
+nnoremap <Leader>st :call SyntaxAttr()<CR>
 
 " --LaTeX-Suite-aka-Vim-LaTeX
 let g:tex_flavor = "latex"
