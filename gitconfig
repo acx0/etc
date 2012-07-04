@@ -3,20 +3,26 @@
 	email = sam.lidder@gmail.com
 [color]
 	ui = true
+[color "diff"]
+	; see 'git help config' /color.diff.<slot> for more options
+	meta = cyan
+	frag = magenta bold
 [core]
 	editor = vim
 [merge]
 	tool = vimdiff
 [alias]
 	br = branch
-	ci = commit
 	cia = commit --amend
+	ci = commit
 	co = checkout
 	;cp = cherry-pick
-	df = diff
 	dfc = diff --cached
-	;rb = rebase
+	df = diff
+	dff = diff --color-words
+	lg = log -p --color-words
 	;rbc = rebase --continue
+	;rb = rebase
 	;rbs = rebase --skip
 	;rl = reflog
 	;rp = remote prune
