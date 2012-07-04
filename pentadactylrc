@@ -29,6 +29,9 @@ nmap <C-F2> :set guioptions!=B<CR>
 " open Google in new tab
 nmap <C-k> -builtin -silent :t google.ca<CR>
 
+" move current tab to beginning of list
+nmap <Leader>t0 :tabmove 0<CR>
+
 " move current tab to end of list
 nmap <Leader>tm :tabmove 100<CR>
 
@@ -55,4 +58,4 @@ nmap <Leader>f3 :set hintkeys=0123456789<CR>
 " disable beeping without having to set visualbell
 javascript dactyl.beep = function() { return false; }
 
-" vim: set ts=8 sts=4 sw=4 et ft=vim :
+" vim: set ft=vim :
