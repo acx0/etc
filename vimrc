@@ -22,7 +22,7 @@ call vundle#rc()
 if exists(":Bundle")
     Bundle "acx0/Conque-Shell"
     Bundle "acx0/Vim-JDE"
-    Bundle "altercation/vim-colors-solarized"
+    "Bundle "altercation/vim-colors-solarized"
     "Bundle "Arduino-syntax-file"
     Bundle "bufkill.vim"
     "Bundle "ciaranm/inkpot"
@@ -202,8 +202,8 @@ else
 endif
 
 " --statusline
-" default statusline: '%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P'
-let s:common_status = "\ [%{&encoding}:%{&fileformat}]\ %y\ %w%=%-14.(%l,%c%V%)\ %P\ [%L]"
+" default statusline (with 'set ruler'): '%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P'
+let s:common_status = "\ [%{strlen(&fileencoding)?&fileencoding:&encoding}:%{&fileformat}]\ %y\ %w%=%-14.(%l,%c%V%)\ %P\ [%L]"
 
 " use smart statusline if 256 colours are available or if gVim is running
 if &t_Co == 256 || has("gui_running")
@@ -233,7 +233,7 @@ if &t_Co == 256 || has("gui_running")
             let l:statusline .= "%#StatColor#"
         endif
 
-        let l:statusline .= "\(%n\)\ %f\ "
+        let l:statusline .= "\(%n\)\ %t\ "
         if a:mode == "Enter"
             let l:statusline .= "%*"
         endif
@@ -261,8 +261,11 @@ if &t_Co == 256 || has("gui_running")
         endif
     endfunction
 else
-    let &statusline = "\(%n\)\ %f\ %m%r" . s:common_status
+    let &statusline = "\(%n\)\ %t\ %m%r" . s:common_status
 endif
+
+" show full path of file in buffer
+nnoremap <Leader>fp :echo expand("%:p")<CR>
 
 " --movement / navigation
 set scrolloff=5       " scrolling starts 5 lines before window border
