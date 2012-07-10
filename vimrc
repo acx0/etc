@@ -378,6 +378,18 @@ set autoread  " update file when externally modified
 " cd into directory of active buffer and display it
 nnoremap <Leader>cd :lcd %:p:h<CR> :pwd<CR>
 
+" clean up buffer list by wiping out unmodified, hidden, no name buffers
+nnoremap <Leader>de :call RemoveEmptyBuffers()<CR>
+
+function! RemoveEmptyBuffers()
+    let s:empty_buffers = filter(range(1, bufnr("$")),
+                \ "buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0 && !getbufvar(v:val, '&mod')")
+
+    if !empty(s:empty_buffers)
+        execute "bwipeout " . join(s:empty_buffers, " ")
+    endif
+endfunction
+
 " --indenting
 set fileformats=unix,dos,mac " try recognizing line endings in this order
 set tabstop=8                " width of a tab character in spaces
