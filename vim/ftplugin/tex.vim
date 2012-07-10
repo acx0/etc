@@ -1,5 +1,7 @@
 " Custom LaTeX settings
 
+source ~/.vim/ftplugin/util.vim
+
 if !exists("g:pdf_viewer")
     if has("unix")
         if filereadable("/usr/bin/zathura")
@@ -19,6 +21,7 @@ nnoremap <buffer> <F3> :call CompileLaTeX()<CR>
 
 function! CompileLaTeX()
     update
+    call PrintSeparator()
     !pdflatex "%"
 endfunction
 

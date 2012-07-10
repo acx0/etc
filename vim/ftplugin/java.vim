@@ -1,5 +1,7 @@
 " Custom Java settings
 
+source ~/.vim/ftplugin/util.vim
+
 " ':make' support
 setlocal makeprg=javac\ -cp\ \"%:p:h\"\ %\ $*
 
@@ -12,6 +14,7 @@ nnoremap <buffer> <F3> :call CompileJava()<CR>
 
 function! CompileJava()
     update
+    call PrintSeparator()
     make!
 endfunction
 
@@ -22,5 +25,6 @@ function! RunClass()
         let b:class = expand("%:t:r")
     endif
 
+    call PrintSeparator()
     execute '!java -cp "%:p:h" ' . b:class
 endfunction

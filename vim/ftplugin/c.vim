@@ -2,6 +2,8 @@
 " Notes:
 "   - 'omnifunc' automatically set when 'filetype plugin on' is set
 
+source ~/.vim/ftplugin/util.vim
+
 " put scope declarations (public, private, protected) 0 characters away from indent of surrounding block
 set cinoptions+=g0
 
@@ -33,6 +35,7 @@ nnoremap <buffer> <F3> :call CompileC()<CR>
 
 function! CompileC()
     update
+    call PrintSeparator()
 
     if glob("Makefile") != ""
         make!
@@ -55,5 +58,6 @@ endfunction
 nnoremap <buffer> <F4> :call RunExecutable()<CR>
 
 function! RunExecutable()
+    call PrintSeparator()
     execute '!"%:p:r"'
 endfunction
