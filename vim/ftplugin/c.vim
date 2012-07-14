@@ -40,11 +40,7 @@ function! CompileC()
     if glob("Makefile") != ""
         make!
     else
-        if &filetype == "c"
-            execute '!' . g:CC . ' "%" -o "%:p:r" ' . b:cflags
-        elseif &filetype == "cpp"
-            execute '!' . g:CPP . ' "%" -o "%:p:r" ' . b:cflags
-        endif
+        execute '!' . (&filetype == "c" ? g:CC : g:CPP) . ' "%" -o "%:p:r" ' . b:cflags
     endif
 endfunction
 
@@ -59,5 +55,10 @@ nnoremap <buffer> <F4> :call RunExecutable()<CR>
 
 function! RunExecutable()
     call PrintSeparator()
-    execute '!"%:p:r"'
+
+    if has("unix") && glob("Makefile") != "" && !empty(system("grep '^run:' Makefile"))
+        make! run
+    else
+        execute '!"%:p:r"'
+    endif
 endfunction
