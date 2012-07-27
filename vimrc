@@ -26,6 +26,8 @@ if exists(":Bundle")
     "Bundle "Arduino-syntax-file"
     Bundle "bufkill.vim"
     "Bundle "ciaranm/inkpot"
+    Bundle "derekwyatt/vim-fswitch"
+    Bundle "derekwyatt/vim-protodef"
     "Bundle "DrawIt"
     "Bundle "github-theme"
     "Bundle "godlygeek/csapprox"
@@ -43,7 +45,7 @@ if exists(":Bundle")
     Bundle "nathanaelkane/vim-indent-guides"
     Bundle "scrooloose/nerdcommenter"
     "Bundle "scrooloose/nerdtree"
-    "Bundle "sjl/gundo.vim"
+    Bundle "sjl/gundo.vim"
     "Bundle "Sorcerer"
     Bundle "SyntaxAttr.vim"
     Bundle "taglist.vim"
@@ -603,21 +605,12 @@ endif
 " --vundle
 let g:vundle_default_git_proto = "git"
 
-" --ctrlp.vim
-let g:ctrlp_custom_ignore = "\.git$\\|\.hg$\\|\.svn$"
-
-" --nerdtree
-" quickly toggle nerdtree
-"nnoremap <F2> :NERDTreeToggle<CR>
-
 " --snipmate.vim
 " use custom snippets
 let g:snippets_dir = "~/.vim/snippets/"
 
 " --taglist.vim
 let g:Tlist_Use_Right_Window = 1
-
-" quickly toggle taglist.vim
 nnoremap <Leader><F2> :TlistToggle<CR>
 
 " --vim-indent-guides
@@ -627,7 +620,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 if !has("gui_running")
     let g:indent_guides_auto_colors = 0
-
     augroup indent_guides_custom
         autocmd!
         " custom colors for indent guide lines
@@ -639,9 +631,7 @@ if !has("gui_running")
 endif
 
 " --gundo.vim
-" quickly toggle gundo.vim
-"nnoremap <F5> :GundoToggle<CR>
-
+nnoremap <F5> :GundoToggle<CR>
 "let g:gundo_width = 33
 "let g:gundo_preview_bottom = 1
 
@@ -684,9 +674,19 @@ nnoremap <Leader>st :call SyntaxAttr()<CR>
 
 " --LaTeX-Suite-aka-Vim-LaTeX
 let g:tex_flavor = "latex"
-let g:Tex_DefaultTargetFormat = "pdf"
-let g:Tex_ViewRule_dvi = "evince"
-let g:Tex_ViewRule_pdf = "evince"
+"let g:Tex_DefaultTargetFormat = "pdf"
+"let g:Tex_ViewRule_dvi = "evince"
+"let g:Tex_ViewRule_pdf = "evince"
+
+" --vim-fswitch
+let g:disable_protodef_sorting = 1
+nnoremap <Leader>fs :FSHere<CR>
+
+augroup fswitch_config
+    autocmd!
+    autocmd BufEnter *.h let b:fswitchdst = 'cc,cpp,c'
+    autocmd BufEnter *.cc,*.cpp let b:fswitchdst = 'h'
+augroup end
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
