@@ -548,7 +548,15 @@ awful.rules.rules = {
     { rule = { class = "Skype" },
       properties = { tag = tags[1][1] } },
     { rule = { class = "Transmission" },
-      properties = { tag = tags[1][9] } }
+      properties = { tag = tags[1][9] } },
+
+    -- Force flash player to float
+    -- for Firefox/Iceweasel
+    { rule = { instance = "plugin-container" },
+      properties = { floating = true } },
+    -- for Chromium
+    { rule = { instance = "exe" },
+     properties = { floating = true } }
 }
 -- }}}
 
