@@ -22,7 +22,12 @@ if !exists("b:cflags")
     let b:cflags = ""
 endif
 
-" add custom tags for cpp
+" colour output lost when output of ':make' piped through tee, see ':h shellpipe'
+if !exists("b:enable_colour_output")
+    let b:enable_colour_output = 1
+endif
+
+" add custom tags for C++
 if &filetype == "cpp"
     setlocal tags+=~/.tags/cpp
 endif
@@ -38,7 +43,7 @@ function! CompileC()
     call PrintSeparator()
 
     if glob("Makefile") != ""
-        make!
+        execute b:enable_colour_output == 1 ? '!make' : 'make!'
     else
         execute '!' . (&filetype == "c" ? g:CC : g:CPP) . ' "%" -o "%:p:r" ' . b:cflags
     endif
