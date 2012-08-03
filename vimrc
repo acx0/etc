@@ -680,13 +680,6 @@ let g:tex_flavor = "latex"
 
 " --vim-fswitch
 let g:disable_protodef_sorting = 1
-nnoremap <Leader>fs :FSHere<CR>
-
-augroup fswitch_config
-    autocmd!
-    autocmd BufEnter *.h let b:fswitchdst = 'cc,cpp,c'
-    autocmd BufEnter *.cc,*.cpp let b:fswitchdst = 'h'
-augroup end
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :

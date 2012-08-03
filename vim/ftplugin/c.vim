@@ -27,6 +27,17 @@ if !exists("b:enable_colour_output")
     let b:enable_colour_output = 1
 endif
 
+" settings for vim-fswitch plugin
+if exists(":FSHere")
+    nnoremap <buffer> <Leader>fs :FSHere<CR>
+
+    augroup fswitch_custom
+        autocmd!
+        autocmd BufEnter *.h let b:fswitchdst = 'cc,cpp,c'
+        autocmd BufEnter *.cc,*.cpp let b:fswitchdst = 'h'
+    augroup end
+endif
+
 " add custom tags for C++
 if &filetype == "cpp"
     setlocal tags+=~/.tags/cpp
