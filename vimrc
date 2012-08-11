@@ -50,6 +50,7 @@ if exists(":Bundle")
     Bundle "SyntaxAttr.vim"
     Bundle "taglist.vim"
     "Bundle "tomasr/molokai"
+    Bundle "tomtom/tcomment_vim"
     Bundle "tpope/vim-surround"
     Bundle "trapd00r/neverland-vim-theme"
     Bundle "VimCoder.jar"
@@ -678,8 +679,11 @@ let g:tex_flavor = "latex"
 "let g:Tex_ViewRule_dvi = "evince"
 "let g:Tex_ViewRule_pdf = "evince"
 
-" --vim-fswitch
+" --vim-protodef
 let g:disable_protodef_sorting = 1
+
+" --tcomment_vim
+let g:tcommentBlankLines = 0
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
