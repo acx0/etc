@@ -5,6 +5,3 @@ map d scroll half-down normal
 map u scroll half-up normal
 map e scroll down normal
 map y scroll up normal
-
-map <C-i> zoom in normal
-map <C-o> zoom out normal
