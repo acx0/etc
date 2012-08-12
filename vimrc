@@ -40,6 +40,7 @@ if exists(":Bundle")
     "Bundle "kien/ctrlp.vim"
     "Bundle "LaTeX-Suite-aka-Vim-LaTeX"
     "Bundle "Lokaltog/vim-easymotion"
+    Bundle "majutsushi/tagbar"
     Bundle "mileszs/ack.vim"
     Bundle "msanders/snipmate.vim"
     Bundle "nathanaelkane/vim-indent-guides"
@@ -48,7 +49,6 @@ if exists(":Bundle")
     Bundle "sjl/gundo.vim"
     "Bundle "Sorcerer"
     Bundle "SyntaxAttr.vim"
-    Bundle "taglist.vim"
     "Bundle "tomasr/molokai"
     Bundle "tomtom/tcomment_vim"
     Bundle "tpope/vim-surround"
@@ -610,9 +610,8 @@ let g:vundle_default_git_proto = "git"
 " use custom snippets
 let g:snippets_dir = "~/.vim/snippets/"
 
-" --taglist.vim
-let g:Tlist_Use_Right_Window = 1
-nnoremap <Leader><F2> :TlistToggle<CR>
+" --tagbar
+nnoremap <F2> :TagbarToggle<CR>
 
 " --vim-indent-guides
 let g:indent_guides_guide_size = 1
