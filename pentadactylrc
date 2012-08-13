@@ -1,6 +1,6 @@
 " ~/.pentadactylrc - firefox plugin
 
-set mapleader=<Space>
+map <Space> <Leader>
 
 " use listed characters to enumerate quickhint elements
 set hintkeys=asdfg;lkjh
@@ -42,10 +42,10 @@ nmap <Leader>z -builtin :javascript window.content.document.toggleImageSize();<C
 nmap ge <C-S-e>
 
 " shortcut for accessing subreddits
-cnoremap /r/ reddit.com/r/
+cmap /r/ -builtin reddit.com/r/
 
 " shortcut for viewing debian packages (all branches)
-cnoremap deb/ packages.debian.org/
+cmap deb/ -builtin packages.debian.org/
 
 " quickly change hintkeys
 "   1: default
