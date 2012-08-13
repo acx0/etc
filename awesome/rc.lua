@@ -538,7 +538,8 @@ awful.rules.rules = {
       properties = { floating = true } },
 
     -- Fix programs to certain tags
-    --{ rule = { class = "Firefox" },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2] } },
     { rule = { class = "Iceweasel" },
       properties = { tag = tags[1][2] } },
     { rule = { class = "Emesene" },
