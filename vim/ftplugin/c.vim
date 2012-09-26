@@ -72,7 +72,7 @@ nnoremap <buffer> <F4> :call RunExecutable()<CR>
 function! RunExecutable()
     call PrintSeparator()
 
-    if has("unix") && glob("[Mm]akefile") != "" && !empty(system("grep '^run:' Makefile"))
+    if has("unix") && glob("[Mm]akefile") != "" && !empty(system("grep '^run:' [Mm]akefile"))
         make! run
     else
         execute '!"%:p:r"'
