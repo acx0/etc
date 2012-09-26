@@ -53,7 +53,7 @@ function! CompileC()
     update
     call PrintSeparator()
 
-    if glob("Makefile") != ""
+    if glob("[Mm]akefile") != ""
         execute b:enable_colour_output == 1 ? '!make' : 'make!'
     else
         execute '!' . (&filetype == "c" ? g:CC : g:CPP) . ' "%" -o "%:p:r" ' . b:cflags
