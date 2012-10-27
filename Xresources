@@ -3,7 +3,7 @@
 #include ".Xcolours/basic"
 #include ".Xcolours/photons-mod"
 
-*customization: -color
+!*customization: -color
 
 /* --- URxvt --- */
 URxvt*font:      -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
