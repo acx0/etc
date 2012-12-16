@@ -247,7 +247,7 @@ dateicon = widget({ type = "imagebox" })
 dateicon.image = image(beautiful.widget_date)
 
 -- Create a textclock widget
-mytextclock = awful.widget.textclock({ align = "right" }, " %a %b %d, %H:%M ", 10)
+mytextclock = awful.widget.textclock({ align = "right" }, " %a %b %d, %H:%M ", 1)
 -- }}}
 
 -- {{{ System tray
