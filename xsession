@@ -13,7 +13,6 @@ urxvtd -q -o -f &
 redshift -l 43.7:-79.3 &
 xfce4-power-manager &
 wicd-gtk -t &
-mpd &
 
 # ~/bin scripts
 tp off &    # disable touchpad
