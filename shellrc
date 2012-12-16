@@ -37,6 +37,7 @@ alias ack='ack-grep'
 alias etlog='sudo etckeeper vcs log $*'
 alias wee='tm weechat-curses'
 alias xlock='xscreensaver-command -lock'
+alias mounted='mount | grep "sd[b-z]"'
 
 # for playing large files on netbook
 alias splay='mplayer -vfm ffmpeg -lavdopts lowres=1:fast:skiploopfilter=all -autosync 15'
@@ -50,6 +51,15 @@ todo() {
         vim ~/doc/todo
     else
         echo >&2 "error: todo not found"
+        return 1
+    fi
+}
+
+notes() {
+    if [ -e ~/doc/notes ]; then
+        vim ~/doc/notes
+    else
+        echo >&2 "error: notes not found"
         return 1
     fi
 }
