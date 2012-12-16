@@ -20,6 +20,7 @@
 	dfc = diff --cached
 	df = diff
 	dff = diff --color-words
+	fl = log -u
 	lg = log -p --color-words
 	;rbc = rebase --continue
 	;rb = rebase
