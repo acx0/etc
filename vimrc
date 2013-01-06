@@ -609,6 +609,9 @@ if has("unix")
         redraw!
     endfun
 
+    " open terminal in CWD
+    command! Terminal silent !term
+
     " make doc, odt, pdf, and rtf readable (linux only)
     augroup doctypes
         autocmd!
