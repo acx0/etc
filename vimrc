@@ -591,6 +591,24 @@ function! AppendModeline()
 endfunction
 
 if has("unix")
+    " select and open file using ranger file manager
+    nnoremap <Leader>fm :call RangerSelectFile()<CR>
+
+    let s:selected_file = $HOME . "/.config/ranger/vim_edit"
+
+    function! RangerSelectFile()
+        if !filereadable("/usr/bin/ranger")
+            return
+        endif
+
+        execute 'silent !ranger --choosefile ' . s:selected_file . ' "%:p:h"'
+        if filereadable(s:selected_file)
+            execute 'edit ' . substitute(system('cat ' . s:selected_file), ' ', '\\ ', 'g')
+            execute 'silent !rm -f -- ' . s:selected_file
+        endif
+        redraw!
+    endfun
+
     " make doc, odt, pdf, and rtf readable (linux only)
     augroup doctypes
         autocmd!
