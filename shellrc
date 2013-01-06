@@ -31,6 +31,7 @@ alias vimupdate="vim -c 'BundleInstall!'"
 alias g='git'
 alias h='hg'
 alias fm='ranger'
+alias fmc='ranger_cd'
 alias py='ipython'
 alias io='sudo iotop -o'
 alias ack='ack-grep'
@@ -62,6 +63,15 @@ notes() {
         echo >&2 "error: notes not found"
         return 1
     fi
+}
+
+ranger_cd() {
+    local CD_FILE="$HOME/.config/ranger/shell_cd"
+    ranger --choosedir "$CD_FILE" "${@:-$PWD}"   # use supplied arg otherwise $PWD if none
+    if [ -f "$CD_FILE" ] && [ "$(<"$CD_FILE")" != "$PWD" ]; then
+        cd -- "$(<"$CD_FILE")"
+    fi
+    rm -f -- "$CD_FILE"
 }
 
 # enable colours in less for man pages
