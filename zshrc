@@ -18,7 +18,7 @@ setopt MENU_COMPLETE
 setopt SHARE_HISTORY
 
 unsetopt BEEP
-unsetopt CHECK_JOBS
+#unsetopt CHECK_JOBS
 unsetopt HUP
 
 if [ -f "$HOME/.shellrc" ]; then
