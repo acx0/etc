@@ -22,6 +22,7 @@
 	dff = diff --color-words
 	fl = log -u
 	lg = log -p --color-words
+	lgg = log --oneline --graph
 	;rbc = rebase --continue
 	;rb = rebase
 	;rbs = rebase --skip
