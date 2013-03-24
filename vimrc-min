@@ -1,11 +1,11 @@
 " prevent vim from emulating vi
-set nocompatible    " enabled when (g)vimrc is found
+set nocompatible    " set explicitly since not set when vimrc sourced with '-u' flag
 " easier to reach than \
-let mapleader = ","
+let mapleader = " "
 " easier to reach than Esc or Ctrl-[
 "inoremap jk <Esc>
 
-set backspace=start,indent,eol  " make backspace work like 'normal' text editors
+set backspace=indent,eol,start  " make backspace work like 'normal' text editors
 
 " --history
 set history=500    " history of commands and searches
@@ -28,7 +28,7 @@ set incsearch  " show matches as they are found
 
 " --feedback
 set showmatch   " show matching braces when typed or under cursor
-set matchtime=2 " length of time for 'showmatch'
+set matchtime=1 " length of time for 'showmatch'
 
 " --redrawing / warnings
 set lazyredraw   " don't redraw screen when executing macros
@@ -48,7 +48,7 @@ endif
 set wildmenu    " enhanced command-line completion
 
 " --visual theme and appearance
-"colorscheme desert  " preferred colorscheme
+"colorscheme desert
 
 if has("gui_running")
     " gVim specific
@@ -84,10 +84,10 @@ set autoread  " update file when externally modified
 " --indenting
 set fileformats=unix,dos,mac " try recognizing line endings in this order
 set tabstop=8                " width of a tab character in spaces
-set softtabstop=4            " defines number of spaces for when adding/removing tabs
-set shiftwidth=4             " number of spaces to use for autoindent
+set softtabstop=4            " defines number of spaces <Tab>/<BS> will insert/remove
+set shiftwidth=4             " number of spaces to use for automatic indentation
 set expandtab                " use spaces instead of tab characters; to insert real tab, use <C-v><Tab>
-set smartindent              " automatic indenting; see ':h C-indenting' for comparison
+set autoindent               " fallback indenting, doesn't interfere with 'filetype indent'; see ':h C-indenting' for comparison
 
 " --copying / pasting
 " allow vim commands to copy to system clipboard (*)

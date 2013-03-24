@@ -104,7 +104,7 @@ nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
 
 " --feedback
 set showmatch    " show matching braces when typed or under cursor
-set matchtime=2  " length of time for 'showmatch'
+set matchtime=1  " length of time for 'showmatch'
 set cpoptions+=$ " put '$' at end of changed text instead of removing it
 
 " --redrawing / warnings
@@ -396,10 +396,10 @@ endfunction
 " --indenting
 set fileformats=unix,dos,mac " try recognizing line endings in this order
 set tabstop=8                " width of a tab character in spaces
-set softtabstop=4            " defines number of spaces for when adding/removing tabs
-set shiftwidth=4             " number of spaces to use for autoindent
+set softtabstop=4            " defines number of spaces <Tab>/<BS> will insert/remove
+set shiftwidth=4             " number of spaces to use for automatic indentation
 set expandtab                " use spaces instead of tab characters; to insert real tab, use <C-v><Tab>
-set autoindent               " automatic indenting; see ':h C-indenting' for comparison
+set autoindent               " fallback indenting, doesn't interfere with 'filetype indent'; see ':h C-indenting' for comparison
 
 " quickly switch between different indentation styles
 command! -nargs=* SetTab call SetTab(<f-args>, 1)
