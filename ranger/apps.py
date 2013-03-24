@@ -8,8 +8,10 @@ class CustomApplications(DefaultApps):
 		f = c.file
 
 		if f.extension is not None:
-			if f.extension in ('pdf', ):
+			if f.extension in ('pdf'):
 				return self.either(c, 'zathura', 'apvlv', 'evince')
+			if f.extension in ('html', 'htm'):
+				return self.either(c, 'vim')
 			if f.extension in ('odt', 'ods', 'odp', 'odf', 'odg',
 					'doc', 'xls', 'ppt', 'docx', 'xlsx', 'pptx'):
 				return self.either(c, 'libreoffice', 'soffice', 'ooffice')
