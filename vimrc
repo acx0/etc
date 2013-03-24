@@ -155,8 +155,8 @@ if has("gui_running")
 
     " font setup
     if has("unix")
-        set guifont=Terminus\ 9
-        "set guifont=Monospace\ 11
+        "set guifont=Terminus\ 9
+        set guifont=Monospace\ 9
     elseif has("win32")
         set guifont=ter-112n:h9
         "set guifont=Lucida_Console:h9:cANSI
