@@ -92,6 +92,7 @@ zstyle ':completion:*' menu select=1    # shows highlight for selected completio
 zstyle ':completion:*' original true    # offer original string as possible match
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt '%Sscrolling active: current selection at %p%s'
+zstyle ':completion:*' use-cache on
 zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit && compinit
