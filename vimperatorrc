@@ -1,0 +1,42 @@
+" ~/.vimperatorrc - firefox plugin
+
+let mapleader = " "
+
+set complete=l
+
+" always open help in new tab
+set newtab+=help
+
+" remove highlighting
+nmap <leader>h :set nohlfind<CR>
+
+" open Google in new tab
+nmap <C-k> :t google.ca<CR>
+
+" move current tab to beginning of list
+nmap <Leader>t0 :tabmove 0<CR>
+
+" move current tab to end of list
+nmap <Leader>tm :tabmove 100<CR>
+
+" view native size of image without clicking it
+nmap <Leader>z -builtin :javascript window.content.document.toggleImageSize();<CR>
+
+" open up panorama
+nmap ge <C-S-e>
+
+" shortcut for accessing subreddits
+cnoremap /r/ reddit.com/r/
+
+" shortcut for viewing debian packages (all branches)
+cnoremap deb/ packages.debian.org/
+
+" quickly change hintkeys
+"   1: default
+"   2: left hand keys only
+"   3: numbers keys only (allow link names to be typed)
+nmap <Leader>f1 :set hintkeys=asdfg;lkjh<CR>
+nmap <Leader>f2 :set hintkeys=asdfgwert<CR>
+nmap <Leader>f3 :set hintkeys=0123456789<CR>
+
+" vim: set ft=vim :
