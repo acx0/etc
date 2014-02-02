@@ -274,14 +274,6 @@ nnoremap <Leader>fp :echo expand("%:p")<CR>
 set scrolloff=5       " scrolling starts 5 lines before window border
 set virtualedit=block " allow cursor to move past last character on line in visual block mode
 
-" swap functionality of ' and ` since ' is easier to reach
-"nnoremap ' `
-"nnoremap ` '
-
-" prevent jumping over wrapped lines
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-
 " redraw window so search terms are centered
 nnoremap n nzz
 nnoremap N Nzz
