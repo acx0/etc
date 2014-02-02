@@ -21,7 +21,7 @@ beautiful.init(awful.util.getdir("config") .. "/custom.lua")
 
 -- used for machine-specific options
 hostname = vicious.widgets.os()[4]
-net_device = "wlan0"
+net_device = "eth0"
 dmenu_font = "-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*"
 
 -- This is used later as the default terminal and editor to run.
