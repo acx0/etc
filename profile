@@ -9,7 +9,7 @@
 
 export EDITOR=vim
 export BROWSER=firefox
-export PAGER=sensible-pager # tmp: until ranger 'sensible-paper' bug fixed
+export PAGER=less   # tmp: until ranger 'sensible-paper' bug fixed
 
 # add ~/bin to PATH if it exists
 if [ -d "$HOME/bin" ]; then
