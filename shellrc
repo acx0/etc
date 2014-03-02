@@ -37,11 +37,8 @@ alias io='sudo iotop -o'
 alias ack='ack-grep'
 alias etlog='sudo etckeeper vcs log $*'
 alias wee='tm weechat-curses'
-alias xlock='xscreensaver-command -lock'
 alias mounted='mount | grep "sd[b-z]"'
-
-# for playing large files on netbook
-alias splay='mplayer -vfm ffmpeg -lavdopts lowres=1:fast:skiploopfilter=all -autosync 15'
+alias update='sudo aptitude update; sudo aptitude safe-upgrade'
 
 # list processes which are using a deleted map file after a system update
 alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
