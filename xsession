@@ -3,7 +3,7 @@
 SESSION=awesome
 
 xrdb -merge ~/.Xresources & # load X resource preferences
-xmodmap ~/.xmodmaprc &      # load custom keyboard mappings
+(sleep 2 && xmodmap ~/.xmodmaprc) &      # load custom keyboard mappings
 xsetroot -solid black &     # set root window background
 xset r rate 580 40 &        # set keyboard delay and repeat rate
 xset b off &                # disable system bell
