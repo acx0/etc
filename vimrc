@@ -36,17 +36,19 @@ if exists(":Bundle")
     Bundle "indenthaskell.vim"
     Bundle "indentpython.vim"
     Bundle "javacomplete"
+    Bundle "junegunn/seoul256.vim"
     "Bundle "kana/vim-submode"
     "Bundle "kien/ctrlp.vim"
     "Bundle "LaTeX-Suite-aka-Vim-LaTeX"
     "Bundle "Lokaltog/vim-easymotion"
     Bundle "majutsushi/tagbar"
+    Bundle "mbbill/undotree"
     Bundle "mileszs/ack.vim"
     Bundle "msanders/snipmate.vim"
     Bundle "nathanaelkane/vim-indent-guides"
     Bundle "scrooloose/nerdcommenter"
     "Bundle "scrooloose/nerdtree"
-    Bundle "sjl/gundo.vim"
+    "Bundle "sjl/gundo.vim"
     "Bundle "Sorcerer"
     Bundle "SyntaxAttr.vim"
     "Bundle "tomasr/molokai"
@@ -155,8 +157,8 @@ if has("gui_running")
 
     " font setup
     if has("unix")
-        "set guifont=Terminus\ 9
-        set guifont=Monospace\ 9
+        set guifont=Terminus\ 9
+        "set guifont=Monospace\ 9
     elseif has("win32")
         set guifont=ter-112n:h9
         "set guifont=Lucida_Console:h9:cANSI
@@ -644,9 +646,12 @@ if !has("gui_running")
 endif
 
 " --gundo.vim
-nnoremap <F5> :GundoToggle<CR>
+"nnoremap <F5> :GundoToggle<CR>
 "let g:gundo_width = 33
 "let g:gundo_preview_bottom = 1
+
+" --undotree
+nnoremap <F5> :UndotreeToggle<CR>
 
 " --clang_complete
 "let g:clang_debug = 1
@@ -668,21 +673,6 @@ let g:ConqueTerm_Color = 1  " only enable colours for the most recent 200 lines
 
 " --ack.vim
 let g:ackprg = "ack-grep -H --nocolor --nogroup --column"
-
-" --vim-submode
-let g:submode_timeoutlen=2000
-
-if exists("*submode#map")
-    " submode for resizing windows
-    call submode#enter_with('resize-window', 'n', '', '<C-w>+', '<C-w>+')
-    call submode#enter_with('resize-window', 'n', '', '<C-w>-', '<C-w>-')
-    call submode#enter_with('resize-window', 'n', '', '<C-w>>', '<C-w>>')
-    call submode#enter_with('resize-window', 'n', '', '<C-w><', '<C-w><')
-    call submode#map('resize-window', 'n', '', '+', '<C-w>+')
-    call submode#map('resize-window', 'n', '', '-', '<C-w>-')
-    call submode#map('resize-window', 'n', '', '<', '<C-w><')
-    call submode#map('resize-window', 'n', '', '>', '<C-w>>')
-endif
 
 " --SyntaxAttr.vim
 nnoremap <Leader>st :call SyntaxAttr()<CR>
