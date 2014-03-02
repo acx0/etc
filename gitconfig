@@ -11,6 +11,8 @@
 	editor = vim
 [merge]
 	tool = vimdiff
+[push]
+	default = simple
 [alias]
 	br = branch
 	cia = commit --amend
@@ -34,8 +36,5 @@
 	;sb = show-branch
 	sm = submodule
 	st = status
-[branch "master"]
-	remote = origin
-	merge = refs/heads/master
 
 ; vim: set ts=8 sts=0 sw=8 noet ft=gitconfig :
