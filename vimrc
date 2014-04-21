@@ -12,7 +12,7 @@ filetype off    " temporarily disabled (required); enabled below
 
 " use '.vim' directory instead of 'vimfiles' under windows
 if has("win32")
-    set runtimepath=~/.vim,$VIMRUNTIME
+    set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 endif
 
 set runtimepath+=~/.vim/vundle   " add vundle to runtimepath
