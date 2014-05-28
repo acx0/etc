@@ -1,8 +1,18 @@
-snippet main
+snippet all
+	import java.util.*;
+
+	public class `Filename("", "untitled")`
+	{
+		public static void main(String[] args)
+		{
+			${1}
+		}
+	}
+snippet mainn
 	public static void main(String[] args) {
 		${1}
 	}
-snippet mainn
+snippet main
 	public static void main(String[] args)
 	{
 		${1}
@@ -80,11 +90,11 @@ snippet tc
 	public class ${1:`Filename()`} extends ${2:TestCase}
 snippet t
 	public void test${1:Name}() throws Exception ${2}
-snippet cl
+snippet cll
 	class ${1:`Filename("", "untitled")`} {
 		${2}
 	}
-snippet cll
+snippet cl
 	class ${1:`Filename("", "untitled")`}
 	{
 		${2}
