@@ -37,8 +37,10 @@ alias io='sudo iotop -o'
 alias ack='ack-grep'
 alias etlog='sudo etckeeper vcs log $*'
 alias wee='tm weechat-curses'
-alias mounted='mount | grep "sd[b-z]"'
+alias mounted='mount | grep "sd[b-z]\|mapper"'
 alias update='sudo aptitude update; sudo aptitude safe-upgrade'
+alias rs='rsync -av --progress'
+alias rschk='rsync -av --progress --delete --dry-run'
 
 # list processes which are using a deleted map file after a system update
 alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
