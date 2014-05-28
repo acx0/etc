@@ -47,7 +47,6 @@ if exists(":Plugin")
     Plugin 'mileszs/ack.vim'
     Plugin 'msanders/snipmate.vim'
     Plugin 'nathanaelkane/vim-indent-guides'
-    Plugin 'scrooloose/nerdcommenter'
     "Plugin 'scrooloose/nerdtree'
     "Plugin 'sjl/gundo.vim'
     "Plugin 'Sorcerer'
@@ -97,6 +96,8 @@ set laststatus=2 " always show status line
 " useful, but can be slow at times
 "set cursorline   " highlight current line
 "set cursorcolumn " highlight current column
+
+nnoremap <Leader>cl :setlocal cursorline! cursorline?<CR>
 
 " --searching
 set ignorecase " ignore case when searching
@@ -351,6 +352,9 @@ set fileencodings=ucs-bom,utf-8,default,latin1 " encodings to try when editing a
 " --code folding
 set foldmethod=marker
 
+" --line wrapping
+nnoremap <Leader>w :setlocal wrap! wrap?<CR>
+
 " --backup / swap
 " multiple combinations for backups, see ':h backup-table'
 "set nobackup      " won't leave additional files after vim is closed
@@ -397,6 +401,7 @@ set softtabstop=4            " defines number of spaces <Tab>/<BS> will insert/r
 set shiftwidth=4             " number of spaces to use for automatic indentation
 set expandtab                " use spaces instead of tab characters; to insert real tab, use <C-v><Tab>
 set autoindent               " fallback indenting, doesn't interfere with 'filetype indent'; see ':h C-indenting' for comparison
+set shiftround               " round indent to multiple of shiftwidth
 
 " quickly switch between different indentation styles
 command! -nargs=* SetTab call SetTab(<f-args>, 1)
@@ -507,6 +512,16 @@ endfunction
 " quickly edit/source vimrc
 nnoremap <Leader>er :edit $MYVIMRC<CR>
 nnoremap <Leader>sr :source $MYVIMRC<CR>
+
+" create parent directories for non-existing path
+nnoremap <Leader>md :call MkdirTree()<CR>
+
+function! MkdirTree()
+    " windows mkdir behaves like 'mkdir -p' if command extensions are enabled
+    execute 'silent !mkdir ' . (has("win32") ? "" : "-p ") . expand("%:p:h")
+    redraw!
+    echo "mkdir " . (has("win32") ? "" : "-p ") . expand("%:p:h")
+endfunction
 
 " view diff between current buffer and original file it was loaded from
 nnoremap <Leader>df :call DiffOrig()<CR>
