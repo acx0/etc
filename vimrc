@@ -15,59 +15,62 @@ if has("win32")
     set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 endif
 
-set runtimepath+=~/.vim/vundle   " add vundle to runtimepath
-call vundle#rc()
+set runtimepath+=~/.vim/vundle  " add vundle to runtimepath
+call vundle#begin()
 
 " --managed / active plugins
-if exists(":Bundle")
-    Bundle "acx0/Conque-Shell"
-    Bundle "acx0/Vim-JDE"
-    "Bundle "altercation/vim-colors-solarized"
-    "Bundle "Arduino-syntax-file"
-    Bundle "bufkill.vim"
-    "Bundle "ciaranm/inkpot"
-    Bundle "derekwyatt/vim-fswitch"
-    Bundle "derekwyatt/vim-protodef"
-    "Bundle "DrawIt"
-    "Bundle "github-theme"
-    "Bundle "godlygeek/csapprox"
-    Bundle "godlygeek/tabular"
-    Bundle "IndentConsistencyCop"
-    Bundle "indenthaskell.vim"
-    Bundle "indentpython.vim"
-    Bundle "javacomplete"
-    Bundle "junegunn/seoul256.vim"
-    "Bundle "kana/vim-submode"
-    "Bundle "kien/ctrlp.vim"
-    "Bundle "LaTeX-Suite-aka-Vim-LaTeX"
-    "Bundle "Lokaltog/vim-easymotion"
-    Bundle "majutsushi/tagbar"
-    Bundle "mbbill/undotree"
-    Bundle "mileszs/ack.vim"
-    Bundle "msanders/snipmate.vim"
-    Bundle "nathanaelkane/vim-indent-guides"
-    Bundle "scrooloose/nerdcommenter"
-    "Bundle "scrooloose/nerdtree"
-    "Bundle "sjl/gundo.vim"
-    "Bundle "Sorcerer"
-    Bundle "SyntaxAttr.vim"
-    "Bundle "tomasr/molokai"
-    Bundle "tomtom/tcomment_vim"
-    Bundle "tpope/vim-surround"
-    Bundle "trapd00r/neverland-vim-theme"
-    Bundle "VimCoder.jar"
-    "Bundle "Wombat"
-    Bundle "wombat256.vim"
-    "Bundle "xoria256.vim"
-    "Bundle "Zenburn"
-    "Bundle "zenesque.vim"
+if exists(":Plugin")
+    Plugin 'acx0/Conque-Shell'
+    Plugin 'acx0/Vim-JDE'
+    "Plugin 'altercation/vim-colors-solarized'
+    "Plugin 'Arduino-syntax-file'
+    Plugin 'bufkill.vim'
+    "Plugin 'ciaranm/inkpot'
+    Plugin 'cool.vim'
+    Plugin 'derekwyatt/vim-fswitch'
+    Plugin 'derekwyatt/vim-protodef'
+    Plugin 'DrawIt'
+    "Plugin 'github-theme'
+    "Plugin 'godlygeek/csapprox'
+    Plugin 'godlygeek/tabular'
+    Plugin 'IndentConsistencyCop'
+    Plugin 'indenthaskell.vim'
+    Plugin 'indentpython.vim'
+    Plugin 'javacomplete'
+    Plugin 'junegunn/seoul256.vim'
+    "Plugin 'kana/vim-submode'
+    "Plugin 'kien/ctrlp.vim'
+    "Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
+    "Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'majutsushi/tagbar'
+    Plugin 'mbbill/undotree'
+    Plugin 'mileszs/ack.vim'
+    Plugin 'msanders/snipmate.vim'
+    Plugin 'nathanaelkane/vim-indent-guides'
+    Plugin 'scrooloose/nerdcommenter'
+    "Plugin 'scrooloose/nerdtree'
+    "Plugin 'sjl/gundo.vim'
+    "Plugin 'Sorcerer'
+    Plugin 'SyntaxAttr.vim'
+    "Plugin 'tomasr/molokai'
+    Plugin 'tomtom/tcomment_vim'
+    Plugin 'tpope/vim-surround'
+    Plugin 'trapd00r/neverland-vim-theme'
+    Plugin 'VimCoder.jar'
+    "Plugin 'Wombat'
+    Plugin 'wombat256.vim'
+    "Plugin 'xoria256.vim'
+    "Plugin 'Zenburn'
+    "Plugin 'zenesque.vim'
 
     if filereadable("/usr/bin/clang")
-        Bundle "Rip-Rip/clang_complete"
+        Plugin 'Rip-Rip/clang_complete'
     else
-        Bundle "OmniCppComplete"
+        Plugin 'OmniCppComplete'
     endif
 endif
+
+call vundle#end()
 " }}}
 
 " ---> User interface {{{
