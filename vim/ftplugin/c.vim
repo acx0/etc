@@ -35,6 +35,11 @@ if exists(":FSHere")
         autocmd!
         autocmd BufEnter *.h let b:fswitchdst = 'cc,cpp,c'
         autocmd BufEnter *.cc,*.cpp let b:fswitchdst = 'h'
+
+        " give preference to headers in current dir
+        autocmd BufEnter *.h let b:fswitchlocs = './,reg:/include/src/,reg:/include.*/src/,ifrel:|/include/|../src|'
+        autocmd BufEnter *.c let b:fswitchlocs = './,reg:/src/include/,reg:|src|include/**|,ifrel:|/src/|../include|'
+        autocmd BufEnter *.cc,*.cpp let b:fswitchlocs = './,reg:/src/include/,reg:|src|include/**|,ifrel:|/src/|../include|'
     augroup end
 endif
 
