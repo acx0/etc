@@ -7,8 +7,7 @@ version = 1
 theme = {}
 theme.confdir       = awful.util.getdir("config")
 hostname = vicious.widgets.os()[4]
---theme.wallpaper_cmd = { "awsetbg -c /home/sam/media/pictures/wallpapers/cube.jpg" }
-theme.wallpaper_cmd = { "awsetbg -c /home/sam/media/pictures/wallpapers/mqFoR.jpg" }
+theme.wallpaper_cmd = { "awsetbg -c /home/sam/.config/awesome/wallpaper.jpg" }
 -- }}}
 
 -- {{{ Styles
