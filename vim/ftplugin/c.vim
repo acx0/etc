@@ -10,16 +10,18 @@ set cinoptions+=g0
 " set default compiler
 if !exists("g:CC")
     if has("unix") && filereadable("/usr/bin/clang")
-        let g:CC = "clang -std=gnu89"
-        let g:CPP = "clang++"
+        let g:CC = "clang"
+        let g:CXX = "clang++"
     else
         let g:CC = "gcc"
-        let g:CPP = "g++"
+        let g:CXX = "g++"
     endif
 endif
 
-if !exists("b:cflags")
-    let b:cflags = ""
+" flags are local to buffer
+if !exists("b:CFLAGS")
+    let b:CFLAGS = "-std=gnu89"
+    let b:CXXFLAGS = "-std=c++11"
 endif
 
 " colour output lost when output of ':make' piped through tee, see ':h shellpipe'
@@ -33,19 +35,18 @@ if exists(":FSHere")
 
     augroup fswitch_custom
         autocmd!
-        autocmd BufEnter *.h let b:fswitchdst = 'cc,cpp,c'
-        autocmd BufEnter *.cc,*.cpp let b:fswitchdst = 'h'
+        autocmd BufEnter *.h let b:fswitchdst = 'cc,cpp,tcc,c'
+        autocmd BufEnter *.cc,*.cpp,*.tcc let b:fswitchdst = 'h'
 
         " give preference to headers in current dir
         autocmd BufEnter *.h let b:fswitchlocs = './,reg:/include/src/,reg:/include.*/src/,ifrel:|/include/|../src|'
         autocmd BufEnter *.c let b:fswitchlocs = './,reg:/src/include/,reg:|src|include/**|,ifrel:|/src/|../include|'
-        autocmd BufEnter *.cc,*.cpp let b:fswitchlocs = './,reg:/src/include/,reg:|src|include/**|,ifrel:|/src/|../include|'
+        autocmd BufEnter *.cc,*.cpp,*.tcc let b:fswitchlocs = './,reg:/src/include/,reg:|src|include/**|,ifrel:|/src/|../include|'
     augroup end
 endif
 
-" add custom tags for C++
 if &filetype == "cpp"
-    setlocal tags+=~/.tags/cpp
+    inoremap std std::
 endif
 
 " generate ctags for directory of active buffer
@@ -61,15 +62,24 @@ function! CompileC()
     if glob("[Mm]akefile") != ""
         execute b:enable_colour_output == 1 ? '!make' : 'make!'
     else
-        execute '!' . (&filetype == "c" ? g:CC : g:CPP) . ' "%" -o "%:p:r" ' . b:cflags
+        if &filetype == "cpp"
+            execute '!' . g:CXX . ' ' . b:CXXFLAGS . ' -o "%:p:r" "%"'
+        else
+            execute '!' . g:CC . ' ' . b:CFLAGS . ' -o "%:p:r" "%"'
+        endif
     endif
 endfunction
 
 nnoremap <buffer> <Leader><F3> :call GetCFlags()<CR>
 
 function! GetCFlags()
-    echo 'b:cflags = "' . b:cflags . '"'
-    let b:cflags = input("let b:cflags = ", b:cflags)
+    if &filetype == "cpp"
+        echo 'b:CXXFLAGS = "' . b:CXXFLAGS . '"'
+        let b:CXXFLAGS = input("let b:CXXFLAGS = ", b:CXXFLAGS)
+    else
+        echo 'b:CFLAGS = "' . b:CFLAGS . '"'
+        let b:CFLAGS = input("let b:CFLAGS = ", b:CFLAGS)
+    endif
 endfunction
 
 nnoremap <buffer> <F4> :call RunExecutable()<CR>
@@ -79,6 +89,8 @@ function! RunExecutable()
 
     if has("unix") && glob("[Mm]akefile") != "" && !empty(system("grep '^run:' [Mm]akefile"))
         make! run
+    elseif has("unix") && glob("[Mm]akefile") != "" && !empty(system("grep '^test:' [Mm]akefile"))
+        make! test
     else
         execute '!"%:p:r"'
     endif
