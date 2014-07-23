@@ -1,8 +1,8 @@
 ! ~/.xmodmaprc
 
 ! remap Alt_R to Super_L
-remove mod1 = Alt_R
-keysym Alt_R = Super_L
+! remove mod1 = Alt_R
+! keysym Alt_R = Super_L
 
 ! remap Caps_Lock to Control_L
 remove Lock = Caps_Lock
