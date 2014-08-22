@@ -7,9 +7,11 @@ source ~/.vim/ftplugin/util.vim
 " put scope declarations (public, private, protected) 0 characters away from indent of surrounding block
 set cinoptions+=g0
 
+set matchpairs+=<:>
+
 " set default compiler
 if !exists("g:CC")
-    if has("unix") && filereadable("/usr/bin/clang")
+    if has("unix") && executable("clang")
         let g:CC = "clang"
         let g:CXX = "clang++"
     else
