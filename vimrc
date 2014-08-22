@@ -353,7 +353,7 @@ set fileencodings=ucs-bom,utf-8,default,latin1 " encodings to try when editing a
 set foldmethod=marker
 
 " --line wrapping
-nnoremap <Leader>w :setlocal wrap! wrap?<CR>
+nnoremap <Leader>tw :setlocal wrap! wrap?<CR>
 
 " --backup / swap
 " multiple combinations for backups, see ':h backup-table'
