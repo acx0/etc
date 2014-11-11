@@ -56,8 +56,8 @@ todo() {
 }
 
 notes() {
-    if [ -e ~/doc/notes ]; then
-        vim ~/doc/notes
+    if [ -e ~/doc/notes-old ]; then
+        vim ~/doc/notes-old
     else
         echo >&2 "error: notes not found"
         return 1
