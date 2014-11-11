@@ -609,7 +609,7 @@ if has("unix")
     let s:selected_file = $HOME . "/.config/ranger/vim_edit"
 
     function! RangerSelectFile()
-        if !filereadable("/usr/bin/ranger")
+        if !executable("ranger")
             return
         endif
 
