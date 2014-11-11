@@ -544,8 +544,6 @@ awful.rules.rules = {
       properties = { tag = tags[1][2] } },
     { rule = { class = "Steam" },
       properties = { tag = tags[1][1] } },
-    { rule = { class = "Xchat" },
-      properties = { tag = tags[1][1] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[1][1] } },
     { rule = { class = "Transmission" },
