@@ -13,7 +13,7 @@ URxvt*italicFont:-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
 !URxvt*boldFont:  -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
 !URxvt*italicFont:-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
 URxvt*scrollBar: false
-URxvt*saveLines: 12000
+URxvt*saveLines: 65535
 URxvt*urgentOnBell: true
 
 /* pattern matching */
