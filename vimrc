@@ -99,6 +99,8 @@ set laststatus=2 " always show status line
 
 nnoremap <Leader>cl :setlocal cursorline! cursorline?<CR>
 
+nnoremap <Leader>rn :set relativenumber! relativenumber?<CR>
+
 " --searching
 set ignorecase " ignore case when searching
 set smartcase  " case sensitive only when capital letter in expression
