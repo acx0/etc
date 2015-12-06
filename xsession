@@ -3,7 +3,7 @@
 SESSION=awesome
 
 xrdb -merge ~/.Xresources & # load X resource preferences
-(sleep 2 && xmodmap ~/.xmodmaprc) &      # load custom keyboard mappings
+xmodmap ~/.xmodmaprc &      # load custom keyboard mappings
 xsetroot -solid black &     # set root window background
 xset r rate 580 40 &        # set keyboard delay and repeat rate
 xset b off &                # disable system bell
@@ -11,9 +11,10 @@ xscreensaver -no-splash &   # start screensaver daemon
 
 urxvtd -q -o -f &
 # redshift -l 43.7:-79.3 &    # toronto
-redshift -l 47.6:-122.3 &     # seattle
+redshift -m vidmode -l 47.6:-122.3 &     # seattle
 xfce4-power-manager &
 wicd-gtk -t &
+artha &
 
 # ~/bin scripts
 tp off &    # disable touchpad
