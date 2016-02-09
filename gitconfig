@@ -20,6 +20,7 @@
 	co = checkout
 	;cp = cherry-pick
 	dfc = diff --cached
+	dffc = diff --color-words --cached
 	df = diff
 	dff = diff --color-words
 	fl = log -u
