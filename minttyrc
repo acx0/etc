@@ -1,0 +1,29 @@
+BoldAsFont=no
+CursorType=block
+CursorBlinks=no
+Scrollbar=none
+Term=xterm-256color
+Font=Terminus (TTF)
+FontHeight=9
+
+# colourscheme: photons-mod
+CursorColour=     255, 255, 255
+BackgroundColour= 26, 26, 26
+ForegroundColour= 221, 204, 187
+
+Black=            57, 57, 57
+Red=              199, 45, 65
+Green=            133, 198, 0
+Yellow=           255, 166, 0
+Blue=             52, 101, 164
+Magenta=          147, 22, 69
+Cyan=             0, 153, 188
+White=            217, 210, 189
+BoldBlack=        46, 53, 55
+BoldRed=          255, 93, 74
+BoldGreen=        179, 255, 29
+BoldYellow=       254, 237, 108
+BoldBlue=         60, 145, 210
+BoldMagenta=      190, 71, 115
+BoldCyan=         92, 222, 222
+BoldWhite=        133, 145, 155
