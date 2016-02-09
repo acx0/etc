@@ -676,7 +676,8 @@ nnoremap <F5> :UndotreeToggle<CR>
 " --clang_complete
 "let g:clang_debug = 1
 let g:clang_complete_auto = 0
-let g:clang_library_path = "/usr/lib/llvm-3.4/lib"
+let g:clang_use_library = 1
+let g:clang_library_path = "/usr/lib/llvm-3.6/lib"
 
 " --OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
