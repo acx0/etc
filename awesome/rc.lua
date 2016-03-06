@@ -41,7 +41,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init("/home/sam/.config/awesome/zenburn.lua")
 
 dmenu_font = "-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*"
 
