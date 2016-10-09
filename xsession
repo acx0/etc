@@ -14,7 +14,6 @@ urxvtd -q -o -f &
 redshift -m vidmode -l 47.6:-122.3 &     # seattle
 xfce4-power-manager &
 wicd-gtk -t &
-artha &
 
 # ~/bin scripts
 tp off &    # disable touchpad
