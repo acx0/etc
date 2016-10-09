@@ -45,8 +45,8 @@ bindkey -M viins '^U' backward-kill-line
 # the following somewhat fixes this
 #autoload -U select-word-style && select-word-style bash
 
-# enable backwards search in insert mode
-bindkey -M viins '^R' history-incremental-search-backward
+# enable backwards search in insert mode with glob support
+bindkey -M viins '^R' history-incremental-pattern-search-backward
 
 # set alternative keys for tab completion
 bindkey -M viins '^N' menu-complete
