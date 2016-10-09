@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# ~/.profile not sourced by lightdm, do it explicitly
+. $HOME/.profile
