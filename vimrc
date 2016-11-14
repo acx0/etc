@@ -45,8 +45,9 @@ if exists(":Plugin")
     Plugin 'majutsushi/tagbar'
     Plugin 'mbbill/undotree'
     Plugin 'mileszs/ack.vim'
-    Plugin 'msanders/snipmate.vim'
+    " Plugin 'msanders/snipmate.vim'
     Plugin 'nathanaelkane/vim-indent-guides'
+    "Plugin 'rdnetto/YCM-Generator'
     "Plugin 'scrooloose/nerdtree'
     "Plugin 'sjl/gundo.vim'
     "Plugin 'Sorcerer'
@@ -55,18 +56,13 @@ if exists(":Plugin")
     Plugin 'tomtom/tcomment_vim'
     Plugin 'tpope/vim-surround'
     Plugin 'trapd00r/neverland-vim-theme'
+    Plugin 'Valloric/YouCompleteMe'
     Plugin 'VimCoder.jar'
     "Plugin 'Wombat'
     Plugin 'wombat256.vim'
     "Plugin 'xoria256.vim'
     "Plugin 'Zenburn'
     "Plugin 'zenesque.vim'
-
-    if filereadable("/usr/bin/clang")
-        Plugin 'Rip-Rip/clang_complete'
-    else
-        Plugin 'OmniCppComplete'
-    endif
 endif
 
 call vundle#end()
@@ -709,6 +705,23 @@ let g:disable_protodef_sorting = 1
 
 " --tcomment_vim
 let g:tcommentBlankLines = 0
+
+" --YouCompleteMe
+let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+let g:ycm_confirm_extra_conf = 0
+" let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+
+nnoremap <Leader>gd :YcmDiags<CR>
+nnoremap <Leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <Leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <Leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
