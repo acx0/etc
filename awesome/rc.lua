@@ -304,8 +304,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "p",      function () awful.util.spawn("ncmpcpp toggle", false) end),
 
     -- Volume
-    awful.key({ modkey, "Shift"   }, "Up",     function () awful.util.spawn("amixer -q sset Master 2dB+", false) end),
-    awful.key({ modkey, "Shift"   }, "Down",   function () awful.util.spawn("amixer -q sset Master 2dB-", false) end),
+    awful.key({ modkey, "Shift"   }, "Up",     function () awful.util.spawn("amixer -q sset Master 2%+", false) end),
+    awful.key({ modkey, "Shift"   }, "Down",   function () awful.util.spawn("amixer -q sset Master 2%-", false) end),
     awful.key({ modkey, "Shift"   }, "Left",   function () awful.util.spawn("amixer -q sset Master toggle", false) end),
     -- set Capture to max (default 35) for Digital=42% to work
     awful.key({ modkey, "Shift"   }, "Right",  function () awful.util.spawn("amixer -q sset Digital 0%", false) end),
