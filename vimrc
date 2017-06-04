@@ -22,6 +22,7 @@ call vundle#begin()
 if exists(":Plugin")
     Plugin 'acx0/Conque-Shell'
     Plugin 'acx0/Vim-JDE'
+    Plugin 'airblade/vim-gitgutter'
     "Plugin 'altercation/vim-colors-solarized'
     "Plugin 'Arduino-syntax-file'
     Plugin 'bufkill.vim'
@@ -54,6 +55,7 @@ if exists(":Plugin")
     Plugin 'SyntaxAttr.vim'
     "Plugin 'tomasr/molokai'
     Plugin 'tomtom/tcomment_vim'
+    Plugin 'tpope/vim-fugitive'
     Plugin 'tpope/vim-surround'
     Plugin 'trapd00r/neverland-vim-theme'
     Plugin 'Valloric/YouCompleteMe'
