@@ -97,3 +97,5 @@ function! RunExecutable()
         execute '!"%:p:r"'
     endif
 endfunction
+
+nnoremap <Leader>re :%!clang-format<CR>
