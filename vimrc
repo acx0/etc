@@ -689,7 +689,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 let g:ConqueTerm_Color = 1  " only enable colours for the most recent 200 lines
 
 " --ack.vim
-let g:ackprg = "ack-grep -H --nocolor --nogroup --column"
+let g:ackprg = "ack -H --nocolor --nogroup --column"
 
 " --SyntaxAttr.vim
 nnoremap <Leader>st :call SyntaxAttr()<CR>
