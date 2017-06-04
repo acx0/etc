@@ -11,7 +11,7 @@ xscreensaver -no-splash &   # start screensaver daemon
 
 urxvtd -q -o -f &
 # redshift -l 43.7:-79.3 &    # toronto
-redshift -m vidmode -l 47.6:-122.3 &     # seattle
+redshift -l 47.6:-122.3 &     # seattle
 xfce4-power-manager &
 wicd-gtk -t &
 
