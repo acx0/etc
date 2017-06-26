@@ -1,0 +1,22 @@
+inoremap jk <Esc>
+
+set number
+set expandtab
+set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set clipboard=unnamed
+set nocursorline
+set scrolloff=5
+set visualbell
+
+" use VS style jumps which track entire session and not just jumps within buffer
+nnoremap <C-o> :vsc View.NavigateBackward<CR>
+nnoremap <C-i> :vsc View.NavigateForward<CR>
+
+" allow jump to declaration in external file
+nnoremap <C-]> :vsc Edit.GoToDeclaration<CR>
