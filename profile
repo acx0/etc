@@ -9,7 +9,7 @@
 
 export EDITOR=vim
 export BROWSER=firefox
-export PAGER=less   # tmp: until ranger 'sensible-paper' bug fixed
+export PAGER=less   # sensible-pager keeps consuming memory until crashing...
 
 # add ~/bin to PATH if it exists
 if [ -d "$HOME/bin" ]; then
