@@ -19,4 +19,9 @@ nnoremap <C-o> :vsc View.NavigateBackward<CR>
 nnoremap <C-i> :vsc View.NavigateForward<CR>
 
 " allow jump to declaration in external file
+" note: this should actually be Edit.GoToDefinition since that's what <F12> is
+" bound to and the behaviour we want, but for some reason using <C-]> when
+" it's bound to Edit.GoToDefinition doesn't behave the same so we use
+" Edit.GoToDeclaration instead, which seems to be more consistent... if <C-]>
+" fails, try <F12>
 nnoremap <C-]> :vsc Edit.GoToDeclaration<CR>
