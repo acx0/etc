@@ -25,3 +25,15 @@ nnoremap <C-i> :vsc View.NavigateForward<CR>
 " Edit.GoToDeclaration instead, which seems to be more consistent... if <C-]>
 " fails, try <F12>
 nnoremap <C-]> :vsc Edit.GoToDeclaration<CR>
+
+" note: there doesn't seem to be command to toggle comment
+nnoremap gcc :vsc Edit.CommentSelection<CR>
+nnoremap gnc :vsc Edit.UncommentSelection<CR>
+
+" TODO: report bug: trailing '<Esc><Esc>' is required otherwise vsvim goes
+" into command mode, single '<Esc>' doesn't seem to work so two are used
+vnoremap gc :vsc Edit.CommentSelection<CR><Esc><Esc>
+vnoremap gn :vsc Edit.UncommentSelection<CR><Esc><Esc>
+
+" TODO: report bug: visually select region, :normal gcgv, should reselect last visual
+" block, only selects bottom line in previous block
