@@ -39,4 +39,12 @@
 	sm = submodule
 	st = status
 
+# windows config example
+#[core]
+#	editor = "'C:\\Program Files (x86)\\vim\\vim74\\gvim.exe'"
+#[merge]
+#	tool = gvimdiff
+#[mergetool "gvimdiff"]
+#	path = "C:\\Program Files (x86)\\vim\\vim74\\gvim.exe"
+
 ; vim: set ts=8 sts=0 sw=8 noet ft=gitconfig :
