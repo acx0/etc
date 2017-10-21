@@ -18,11 +18,13 @@ Install plugins using the `BundleInstall` Vim command, and update them using
     vim -c BundleInstall
     :BundleInstall!
 
-YouCompleteMe plugin installation requires additional step after `BundleInstall`:
+[YouCompleteMe] plugin installation requires additional step after `BundleInstall`:
 
+    sudo aptitude install build-essential cmake python-dev python3-dev
     cd ~/.vim/bundle/YouCompleteMe
     /usr/bin/python3 install.py --clang-completer
 
-[link.sh]:http://github.com/acx0/link.sh
+[link.sh]:https://github.com/acx0/link.sh
 [Vim]:http://vim.org
-[Vundle]:http://github.com/gmarik/vundle
+[Vundle]:https://github.com/gmarik/vundle
+[YouCompleteMe]:https://github.com/Valloric/YouCompleteMe
