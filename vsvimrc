@@ -1,3 +1,4 @@
+let mapleader="\<space>"
 inoremap jk <Esc>
 
 set number
@@ -37,3 +38,5 @@ vnoremap gn :vsc Edit.UncommentSelection<CR><Esc><Esc>
 
 " TODO: report bug: visually select region, :normal gcgv, should reselect last visual
 " block, only selects bottom line in previous block
+
+nnoremap <Leader>ra :vsc TestExplorer.RunAllTests<CR>
