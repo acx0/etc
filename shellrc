@@ -73,13 +73,16 @@ ranger_cd() {
 }
 
 # enable colours in less for man pages
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
+man() {
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;36m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;40;92m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+        command man "$@"
+}
 
 # allows java graphical programs to run in tiling window managers
 if [ -n "$DISPLAY" -a -x /usr/bin/wmname ]; then
