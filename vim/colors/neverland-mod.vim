@@ -121,6 +121,7 @@ hi WildMenu        guifg=#5fd7ff guibg=#000000
 hi Comment         guifg=#af875f
 hi ColorColumn                   guibg=#262626
 hi CursorLine                    guibg=#1c1c1c gui=none
+hi CursorLineNr    guifg=#ff005f               gui=none
 hi CursorColumn                  guibg=#121212
 hi LineNr          guifg=#626262 guibg=#121212
 if g:neverland_show_NonText == 1
@@ -266,6 +267,7 @@ if &t_Co > 255
     hi Comment         ctermfg=137
     hi ColorColumn                 ctermbg=235
     hi CursorLine                  ctermbg=234   cterm=none
+    hi CursorLineNr    ctermfg=197               cterm=none
     hi CursorColumn                ctermbg=233
     hi LineNr          ctermfg=241 ctermbg=233
     if g:neverland_show_NonText == 1
