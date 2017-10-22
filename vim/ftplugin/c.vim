@@ -20,15 +20,21 @@ if !exists("g:CC")
     endif
 endif
 
+if !exists("g:max_parallel_make_jobs")
+    if has("unix")
+        let g:max_parallel_make_jobs = system("nproc") * 2
+    elseif !empty($NUMBER_OF_PROCESSORS)
+        " for windows
+        let g:max_parallel_make_jobs = $NUMBER_OF_PROCESSORS * 2
+    else
+        let g:max_parallel_make_jobs = 4
+    endif
+endif
+
 " flags are local to buffer
 if !exists("b:CFLAGS")
     let b:CFLAGS = "-std=gnu89"
-    let b:CXXFLAGS = "-std=c++11"
-endif
-
-" colour output lost when output of ':make' piped through tee, see ':h shellpipe'
-if !exists("b:enable_colour_output")
-    let b:enable_colour_output = 1
+    let b:CXXFLAGS = "-std=c++14"
 endif
 
 " settings for vim-fswitch plugin
@@ -62,7 +68,7 @@ function! CompileC()
     call PrintSeparator()
 
     if glob("[Mm]akefile") != ""
-        execute b:enable_colour_output == 1 ? '!make' : 'make!'
+        execute '!make -j ' . g:max_parallel_make_jobs
     else
         if &filetype == "cpp"
             execute '!' . g:CXX . ' ' . b:CXXFLAGS . ' -o "%:p:r" "%"'
@@ -91,9 +97,9 @@ function! RunExecutable()
     update
 
     if has("unix") && glob("[Mm]akefile") != "" && !empty(system("grep '^test:' [Mm]akefile"))
-        make! -j test
+        execute '!make -j ' . g:max_parallel_make_jobs . ' test'
     elseif has("unix") && glob("[Mm]akefile") != "" && !empty(system("grep '^run:' [Mm]akefile"))
-        make! -j run
+        execute '!make -j ' . g:max_parallel_make_jobs . ' run'
     else
         execute '!"%:p:r"'
     endif
