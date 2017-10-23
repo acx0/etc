@@ -9,9 +9,6 @@
 URxvt*font:      -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
 URxvt*boldFont:  -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
 URxvt*italicFont:-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*font:      -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
-!URxvt*boldFont:  -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
-!URxvt*italicFont:-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
 URxvt*scrollBar: false
 URxvt*saveLines: 65535
 URxvt*urgentOnBell: true
