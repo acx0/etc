@@ -328,8 +328,8 @@ globalkeys = gears.table.join(
     -- Prompt
     awful.key({ modkey },            "r",
               function ()
-                  awful.spawn("dmenu_run -i -nb '" ..
-                      beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal ..
+                  awful.spawn("dmenu_run -i -l 5 -p '>' -nb '" ..
+                      beautiful.border_focus .. "' -nf '" .. beautiful.bg_focus ..
                       "' -sb '" .. beautiful.bg_focus ..
                       "' -sf '" .. beautiful.fg_focus .. "'", false)
               end,
