@@ -22,7 +22,7 @@ Install plugins using the `BundleInstall` Vim command, and update them using
 
     sudo aptitude install build-essential cmake python-dev python3-dev
     cd ~/.vim/bundle/YouCompleteMe
-    /usr/bin/python3 install.py --clang-completer
+    python3 install.py --clang-completer
 
 [link.sh]:https://github.com/acx0/link.sh
 [Vim]:http://vim.org
