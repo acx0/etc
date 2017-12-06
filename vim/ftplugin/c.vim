@@ -58,7 +58,20 @@ if &filetype == "cpp"
 endif
 
 " generate ctags for directory of active buffer
-nnoremap <buffer> <F11> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q "%:p:h"<CR>
+nnoremap <buffer> <F11> :call UpdateCtags()<CR>
+
+function! UpdateCtags()
+    update
+    call PrintSeparator()
+
+    if has("unix")
+        if glob("[Mm]akefile") != "" && !empty(system("grep '^tags:' [Mm]akefile"))
+            execute '!make -j ' . g:max_parallel_make_jobs . ' tags'
+        else
+            execute '!ctags -R --c++-kinds=+px --fields=+aiS --extra=+q "%:p:h"'
+        endif
+    endif
+endfunction
 
 " quick compile/run functions
 nnoremap <buffer> <F3> :call CompileC()<CR>
