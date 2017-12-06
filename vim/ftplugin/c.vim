@@ -118,4 +118,4 @@ function! RunExecutable()
     endif
 endfunction
 
-nnoremap <Leader>re :%!clang-format<CR>
+nnoremap <buffer> <Leader>re :%!clang-format<CR>
