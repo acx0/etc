@@ -45,25 +45,6 @@ alias m='make -j $(($(nproc) * 2))'
 # list processes which are using a deleted map file after a system update
 alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
 
-# functions
-todo() {
-    if [ -e ~/doc/todo ]; then
-        vim ~/doc/todo
-    else
-        echo >&2 "error: todo not found"
-        return 1
-    fi
-}
-
-notes() {
-    if [ -e ~/doc/notes-old ]; then
-        vim ~/doc/notes-old
-    else
-        echo >&2 "error: notes not found"
-        return 1
-    fi
-}
-
 ranger_cd() {
     local CD_FILE="$HOME/.config/ranger/shell_cd"
     ranger --choosedir "$CD_FILE" "${@:-$PWD}"   # use supplied arg otherwise $PWD if none
