@@ -718,12 +718,6 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
-
-nnoremap <Leader>gd :YcmDiags<CR>
-nnoremap <Leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <Leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <Leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :

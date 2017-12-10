@@ -119,3 +119,9 @@ function! RunExecutable()
 endfunction
 
 nnoremap <buffer> <Leader>re :%!clang-format<CR>
+
+nnoremap <buffer> <Leader>dg :YcmDiags<CR>
+nnoremap <buffer> <Leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <buffer> <Leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <buffer> <Leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <buffer> <Leader>gt :YcmCompleter GetType<CR>
