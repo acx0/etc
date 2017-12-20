@@ -60,6 +60,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
+altkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -271,9 +272,9 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift" }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Shift" }, "h", function () awful.screen.focus_relative( 1) end,
+    awful.key({ modkey, "Control" }, "h", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Shift" }, "l", function () awful.screen.focus_relative(-1) end,
+    awful.key({ modkey, "Control" }, "l", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,         }, "i", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
@@ -350,7 +351,7 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
 
     -- Custom
-    awful.key({ modkey, "Control" }, "l",     function () awful.spawn("xlock", false) end,
+    awful.key({ modkey, altkey }, "l", function () awful.spawn("xlock", false) end,
               {description = "lock screen", group = "lock"}),
 
     awful.key({                   }, "Print", function () awful.spawn("scrot -e 'mv $f ~/media/pictures/screenshots 2> /dev/null'", false) end,
@@ -382,9 +383,9 @@ clientkeys = gears.table.join(
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey, "Control", "Shift" }, "h", function (c) c:move_to_screen(c.screen.index + 1) end,
+    awful.key({ modkey, "Shift"   }, "h",      function (c) c:move_to_screen(c.screen.index + 1) end,
               {description = "move to next screen", group = "client"}),
-    awful.key({ modkey, "Control", "Shift" }, "l", function (c) c:move_to_screen(c.screen.index - 1) end,
+    awful.key({ modkey, "Shift"   }, "l",      function (c) c:move_to_screen(c.screen.index - 1) end,
               {description = "move to previous screen", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
