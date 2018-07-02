@@ -62,21 +62,19 @@ zmodload zsh/complist
 bindkey -M menuselect '^M' .accept-line
 
 # display current vi-mode in prompt string
-VI_MODE="i"
 function zle-line-init zle-keymap-select {
     VI_MODE="${${KEYMAP/vicmd/c}/(main|viins)/i}"
     if [ "$VI_MODE" = "i" ]; then
-        PROMPT="%n@%m:%1~ [%{$fg[red]%}${VI_MODE}%{$reset_color%}]$ "
+        VI_MODE_COLOUR="red"
     else
-        PROMPT="%n@%m:%1~ [%{$fg[green]%}${VI_MODE}%{$reset_color%}]$ "
+        VI_MODE_COLOUR="green"
     fi
+    PROMPT="[%{$fg[${VI_MODE_COLOUR}]%}${VI_MODE}%{$reset_color%}] %n@%m:%1~ $ "
     zle reset-prompt
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
-
-PROMPT="%n@%m:%1~ [%{$fg[red]%}${VI_MODE}%{$reset_color%}]$ "
 
 # completion settings
 #zstyle ':completion:*' auto-description 'specify: %d'

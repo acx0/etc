@@ -2,6 +2,10 @@
 # See readline(3readline) and `info rluserman' for more information.
 
 set editing-mode vi
+set show-mode-in-prompt on
+# '\1' and '\2' used to begin and end sequences of non-printing characters
+set vi-ins-mode-string "[\1\e[0;31m\2i\1\e[0m\2] "
+set vi-cmd-mode-string "[\1\e[0;32m\2c\1\e[0m\2] "
 
 set bell-style none
 set completion-ignore-case on

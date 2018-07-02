@@ -3,7 +3,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PS1='\u@\h:\W\$ '
+PS1='\u@\h:\W \$ '
 
 HISTCONTROL=ignoreboth  # ignore lines starting with a space and consecutive duplicates
 HISTSIZE=10000
