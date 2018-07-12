@@ -7,6 +7,8 @@
     "editor.lineNumbers": "on",
     "editor.matchBrackets": true,
 
+    "terminal.integrated.fontSize": 12,
+
     "vim.ignorecase": true,
     "vim.smartcase": true,
     "vim.hlsearch": true,
