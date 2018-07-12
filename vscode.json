@@ -1,0 +1,26 @@
+{
+    "editor.fontSize": 12,
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
+    "editor.lineNumbers": "on",
+    "editor.matchBrackets": true,
+
+    "vim.ignorecase": true,
+    "vim.smartcase": true,
+    "vim.hlsearch": true,
+    "vim.incsearch": true,
+    "vim.autoindent": true,
+    "vim.showcmd": true,
+    "vim.showmodename": true,
+    "vim.useCtrlKeys": true,
+    "vim.useSystemClipboard": true,
+    "vim.leader": "<space>",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j","k"],
+            "after": ["<Esc>"]
+        }
+    ]
+}
