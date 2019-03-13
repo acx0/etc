@@ -11,6 +11,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
+naughty.config.defaults.timeout = 10
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Enable hotkeys help widget for VIM and other apps
@@ -47,7 +48,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/sam/.config/awesome/zenburn.lua")
+beautiful.init("~/.config/awesome/zenburn.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -329,7 +330,7 @@ globalkeys = gears.table.join(
     -- Prompt
     awful.key({ modkey },            "r",
               function ()
-                  awful.spawn("dmenu_run -i -l 5 -p '>' -nb '" ..
+                  awful.spawn("dmenu_run -i -l 5 -p '>' -fn terminus:size=11 -nb '" ..
                       beautiful.border_focus .. "' -nf '" .. beautiful.bg_focus ..
                       "' -sb '" .. beautiful.bg_focus ..
                       "' -sf '" .. beautiful.fg_focus .. "'", false)
