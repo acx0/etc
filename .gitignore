@@ -2,7 +2,7 @@
 *.py?
 ~*
 vim/.netrwhist
-vim/bundle
+vim/plugged
 ranger/bookmarks
 ranger/history
 ranger/tagged

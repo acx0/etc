@@ -1,9 +1,9 @@
-[submodule "vim/vundle"]
-	path = vim/vundle
-	url = git://github.com/gmarik/vundle.git
 [submodule "dwm"]
 	path = dwm
 	url = git://github.com/acx0/dwm.git
 [submodule "link.sh"]
 	path = link.sh
 	url = git://github.com/acx0/link.sh.git
+[submodule "vim/vim-plug"]
+	path = vim/vim-plug
+	url = git://github.com/junegunn/vim-plug.git

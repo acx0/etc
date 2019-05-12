@@ -7,67 +7,62 @@
 " prevent vim from emulating vi
 set nocompatible    " set explicitly since not set when vimrc sourced with '-u' flag
 
-" setup vundle to manage all other plugins
-filetype off    " temporarily disabled (required); enabled below
-
 " use '.vim' directory instead of 'vimfiles' under windows
 if has("win32")
     set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 endif
 
-set runtimepath+=~/.vim/vundle  " add vundle to runtimepath
-call vundle#begin()
-
 " --managed / active plugins
-if exists(":Plugin")
-    Plugin 'acx0/Conque-Shell'
-    Plugin 'acx0/Vim-JDE'
-    Plugin 'airblade/vim-gitgutter'
-    "Plugin 'altercation/vim-colors-solarized'
-    "Plugin 'Arduino-syntax-file'
-    Plugin 'bufkill.vim'
-    "Plugin 'ciaranm/inkpot'
-    Plugin 'cool.vim'
-    Plugin 'derekwyatt/vim-fswitch'
-    Plugin 'derekwyatt/vim-protodef'
-    Plugin 'DrawIt'
-    "Plugin 'github-theme'
-    "Plugin 'godlygeek/csapprox'
-    Plugin 'godlygeek/tabular'
-    Plugin 'IndentConsistencyCop'
-    Plugin 'indenthaskell.vim'
-    Plugin 'indentpython.vim'
-    Plugin 'javacomplete'
-    Plugin 'junegunn/seoul256.vim'
-    "Plugin 'kana/vim-submode'
-    "Plugin 'kien/ctrlp.vim'
-    "Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
-    "Plugin 'Lokaltog/vim-easymotion'
-    Plugin 'majutsushi/tagbar'
-    Plugin 'mbbill/undotree'
-    Plugin 'mileszs/ack.vim'
-    " Plugin 'msanders/snipmate.vim'
-    Plugin 'nathanaelkane/vim-indent-guides'
-    "Plugin 'rdnetto/YCM-Generator'
-    "Plugin 'scrooloose/nerdtree'
-    "Plugin 'sjl/gundo.vim'
-    "Plugin 'Sorcerer'
-    Plugin 'SyntaxAttr.vim'
-    "Plugin 'tomasr/molokai'
-    Plugin 'tomtom/tcomment_vim'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'tpope/vim-surround'
-    Plugin 'trapd00r/neverland-vim-theme'
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'VimCoder.jar'
-    "Plugin 'Wombat'
-    Plugin 'wombat256.vim'
-    "Plugin 'xoria256.vim'
-    "Plugin 'Zenburn'
-    "Plugin 'zenesque.vim'
-endif
+runtime vim-plug/plug.vim
+call plug#begin("~/.vim/plugged")
 
-call vundle#end()
+Plug 'acx0/Conque-Shell'
+" Plug 'acx0/Vim-JDE'
+Plug 'airblade/vim-gitgutter'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'vim-scripts/Arduino-syntax-file'
+Plug 'vim-scripts/bufkill.vim'
+"Plug 'ciaranm/inkpot'
+Plug 'vim-scripts/cool.vim'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'derekwyatt/vim-protodef'
+Plug 'vim-scripts/DrawIt'
+"Plug 'vim-scripts/github-theme'
+"Plug 'godlygeek/csapprox'
+Plug 'godlygeek/tabular'
+Plug 'vim-scripts/IndentConsistencyCop'
+Plug 'vim-scripts/indenthaskell.vim'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/javacomplete'
+Plug 'junegunn/seoul256.vim'
+"Plug 'kana/vim-submode'
+"Plug 'kien/ctrlp.vim'
+"Plug 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
+"Plug 'Lokaltog/vim-easymotion'
+Plug 'majutsushi/tagbar'
+Plug 'mbbill/undotree'
+Plug 'mileszs/ack.vim'
+" Plug 'msanders/snipmate.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'rdnetto/YCM-Generator'
+"Plug 'scrooloose/nerdtree'
+"Plug 'sjl/gundo.vim'
+"Plug 'vim-scripts/Sorcerer'
+Plug 'vim-scripts/SyntaxAttr.vim'
+"Plug 'tomasr/molokai'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'trapd00r/neverland-vim-theme'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer' }
+" Plug 'vim-scripts/VimCoder.jar'
+"Plug 'vim-scripts/Wombat'
+Plug 'vim-scripts/wombat256.vim'
+"Plug 'vim-scripts/xoria256.vim'
+"Plug 'vim-scripts/Zenburn'
+"Plug 'vim-scripts/zenesque.vim'
+
+call plug#end()
 " }}}
 
 " ---> User interface {{{
@@ -636,9 +631,6 @@ endif
 " }}}
 
 " ---> Plugin configuration {{{
-" --vundle
-let g:vundle_default_git_proto = "git"
-
 " --snipmate.vim
 " use custom snippets
 let g:snippets_dir = "~/.vim/snippets/"

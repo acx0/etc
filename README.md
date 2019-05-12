@@ -9,22 +9,23 @@ Clone the repository and initialize the submodules:
 [link.sh] is used to link the dotfiles to their native locations.
 
 ## Vim Setup
-[Vim] plugin files are not tracked since [Vundle] is used to download and
-update them.
+[Vim] plugin files are not tracked since [vim-plug] is used to download and
+update them. [vim-plug] itself is tracked as a git submodule.
 
-Install plugins using the `BundleInstall` Vim command, and update them using
-`BundleInstall!`:
+Install plugins using the `PlugInstall` Vim command, and update them using
+`PlugUpdate`:
 
-    vim -c BundleInstall
-    :BundleInstall!
+    vim +PlugInstall
 
-[YouCompleteMe] plugin installation requires additional step after `BundleInstall`:
+[vim-plug] will handle running any post-{install,update} commands required
+for completing plugin setup. See `vimrc` for definition of hooks.
 
-    sudo aptitude install build-essential cmake python-dev python3-dev
-    cd ~/.vim/bundle/YouCompleteMe
-    python3 install.py --clang-completer
+note: [YouCompleteMe] setup requires the following packages to be installed:
+
+    # debian
+    build-essential cmake python-dev python3-dev
 
 [link.sh]:https://github.com/acx0/link.sh
 [Vim]:http://vim.org
-[Vundle]:https://github.com/gmarik/vundle
 [YouCompleteMe]:https://github.com/Valloric/YouCompleteMe
+[vim-plug]:https://github.com/junegunn/vim-plug
