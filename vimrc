@@ -16,46 +16,31 @@ endif
 runtime vim-plug/plug.vim
 call plug#begin("~/.vim/plugged")
 
-Plug 'acx0/Conque-Shell'
-" Plug 'acx0/Vim-JDE'
 Plug 'airblade/vim-gitgutter'
-"Plug 'altercation/vim-colors-solarized'
-"Plug 'vim-scripts/Arduino-syntax-file'
-Plug 'vim-scripts/bufkill.vim'
-"Plug 'ciaranm/inkpot'
-Plug 'vim-scripts/cool.vim'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'derekwyatt/vim-protodef'
-Plug 'vim-scripts/DrawIt'
-"Plug 'vim-scripts/github-theme'
-"Plug 'godlygeek/csapprox'
 Plug 'godlygeek/tabular'
-Plug 'vim-scripts/IndentConsistencyCop'
-Plug 'vim-scripts/indenthaskell.vim'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'vim-scripts/javacomplete'
-Plug 'junegunn/seoul256.vim'
-"Plug 'kana/vim-submode'
-"Plug 'kien/ctrlp.vim'
-"Plug 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
-"Plug 'Lokaltog/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
-" Plug 'msanders/snipmate.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'rdnetto/YCM-Generator'
-"Plug 'scrooloose/nerdtree'
-"Plug 'sjl/gundo.vim'
-"Plug 'vim-scripts/Sorcerer'
-Plug 'vim-scripts/SyntaxAttr.vim'
-"Plug 'tomasr/molokai'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'trapd00r/neverland-vim-theme'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer' }
-" Plug 'vim-scripts/VimCoder.jar'
+Plug 'vim-scripts/bufkill.vim'
+Plug 'vim-scripts/DrawIt'
+Plug 'vim-scripts/IndentConsistencyCop'
+Plug 'vim-scripts/SyntaxAttr.vim'
+
+" colourschemes
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'ciaranm/inkpot'
+Plug 'junegunn/seoul256.vim'
+"Plug 'tomasr/molokai'
+Plug 'trapd00r/neverland-vim-theme'
+"Plug 'vim-scripts/github-theme'
+"Plug 'vim-scripts/Sorcerer'
 "Plug 'vim-scripts/Wombat'
 Plug 'vim-scripts/wombat256.vim'
 "Plug 'vim-scripts/xoria256.vim'
@@ -632,10 +617,6 @@ endif
 " }}}
 
 " ---> Plugin configuration {{{
-" --snipmate.vim
-" use custom snippets
-let g:snippets_dir = "~/.vim/snippets/"
-
 " --tagbar
 nnoremap <F2> :TagbarToggle<CR>
 
@@ -656,44 +637,14 @@ if !has("gui_running")
     augroup end
 endif
 
-" --gundo.vim
-"nnoremap <F5> :GundoToggle<CR>
-"let g:gundo_width = 33
-"let g:gundo_preview_bottom = 1
-
 " --undotree
 nnoremap <F5> :UndotreeToggle<CR>
-
-" --clang_complete
-"let g:clang_debug = 1
-let g:clang_complete_auto = 0
-let g:clang_use_library = 1
-let g:clang_library_path = "/usr/lib/llvm-3.6/lib"
-
-" --OmniCppComplete
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 0      " autocomplete after .
-let OmniCpp_MayCompleteArrow = 0    " autocomplete after ->
-let OmniCpp_MayCompleteScope = 0    " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-
-" --Conque-Shell
-let g:ConqueTerm_Color = 1  " only enable colours for the most recent 200 lines
 
 " --ack.vim
 let g:ackprg = "ack -H --nocolor --nogroup --column"
 
 " --SyntaxAttr.vim
 nnoremap <Leader>st :call SyntaxAttr()<CR>
-
-" --LaTeX-Suite-aka-Vim-LaTeX
-let g:tex_flavor = "latex"
-"let g:Tex_DefaultTargetFormat = "pdf"
-"let g:Tex_ViewRule_dvi = "evince"
-"let g:Tex_ViewRule_pdf = "evince"
 
 " --vim-protodef
 let g:disable_protodef_sorting = 1
