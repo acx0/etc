@@ -355,6 +355,7 @@ nnoremap <Leader>tw :setlocal wrap! wrap?<CR>
 "set nobackup      " won't leave additional files after vim is closed
 "set nowritebackup " keeps backup file while editing, deleted after
 "set noswapfile    " keeps everything in memory
+set directory^=~/.vimswap// " '//' directs swap file name to reference complete file path
 
 " --session restore
 " jump to last position when reopening a file
