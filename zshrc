@@ -61,6 +61,10 @@ bindkey -M viins '^K' history-search-backward
 zmodload zsh/complist
 bindkey -M menuselect '^M' .accept-line
 
+# accept/undo tab completion selection, also useful for ad-hoc directory traversal
+bindkey -M menuselect '^Y' accept-and-infer-next-history
+bindkey -M menuselect '^E' undo
+
 # display current vi-mode in prompt string
 function zle-line-init zle-keymap-select {
     VI_MODE="${${KEYMAP/vicmd/c}/(main|viins)/i}"
