@@ -101,7 +101,7 @@ set hlsearch   " highlight search terms
 set incsearch  " show matches as they are found
 
 " toggle hlsearch and show current value
-nnoremap <Leader>h :set hlsearch! hlsearch?<CR>
+nnoremap <Leader>hl :set hlsearch! hlsearch?<CR>
 
 " --feedback
 set showmatch    " show matching braces when typed or under cursor
