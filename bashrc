@@ -3,6 +3,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# see ~/.inputrc for more PS1 configuration
 PS1='\u@\h:\W \$ '
 
 HISTCONTROL=ignoreboth  # ignore lines starting with a space and consecutive duplicates
