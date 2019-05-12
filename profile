@@ -9,12 +9,11 @@
 
 export EDITOR=vim
 export BROWSER=firefox
-export PAGER=less   # sensible-pager keeps consuming memory until crashing...
 
-# add ~/bin to PATH if it exists
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
+PATH="$HOME/bin:$PATH"
+PATH="$PATH:/sbin:/usr/sbin"    # add super-user binaries to PATH
+PATH="$PATH:/usr/local/go/bin"
 
-# add super-user binaries to PATH
-PATH="$PATH:/sbin:/usr/sbin"
+# first path in GOPATH is used as target for `go get` downloads
+export GOPATH="$HOME/src/go-dist:$HOME/src/go:$HOME/src/server/go"
+export PATH
