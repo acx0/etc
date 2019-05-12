@@ -27,6 +27,7 @@ Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer' }
 Plug 'vim-scripts/bufkill.vim'
