@@ -266,6 +266,10 @@ set virtualedit=block " allow cursor to move past last character on line in visu
 nnoremap n nzz
 nnoremap N Nzz
 
+" jump list viewing/management
+nnoremap <Leader>ju :jumps<CR>
+nnoremap <Leader>cj :clearjumps<CR>
+
 " easier window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -289,6 +293,9 @@ nnoremap <Leader>H <C-w>H
 nnoremap <Leader>J <C-w>J
 nnoremap <Leader>K <C-w>K
 nnoremap <Leader>L <C-w>L
+
+" close current window's location list
+nnoremap <Leader>lcl :lclose<CR>
 
 " tab creation shortcuts
 "nnoremap <Leader>tt :tabs<CR>
