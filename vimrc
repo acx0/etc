@@ -19,6 +19,7 @@ call plug#begin("~/.vim/plugged")
 Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'derekwyatt/vim-protodef'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
@@ -662,6 +663,12 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
+
+" --vim-go
+" let g:go_highlight_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
