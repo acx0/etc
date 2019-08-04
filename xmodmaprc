@@ -20,3 +20,9 @@ add Control = Control_L Control_R
 ! clear Control
 ! keycode 66 = Caps_Lock
 ! add Control = Control_L Control_R
+
+! configure Fn+Return to generate Insert
+! note:
+!   Fn+Return generates keycode 104 on macbook keyboard (according to xev)
+!   generate Shift+Insert with Shift+Fn+Return
+keycode 104 = Insert
