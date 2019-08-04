@@ -3,6 +3,8 @@
 " I'm sitting in a car heading Neverland
 " Author: Magnus Woldrich <trapd00r@trapd00r.se>
 
+" note: GitGutter* {cterm,gui}fg colours from photons-mod Xresources colourscheme
+
 if !exists("g:neverland_bold")
     let g:neverland_bold = 1
 endif
@@ -133,6 +135,10 @@ endif
 hi TabLine         guifg=#878700 guibg=#121212
 hi TabLineFill     guifg=#121212 guibg=#121212
 hi TabLineSel      guifg=#ffd700 guibg=#1c1c1c
+
+hi GitGutterAdd    guifg=#85C600 guibg=#121212
+hi GitGutterChange guifg=#FFA600 guibg=#121212
+hi GitGutterDelete guifg=#C72D41 guibg=#121212
 
 if g:neverland_bold == 0
     hi Conditional     gui=none
@@ -279,6 +285,10 @@ if &t_Co > 255
     hi TabLine         ctermfg=100 ctermbg=233
     hi TabLineFill     ctermfg=233 ctermbg=233
     hi TabLineSel      ctermfg=220 ctermbg=234
+
+    hi GitGutterAdd    ctermfg=2   ctermbg=233
+    hi GitGutterChange ctermfg=3   ctermbg=233
+    hi GitGutterDelete ctermfg=1   ctermbg=233
 
     if g:neverland_bold == 0
         hi Conditional     cterm=none
