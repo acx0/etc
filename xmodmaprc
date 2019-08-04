@@ -1,16 +1,22 @@
 ! ~/.xmodmaprc
 
-! remap Alt_R to Super_L
-! remove mod1 = Alt_R
-! keysym Alt_R = Super_L
+! swap Alt_L and Super_L
+! note: re-executing this stanza will swap the keys back to their previous assignments
+remove Mod1 = Alt_L
+remove Mod4 = Super_L
+keysym Super_L = Alt_L
+keysym Alt_L = Super_L
+add Mod1 = Alt_L
+add Mod4 = Super_L
 
 ! remap Caps_Lock to Control_L
-remove Lock = Caps_Lock
-keysym Caps_Lock = Control_L
-add Control = Control_L
+clear Lock
+clear Control
+keycode 66 = Control_L
+add Control = Control_L Control_R
 
-! swap Caps_Lock and Escape
-!remove Lock = Caps_Lock
-!keysym Escape = Caps_Lock
-!keysym Caps_Lock = Escape
-!add Lock = Caps_Lock
+! restore Caps_Lock
+! clear Lock
+! clear Control
+! keycode 66 = Caps_Lock
+! add Control = Control_L Control_R
