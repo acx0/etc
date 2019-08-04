@@ -12,6 +12,8 @@
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
+[rerere]
+	enabled = true
 [push]
 	default = simple
 [fetch]
