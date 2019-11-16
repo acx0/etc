@@ -25,15 +25,16 @@ Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer' }
 Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/DrawIt'
 Plug 'vim-scripts/IndentConsistencyCop'
 Plug 'vim-scripts/SyntaxAttr.vim'
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer' }
 
 " colourschemes
 "Plug 'altercation/vim-colors-solarized'
