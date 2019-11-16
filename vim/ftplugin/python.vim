@@ -12,3 +12,6 @@ function! RunPython()
     call PrintSeparator()
     !python "%"
 endfunction
+
+nnoremap <buffer> <Leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <buffer> <Leader>gt :YcmCompleter GetType<CR>
