@@ -54,7 +54,10 @@ if exists(":FSHere")
 endif
 
 if &filetype == "cpp"
-    inoremap std std::
+    inoremap <buffer> std std::
+    inoremap <buffer> ,, <<
+    inoremap <buffer> .. >>
+    inoremap <buffer> ;; ::
 endif
 
 " generate ctags for directory of active buffer
