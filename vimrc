@@ -579,7 +579,7 @@ function! PreservePosition(command)
 endfunction
 
 " write to root-owned file when running as non-root
-command! W write !sudo tee % > /dev/null
+command! W execute 'silent write !sudo tee % > /dev/null' | edit!
 
 " append modeline after last line in buffer
 " use substitute() instead of printf() to handle "%%s" modeline in LaTeX files
