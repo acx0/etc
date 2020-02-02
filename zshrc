@@ -8,7 +8,7 @@ setopt APPEND_HISTORY
 setopt AUTO_CD
 setopt AUTO_PUSHD
 #setopt CORRECT_ALL
-setopt EXTENDED_GLOB
+#setopt EXTENDED_GLOB
 setopt EXTENDED_HISTORY
 setopt HASH_LIST_ALL
 #setopt HIST_IGNORE_ALL_DUPS
@@ -21,6 +21,7 @@ setopt SHARE_HISTORY
 unsetopt BEEP
 #unsetopt CHECK_JOBS
 unsetopt HUP
+unsetopt NOMATCH
 
 if [ -f "$HOME/.shellrc" ]; then
     source "$HOME/.shellrc"
