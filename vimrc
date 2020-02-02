@@ -66,8 +66,8 @@ inoremap jk <Esc>
 set backspace=indent,eol,start  " make backspace work like 'normal' text editors
 
 " --history
-set history=500    " history of commands and searches
-set undolevels=500 " changes to be remembered
+set history=1000    " history of commands and searches
+set undolevels=1000 " changes to be remembered
 
 " --interface appearance
 syntax enable    " enable syntax highlighting and allow custom highlighting
