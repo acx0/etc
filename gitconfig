@@ -12,6 +12,7 @@
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
+	prompt = true
 [rerere]
 	enabled = true
 [push]
@@ -19,20 +20,21 @@
 [fetch]
 	prune = true
 [alias]
+	ap = add -p
 	br = branch
-	cia = commit --amend
-	ci = commit
+	ci = commit -v
+	cia = commit -v --amend
 	co = checkout
-	;cp = cherry-pick
+	cp = cherry-pick
 	dfc = diff --cached
 	dffc = diff --color-words --cached
 	df = diff
 	dff = diff --color-words
-	fl = log -u
+	lf = log -p --stat
 	lg = log -p --color-words
 	lgg = log --oneline --graph
-	;rbc = rebase --continue
-	;rb = rebase
+	rb = rebase
+	rbc = rebase --continue
 	;rbs = rebase --skip
 	;rl = reflog
 	;rp = remote prune
