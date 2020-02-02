@@ -56,6 +56,10 @@ call plug#end()
 " ---> User interface {{{
 " use <Space> as mapleader, easier to reach than \
 let mapleader = " "
+" prevent <Space> from advancing cursor
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
+
 " easier to reach than Esc or Ctrl-[
 inoremap jk <Esc>
 
