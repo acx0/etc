@@ -23,7 +23,7 @@ for completing plugin setup. See `vimrc` for definition of hooks.
 note: [YouCompleteMe] setup requires the following packages to be installed:
 
     # debian
-    build-essential cmake python-dev python3-dev
+    build-essential cmake python3-dev
 
 [link.sh]:https://github.com/acx0/link.sh
 [Vim]:http://vim.org
