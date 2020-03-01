@@ -143,6 +143,13 @@ let g:molokai_original = 1       " lighter background in gVim
 let g:solarized_termcolors = 256 " use degraded colors in terminal vim
 let g:zenburn_high_Contrast = 1  " darker colors
 
+" override function call highlight colour in vim-go/syntax/go.vim
+" note: this autocmd needs to be defined before `colourscheme` is set
+augroup vim_go_highlight_override
+    autocmd!
+    autocmd ColorScheme * highlight default link goFunctionCall Statement
+augroup end
+
 if has("gui_running")
     " gVim specific
 
