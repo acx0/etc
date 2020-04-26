@@ -66,6 +66,20 @@ man() {
         command man "$@"
 }
 
+get_git_branch() {
+    local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+    if [[ -n $branch ]]; then
+        echo "(br:$branch) "
+    fi
+}
+
+get_git_stash_count() {
+    local num_stashes=$(git rev-list --walk-reflogs --count refs/stash 2>/dev/null)
+    if [[ -n $num_stashes ]]; then
+        echo "(st:$num_stashes) "
+    fi
+}
+
 # allows java graphical programs to run in tiling window managers
 if [ -n "$DISPLAY" -a -x /usr/bin/wmname ]; then
     wmname LG3D

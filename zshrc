@@ -68,13 +68,15 @@ bindkey -M menuselect '^E' undo
 
 # display current vi-mode in prompt string
 function zle-line-init zle-keymap-select {
-    VI_MODE="${${KEYMAP/vicmd/c}/(main|viins)/i}"
-    if [ "$VI_MODE" = "i" ]; then
-        VI_MODE_COLOUR="red"
-    else
-        VI_MODE_COLOUR="green"
-    fi
-    PROMPT="[%{$fg[${VI_MODE_COLOUR}]%}${VI_MODE}%{$reset_color%}] %n@%m:%1~ $ "
+    local vi_mode="${${KEYMAP/vicmd/c}/(main|viins)/i}"
+    local vi_mode_colour="${${vi_mode/c/green}/i/red}"
+
+    PROMPT="[%{$fg[${vi_mode_colour}]%}${vi_mode}%{$reset_color%}]"         # vi-mode indicator
+    PROMPT="${PROMPT} %n@%m:%1~ "
+    PROMPT="${PROMPT}%{$fg[green]%}$(get_git_branch)%{$reset_color%}"       # git branch
+    PROMPT="${PROMPT}%{$fg[red]%}$(get_git_stash_count)%{$reset_color%}"    # git stash count
+    PROMPT="${PROMPT}$ "
+
     zle reset-prompt
 }
 
