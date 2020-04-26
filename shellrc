@@ -66,6 +66,22 @@ man() {
         command man "$@"
 }
 
+# stage the changes to be amended into $sha_to_fixup, then run this
+amend-ng() {
+    if [[ $# != 1 ]]; then
+        echo >&2 "error: provide sha to amend"
+        return 1
+    fi
+
+    if ! git diff-files --quiet; then
+        echo >&2 "error: rebase will complain about unstaged changes"
+        return 1
+    fi
+
+    local sha_to_fixup="$1"
+    git commit --fixup "$sha_to_fixup" && GIT_EDITOR="true" git rebase --autosquash --interactive "$sha_to_fixup"^
+}
+
 get_git_branch() {
     local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
     if [[ -n $branch ]]; then
