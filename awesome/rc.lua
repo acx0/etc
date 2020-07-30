@@ -356,6 +356,11 @@ globalkeys = gears.table.join(
     awful.key({ modkey, altkey }, "l", function () awful.spawn("xlock", false) end,
               {description = "lock screen", group = "lock"}),
 
+    awful.key({ modkey, "Shift" }, "t", function () awful.spawn("toggle-tp", false) end,
+              {description = "toggle touchpad", group = "input"}),
+    awful.key({ modkey, "Control" }, "t", function () awful.spawn("toggle-tr", false) end,
+              {description = "toggle trackpoint", group = "input"}),
+
     awful.key({                   }, "Print", function () awful.spawn("scrot -e 'mv $f ~/media/pictures/screenshots 2> /dev/null'", false) end,
               {description = "print screen", group = "util"}),
 
