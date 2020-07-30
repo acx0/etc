@@ -1,14 +1,38 @@
-! ~/.Xresources
+/* ~/.Xresources
+ *
+ * note: prefer C-style comment markers to `!` marker; latter seems to error
+ * out if `'` exists in comment and in other cases just silently fails to
+ * execute config...
+ */
 
 #include ".Xcolours/basic"
 #include ".Xcolours/photons-mod"
 
-!*customization: -color
+/*
+ * note: Xft settings are also defined in `~/.fonts/local.conf` and duplicated
+ * here since certain applications (e.g. urxvt) ignore fontconfig settings
+ */
+Xft*rgba: rgb
+Xft*hinting: true
+Xft*hintstyle: hintslight
+Xft*antialias: true
+Xft*lcdfilter: lcddefault
+Xft*autohint: false
 
 /* --- URxvt --- */
-URxvt*font:      -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
-URxvt*boldFont:  -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
-URxvt*italicFont:-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
+
+/* note: looks terrible with `antialias` disabled, `hinting/autohint` don't have any effect */
+URxvt*font:      xft:SF Mono:style=Medium:pixelsize=15
+URxvt*boldFont:  xft:SF Mono:style=Medium:pixelsize=15
+URxvt*italicFont:xft:SF Mono:style=Medium:pixelsize=15
+URxvt*letterSpace: -1
+
+/* note: `hinting/autohint/antialias` settings don't seem to affect terminus config */
+/* URxvt*font:      -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-* */
+/* URxvt*boldFont:  -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-* */
+/* URxvt*italicFont:-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-* */
+/* URxvt*letterSpace: 0 */
+
 URxvt*scrollBar: false
 URxvt*saveLines: 65535
 URxvt*urgentOnBell: true

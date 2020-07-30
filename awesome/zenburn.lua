@@ -12,7 +12,8 @@ theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "terminus 8"
+-- SF Mono looks blurry here for some reason...
+theme.font      = "Mono Regular 9"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"

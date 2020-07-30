@@ -7,3 +7,6 @@
 [submodule "vim/vim-plug"]
 	path = vim/vim-plug
 	url = git://github.com/junegunn/vim-plug.git
+[submodule "fonts/SFMono"]
+	path = fonts/SFMono
+	url = git@github.com:acx0/SFMono.git
