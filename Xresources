@@ -37,6 +37,10 @@ URxvt*scrollBar: false
 URxvt*saveLines: 65535
 URxvt*urgentOnBell: true
 
+/* removes iso14755 notification on ctrl+shift */
+URxvt*iso14755: false
+URxvt*iso14755_52: false
+
 /* pattern matching */
 URxvt*perl-ext-common: default,matcher
 URxvt*urlLauncher:     firefox
