@@ -68,14 +68,17 @@ bindkey -M menuselect '^E' undo
 
 # display current vi-mode in prompt string
 function zle-line-init zle-keymap-select {
+    # note: status capture must occur before anything else has a chance to overwrite it
+    local last_exit_status="$(get_last_exit_status)"
     local vi_mode="${${KEYMAP/vicmd/c}/(main|viins)/i}"
     local vi_mode_colour="${${vi_mode/c/green}/i/red}"
 
     PROMPT="[%{$fg[${vi_mode_colour}]%}${vi_mode}%{$reset_color%}]"         # vi-mode indicator
-    PROMPT="${PROMPT} %n@%m:%1~ "
-    PROMPT="${PROMPT}%{$fg[green]%}$(get_git_branch)%{$reset_color%}"       # git branch
-    PROMPT="${PROMPT}%{$fg[red]%}$(get_git_stash_count)%{$reset_color%}"    # git stash count
-    PROMPT="${PROMPT}$ "
+    PROMPT+=" %n@%m:%1~ "
+    PROMPT+="%{$fg[green]%}$(get_git_branch)%{$reset_color%}"               # git branch
+    PROMPT+="%{$fg[yellow]%}$(get_git_stash_count)%{$reset_color%}"         # git stash count
+    PROMPT+="%{$fg_bold[red]%}${last_exit_status}%{$reset_color%}"          # exit status
+    PROMPT+="$ "
 
     zle reset-prompt
 }

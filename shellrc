@@ -96,6 +96,13 @@ get_git_stash_count() {
     fi
 }
 
+get_last_exit_status() {
+    local last_exit_status=$?
+    if [[ $last_exit_status -ne 0 ]]; then
+        echo "(e:$last_exit_status) "
+    fi
+}
+
 # allows java graphical programs to run in tiling window managers
 if [ -n "$DISPLAY" -a -x /usr/bin/wmname ]; then
     wmname LG3D
