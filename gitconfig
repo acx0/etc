@@ -25,6 +25,8 @@
 	default = simple
 [fetch]
 	prune = true
+[log]
+	decorate = full
 [alias]
 	ap = add -p
 	br = branch
@@ -39,6 +41,7 @@
 	lf = log -p --stat
 	lg = log -p --color-words
 	lgg = log --oneline --graph
+	loga = log --pretty=fuller
 	rb = rebase
 	rbc = rebase --continue
 	;rbs = rebase --skip
