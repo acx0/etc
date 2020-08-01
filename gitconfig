@@ -17,6 +17,8 @@
 	conflictstyle = diff3
 	tool = vimdiff
 	prompt = true
+[stash]
+	showPatch = true
 [rerere]
 	enabled = true
 [push]
