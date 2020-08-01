@@ -1,5 +1,7 @@
 /* ~/.Xresources
  *
+ * see: `man X` -> `/^RESOURCES` for syntax documentation
+ *
  * note: prefer C-style comment markers to `!` marker; latter seems to error
  * out if `'` exists in comment and in other cases just silently fails to
  * execute config...
