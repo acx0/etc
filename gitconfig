@@ -7,6 +7,10 @@
 	; see 'git help config' /color.diff.<slot> for more options
 	meta = cyan
 	frag = magenta bold
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
 [core]
 	editor = vim
 [merge]
