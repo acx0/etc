@@ -8,7 +8,6 @@ xsetroot -solid black &     # set root window background
 xset r rate 250 40 &        # set keyboard delay and repeat rate
 xset b off &                # disable system bell
 xset dpms 0 300 600 &       # seconds before screen is in standby/suspend/off state
-xscreensaver -no-splash &   # start screensaver daemon
 
 urxvtd -q -o -f &
 redshift -l 50.0:-114.1 &   # calgary
