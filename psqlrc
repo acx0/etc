@@ -1,0 +1,24 @@
+/* ~/.psqlrc */
+
+\set QUIET on
+
+\timing on
+
+-- \set ECHO_HIDDEN on
+\set VERBOSITY verbose
+\set COMP_KEYWORD_CASE upper
+
+-- require 3 consecutive EOFs to quit
+\set IGNOREEOF 3
+
+\pset linestyle unicode
+\pset unicode_header_linestyle double
+
+-- output results vertically if output exceeds screen width
+\pset expanded auto
+
+-- make `null` and empty string distinct in output
+-- \pset null 'Ø'
+\pset null '(null)'
+
+\unset QUIET
