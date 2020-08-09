@@ -18,7 +18,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# aliases
 alias ll='ls -l'
 alias lh='ls -lh'
 alias la='ls -A'
@@ -29,22 +28,44 @@ alias vi='vim -u NONE'
 alias vimupdate="vim +PlugUpdate"
 
 alias g='git'
-alias h='hg'
-alias fm='ranger'
-alias f='ranger_cd'
-alias py='ipython'
+
+py() {
+    for pybin in ipython3 ipython python3 python; do
+        if command -v $pybin >/dev/null; then
+            $pybin
+            return
+        fi
+    done
+    echo >&2 "error: none found"
+}
+
 alias io='sudo iotop -o'
-alias etlog='sudo etckeeper vcs log $*'
-alias wee='tm weechat-curses'
-alias mounted='mount | grep "sd[b-z]\|mapper"'
-alias update='sudo aptitude update; sudo aptitude safe-upgrade'
+alias fa='sudo fatrace -t'
+alias mtr='mtr --curses'
+
+alias mounted='mount | grep "/dev/\(sd[b-z]\|mapper\)"'
+
+alias etlog='sudo etckeeper vcs log'
+alias update='sudo aptitude update && sudo aptitude safe-upgrade'
+alias rmad='rmadison'
+alias ase='aptitude search'
+alias ash='aptitude show'
+alias ay='aptitude why'
+alias afl='apt-file list'
+alias aff='apt-file find'
+
 alias rs='rsync -av --progress'
 alias rschk='rsync -av --progress --delete --dry-run'
+
 alias m='make -j $(($(nproc) * 2))'
+alias d='docker'
+alias dc='docker-compose'
 
 # list processes which are using a deleted map file after a system update
 alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
 
+alias fm='ranger'
+alias f='ranger_cd'
 ranger_cd() {
     local CD_FILE="$HOME/.config/ranger/shell_cd"
     ranger --choosedir "$CD_FILE" "${@:-$PWD}"   # use supplied arg otherwise $PWD if none
@@ -108,4 +129,4 @@ if [ -n "$DISPLAY" -a -x /usr/bin/wmname ]; then
     wmname LG3D
 fi
 
-# vim: set ts=8 sts=4 sw=4 et ft=sh:
+# vim: set ts=8 sts=4 sw=4 et ft=bash:
