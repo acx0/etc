@@ -29,7 +29,7 @@
 	decorate = full
 [alias]
 	ap = add -p
-	br = branch
+	br = branch -vv
 	ci = commit -v
 	cia = commit -v --amend
 	co = checkout
