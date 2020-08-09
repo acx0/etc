@@ -14,6 +14,9 @@ PATH="$HOME/bin:$PATH"
 PATH="$PATH:/sbin:/usr/sbin"    # add super-user binaries to PATH
 PATH="$PATH:/usr/local/go/bin"
 
+# give vim-plug managed fzf preference over any system version
+PATH="$HOME/.vim/plugged/fzf/bin:$PATH"
+
 # first path in GOPATH is used as target for `go get` downloads
-export GOPATH="$HOME/var/go-dist:$HOME/src/go:$HOME/src/server/go"
+export GOPATH="$HOME/var/go-dist:$HOME/src/go"
 export PATH

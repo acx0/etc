@@ -16,6 +16,9 @@ endif
 runtime vim-plug/plug.vim
 call plug#begin("~/.vim/plugged")
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'derekwyatt/vim-protodef'

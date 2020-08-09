@@ -25,7 +25,7 @@ unsetopt BEEP
 unsetopt HUP
 unsetopt NOMATCH
 
-if [ -f "$HOME/.shellrc" ]; then
+if [[ -f "$HOME/.shellrc" ]]; then
     source "$HOME/.shellrc"
 fi
 
@@ -110,3 +110,8 @@ autoload -Uz compinit && compinit
 
 # enable zsh colours
 autoload -U colors && colors
+
+if [[ -d "$HOME/.vim/plugged/fzf/shell" ]]; then
+    source "$HOME/.vim/plugged/fzf/shell/completion.zsh"
+    source "$HOME/.vim/plugged/fzf/shell/key-bindings.zsh"
+fi
