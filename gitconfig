@@ -28,6 +28,7 @@
 [log]
 	decorate = full
 [alias]
+	amm = amend-ng
 	ap = add -p
 	br = branch -vv
 	ci = commit -v
