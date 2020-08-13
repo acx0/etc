@@ -24,9 +24,14 @@ Xft*autohint: false
 /* --- URxvt --- */
 
 /* note: looks terrible with `antialias` disabled, `hinting/autohint` don't have any effect */
-URxvt*font:      xft:SF Mono:style=Medium:pixelsize=15
-URxvt*boldFont:  xft:SF Mono:style=Medium:pixelsize=15
-URxvt*italicFont:xft:SF Mono:style=Medium:pixelsize=15
+/* note: prefer `size` over `pixelsize`, allows for denser lines for equivalent font sizes */
+/* URxvt*font:       xft:SF Mono:style=Medium:size=11 */
+/* URxvt*boldFont:   xft:SF Mono:style=Medium:size=11 */
+/* URxvt*italicFont: xft:SF Mono:style=Medium:size=11 */
+
+URxvt*font:       xft:SF Mono:style=Bold:size=11
+URxvt*boldFont:   xft:SF Mono:style=Bold:size=11
+URxvt*italicFont: xft:SF Mono:style=Bold:size=11
 URxvt*letterSpace: -1
 
 /* note: `hinting/autohint/antialias` settings don't seem to affect terminus config */
@@ -49,4 +54,6 @@ URxvt*urlLauncher:     firefox
 URxvt*matcher.button:  1
 
 /* --- XTerm --- */
-XTerm*font: -*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
+XTerm*font:       xft:SF Mono:style=Bold:size=11
+XTerm*boldFont:   xft:SF Mono:style=Bold:size=11
+XTerm*italicFont: xft:SF Mono:style=Bold:size=11
