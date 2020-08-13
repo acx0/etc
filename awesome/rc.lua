@@ -337,8 +337,7 @@ globalkeys = gears.table.join(
     -- Prompt
     awful.key({ modkey },            "r",
               function ()
-                  -- SF Mono looks blurry here for some reason...
-                  awful.spawn("dmenu_run -i -l 5 -p '>' -fn 'mono regular:size=9' -nb '" ..
+                  awful.spawn("dmenu_run -i -l 5 -p '>' -fn 'SF Mono:style=Bold:size=11' -nb '" ..
                       beautiful.border_focus .. "' -nf '" .. beautiful.bg_focus ..
                       "' -sb '" .. beautiful.bg_focus ..
                       "' -sf '" .. beautiful.fg_focus .. "'", false)
