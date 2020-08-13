@@ -4,6 +4,8 @@
 
 \timing on
 
+\setenv PSQL_PAGER 'less -i'
+
 -- \set ECHO_HIDDEN on
 \set VERBOSITY verbose
 \set COMP_KEYWORD_CASE upper
