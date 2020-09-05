@@ -10,7 +10,7 @@ nnoremap <buffer> <F4> :call RunPython()<CR>
 function! RunPython()
     update
     call PrintSeparator()
-    !python "%"
+    !python3 "%"
 endfunction
 
 nnoremap <buffer> <Leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
