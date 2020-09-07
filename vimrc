@@ -20,6 +20,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'airblade/vim-gitgutter'
+Plug 'cespare/vim-toml'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'derekwyatt/vim-protodef'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
