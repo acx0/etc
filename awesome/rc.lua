@@ -250,17 +250,20 @@ awful.screen.connect_for_each_screen(function(s)
             self.text = value
         end,
     }
+    local stats_file, errmsg, errno = io.open("/dev/shm/sys-usage/stats", "r")
     gears.timer {
         timeout = 1,
         call_now = true,
         autostart = true,
         callback = function()
-            local file, errmsg, errno = io.open("/dev/shm/sys-usage/stats", "r")
-            if file == nil then
+            if stats_file == nil then
+                print(os.date("%x %X", os.time()) .. " error: sys-usage: " .. errmsg)
                 s.mysysstats.usage_info = "<stats not found>"
-                return
+                stats_file, errmsg, errno = io.open("/dev/shm/sys-usage/stats", "r")
+            else
+                stats_file:seek("set", 0)
+                s.mysysstats.usage_info = stats_file:read("*all")
             end
-            s.mysysstats.usage_info = file:read("*all")
         end,
     }
 
