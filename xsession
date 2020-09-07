@@ -20,6 +20,7 @@ blueman-applet &
 
 # ~/bin scripts
 tp off &    # disable touchpad
+sys-usage-ctl start &
 
 # required for qtconfig to load gtk theme
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"

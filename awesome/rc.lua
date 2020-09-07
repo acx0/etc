@@ -24,6 +24,10 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- note: seems to leave small gap between clients and wibars depending on resolution,
+-- setting `awful.rules.rules.properties.size_hints_honor = false` fixes this
+local bar_height = 20
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -217,8 +221,8 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    wibox_height = 20   -- setting height explicitly prevents oversized system tray icons
-    s.mywibox = awful.wibar({ position = "top", height = wibox_height, screen = s })
+    -- note: setting `height` explicitly prevents oversized system tray icons
+    s.mywibox = awful.wibar({ position = "top", height = bar_height, screen = s })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -236,6 +240,42 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
+        },
+    }
+
+    -- Create bottom wibox
+    s.mysysstats = wibox.widget {
+        widget = wibox.widget.textbox,
+        set_usage_info = function(self, value)
+            self.text = value
+        end,
+    }
+    gears.timer {
+        timeout = 1,
+        call_now = true,
+        autostart = true,
+        callback = function()
+            local file, errmsg, errno = io.open("/dev/shm/sys-usage/stats", "r")
+            if file == nil then
+                s.mysysstats.usage_info = "<stats not found>"
+                return
+            end
+            s.mysysstats.usage_info = file:read("*all")
+        end,
+    }
+
+    s.mywibox2 = awful.wibar({ position = "bottom", height = bar_height, screen = s })
+    s.mywibox2:setup {
+        layout = wibox.layout.align.horizontal,
+        expand = "none",    -- centers `mysysstats` output
+        {
+            -- also required to center `mysysstats`
+            layout = wibox.layout.fixed.horizontal,
+        },
+        {
+            -- layout = wibox.layout.fixed.horizontal,
+            layout = wibox.layout.flex.horizontal,
+            s.mysysstats,
         },
     }
 end)
@@ -512,7 +552,10 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     -- force client size to be flush with wibars and screen edges
+                     -- note: if this causes issues, set this per application (i.e. `class`) below
+                     size_hints_honor = false,
      }
     },
 
@@ -587,7 +630,7 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c) : setup {
+    awful.titlebar(c, { size = bar_height }) : setup {
         { -- Left
             awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
@@ -621,3 +664,5 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- vim: set ts=8 sts=4 sw=4 et :
