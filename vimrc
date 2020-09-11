@@ -30,6 +30,7 @@ Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'rust-lang/rust.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
@@ -38,7 +39,14 @@ Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/DrawIt'
 Plug 'vim-scripts/IndentConsistencyCop'
 Plug 'vim-scripts/SyntaxAttr.vim'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer' }
+" note: rust stdlib autocompletion uses rls which expects rust-src to be in
+" ~/.rustup whereas ycm places rust-src files under its own install dir
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py
+            \ --clang-completer
+            \ --go-completer
+            \ --rust-completer
+            \ && rustup component add rust-src
+            \' }
 
 " colourschemes
 "Plug 'altercation/vim-colors-solarized'
@@ -697,6 +705,9 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0
 " let g:go_highlight_fields = 1
 " let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
+
+" --rust.vim
+let g:rustfmt_autosave = 1
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
