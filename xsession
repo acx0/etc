@@ -17,6 +17,7 @@ redshift -l 50.0:-114.1 &   # calgary
 xfce4-power-manager &
 nm-applet &
 blueman-applet &
+pasystray &
 
 # ~/bin scripts
 tp off &    # disable touchpad
