@@ -410,6 +410,8 @@ globalkeys = gears.table.join(
               {description = "toggle touchpad", group = "input"}),
     awful.key({ modkey, "Control" }, "t", function () awful.spawn("toggle-tr", false) end,
               {description = "toggle trackpoint", group = "input"}),
+    awful.key({ modkey, "Control" }, "p", function () awful.spawn("bash -c 'notify-send -u critical -t 10000 \"$(toggle-caps)\"'", false) end,
+              {description = "toggle capslock", group = "input"}),
 
     awful.key({                   }, "Print", function () awful.spawn("scrot -e 'mv $f ~/media/pictures/screenshots 2> /dev/null'", false) end,
               {description = "print screen", group = "util"}),
