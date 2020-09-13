@@ -27,6 +27,8 @@
 	prune = true
 [log]
 	decorate = full
+[status]
+	submoduleSummary = true
 [alias]
 	amm = amend-ng
 	ap = add -p
