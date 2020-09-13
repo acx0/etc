@@ -3,6 +3,7 @@
 ~*
 vim/.netrwhist
 vim/plugged
+vim/view
 ranger/bookmarks
 ranger/history
 ranger/tagged
