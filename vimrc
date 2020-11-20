@@ -39,13 +39,12 @@ Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/DrawIt'
 Plug 'vim-scripts/IndentConsistencyCop'
 Plug 'vim-scripts/SyntaxAttr.vim'
-" note: rust stdlib autocompletion uses rls which expects rust-src to be in
-" ~/.rustup whereas ycm places rust-src files under its own install dir
+" note: ~/.vim/plugged/YouCompleteMe/third_party/ dir can grow over time with
+" old archives/artifacts and completers, delete + reinstall plugin to clean
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py
-            \ --clang-completer
+            \ --clangd-completer
             \ --go-completer
             \ --rust-completer
-            \ && rustup component add rust-src
             \' }
 
 " colourschemes
