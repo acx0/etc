@@ -2,6 +2,13 @@
 
 source ~/.vim/ftplugin/util.vim
 
+nnoremap <buffer> <Leader><F3> :call CheckRust()<CR>
+function! CheckRust()
+    update
+    call PrintSeparator()
+    execute '!cargo check'
+endfunction
+
 nnoremap <buffer> <F3> :call CompileRust()<CR>
 function! CompileRust()
     update
@@ -14,6 +21,13 @@ function! RunExecutable()
     update
     call PrintSeparator()
     execute '!cargo run'
+endfunction
+
+nnoremap <buffer> <F5> :call RunTests()<CR>
+function! RunTests()
+    update
+    call PrintSeparator()
+    execute '!cargo test'
 endfunction
 
 nnoremap <buffer> <Leader>dg :YcmDiags<CR>
