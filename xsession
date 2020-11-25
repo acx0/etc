@@ -10,9 +10,8 @@ xset b off &                # disable system bell
 xset dpms 0 300 600 &       # seconds before screen is in standby/suspend/off state
 
 urxvtd -q -o -f &
-redshift -l 50.0:-114.1 &   # calgary
 # redshift -l 40.7:-74.0 &    # nyc
-# redshift -l 43.7:-79.3 &    # toronto
+redshift -l 43.7:-79.3 &    # toronto
 # redshift -l 47.6:-122.3 &   # seattle
 xfce4-power-manager &
 nm-applet &
