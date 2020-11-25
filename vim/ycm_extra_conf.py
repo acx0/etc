@@ -3,13 +3,32 @@ import ycm_core
 
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
-flags = [
-'-std=c++11',
-'-x',
-'c++',
-'-Wall',
-'-Wextra',
-]
+# notes:
+#   - `Settings()` is modified to use '&filetype' as supplied by vim YCM plugin config:
+#       `let g:ycm_extra_conf_vim_data = ['&filetype']`
+#   - vim defaults to `cpp` filetype for `.h` files
+#       - need to use modeline or project-wide vimrc if `c` is wanted instead
+filetype_key = '&filetype'
+filetype_flags = {
+  'cpp': [
+    '-std=c++17',
+    '-x',
+    'c++',
+    '-Wall',
+    '-Wextra',
+    '-Wold-style-cast',
+    '-Wshadow',
+  ],
+
+  'c': [
+    '-std=c11',
+    '-x',
+    'c',
+    '-Wall',
+    '-Wextra',
+    '-Wshadow',
+  ],
+}
 
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
@@ -21,7 +40,7 @@ flags = [
 # to your CMakeLists.txt file.
 #
 # Most projects will NOT need to set this to anything; you can just change the
-# 'flags' list of compilation flags. Notice that YCM itself uses that approach.
+# 'flags' list of compilation flags.
 compilation_database_folder = ''
 
 if os.path.exists( compilation_database_folder ):
@@ -33,35 +52,6 @@ SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
 
 def DirectoryOfThisScript():
   return os.path.dirname( os.path.abspath( __file__ ) )
-
-
-def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
-  if not working_directory:
-    return list( flags )
-  new_flags = []
-  make_next_absolute = False
-  path_flags = [ '-isystem', '-I', '-iquote', '--sysroot=' ]
-  for flag in flags:
-    new_flag = flag
-
-    if make_next_absolute:
-      make_next_absolute = False
-      if not flag.startswith( '/' ):
-        new_flag = os.path.join( working_directory, flag )
-
-    for path_flag in path_flags:
-      if flag == path_flag:
-        make_next_absolute = True
-        break
-
-      if flag.startswith( path_flag ):
-        path = flag[ len( path_flag ): ]
-        new_flag = path_flag + os.path.join( working_directory, path )
-        break
-
-    if new_flag:
-      new_flags.append( new_flag )
-  return new_flags
 
 
 def IsHeaderFile( filename ):
@@ -87,19 +77,29 @@ def GetCompilationInfoForFile( filename ):
   return database.GetCompilationInfoForFile( filename )
 
 
-def FlagsForFile( filename, **kwargs ):
-  if database:
-    # Bear in mind that compilation_info.compiler_flags_ does NOT return a
-    # python list, but a "list-like" StringVec object
-    compilation_info = GetCompilationInfoForFile( filename )
-    if not compilation_info:
-      return None
+# This is the entry point; this function is called by ycmd to produce flags for
+# a file.
+def Settings( **kwargs ):
+  flags = []
+  data = kwargs['client_data']
+  if filetype_key in data:
+    filetype = data[filetype_key]
+    if filetype in filetype_flags:
+      flags = filetype_flags[filetype]
 
-    final_flags = MakeRelativePathsInFlagsAbsolute(
-      compilation_info.compiler_flags_,
-      compilation_info.compiler_working_dir_ )
-  else:
-    relative_to = DirectoryOfThisScript()
-    final_flags = MakeRelativePathsInFlagsAbsolute( flags, relative_to )
+  if not database:
+    return {
+      'flags': flags,
+      'include_paths_relative_to_dir': DirectoryOfThisScript()
+    }
+  filename = kwargs[ 'filename' ]
+  compilation_info = GetCompilationInfoForFile( filename )
+  if not compilation_info:
+    return None
 
-  return { 'flags': final_flags }
+  # Bear in mind that compilation_info.compiler_flags_ does NOT return a
+  # python list, but a "list-like" StringVec object.
+  return {
+    'flags': list( compilation_info.compiler_flags_ ),
+    'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
+  }

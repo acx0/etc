@@ -687,9 +687,10 @@ let g:disable_protodef_sorting = 1
 let g:tcommentBlankLines = 0
 
 " --YouCompleteMe
-let g:ycm_auto_trigger = 0
+let g:ycm_auto_trigger = 1
 let g:ycm_key_invoke_completion = "<C-Space>"
 let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
+let g:ycm_extra_conf_vim_data = ["&filetype"]
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
 let g:ycm_confirm_extra_conf = 0

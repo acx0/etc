@@ -9,6 +9,9 @@ set cinoptions+=g0
 
 set matchpairs+=<:>
 
+" see `:h ft-c-syntax`
+let c_comment_strings = 1
+
 " set default compiler
 if !exists("g:CC")
     if has("unix") && executable("clang")
@@ -33,8 +36,8 @@ endif
 
 " flags are local to buffer
 if !exists("b:CFLAGS")
-    let b:CFLAGS = "-std=gnu89"
-    let b:CXXFLAGS = "-std=c++14"
+    let b:CFLAGS = "-std=c11 -Wall -Wextra -Wshadow"
+    let b:CXXFLAGS = "-std=c++17 -Wall -Wextra -Wold-style-cast -Wshadow"
 endif
 
 " settings for vim-fswitch plugin
