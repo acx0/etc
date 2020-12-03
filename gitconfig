@@ -16,6 +16,9 @@
 [commit]
 	; show diff preview during commit message edits (i.e. `commit`, `rebase --continue`)
 	verbose = true
+[pull]
+	ff = only		; fast-forward only
+	; rebase = true		; false=merge (default), true=rebase
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
