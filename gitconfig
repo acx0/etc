@@ -47,6 +47,11 @@
 	dffc = diff --color-words --cached
 	df = diff
 	dff = diff --color-words
+	; only force push if we've seen the refs we're overwriting
+	; i.e. avoid race-condition of force-pushing over commit(s) we haven't seen
+	; note: see `man git-push` about how this heuristic can fail (background process
+	; periodically `git fetch`-ing)
+	fpush = push --force-with-lease
 	lf = log -p --stat
 	lg = log -p --color-words
 	lgg = log --oneline --graph
