@@ -1,3 +1,6 @@
+; references:
+; 	`man gitglossary`
+; 	`man gitrevisions`
 [user]
 	name = Sam Lidder
 	email = sam.lidder@gmail.com
@@ -58,13 +61,14 @@
 	loga = log --pretty=fuller
 	rb = rebase
 	rbc = rebase --continue
-	;rbs = rebase --skip
-	;rl = reflog
+	rba = rebase --abort
+	rbs = rebase --skip
+	rl = reflog
 	;rp = remote prune
 	;rs = remote show
 	rt = remote
 	;ru = remote update
-	;sb = show-branch
+	sb = show-branch
 	sm = submodule
 	st = status
 
