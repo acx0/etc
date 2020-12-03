@@ -13,6 +13,9 @@
 	untracked = red
 [core]
 	editor = vim
+[commit]
+	; show diff preview during commit message edits (i.e. `commit`, `rebase --continue`)
+	verbose = true
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
@@ -33,8 +36,8 @@
 	amm = amend-ng
 	ap = add -p
 	br = branch -vv
-	ci = commit -v
-	cia = commit -v --amend
+	ci = commit
+	cia = commit --amend
 	co = checkout
 	cp = cherry-pick
 	dfc = diff --cached
