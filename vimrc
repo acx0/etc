@@ -717,6 +717,9 @@ let g:rustfmt_autosave = 1
 
 " --fzf.vim
 nnoremap <Leader>rg :Rg<CR>
+
+" --vim-gitgutter
+nnoremap <Leader>gg :GitGutterToggle<CR>
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
