@@ -28,6 +28,7 @@ alias vi='vim -u NONE'
 alias vimupdate="vim +PlugUpdate"
 
 alias g='git'
+alias c='cargo'
 
 py() {
     for pybin in ipython3 ipython python3 python; do
@@ -42,6 +43,8 @@ py() {
 alias io='sudo iotop -o'
 alias fa='sudo fatrace -t'
 alias mtr='mtr --curses'
+alias dfn='findmnt -D'
+alias ip='ip -brief -color'
 
 alias mounted='mount | grep "/dev/\(sd[b-z]\|mapper\)"'
 
