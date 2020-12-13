@@ -369,6 +369,11 @@ set foldmethod=marker
 " --line wrapping
 nnoremap <Leader>tw :setlocal wrap! wrap?<CR>
 
+" delete comment character when joining commented lines
+if v:version > 703 || (v:version == 703 && has("patch541"))
+    set formatoptions+=j
+endif
+
 " --backup / swap
 " multiple combinations for backups, see ':h backup-table'
 "set nobackup      " won't leave additional files after vim is closed
