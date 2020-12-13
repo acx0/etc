@@ -28,7 +28,6 @@ Plug 'godlygeek/tabular'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
-Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'rust-lang/rust.vim'
@@ -710,6 +709,9 @@ let g:go_highlight_function_calls = 1
 
 " --rust.vim
 let g:rustfmt_autosave = 1
+
+" --fzf.vim
+nnoremap <Leader>rg :Rg<CR>
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
