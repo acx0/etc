@@ -21,3 +21,7 @@ PATH="$HOME/.vim/plugged/fzf/bin:$PATH"
 # first path in GOPATH is used as target for `go get` downloads
 export GOPATH="$HOME/var/go-dist:$HOME/src/go"
 export PATH
+
+if command -v fdfind >/dev/null; then
+    export FZF_DEFAULT_COMMAND='fdfind --type f'
+fi
