@@ -25,6 +25,9 @@ note: [YouCompleteMe] setup requires the following packages to be installed:
     # debian
     build-essential cmake python3-dev
 
+    # add the following depending on which language servers are enabled
+    default-jdk golang
+
 [link.sh]:https://github.com/acx0/link.sh
 [Vim]:http://vim.org
 [YouCompleteMe]:https://github.com/Valloric/YouCompleteMe

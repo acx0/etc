@@ -46,6 +46,7 @@ Plug 'ycm-core/YouCompleteMe', { 'do': './install.py
             \ --clangd-completer
             \ --go-completer
             \ --rust-completer
+            \ --java-completer
             \' }
 
 " colourschemes
