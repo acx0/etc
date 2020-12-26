@@ -44,6 +44,7 @@
 	br = branch -vv
 	ci = commit
 	cia = commit --amend
+	ciad = commit --amend --date=now
 	co = checkout
 	cp = cherry-pick
 	dfc = diff --cached
