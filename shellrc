@@ -9,13 +9,12 @@ fi
 # enable colour support of ls and add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
 
+    alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias rgrep='rgrep --color=auto'
 fi
 
 alias ll='ls -l'
@@ -23,6 +22,12 @@ alias lh='ls -lh'
 alias la='ls -A'
 alias lt='ls -lt'
 alias l='ls -CF'
+
+alias log='vim ~/doc/log'
+alias todo='vim ~/TODO'
+alias todos='grep -c "^- " ~/TODO'
+alias tasks='find ~/doc/tasks -type f | wc -l'
+alias stonks='~/src/go/src/github.com/acx0/stocks/run.sh'
 
 alias vi='vim -u NONE'
 alias vimupdate="vim +PlugUpdate"
@@ -45,12 +50,17 @@ alias fa='sudo fatrace -t'
 alias mtr='mtr --curses'
 alias dfn='findmnt -D'
 alias ip='ip -brief -color'
+alias sc='systemctl'
 
 alias mounted='mount | grep "/dev/\(sd[b-z]\|mapper\)"'
+alias ppath='echo $PATH | tr : "\n"'
 
 alias etlog='sudo etckeeper vcs log'
 alias update='sudo aptitude update && sudo aptitude safe-upgrade'
 alias rmad='rmadison'
+alias ain='sudo aptitude install'
+alias are='sudo aptitude remove'
+alias apu='sudo aptitude purge'
 alias ase='aptitude search'
 alias ash='aptitude show'
 alias ay='aptitude why'
@@ -60,7 +70,7 @@ alias aff='apt-file find'
 alias rs='rsync -av --progress'
 alias rschk='rsync -av --progress --delete --dry-run'
 
-alias m='make -j $(($(nproc) * 2))'
+alias m='make -j $(nproc)'
 alias d='docker'
 alias dc='docker-compose'
 
