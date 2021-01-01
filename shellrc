@@ -151,4 +151,8 @@ get_last_exit_status() {
     fi
 }
 
+if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
+    source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
 # vim: set ts=8 sts=4 sw=4 et ft=bash:
