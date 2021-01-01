@@ -51,6 +51,7 @@ alias mtr='mtr --curses'
 alias dfn='findmnt -D'
 alias ip='ip -brief -color'
 alias sc='systemctl'
+alias dmsg='sudo dmesg --follow --human'
 
 alias mounted='mount | grep "/dev/\(sd[b-z]\|mapper\)"'
 alias ppath='echo $PATH | tr : "\n"'
@@ -61,6 +62,7 @@ alias rmad='rmadison'
 alias ain='sudo aptitude install'
 alias are='sudo aptitude remove'
 alias apu='sudo aptitude purge'
+alias auc='sudo aptitude autoclean'
 alias ase='aptitude search'
 alias ash='aptitude show'
 alias ay='aptitude why'
@@ -98,6 +100,34 @@ man() {
         LESS_TERMCAP_ue=$'\E[0m' \
         LESS_TERMCAP_us=$'\E[01;32m' \
         command man "$@"
+}
+
+alias youtube-dl-audio-only='youtube-dl -x --audio-quality 320K --audio-format mp3'
+
+strace-output() {
+    if [[ -z $* ]]; then
+        echo "args: <cmd> [<cmd-args>]"
+        return 1
+    fi
+
+    mkdir -p /tmp/strace-output
+    strace \
+        -fo $(mktemp -u /tmp/strace-output/XXXXXXXX-$(basename $1)) \
+        "$@"
+}
+
+strace-output-verbose() {
+    if [[ -z $* ]]; then
+        echo "args: <cmd> [<cmd-args>]"
+        return 1
+    fi
+
+    mkdir -p /tmp/strace-output
+    strace \
+        --no-abbrev \
+        --string-limit 1024 \
+        -fo $(mktemp -u /tmp/strace-output/XXXXXXXX-$(basename $1)) \
+        "$@"
 }
 
 get_git_branch() {
