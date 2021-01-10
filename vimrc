@@ -174,26 +174,6 @@ if has("gui_running")
     set guioptions-=l " remove left scrollbar
     set guioptions-=L " remove left vertical split scrollbar
     set guioptions-=b " remove bottom scrollbar
-
-    " toggle menu bar and toolbar, respectively
-    nnoremap <C-F1> :call ToggleMenuBar()<CR>
-    nnoremap <C-F2> :call ToggleToolbar()<CR>
-
-    function! ToggleMenuBar()
-        if &guioptions =~# "m"
-            set guioptions-=m
-        else
-            set guioptions+=m
-        endif
-    endfunction
-
-    function! ToggleToolbar()
-        if &guioptions =~# "T"
-            set guioptions-=T
-        else
-            set guioptions+=T
-        endif
-    endfunction
 else
     " terminal vim specific
 
@@ -643,15 +623,6 @@ if has("unix")
 
     " open terminal in CWD
     command! Terminal silent !term
-
-    " make doc, odt, pdf, and rtf readable (linux only)
-    augroup doctypes
-        autocmd!
-        autocmd BufReadPost *.doc silent %!antiword "%"
-        autocmd BufReadPost *.odt,*.odp silent %!odt2txt "%"
-        autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" - | fmt -w 78
-        autocmd BufReadPost *.rtf silent %!unrtf --text "%"
-    augroup end
 endif
 " }}}
 
