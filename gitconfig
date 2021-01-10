@@ -1,6 +1,7 @@
 ; references:
 ; 	`man gitglossary`
 ; 	`man gitrevisions`
+; 	`man git-config`
 [user]
 	name = Sam Lidder
 	email = sam.lidder@gmail.com
@@ -19,6 +20,15 @@
 [commit]
 	; show diff preview during commit message edits (i.e. `commit`, `rebase --continue`)
 	verbose = true
+[diff]
+	; see: How Different Are Different diff Algorithms in Git?
+	;   https://link.springer.com/article/10.1007/s10664-019-09772-z
+	; options:
+	;   myers (default)
+	;   minimal (tries to produce minimal diff, extends `myers`)
+	;   patience
+	;   histogram (since 1.7.7, extends `patience`)
+	algorithm = histogram
 [pull]
 	ff = only		; fast-forward only
 	; rebase = true		; false=merge (default), true=rebase
