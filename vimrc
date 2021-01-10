@@ -78,10 +78,6 @@ inoremap jk <Esc>
 
 set backspace=indent,eol,start  " make backspace work like 'normal' text editors
 
-" --history
-set history=1000    " history of commands and searches
-set undolevels=1000 " changes to be remembered
-
 " --interface appearance
 syntax enable    " enable syntax highlighting and allow custom highlighting
 set title        " set title to filename and modification status
@@ -90,6 +86,7 @@ set number       " show line numbers
 set showcmd      " show the command being typed
 set showmode     " show current mode (insert, visual, etc.)
 set laststatus=2 " always show status line
+set history=1000 " history of commands and searches
 
 " useful, but can be slow at times
 "set cursorline   " highlight current line
@@ -381,6 +378,11 @@ endif
 "set nowritebackup " keeps backup file while editing, deleted after
 "set noswapfile    " keeps everything in memory
 set directory^=~/.vim/swap// " '//' directs swap file name to reference complete file path
+
+" --persistent undo
+set undolevels=1000 " changes to be remembered
+set undofile
+set undodir=~/.vim/undo
 
 " --session restore
 " jump to last position when reopening a file
@@ -679,10 +681,7 @@ if !has("gui_running")
 endif
 
 " --undotree
-nnoremap <F5> :UndotreeToggle<CR>
-
-" --ack.vim
-let g:ackprg = "ack -H --nocolor --nogroup --column"
+nnoremap <Leader>ut :UndotreeToggle<CR>
 
 " --SyntaxAttr.vim
 nnoremap <Leader>st :call SyntaxAttr()<CR>
