@@ -50,18 +50,9 @@ Plug 'ycm-core/YouCompleteMe', { 'do': './install.py
             \' }
 
 " colourschemes
-"Plug 'altercation/vim-colors-solarized'
-"Plug 'ciaranm/inkpot'
-Plug 'junegunn/seoul256.vim'
-"Plug 'tomasr/molokai'
+Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/sonokai'
 Plug 'trapd00r/neverland-vim-theme'
-"Plug 'vim-scripts/github-theme'
-"Plug 'vim-scripts/Sorcerer'
-"Plug 'vim-scripts/Wombat'
-Plug 'vim-scripts/wombat256.vim'
-"Plug 'vim-scripts/xoria256.vim'
-"Plug 'vim-scripts/Zenburn'
-"Plug 'vim-scripts/zenesque.vim'
 
 call plug#end()
 " }}}
@@ -148,10 +139,8 @@ nnoremap <Leader>ss :setlocal spell! spell?<CR>
 set background=dark
 
 " colorscheme modification
+let s:active_colourscheme = "gruvbox"
 let g:neverland_bold = 0         " disable bold
-let g:molokai_original = 1       " lighter background in gVim
-let g:solarized_termcolors = 256 " use degraded colors in terminal vim
-let g:zenburn_high_Contrast = 1  " darker colors
 
 " override function call highlight colour in vim-go/syntax/go.vim
 " note: this autocmd needs to be defined before `colourscheme` is set
@@ -173,7 +162,7 @@ if has("gui_running")
         "set guifont=Lucida_Console:h9:cANSI
     endif
 
-    colorscheme neverland-mod
+    execute 'colorscheme ' . s:active_colourscheme
 
     set guicursor+=a:blinkon0   " disable blinking cursor for gVim
 
@@ -209,11 +198,19 @@ else
     " terminal vim specific
 
     if &t_Co == 256
-        colorscheme neverland-mod
+        execute 'colorscheme ' . s:active_colourscheme
     else
         colorscheme desert
     endif
 endif
+
+nnoremap <Leader>c1 :call SetAndPersistColour("neverland-mod")<CR>
+nnoremap <Leader>c2 :call SetAndPersistColour("gruvbox")<CR>
+function! SetAndPersistColour(colourscheme)
+    execute 'colorscheme ' . a:colourscheme
+    let s:find_line = "let s:active_colourscheme = "
+    execute 'silent !sed --follow-symlinks -i "s/^\(' . s:find_line . '\).*/\1\"' . a:colourscheme . '\"/" ~/.vimrc'
+endfunction
 
 " --statusline
 " default statusline (with 'set ruler'): '%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P'
@@ -236,9 +233,9 @@ if &t_Co == 256 || has("gui_running")
         autocmd WinEnter * setlocal statusline=%!MyStatusLine('Enter')
         autocmd WinLeave * setlocal statusline=%!MyStatusLine('Leave')
 
-        autocmd InsertEnter * call InsertStatuslineColor(v:insertmode)
-        autocmd InsertLeave * highlight StatColor guibg=#87d75f guifg=Black ctermbg=113 ctermfg=Black
-        autocmd InsertLeave * highlight Modified guibg=#ff8700 guifg=Black ctermbg=208 ctermfg=Black
+        autocmd InsertEnter,Colorscheme * call InsertStatuslineColor(v:insertmode)
+        autocmd InsertLeave,Colorscheme * highlight StatColor guibg=#87d75f guifg=Black ctermbg=113 ctermfg=Black
+        autocmd InsertLeave,Colorscheme * highlight Modified guibg=#ff8700 guifg=Black ctermbg=208 ctermfg=Black
     augroup end
 
     function! MyStatusLine(mode)
@@ -672,11 +669,16 @@ if !has("gui_running")
     let g:indent_guides_auto_colors = 0
     augroup indent_guides_custom
         autocmd!
-        " custom colors for indent guide lines
-        " light grey
-        autocmd VimEnter,Colorscheme * highlight IndentGuidesEven ctermbg=235
-        " dark grey
-        autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd ctermbg=236
+        " custom colours for indent guide lines
+        " note: `g:colors_name` set by vim
+        if g:colors_name == "neverland-mod"
+            autocmd VimEnter,Colorscheme * highlight IndentGuidesEven ctermbg=234
+            autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd ctermbg=235
+        elseif g:colors_name == "gruvbox"
+            " use one shade higher since background is 235
+            autocmd VimEnter,Colorscheme * highlight IndentGuidesEven ctermbg=236
+            autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd ctermbg=237
+        endif
     augroup end
 endif
 
