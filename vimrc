@@ -678,6 +678,23 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
+" disable identifier completion engine by setting threshold very high
+let g:ycm_min_num_of_chars_for_completion = 99
+" extra rules for triggering semantic completion
+" note: dictionary values are added to default trigger set for each language;
+" default triggers can't be removed
+let g:ycm_semantic_triggers = {
+            \   'c,cpp,go,java,rust,javascript': [ 're!\w{2}' ],
+            \ }
+
+" for debugging
+" let g:ycm_keep_logfiles = 1
+" let g:ycm_log_level = "debug"
+
+" for temporarily disabling error checking
+" let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_enable_diagnostic_signs = 0
+" let g:ycm_enable_diagnostic_highlighting = 0
 
 " --vim-go
 " let g:go_highlight_types = 1
