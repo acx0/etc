@@ -524,9 +524,10 @@ function! MkdirTree()
     echo "mkdir " . (has("win32") ? "" : "-p ") . expand("%:p:h")
 endfunction
 
+set diffopt+=algorithm:histogram
+
 " view diff between current buffer and original file it was loaded from
 nnoremap <Leader>df :call DiffOrig()<CR>
-
 function! DiffOrig()
     if !exists("b:diff_active") && &buftype == "nofile"
         echoerr "E: Cannot diff a scratch buffer"
@@ -560,7 +561,6 @@ endfunction
 
 " toggle diff option for window
 nnoremap <Leader>td :call ToggleDiff()<CR>
-
 function! ToggleDiff()
     if &l:diff == 0
         diffthis
