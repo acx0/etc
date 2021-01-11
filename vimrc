@@ -708,6 +708,7 @@ let g:rustfmt_autosave = 1
 
 " --fzf.vim
 nnoremap <Leader>rg :Rg<CR>
+nnoremap <Leader>ff :Files<CR>
 
 " --vim-gitgutter
 nnoremap <Leader>gg :GitGutterToggle<CR>
