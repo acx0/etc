@@ -302,13 +302,20 @@ nnoremap <Leader>L <C-w>L
 
 " close current window's location list
 nnoremap <Leader>lcl :lclose<CR>
+" close current window's preview window
+nnoremap <Leader>pc :pclose<CR>
+
+nnoremap <Leader>ls :ls<CR>
+nnoremap <Leader>bd :bdelete<CR>
+nnoremap <Leader>BD :bdelete!<CR>
+nnoremap <Leader>bn :buffer<Space>
 
 " tab creation shortcuts
-"nnoremap <Leader>tt :tabs<CR>
+nnoremap <Leader>tt :tabs<CR>
 nnoremap <Leader>tn :tabnew<CR>
-nnoremap <Leader>te :tabedit
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>tm :tabmove
+nnoremap <Leader>nt <C-w>T
 
 " auto-expand path to parent of current file; for windows, (v)splits, and tabs
 nnoremap <Leader>ew :edit <C-R>=expand("%:p:h") . "/" <CR>
@@ -388,9 +395,15 @@ set autoread  " update file when externally modified
 " cd into directory of active buffer and display it
 nnoremap <Leader>cd :lcd %:p:h<CR> :pwd<CR>
 
+nnoremap <Leader>ww :w<CR>
+nnoremap <Leader>wq :wq<CR>
+nnoremap <Leader>qq :q<CR>
+
+" write to root-owned file when running as non-root
+command! W execute 'silent write !sudo tee % >/dev/null' | edit!
+
 " clean up buffer list by wiping out unmodified, hidden, no name buffers
 nnoremap <Leader>de :call RemoveEmptyBuffers()<CR>
-
 function! RemoveEmptyBuffers()
     let s:empty_buffers = filter(range(1, bufnr("$")),
                 \ "buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0 && !getbufvar(v:val, '&mod')")
@@ -455,7 +468,7 @@ endif
 
 " set paste to prevent unexpected code formatting when pasting text
 " toggle paste and show current value ('pastetoggle' doesn't)
-nnoremap <Leader>p :set paste! paste?<CR>
+nnoremap <Leader>pp :set paste! paste?<CR>
 "set pastetoggle=<Leader>p
 
 " --prose writing
@@ -516,8 +529,8 @@ endfunction
 
 " --file / text manipulation functions
 " quickly edit/source vimrc
-nnoremap <Leader>er :edit $MYVIMRC<CR>
-nnoremap <Leader>sr :source $MYVIMRC<CR>
+nnoremap <Leader>erc :edit $MYVIMRC<CR>
+nnoremap <Leader>src :source $MYVIMRC<CR>
 
 " create parent directories for non-existing path
 nnoremap <Leader>md :call MkdirTree()<CR>
@@ -593,9 +606,6 @@ function! PreservePosition(command)
     call cursor(l:line, l:column)
 endfunction
 
-" write to root-owned file when running as non-root
-command! W execute 'silent write !sudo tee % > /dev/null' | edit!
-
 " append modeline after last line in buffer
 " use substitute() instead of printf() to handle "%%s" modeline in LaTeX files
 nnoremap <Leader>ml :call AppendModeline()<CR>
@@ -629,6 +639,7 @@ if has("unix")
 
     " open terminal in CWD
     command! Terminal silent !term
+    nnoremap <Leader>te :Terminal<CR>
 endif
 " }}}
 
@@ -768,6 +779,14 @@ xmap <Leader>mre <Plug>MarkRegex
 nmap <Leader>mt <Plug>MarkToggle
 nmap <Leader>mc <Plug>MarkConfirmAllClear
 nmap <Leader>mC <Plug>MarkAllClear
+
+" --bufkill.vim
+" reminders:
+"   :BD
+"   <Leader>bb
+"   <Leader>bf
+"   <Leader>ba
+"       note: using custom <Leader>bd map
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
