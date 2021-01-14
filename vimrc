@@ -724,6 +724,24 @@ let g:gitgutter_terminal_reports_focus = 0
 set updatetime=200      " (milliseconds) controls how quickly gitgutter updates diff state
 " force-update signs across all visible buffers
 nnoremap <Leader>gg :GitGutterAll<CR>
+
+" --vim-fugitive
+" reminders:
+"   :G
+"       cc ca
+"       <CR>
+"       = < >
+"       i [c ]c
+"       ( )
+"       I P
+"       gO O
+"       dv
+"       s u - U X
+"           note: can use visual mode to select subrange to stage/unstage
+" note: use standard do/dp when staging hunks
+nnoremap <Leader>ga :Gvdiffsplit<CR>
+nnoremap <Leader>gs :Git<CR>
+nnoremap <Leader>gci :Git commit<CR>
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
