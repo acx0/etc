@@ -648,6 +648,8 @@ endif
 nnoremap <F2> :TagbarToggle<CR>
 
 " --vim-indent-guides
+" reminders:
+"   <Leader>ig
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
@@ -680,6 +682,11 @@ nnoremap <Leader>st :call SyntaxAttr()<CR>
 let g:disable_protodef_sorting = 1
 
 " --tcomment_vim
+" reminders:
+"   normal:
+"       gcc g<c g>c
+"   visual:
+"       gc g< g>
 let g:tcommentBlankLines = 0
 
 " --YouCompleteMe
@@ -787,6 +794,18 @@ nmap <Leader>mC <Plug>MarkAllClear
 "   <Leader>bf
 "   <Leader>ba
 "       note: using custom <Leader>bd map
+
+" --vim-eunuch
+" reminders:
+"   :Delete
+"   :Move
+"   :Rename
+"   :Chmod
+
+" --DrawIt
+" reminders:
+"   <Leader>di
+"   <Leader>ds
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
