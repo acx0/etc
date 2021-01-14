@@ -40,6 +40,11 @@ Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/DrawIt'
 Plug 'vim-scripts/IndentConsistencyCop'
 Plug 'vim-scripts/SyntaxAttr.vim'
+
+Plug 'inkarkat/vim-ingo-library'
+" requires: 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-mark'
+
 " note: ~/.vim/plugged/YouCompleteMe/third_party/ dir can grow over time with
 " old archives/artifacts and completers, delete + reinstall plugin to clean
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py
@@ -742,6 +747,27 @@ nnoremap <Leader>gg :GitGutterAll<CR>
 nnoremap <Leader>ga :Gvdiffsplit<CR>
 nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gci :Git commit<CR>
+
+" --vim-mark
+" reminders:
+"   {N}MarkSet
+let g:mwDefaultHighlightingPalette = "extended"
+
+" disable following default mappings added by plugin
+nmap <Plug>IgnoreMarkSet <Plug>MarkSet
+xmap <Plug>IgnoreMarkSet <Plug>MarkSet
+nmap <Plug>IgnoreMarkRegex <Plug>MarkRegex
+xmap <Plug>IgnoreMarkRegex <Plug>MarkRegex
+
+nmap <F8> <Plug>MarkSet
+xmap <F8> <Plug>MarkSet
+nmap <Leader>ms <Plug>MarkSet
+xmap <Leader>ms <Plug>MarkSet
+nmap <Leader>mre <Plug>MarkRegex
+xmap <Leader>mre <Plug>MarkRegex
+nmap <Leader>mt <Plug>MarkToggle
+nmap <Leader>mc <Plug>MarkConfirmAllClear
+nmap <Leader>mC <Plug>MarkAllClear
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
