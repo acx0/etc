@@ -711,7 +711,19 @@ nnoremap <Leader>rg :Rg<CR>
 nnoremap <Leader>ff :Files<CR>
 
 " --vim-gitgutter
-nnoremap <Leader>gg :GitGutterToggle<CR>
+" reminders:
+"   [c ]c (overridden)
+"
+"   <Leader>hp
+"   <Leader>hs
+"   <Leader>hu
+"       note:
+"       - gitgutter allows staging via symlinks to files in git repos whereas vim-fugitive doesn't
+"       - can't unstage a staged hunk whereas vim-fugitive can
+let g:gitgutter_terminal_reports_focus = 0
+set updatetime=200      " (milliseconds) controls how quickly gitgutter updates diff state
+" force-update signs across all visible buffers
+nnoremap <Leader>gg :GitGutterAll<CR>
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
