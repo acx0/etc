@@ -45,6 +45,11 @@ Plug 'inkarkat/vim-ingo-library'
 " requires: 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-mark'
 
+" note: ships with vim
+packadd! matchit
+" requires: matchit
+Plug 'rhysd/conflict-marker.vim'
+
 " note: ~/.vim/plugged/YouCompleteMe/third_party/ dir can grow over time with
 " old archives/artifacts and completers, delete + reinstall plugin to clean
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py
@@ -765,6 +770,27 @@ nnoremap <Leader>gg :GitGutterAll<CR>
 nnoremap <Leader>ga :Gvdiffsplit<CR>
 nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gci :Git commit<CR>
+
+" --conflict-marker.vim
+" reminders:
+"   % (extended if matchit enabled)
+"   [x ]x
+"   ct co cn cb cB
+" include text after markers when highlighting
+let g:conflict_marker_begin = "^<<<<<<< .*$"
+let g:conflict_marker_end   = "^>>>>>>> .*$"
+let g:conflict_marker_common_ancestors = "^||||||| .*$"
+
+" disable default highlight group in favor of custom colours
+let g:conflict_marker_highlight_group = ""
+highlight ConflictMarkerBegin ctermbg=29 guibg=#00875f
+highlight ConflictMarkerOurs ctermbg=23 guibg=#005f5f
+highlight ConflictMarkerCommonAncestors ctermbg=74 guibg=#5fafd7
+highlight ConflictMarkerCommonAncestorsHunk ctermbg=67 guibg=#5f87af
+" highlight ConflictMarkerCommonAncestorsHunk ctermbg=68 guibg=#5f87d7
+highlight ConflictMarkerSeparator ctermbg=74 guibg=#5fafd7
+highlight ConflictMarkerTheirs ctermbg=31 guibg=#0087af
+highlight ConflictMarkerEnd ctermbg=37 guibg=#00afaf
 
 " --vim-mark
 " reminders:
