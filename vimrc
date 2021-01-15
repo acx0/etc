@@ -50,6 +50,9 @@ packadd! matchit
 " requires: matchit
 Plug 'rhysd/conflict-marker.vim'
 
+" requires: 'tpope/vim-fugitive'
+Plug 'christoomey/vim-conflicted'
+
 " note: ~/.vim/plugged/YouCompleteMe/third_party/ dir can grow over time with
 " old archives/artifacts and completers, delete + reinstall plugin to clean
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py
@@ -791,6 +794,17 @@ highlight ConflictMarkerCommonAncestorsHunk ctermbg=67 guibg=#5f87af
 highlight ConflictMarkerSeparator ctermbg=74 guibg=#5fafd7
 highlight ConflictMarkerTheirs ctermbg=31 guibg=#0087af
 highlight ConflictMarkerEnd ctermbg=37 guibg=#00afaf
+
+" --vim-conflicted
+" reminders:
+"   :Conflicted
+"       see also: ~/.gitconfig: alias.conflicted
+"       note:
+"       - provides cleaner view compared to default `git mergetool` window splitting
+"       - toggle `diff` in `working` buffer to see conflict-marker.vim highlighting
+"   dgl dgu
+"       note: conflict-marker.vim offers more granular mappings for resolution
+nnoremap <Leader>nc :GitNextConflict<CR>
 
 " --vim-mark
 " reminders:

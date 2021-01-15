@@ -56,6 +56,10 @@
 	cia = commit --amend
 	ciad = commit --amend --date=now
 	co = checkout
+	conflicted = !vim +Conflicted
+	cond = conflicted
+	conflicts = grep --name-only --full-name '^<<<<<<< '
+	cons = conflicts
 	cp = cherry-pick
 	dfc = diff --cached
 	dffc = diff --color-words --cached
