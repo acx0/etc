@@ -27,6 +27,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'godlygeek/tabular'
 Plug 'inkarkat/vim-IndentConsistencyCop'
 Plug 'itspriddle/vim-shellcheck'
+Plug 'LnL7/vim-nix'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
 Plug 'nathanaelkane/vim-indent-guides'
