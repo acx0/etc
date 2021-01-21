@@ -57,14 +57,11 @@ endif
 
 if &filetype == "cpp"
     inoremap <buffer> std std::
-    inoremap <buffer> ,, <<
-    inoremap <buffer> .. >>
     inoremap <buffer> ;; ::
 endif
 
 " generate ctags for directory of active buffer
 nnoremap <buffer> <F11> :call UpdateCtags()<CR>
-
 function! UpdateCtags()
     update
     call PrintSeparator()
@@ -80,7 +77,6 @@ endfunction
 
 " quick compile/run functions
 nnoremap <buffer> <F3> :call CompileC()<CR>
-
 function! CompileC()
     update
     call PrintSeparator()
@@ -97,7 +93,6 @@ function! CompileC()
 endfunction
 
 nnoremap <buffer> <Leader><F3> :call GetCFlags()<CR>
-
 function! GetCFlags()
     if &filetype == "cpp"
         echo 'b:CXXFLAGS = "' . b:CXXFLAGS . '"'
@@ -109,7 +104,6 @@ function! GetCFlags()
 endfunction
 
 nnoremap <buffer> <F4> :call RunExecutable()<CR>
-
 function! RunExecutable()
     call PrintSeparator()
     update
