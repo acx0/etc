@@ -52,6 +52,7 @@ alias dfn='findmnt -D'
 alias ip='ip -brief -color'
 alias sc='systemctl'
 alias dmsg='sudo dmesg --follow --human'
+alias npg='noping -g histogram'
 
 alias mounted='mount | grep "/dev/\(sd[b-z]\|mapper\)"'
 alias ppath='echo $PATH | tr : "\n"'
