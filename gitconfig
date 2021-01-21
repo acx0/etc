@@ -2,6 +2,7 @@
 ; 	`man gitglossary`
 ; 	`man gitrevisions`
 ; 	`man git-config`
+; 		`/<section>.<key>` for descriptions of values
 [user]
 	name = Sam Lidder
 	email = sam.lidder@gmail.com
@@ -48,6 +49,8 @@
 	decorate = full
 [status]
 	submoduleSummary = true
+[blame]
+	date = short
 [alias]
 	amm = amend-ng
 	ap = add -p
