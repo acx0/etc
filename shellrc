@@ -68,6 +68,16 @@ alias ash='aptitude show'
 alias ay='aptitude why'
 alias afl='apt-file list'
 alias aff='apt-file find'
+alias dep='apt-rdepends'
+alias rdep='apt-rdepends -r'
+depd() {
+    if [[ -z $* ]]; then
+        echo >&2 "args: <apt-rdepends-args>"
+        return 1
+    fi
+    dot -Txlib <(apt-rdepends -d "$@")
+}
+alias rdepd='depd -r'
 
 alias rs='rsync -av --progress'
 alias rschk='rsync -av --progress --delete --dry-run'
