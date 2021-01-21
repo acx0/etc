@@ -25,10 +25,10 @@ endif
 
 if !exists("g:max_parallel_make_jobs")
     if has("unix")
-        let g:max_parallel_make_jobs = system("nproc") * 2
+        let g:max_parallel_make_jobs = system("nproc")
     elseif !empty($NUMBER_OF_PROCESSORS)
         " for windows
-        let g:max_parallel_make_jobs = $NUMBER_OF_PROCESSORS * 2
+        let g:max_parallel_make_jobs = $NUMBER_OF_PROCESSORS
     else
         let g:max_parallel_make_jobs = 4
     endif
