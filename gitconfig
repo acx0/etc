@@ -74,18 +74,22 @@
 	lg = log -p --color-words
 	lgg = log --oneline --graph
 	loga = log --pretty=fuller
+	mt = mergetool
 	rb = rebase
 	rbc = rebase --continue
 	rba = rebase --abort
 	rbs = rebase --skip
+	re = grep --extended-regexp --line-number
 	rl = reflog
+	rs = restore
+	rss = restore --staged
 	;rp = remote prune
-	;rs = remote show
 	rt = remote
 	;ru = remote update
 	sb = show-branch
 	sm = submodule
 	st = status
+	sts = status --short
 
 # windows config example
 #[core]
