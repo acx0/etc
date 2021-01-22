@@ -54,6 +54,8 @@ URxvt*urlLauncher:     firefox
 URxvt*matcher.button:  1
 
 /* --- XTerm --- */
+XTerm*termName: xterm-256color
+
 XTerm*font:       xft:SF Mono:style=Bold:size=11
 XTerm*boldFont:   xft:SF Mono:style=Bold:size=11
 XTerm*italicFont: xft:SF Mono:style=Bold:size=11
