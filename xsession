@@ -11,10 +11,13 @@ xset dpms 0 300 600 &       # seconds before screen is in standby/suspend/off st
 
 urxvtd -q -o -f &
 redshift -Pc ~/etc/redshift.conf &
-xfce4-power-manager &
 nm-applet &
-blueman-applet &
 pasystray &
+for bin in xfce4-power-manager blueman-applet; do
+    if command -v $bin >/dev/null; then
+        $bin &
+    fi
+done
 
 # ~/bin scripts
 tp off &    # disable touchpad
