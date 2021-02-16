@@ -24,6 +24,7 @@ sys-usage-ctl start &
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 if [ "$SESSION" = "awesome" ]; then
+    mkdir -p ~/.cache/awesome
     exec awesome >> ~/.cache/awesome/log 2>&1
 elif [ "$SESSION" = "dwm" ]; then
     trayer --edge bottom --widthtype request &
