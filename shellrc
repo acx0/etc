@@ -2,8 +2,8 @@
 # ~/.shellrc - for common *sh settings
 
 # enable colour support of ls and add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+if command -v dircolors >/dev/null; then
+    eval "$(dircolors -b)"
 
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
@@ -88,12 +88,14 @@ alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
 alias fm='ranger'
 alias f='ranger_cd'
 ranger_cd() {
-    local CD_FILE="$HOME/.config/ranger/shell_cd"
-    ranger --choosedir "$CD_FILE" "${@:-$PWD}"   # use supplied arg otherwise $PWD if none
-    if [ -f "$CD_FILE" ] && [ "$(<"$CD_FILE")" != "$PWD" ]; then
-        cd -- "$(<"$CD_FILE")"
+    local cd_file="$HOME/.config/ranger/shell_cd"
+    ranger --choosedir "$cd_file" "${@:-$PWD}"   # use supplied arg otherwise $PWD if none
+    local chosen_dir
+    chosen_dir="$(<"$cd_file")" || return 1
+    if [[ -n $chosen_dir ]] && [[ $chosen_dir != "$PWD" ]]; then
+        cd -- "$chosen_dir"
     fi
-    rm -f -- "$CD_FILE"
+    rm -f -- "$cd_file"
 }
 
 # enable colours in less for man pages
