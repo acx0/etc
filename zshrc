@@ -75,11 +75,12 @@ function zle-line-init zle-keymap-select {
     local vi_mode="${${KEYMAP/vicmd/c}/(main|viins)/i}"
     local vi_mode_colour="${${vi_mode/c/green}/i/red}"
 
-    PROMPT="[%{$fg[${vi_mode_colour}]%}${vi_mode}%{$reset_color%}]"         # vi-mode indicator
+    PROMPT="[%{$fg[${vi_mode_colour}]%}${vi_mode}%{$reset_color%}]"
     PROMPT+=" %n@%m:%1~ "
-    PROMPT+="%{$fg[green]%}$(get_git_branch)%{$reset_color%}"               # git branch
-    PROMPT+="%{$fg[yellow]%}$(get_git_stash_count)%{$reset_color%}"         # git stash count
-    PROMPT+="%{$fg_bold[red]%}${last_exit_status}%{$reset_color%}"          # exit status
+    PROMPT+="%{$fg[green]%}$(get_git_branch)%{$reset_color%}"
+    PROMPT+="%{$fg[yellow]%}$(get_git_stash_count)%{$reset_color%}"
+    PROMPT+="%{$fg_bold[blue]%}$(get_python_venv)%{$reset_color%}"
+    PROMPT+="%{$fg_bold[red]%}${last_exit_status}%{$reset_color%}"
     PROMPT+="$ "
 
     zle reset-prompt

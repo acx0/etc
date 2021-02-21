@@ -112,7 +112,7 @@ alias youtube-dl-audio-only='youtube-dl -x --audio-quality 320K --audio-format m
 
 strace-output() {
     if [[ -z $* ]]; then
-        echo "args: <cmd> [<cmd-args>]"
+        echo >&2 "args: <cmd> [<cmd-args>]"
         return 1
     fi
 
@@ -124,7 +124,7 @@ strace-output() {
 
 strace-output-verbose() {
     if [[ -z $* ]]; then
-        echo "args: <cmd> [<cmd-args>]"
+        echo >&2 "args: <cmd> [<cmd-args>]"
         return 1
     fi
 
@@ -134,6 +134,26 @@ strace-output-verbose() {
         --string-limit 1024 \
         -fo $(mktemp -u /tmp/strace-output/XXXXXXXX-$(basename $1)) \
         "$@"
+}
+
+alias venvc='python3 -m venv'
+alias venvd='deactivate'
+venvu() {
+    local venv_dir="$1"
+    if [[ -z $venv_dir ]]; then
+        echo >&2 "arg: <venv-dir>"
+        return 1
+    fi
+
+    # inject into shell history for ctrl-r
+    local cmd="source \"$(realpath "$venv_dir")/bin/activate\" # venvu"
+    if [[ -n $ZSH_VERSION ]]; then
+        print -S "$cmd"
+    elif [[ -n $BASH_VERSION ]]; then
+        history -s "$cmd"
+    fi
+
+    eval "$cmd"
 }
 
 get_git_branch() {
@@ -154,6 +174,12 @@ get_last_exit_status() {
     local last_exit_status=$?
     if [[ $last_exit_status -ne 0 ]]; then
         echo "(e:$last_exit_status) "
+    fi
+}
+
+get_python_venv() {
+    if [[ -n $VIRTUAL_ENV ]]; then
+        echo "(venv:$(basename $VIRTUAL_ENV)) "
     fi
 }
 
