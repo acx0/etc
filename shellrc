@@ -75,8 +75,26 @@ depd() {
 }
 alias rdepd='depd -r'
 
+# note: -a == -rlptgoD
 alias rs='rsync -av --progress'
-alias rschk='rsync -av --progress --delete --dry-run'
+alias rschk='rsync --dry-run -av --delete'
+alias rschk-itemize='rsync --dry-run -av --delete --itemize-changes'
+# note: default `--out-format` will output `*deleting` prefix for each item being removed (if remote rsync is recent)
+rschk-content-only() {
+    if [[ -z $* ]]; then
+        echo >&2 "args: <rsync-args>"
+        return 1
+    fi
+    rsync --dry-run -rltDvO --delete --itemize-changes "$@" \
+        | grep -e '^\*' -e '^.f[\.c][\.s]'
+}
+rschk-content-checksum() {
+    if [[ -z $* ]]; then
+        echo >&2 "args: <rsync-args>"
+        return 1
+    fi
+    rschk-content-only --checksum "$@"
+}
 
 alias m='make -j $(nproc)'
 alias d='docker'
