@@ -54,6 +54,7 @@
 [alias]
 	amm = amend-ng
 	ap = add -p
+	authors = shortlog --numbered --summary --email
 	br = branch -vv
 	ci = commit
 	cia = commit --amend
