@@ -3,6 +3,7 @@
 "   - 'omnifunc' automatically set when 'filetype plugin on' is set
 
 source ~/.vim/ftplugin/util.vim
+source ~/.vim/ftplugin/ycm-mappings.vim
 
 " put scope declarations (public, private, protected) 0 characters away from indent of surrounding block
 set cinoptions+=g0
@@ -116,12 +117,3 @@ function! RunExecutable()
         execute '!"%:p:r"'
     endif
 endfunction
-
-nnoremap <buffer> <Leader>re :%!clang-format<CR>
-
-nnoremap <buffer> <Leader>dg :YcmDiags<CR>
-nnoremap <buffer> <Leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <buffer> <Leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <buffer> <Leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <buffer> <Leader>gt :YcmCompleter GetType<CR>
-nnoremap <buffer> <Leader>fi :YcmCompleter FixIt<CR>

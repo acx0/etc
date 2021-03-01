@@ -2,9 +2,8 @@
 
 setlocal tabstop=4
 
-nnoremap <buffer> <Leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <buffer> <Leader>gt :YcmCompleter GetType<CR>
-nnoremap <buffer> <Leader>fi :YcmCompleter FixIt<CR>
+" note: source this before overriding keybinds with vim-go mappings
+source ~/.vim/ftplugin/ycm-mappings.vim
 
 " note: vim-go remaps <C-]> to :GoDef
 nnoremap <buffer> <Leader>re :GoReferrers<CR>

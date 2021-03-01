@@ -1,6 +1,7 @@
 " Custom Rust settings
 
 source ~/.vim/ftplugin/util.vim
+source ~/.vim/ftplugin/ycm-mappings.vim
 
 nnoremap <buffer> <Leader><F3> :call CheckRust()<CR>
 function! CheckRust()
@@ -29,10 +30,3 @@ function! RunTests()
     call PrintSeparator()
     execute '!cargo test'
 endfunction
-
-nnoremap <buffer> <Leader>dg :YcmDiags<CR>
-nnoremap <buffer> <Leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <buffer> <Leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <buffer> <Leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <buffer> <Leader>gt :YcmCompleter GetType<CR>
-nnoremap <buffer> <Leader>fi :YcmCompleter FixIt<CR>
