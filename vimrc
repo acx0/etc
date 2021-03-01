@@ -164,12 +164,21 @@ augroup vim_go_highlight_override
     autocmd ColorScheme * highlight default link goFunctionCall Statement
 augroup end
 
+function! TrySetColourscheme(colourscheme)
+    try
+        execute 'colorscheme ' . a:colourscheme
+    catch /E185/    " 'Cannot find color scheme' error code
+        " fall back to vendored colourscheme if vim-plug hasn't been run yet
+        colorscheme neverland-mod
+    endtry
+endfunction
+
 if has("gui_running")
     " gVim specific
 
     " font setup
     if has("unix")
-        set guifont=SF\ Mono\ Bold\ 11
+        set guifont=SF\ Mono\ Bold\ 12
         " set guifont=Terminus\ 8
         " set guifont=Monospace\ 9
     elseif has("win32")
@@ -177,7 +186,7 @@ if has("gui_running")
         "set guifont=Lucida_Console:h9:cANSI
     endif
 
-    execute 'colorscheme ' . s:active_colourscheme
+    call TrySetColourscheme(s:active_colourscheme)
 
     set guicursor+=a:blinkon0   " disable blinking cursor for gVim
 
@@ -193,7 +202,7 @@ else
     " terminal vim specific
 
     if &t_Co == 256
-        execute 'colorscheme ' . s:active_colourscheme
+        call TrySetColourscheme(s:active_colourscheme)
     else
         colorscheme desert
     endif
