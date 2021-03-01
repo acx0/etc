@@ -354,6 +354,7 @@ nnoremap <Leader>H <C-w>H
 nnoremap <Leader>J <C-w>J
 nnoremap <Leader>K <C-w>K
 nnoremap <Leader>L <C-w>L
+nnoremap <Leader>wo <C-w>o
 
 " close current window's location list
 nnoremap <Leader>lcl :lclose<CR>
@@ -453,6 +454,7 @@ nnoremap <Leader>cd :lcd %:p:h<CR> :pwd<CR>
 nnoremap <Leader>ww :w<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>qq :q<CR>
+nnoremap <Leader>E :e!<CR>
 
 " write to root-owned file when running as non-root
 command! W execute 'silent write !sudo tee % >/dev/null' | edit!
