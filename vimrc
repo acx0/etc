@@ -217,8 +217,45 @@ function! SetAndPersistColour(colourscheme)
 endfunction
 
 " --statusline
+function! PluginAvailable(name)
+    " use vim-plug's `g:plugs` to determine if plugin is enabled and cloned
+    return has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
+endfunction
+
+function! GetHunkSummary()
+    let s:summary = ""
+    let [added,modified,removed] = GitGutterGetHunkSummary()
+    if added > 0
+        let s:summary .= "+" . added
+    endif
+    if modified > 0
+        if !empty(s:summary)
+            let s:summary .= " "
+        endif
+        let s:summary .= "~" . modified
+    endif
+    if removed > 0
+        if !empty(s:summary)
+            let s:summary .= " "
+        endif
+        let s:summary .= "-" . removed
+    endif
+    return empty(s:summary)
+                \ ? s:summary
+                \ : "(" . s:summary . ")"
+endfunction
+
+function! GitStatusLine()
+    return "%{FugitiveStatusline()}%{GetHunkSummary()}\ %{ConflictedVersion()}"
+endfunction
+
 " default statusline (with 'set ruler'): '%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P'
-let s:common_status = "\ [%{strlen(&fileencoding)?&fileencoding:&encoding}:%{&fileformat}]\ %y\ %w%=%-14.(%l,%c%V%)\ %P\ [%L]"
+let s:common_status = "[%{strlen(&fileencoding)?&fileencoding:&encoding}:%{&fileformat}]"
+let s:common_status .= "%y"
+if PluginAvailable("vim-fugitive") && PluginAvailable("vim-gitgutter") && PluginAvailable("vim-conflicted")
+    let s:common_status .= GitStatusLine()
+endif
+let s:common_status .= "\ %w%=%-14.(%l,%c%V%)\ %P\ [%L]"
 
 " use smart statusline if 256 colours are available or if gVim is running
 if &t_Co == 256 || has("gui_running")
