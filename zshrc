@@ -112,7 +112,7 @@ autoload -Uz compinit && compinit
 # enable zsh colours
 autoload -U colors && colors
 
-if [[ -d "$HOME/.vim/plugged/fzf/shell" ]]; then
-    source "$HOME/.vim/plugged/fzf/shell/completion.zsh"
-    source "$HOME/.vim/plugged/fzf/shell/key-bindings.zsh"
+if [[ -d "$HOME/etc/fzf" ]]; then
+    source "$HOME/etc/fzf/completion.zsh"
+    source "$HOME/etc/fzf/key-bindings.zsh"
 fi

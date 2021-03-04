@@ -38,7 +38,7 @@ if [[ -f /etc/bash_completion ]] && ! shopt -oq posix; then
     source /etc/bash_completion
 fi
 
-if [[ -d "$HOME/.vim/plugged/fzf/shell" ]]; then
-    source "$HOME/.vim/plugged/fzf/shell/completion.bash"
-    source "$HOME/.vim/plugged/fzf/shell/key-bindings.bash"
+if [[ -d "$HOME/etc/fzf" ]]; then
+    source "$HOME/etc/fzf/completion.bash"
+    source "$HOME/etc/fzf/key-bindings.bash"
 fi
