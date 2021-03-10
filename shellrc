@@ -156,6 +156,7 @@ strace-output-verbose() {
         "$@"
 }
 
+alias venvc-pyenv='python -m venv'
 alias venvc='python3 -m venv'
 alias venvd='deactivate'
 venvu() {
@@ -210,6 +211,11 @@ fi
 # for managing node+npm
 if command -v fnm >/dev/null; then
     eval "$(fnm env)"
+fi
+
+# for managing python versions
+if command -v pyenv >/dev/null; then
+    eval "$(pyenv init -)"
 fi
 
 # vim: set ts=8 sts=4 sw=4 et ft=bash:
