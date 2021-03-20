@@ -78,6 +78,15 @@
 	lg = log -p --color-words
 	lgg = log --oneline --graph
 	loga = log --pretty=fuller
+	; mnemonic: modified [(num_)occurrences] (regex|string) [all]
+	; note: `mst[a]` not possible as `-S` restricts output to changes that have
+	; different number of occurrences of supplied arg
+	more = log -p --pickaxe-regex -S
+	morea = log -p --pickaxe-all --pickaxe-regex -S
+	most = log -p -S
+	mosta = log -p --pickaxe-all -S
+	mre = log -p -G
+	mrea = log -p --pickaxe-all -G
 	mt = mergetool
 	rb = rebase
 	rbc = rebase --continue
