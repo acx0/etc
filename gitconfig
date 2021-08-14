@@ -6,6 +6,14 @@
 [user]
 	name = Sam Lidder
 	email = sam.lidder@gmail.com
+; note:
+; 	- values defined in `path` config are only used when git commands are
+; 	  invoked _inside git repos_ under the specified `gitdir` path
+; 	- trailing slash in `gitdir` is required
+; 	- symlinks into `gitdir` path will also use `path` config
+[includeIf "gitdir:/Volumes/work/"]
+	path = ~/.gitconfig-work
+
 [color]
 	ui = true
 [color "diff"]
