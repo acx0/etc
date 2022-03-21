@@ -1,12 +1,12 @@
 [submodule "dwm"]
 	path = dwm
-	url = git://github.com/acx0/dwm.git
+	url = https://github.com/acx0/dwm
 [submodule "link.sh"]
 	path = link.sh
-	url = git://github.com/acx0/link.sh.git
+	url = https://github.com/acx0/link.sh
 [submodule "vim/vim-plug"]
 	path = vim/vim-plug
-	url = git://github.com/junegunn/vim-plug.git
+	url = https://github.com/junegunn/vim-plug
 [submodule "fonts/SFMono"]
 	path = fonts/SFMono
 	url = git@github.com:acx0/SFMono.git
