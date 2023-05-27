@@ -14,6 +14,7 @@ PATH="$HOME/bin:$PATH"
 PATH="$PATH:/sbin:/usr/sbin"    # add super-user binaries to PATH
 PATH="$PATH:/usr/local/go/bin"
 PATH="$HOME/.cargo/bin:$PATH"
+PATH="$PATH:$HOME/bin-work"
 
 # give vim-plug managed fzf preference over any system version
 PATH="$HOME/.vim/plugged/fzf/bin:$PATH"

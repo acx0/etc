@@ -13,6 +13,8 @@
 ; 	- symlinks into `gitdir` path will also use `path` config
 [includeIf "gitdir:/Volumes/work/"]
 	path = ~/.gitconfig-work
+[includeIf "gitdir:/media/work/"]
+	path = ~/.gitconfig-work
 
 [color]
 	ui = true
