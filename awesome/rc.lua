@@ -423,10 +423,9 @@ globalkeys = gears.table.join(
               {description = "volume down", group = "volume"}),
     awful.key({ modkey, "Shift"   }, "Left",  function () awful.spawn("amixer -q sset Master toggle", false) end,
               {description = "mute volume", group = "volume"}),
-    -- set Capture to max (default 35) for Digital=42% to work
-    awful.key({ modkey, "Shift"   }, "Right", function () awful.spawn("amixer -q sset Digital 0%", false) end,
+    awful.key({ modkey, "Shift"   }, "Right", function () awful.spawn("amixer -q sset Capture nocap", false) end,
               {description = "mute mic", group = "volume"}),
-    awful.key({ modkey, "Control", "Shift" }, "Right", function () awful.spawn("amixer -q sset Digital 42%", false) end,
+    awful.key({ modkey, "Control", "Shift" }, "Right", function () awful.spawn("amixer -q sset Capture cap", false) end,
               {description = "unmute mic", group = "volume"})
 )
 
