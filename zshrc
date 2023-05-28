@@ -116,3 +116,7 @@ if [[ -d "$HOME/etc/fzf" ]]; then
     source "$HOME/etc/fzf/completion.zsh"
     source "$HOME/etc/fzf/key-bindings.zsh"
 fi
+
+if command -v rtx >/dev/null; then
+    eval "$(rtx activate zsh)"
+fi

@@ -42,3 +42,7 @@ if [[ -d "$HOME/etc/fzf" ]]; then
     source "$HOME/etc/fzf/completion.bash"
     source "$HOME/etc/fzf/key-bindings.bash"
 fi
+
+if command -v rtx >/dev/null; then
+    eval "$(rtx activate bash)"
+fi
