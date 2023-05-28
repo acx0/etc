@@ -381,10 +381,11 @@ globalkeys = gears.table.join(
     -- Prompt
     awful.key({ modkey },            "r",
               function ()
-                  awful.spawn("dmenu_run -i -l 5 -p '>' -fn 'SF Mono:style=Bold:size=11' -nb '" ..
-                      beautiful.border_focus .. "' -nf '" .. beautiful.bg_focus ..
-                      "' -sb '" .. beautiful.bg_focus ..
-                      "' -sf '" .. beautiful.fg_focus .. "'", false)
+                  awful.spawn("dmenu_run -i -l 5 -p '>' -fn '" .. beautiful.dmenu_run_font .. "'" ..
+                      "  -nb '" .. beautiful.col_yellow ..
+                      "' -nf '" .. beautiful.col_black ..
+                      "' -sb '" .. beautiful.col_black ..
+                      "' -sf '" .. beautiful.col_yellow .. "'", false)
               end,
               {description = "run prompt", group = "launcher"}),
 

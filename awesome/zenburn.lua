@@ -12,29 +12,42 @@ theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "SF Mono Bold 9"
+theme.font           = "SF Mono Bold 9"
+theme.dmenu_run_font = "SF Mono:style=Bold:size=11"
 
 -- {{{ Colors
-theme.fg_normal  = "#DCDCCC"
-theme.fg_focus   = "#F0DFAF"
-theme.fg_urgent  = "#CC9393"
-theme.bg_normal  = "#3F3F3F"
-theme.bg_focus   = "#1E2320"
-theme.bg_urgent  = "#3F3F3F"
+local col_black     = "#1E2320"
+local col_dark_gray = "#3F3F3F"
+local col_white     = "#DCDCCC"
+local col_yellow    = "#DEAE38"
+local col_red       = "#EB4242"
+
+-- export colours referenced in rc.lua
+theme.col_black  = col_black
+theme.col_yellow = col_yellow
+
+theme.fg_normal  = col_white
+theme.fg_focus   = col_black
+theme.fg_urgent  = col_white
+theme.bg_normal  = col_dark_gray
+theme.bg_focus   = col_yellow
+theme.bg_urgent  = col_red
 theme.bg_systray = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(2)
-theme.border_normal = "#3F3F3F"
-theme.border_focus  = "#DEAE38"
+theme.border_normal = col_dark_gray
+theme.border_focus  = col_yellow
 theme.border_marked = "#CC9393"
 -- }}}
 
 -- {{{ Titlebars
-theme.titlebar_bg_focus  = "#3F3F3F"
-theme.titlebar_bg_normal = "#3F3F3F"
+theme.titlebar_bg_focus  = col_dark_gray
+theme.titlebar_bg_normal = col_dark_gray
+theme.titlebar_fg_focus  = col_yellow
+theme.titlebar_fg_normal = col_white
 -- }}}
 
 -- There are other variable sets
