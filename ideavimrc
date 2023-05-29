@@ -12,6 +12,10 @@ set noerrorbells
 
 set ideajoin
 
+" redraw window so search terms are centered
+nnoremap n nzz
+nnoremap N Nzz
+
 nnoremap <Space>hl :set hlsearch! hlsearch?<CR>
 
 " fix broken <C-{o,i}> when navigating inside of decompiled classes
