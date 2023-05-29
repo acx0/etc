@@ -75,6 +75,9 @@
 	conflicts = grep --name-only --full-name '^<<<<<<< '
 	cons = conflicts
 	cp = cherry-pick
+	cpc = cherry-pick --continue
+	cpa = cherry-pick --abort
+	cps = cherry-pick --skip
 	dfc = diff --cached
 	dffc = diff --color-words --cached
 	df = diff
