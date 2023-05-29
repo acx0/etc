@@ -24,8 +24,22 @@ PATH="$PYENV_ROOT/bin:$PATH"
 
 # first path in GOPATH is used as target for `go get` downloads
 export GOPATH="$HOME/var/go-dist:$HOME/src/go"
-export PATH
 
 if command -v fdfind >/dev/null; then
     export FZF_DEFAULT_COMMAND='fdfind --type f'
 fi
+
+if [[ $OSTYPE == "darwin"* ]]; then
+    export HOMEBREW_NO_ANALYTICS=1
+
+    # see `LESS=+/LSCOLORS man ls`
+    export CLICOLOR=1
+    # mimic GNU dircolors $LS_COLORS for simple filetypes
+    #   note: combining `dA` seems to yield `DA` (compare with `dx`)
+    export LSCOLORS="ExGxfxdxCxDADAxbadacec"
+
+    PATH="$PATH:/usr/local/sbin"            # brew installs certain tools here
+    PATH="/usr/local/opt/libpq/bin:$PATH"   # for postgres binaries
+fi
+
+export PATH

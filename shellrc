@@ -11,6 +11,21 @@ if command -v dircolors >/dev/null; then
     alias egrep='egrep --color=auto'
     alias rgrep='rgrep --color=auto'
 fi
+if [[ $OSTYPE == "darwin"* ]]; then
+    # native/BSD `grep`
+    alias grep='grep --color=auto'
+
+    if command -v gdircolors >/dev/null; then
+        eval "$(gdircolors -b)"
+
+        # GNU `grep`
+        alias gls='gls --color=auto'
+        alias ggrep='ggrep --color=auto'
+        alias gfgrep='gfgrep --color=auto'
+        alias gegrep='gegrep --color=auto'
+        # `grgrep` doesn't exist
+    fi
+fi
 
 alias ll='ls -l'
 alias lh='ls -lh'
@@ -67,6 +82,11 @@ alias sc='systemctl'
 alias dmsg='sudo dmesg --follow --human'
 alias npg='noping -g histogram'
 
+if [[ $OSTYPE == "darwin"* ]]; then
+    alias swap='du -csh /var/vm/* /System/Volumes/VM/* 2>/dev/null'
+    alias tbw='smartctl -a disk0 | grep "Data Units"'
+fi
+
 alias mounted='mount | grep "/dev/\(sd[b-z]\|mapper\)"'
 alias ppath='echo $PATH | tr : "\n"'
 
@@ -92,6 +112,19 @@ depd() {
     dot -Txlib <(apt-rdepends -d "$@")
 }
 alias rdepd='depd -r'
+
+if [[ $OSTYPE == "darwin"* ]]; then
+    alias b='brew'
+    alias bse='brew search'
+    alias bup='brew update'
+    alias bin='brew install'
+    alias bout='brew outdated'
+    alias boutg='brew outdated --greedy'
+    alias bupg='brew upgrade'
+    alias bupgg='brew upgrade --greedy'
+    alias bu='brew uses --eval-all'
+    alias bui='brew uses --installed'
+fi
 
 # note: -a == -rlptgoD
 alias rs='rsync -av --progress'
