@@ -336,7 +336,6 @@ handle_mime() {
 
 handle_fallback() {
     echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}" && exit 5
-    exit 1
 }
 
 
