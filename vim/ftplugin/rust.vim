@@ -3,6 +3,11 @@
 source ~/.vim/ftplugin/util.vim
 source ~/.vim/ftplugin/ycm-mappings.vim
 
+" note: `inoremap` will immediately substitute lhs with rhs whereas `iabbrev` requires another char to be inputted
+inoremap <buffer> OK Ok
+inoremap <buffer> ;; ::
+inoremap <buffer> sst String
+
 nnoremap <buffer> <Leader><F3> :call CheckRust()<CR>
 function! CheckRust()
     update
