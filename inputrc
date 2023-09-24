@@ -17,9 +17,12 @@ set match-hidden-files off
 # append slash to tab-completed directory symlinks
 set mark-symlinked-directories on
 
-$if mode=vi
-    # insert mode bindings
+# vi insert mode bindings {{{
     set keymap vi-insert
+
+    # `esc-i` -> toggle editing mode
+    # useful for gdb, e.g. `ctrl-x ctrl-a` and `ctrl-x 2` binds only available in emacs mode
+    "\ei": emacs-editing-mode
 
     # use jk to exit insert mode
     "jk": vi-movement-mode
@@ -43,7 +46,14 @@ $if mode=vi
 
     # only works in command mode by default
     "\C-l": clear-screen
+# vi insert mode bindings }}}
+# vi normal mode bindings {{{
+    set keymap vi-command
 
-    # command mode bindings
-    #set keymap vi-command
-$endif
+    "\ei": emacs-editing-mode
+# vi normal mode bindings }}}
+# emacs mode bindings {{{
+    set keymap emacs
+
+    "\ei": vi-editing-mode
+# emacs mode bindings }}}
