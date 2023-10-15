@@ -169,11 +169,22 @@ ranger_cd() {
 
 # enable colours in less for man pages
 man() {
-    LESS_TERMCAP_mb=$'\E[01;31m' \
+    # note:
+    #   - setting LC_CTYPE prevents substitution of `-` with `‐` which causes failed searches e.g.:
+    #     `man less` -> `--RAW‐CONTROL‐CHARS` vs `--RAW-CONTROL-CHARS`
+    #   - groff 1.23.0 removed support for `sgr` device control command unless `GROFF_NO_SGR` used
+    #       - without this, identifiers used for colour hints won't be emitted
+    # see also:
+    #   `LESS='+/String capabilities' man termcap` for meaning of LESS_TERMCAP_* vars
+    #   `LESS='+/sgr0' man terminfo`
+    #   `LESS='+/Color Handling' man terminfo`
+    #   `LESS_TERMCAP_DEBUG=1 man less`
+    LC_CTYPE=C \
+        GROFF_NO_SGR=1 \
         LESS_TERMCAP_md=$'\E[01;36m' \
         LESS_TERMCAP_me=$'\E[0m' \
         LESS_TERMCAP_se=$'\E[0m' \
-        LESS_TERMCAP_so=$'\E[01;40;92m' \
+        LESS_TERMCAP_so=$'\E[01;43;30m' \
         LESS_TERMCAP_ue=$'\E[0m' \
         LESS_TERMCAP_us=$'\E[01;32m' \
         command man "$@"
