@@ -259,11 +259,6 @@ if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
     source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
-# for managing node+npm
-if command -v fnm >/dev/null; then
-    eval "$(fnm env)"
-fi
-
 # for managing python versions
 if command -v pyenv >/dev/null; then
     eval "$(pyenv init -)"
