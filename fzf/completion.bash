@@ -423,8 +423,8 @@ if ! declare -F __fzf_list_hosts > /dev/null; then
   __fzf_list_hosts() {
     command cat <(command tail -n +1 ~/.ssh/config ~/.ssh/config.d/* /etc/ssh/ssh_config 2> /dev/null | command grep -i '^\s*host\(name\)\? ' | command awk '{for (i = 2; i <= NF; i++) print $1 " " $i}' | command grep -v '[*?%]') \
       <(command grep -oE '^[[a-z0-9.,:-]+' ~/.ssh/known_hosts 2> /dev/null | command tr ',' '\n' | command tr -d '[' | command awk '{ print $1 " " $1 }') \
-      <(command grep -v '^\s*\(#\|$\)' /etc/hosts 2> /dev/null | command grep -Fv '0.0.0.0') |
-      command awk '{if (length($2) > 0) {print $2}}' | command sort -u
+      <(command grep -v '^\s*\(#\|$\)' /etc/hosts 2> /dev/null | command grep -Fv '0.0.0.0' | command sed 's/#.*//') |
+      command awk '{for (i = 2; i <= NF; i++) print $i}' | command sort -u
   }
 fi
 
@@ -481,7 +481,7 @@ a_cmds="
   svn tar unzip zip"
 
 # Preserve existing completion
-__fzf_orig_completion < <(complete -p $d_cmds $a_cmds 2> /dev/null)
+__fzf_orig_completion < <(complete -p $d_cmds $a_cmds ssh 2> /dev/null)
 
 if type _completion_loader > /dev/null 2>&1; then
   _fzf_completion_loader=1

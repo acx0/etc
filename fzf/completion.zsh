@@ -70,7 +70,7 @@ fi
 # control. There are several others that could wreck havoc if they are set
 # to values we don't expect. With the following `emulate` command we
 # sidestep this issue entirely.
-'emulate' 'zsh' '-o' 'no_aliases'
+'builtin' 'emulate' 'zsh' && 'builtin' 'setopt' 'no_aliases'
 
 # This brace is the start of try-always block. The `always` part is like
 # `finally` in lesser languages. We use it to *always* restore user options.
@@ -226,8 +226,8 @@ if ! declare -f __fzf_list_hosts > /dev/null; then
     setopt localoptions nonomatch
     command cat <(command tail -n +1 ~/.ssh/config ~/.ssh/config.d/* /etc/ssh/ssh_config 2> /dev/null | command grep -i '^\s*host\(name\)\? ' | awk '{for (i = 2; i <= NF; i++) print $1 " " $i}' | command grep -v '[*?%]') \
       <(command grep -oE '^[[a-z0-9.,:-]+' ~/.ssh/known_hosts 2> /dev/null | tr ',' '\n' | tr -d '[' | awk '{ print $1 " " $1 }') \
-      <(command grep -v '^\s*\(#\|$\)' /etc/hosts 2> /dev/null | command grep -Fv '0.0.0.0') |
-      awk '{if (length($2) > 0) {print $2}}' | sort -u
+      <(command grep -v '^\s*\(#\|$\)' /etc/hosts 2> /dev/null | command grep -Fv '0.0.0.0' | command sed 's/#.*//') |
+      awk '{for (i = 2; i <= NF; i++) print $i}' | sort -u
   }
 fi
 
