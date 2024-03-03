@@ -10,6 +10,7 @@
 ; 	- values defined in `path` config are only used when git commands are
 ; 	  invoked _inside git repos_ under the specified `gitdir` path
 ; 	- trailing slash in `gitdir` is required
+; 		- see: `LESS='+/Conditional includes' man git-config`
 ; 	- symlinks into `gitdir` path will also use `path` config
 [includeIf "gitdir:/Volumes/work/"]
 	path = ~/.gitconfig-work
