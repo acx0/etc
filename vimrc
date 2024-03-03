@@ -27,6 +27,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'godlygeek/tabular'
 Plug 'inkarkat/vim-IndentConsistencyCop'
 Plug 'itspriddle/vim-shellcheck'
+Plug 'junegunn/goyo.vim'
 Plug 'LnL7/vim-nix'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
@@ -895,6 +896,9 @@ nmap <Leader>mC <Plug>MarkAllClear
 " reminders:
 "   <Leader>di
 "   <Leader>ds
+
+" --goyo.vim
+nnoremap <Leader>gy :Goyo<CR>
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
