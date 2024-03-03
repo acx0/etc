@@ -12,3 +12,10 @@ nnoremap <buffer> <Leader>gi :GoImplements<CR>
 nnoremap <buffer> <Leader>im :GoImports<CR>
 nnoremap <buffer> <Leader>gl :GoLint!<CR>
 nnoremap <buffer> <Leader>gml :GoMetaLinter!<CR>
+
+nnoremap <buffer> <F4> :call RunMain()<CR>
+function! RunMain()
+    update
+    call PrintSeparator()
+    execute '!go run .'
+endfunction
