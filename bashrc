@@ -43,6 +43,6 @@ if [[ -d "$HOME/etc/fzf" ]]; then
     source "$HOME/etc/fzf/key-bindings.bash"
 fi
 
-if command -v rtx >/dev/null; then
-    eval "$(rtx activate bash)"
+if command -v mise >/dev/null; then
+    eval "$(mise activate bash)"
 fi
