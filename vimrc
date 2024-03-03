@@ -28,6 +28,7 @@ Plug 'godlygeek/tabular'
 Plug 'inkarkat/vim-IndentConsistencyCop'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'LnL7/vim-nix'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
@@ -902,6 +903,9 @@ nmap <Leader>mC <Plug>MarkAllClear
 
 " --goyo.vim
 nnoremap <Leader>gy :Goyo<CR>
+
+" --rainbow_parentheses.vim
+nnoremap <Leader>rp :RainbowParentheses!!<CR>
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
