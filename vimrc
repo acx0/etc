@@ -600,7 +600,10 @@ function! MkdirTree()
     echo "mkdir " . (has("win32") ? "" : "-p ") . expand("%:p:h")
 endfunction
 
-set diffopt+=algorithm:histogram
+" requires compilation with `+diff`
+if has("diffopt")
+    set diffopt+=algorithm:histogram
+endif
 
 " view diff between current buffer and original file it was loaded from
 nnoremap <Leader>df :call DiffOrig()<CR>
