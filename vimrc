@@ -750,6 +750,10 @@ let g:disable_protodef_sorting = 1
 "   visual:
 "       gc g< g>
 let g:tcommentBlankLines = 0
+" prefer C-style multiline comment markers for `~/.Xresources`; `!` can lead to parsing issues...
+let g:tcomment_types = {
+            \   "xdefaults": "/* %s */",
+            \ }
 
 " --YouCompleteMe
 let g:ycm_auto_trigger = 1
