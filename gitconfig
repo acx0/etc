@@ -106,6 +106,7 @@
 	rbc = rebase --continue
 	rba = rebase --abort
 	rbs = rebase --skip
+	rbt = rebase --committer-date-is-author-date
 	re = grep --extended-regexp --line-number
 	rl = reflog
 	rs = restore
