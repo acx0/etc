@@ -1,0 +1,17 @@
+[user]
+	# note: email must be same as one specified during GPG key creation in
+	# order for signing to work in github
+	email = <email>
+	signingKey = <key>
+# [core]
+# 	sshCommand = "ssh -i ~/.ssh/<priv-key>"
+[gpg]
+	format = openpgp
+[commit]
+	gpgSign = true
+[credential]
+	helper = /usr/local/bin/git-credential-manager
+	# requires `pass` to be installed
+	credentialStore = gpg
+
+; vim: set ts=8 sts=0 sw=0 noet ft=gitconfig :
