@@ -44,17 +44,13 @@ alias logw=wlog
 alias wtodo='vim ~/work/org/todo'
 alias todow='wtodo'
 alias stonks='~/src/go/src/github.com/acx0/stocks/run.sh'
-alias s='stonks'
 alias sg='stonks -g'
 sgl() {
     stonks -g "$@" | less
 }
-sl() {
-    stonks "$@" | less
-}
 alias sgla='sgl -a'
-alias ml='left'
-alias mla='left -a'
+alias ml='left -g'
+alias mla='left -g -a'
 alias dl='dleft'
 
 alias vi='vim -u NONE'
@@ -86,6 +82,8 @@ alias npg='noping -g histogram'
 if [[ $OSTYPE == "darwin"* ]]; then
     alias swap='du -csh /var/vm/* /System/Volumes/VM/* 2>/dev/null'
     alias tbw='smartctl -a disk0 | grep "Data Units"'
+else
+    alias swap='command -v zramctl && zramctl --output-all && echo; cat /proc/swaps'
 fi
 
 alias mounted='mount | grep "/dev/\(sd[b-z]\|mapper\)"'
@@ -153,6 +151,7 @@ rschk-content-checksum() {
 alias m='make -j $(nproc)'
 alias d='docker'
 alias dc='docker-compose'
+alias tf='terraform'
 
 # list processes which are using a deleted map file after a system update
 alias dm="sudo lsof +c 15 | grep 'DEL.*lib' | cut -d ' ' -f 1 | sort -u"
@@ -193,7 +192,7 @@ man() {
         command man "$@"
 }
 
-alias ytdl-audio-only='yt-dlp -x --audio-quality 320K --audio-format mp3'
+alias yt-dlp-audio-only='yt-dlp --extract-audio --audio-quality 320K --audio-format mp3'
 
 strace-output() {
     if [[ -z $* ]]; then
