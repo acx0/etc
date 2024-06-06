@@ -452,6 +452,11 @@ set autoread  " update file when externally modified
 
 " cd into directory of active buffer and display it
 nnoremap <Leader>cd :lcd %:p:h<CR> :pwd<CR>
+nnoremap <Leader>CD :call ChangeDirResolveSymlinks()<CR>
+function! ChangeDirResolvePathSymlinks()
+    execute "lcd " . fnamemodify(resolve(expand("%:p")), ":h")
+    pwd
+endfunction
 
 nnoremap <Leader>ww :w<CR>
 nnoremap <Leader>wq :wq<CR>
@@ -830,6 +835,7 @@ nnoremap <Leader>gg :GitGutterAll<CR>
 " note: use standard do/dp when staging hunks
 nnoremap <Leader>ga :Gvdiffsplit<CR>
 nnoremap <Leader>gs :Git<CR>
+nnoremap <Leader>GS :tabnew <bar> :Git <bar> :only<CR>
 nnoremap <Leader>gci :Git commit<CR>
 
 " --conflict-marker.vim
