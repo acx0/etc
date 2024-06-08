@@ -935,6 +935,7 @@ nmap <Leader>mC <Plug>MarkAllClear
 "   <Leader>ds
 
 " --goyo.vim
+let g:goyo_width = 120
 nnoremap <Leader>gy :Goyo<CR>
 
 " --rainbow_parentheses.vim
