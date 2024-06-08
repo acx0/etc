@@ -7,28 +7,31 @@ import ycm_core
 #   - `Settings()` is modified to use '&filetype' as supplied by vim YCM plugin config:
 #       `let g:ycm_extra_conf_vim_data = ['&filetype']`
 #   - vim defaults to `cpp` filetype for `.h` files
-#       - need to use modeline or project-wide vimrc if `c` is wanted instead
-filetype_key = '&filetype'
+#       - need to use modeline or project-wide vimrc if `c` is wanted instead,
+#         otherwise for a C-only project, set `c_only = True` below to work around this
+c_only = False
+c_flags = [
+  '-std=c11',
+  '-x',
+  'c',
+  '-Wall',
+  '-Wextra',
+  '-Wshadow',
+]
+cxx_flags = [
+  '-std=c++17',
+  '-x',
+  'c++',
+  '-Wall',
+  '-Wextra',
+  '-Wold-style-cast',
+  '-Wshadow',
+]
 filetype_flags = {
-  'cpp': [
-    '-std=c++17',
-    '-x',
-    'c++',
-    '-Wall',
-    '-Wextra',
-    '-Wold-style-cast',
-    '-Wshadow',
-  ],
-
-  'c': [
-    '-std=c11',
-    '-x',
-    'c',
-    '-Wall',
-    '-Wextra',
-    '-Wshadow',
-  ],
+  'cpp': c_flags if c_only else cxx_flags,
+  'c': c_flags,
 }
+filetype_key = '&filetype'
 
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
