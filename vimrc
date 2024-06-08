@@ -859,6 +859,7 @@ nnoremap <Leader>ga :Gvdiffsplit<CR>
 nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>GS :tabnew <bar> :Git <bar> :only<CR>
 nnoremap <Leader>gci :Git commit<CR>
+nnoremap <Leader>GCI :tabnew <bar> :Git commit <bar> :only<CR>
 
 " --conflict-marker.vim
 " reminders:
