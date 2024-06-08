@@ -10,3 +10,8 @@ nnoremap <buffer> <Leader>gi :YcmCompleter GoToImplementation<CR>
 nnoremap <buffer> <Leader>re :YcmCompleter GoToReferences<CR>
 nnoremap <buffer> <Leader>rf :YcmCompleter RefactorRename<Space>
 nnoremap <buffer> <Leader>im :YcmCompleter OrganizeImports<CR>
+
+" interactive fuzzy searching against symbol names
+"   see also: `:helpgrep YCMFindSymbol`
+nnoremap <buffer> <Leader>sy <Plug>(YCMFindSymbolInWorkspace)
+nnoremap <buffer> <Leader>sd <Plug>(YCMFindSymbolInDocument)
