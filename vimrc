@@ -780,8 +780,8 @@ let g:ycm_auto_trigger = 1
 let g:ycm_key_invoke_completion = "<C-Space>"
 let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
 let g:ycm_extra_conf_vim_data = ["&filetype"]
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
+let g:ycm_error_symbol = ' !'
+let g:ycm_warning_symbol = ' *'
 let g:ycm_confirm_extra_conf = 0
 " let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
@@ -796,10 +796,14 @@ let g:ycm_min_num_of_chars_for_completion = 99
 let g:ycm_semantic_triggers = {
             \   'c,cpp,go,java,rust,javascript': [ 're!\w{2}' ],
             \ }
+" disable automatic docstring popup
+let g:ycm_auto_hover = ""
+nnoremap <Leader>D <Plug>(YCMHover)
 
-" for debugging
+" for debugging; see also: `:YcmDebugInfo` for active log filenames
 " let g:ycm_keep_logfiles = 1
 " let g:ycm_log_level = "debug"
+nnoremap <Leader>ycr :YcmRestartServer<CR>
 
 " for temporarily disabling error checking
 " let g:ycm_show_diagnostics_ui = 0
