@@ -100,10 +100,13 @@ set history=1000 " history of commands and searches
 " useful, but can be slow at times
 "set cursorline   " highlight current line
 "set cursorcolumn " highlight current column
-
 nnoremap <Leader>cl :setlocal cursorline! cursorline?<CR>
 
 nnoremap <Leader>rn :set relativenumber! relativenumber?<CR>
+
+" always render column to prevent shifting when vim-gitgutter/YCM have something to report
+"   - `signcolumn=number` results in only one of vim-gitgutter/YCM column markers rendering
+set signcolumn=yes
 
 " --searching
 set ignorecase " ignore case when searching
