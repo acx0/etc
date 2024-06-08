@@ -25,6 +25,7 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'derekwyatt/vim-protodef'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'godlygeek/tabular'
+Plug 'hashivim/vim-terraform'
 Plug 'inkarkat/vim-IndentConsistencyCop'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'junegunn/goyo.vim'
@@ -930,6 +931,9 @@ nnoremap <Leader>gy :Goyo<CR>
 
 " --rainbow_parentheses.vim
 nnoremap <Leader>rp :RainbowParentheses!!<CR>
+
+" --vim-terraform
+nnoremap <Leader>tf :TerraformFmt<CR>
 " }}}
 
 " vim: set ts=8 sts=4 sw=4 et :
