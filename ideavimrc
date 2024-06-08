@@ -22,10 +22,15 @@ nnoremap <Space>hl :set hlsearch! hlsearch?<CR>
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
 
-nnoremap <Space>gd :action GotoImplementation<CR>
+nnoremap <Space>gd :action GotoDeclaration<CR>
 nnoremap <Space>gi :action GotoImplementation<CR>
-nnoremap <Space>gl :action GotoDeclaration<CR>
+nnoremap <Space>gl :action GotoDeclarationOnly<CR>
 nnoremap <Space>re :action FindUsages<CR>
 nnoremap <Space>rre :action ShowUsages<CR>
 
 nnoremap <Space>im :action OptimizeImports<CR>
+
+" rust
+inoremap <buffer> OK Ok
+inoremap <buffer> ;; ::
+inoremap <buffer> sst String
