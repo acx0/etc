@@ -33,6 +33,18 @@ filetype_flags = {
 }
 filetype_key = '&filetype'
 
+lsp_configs = {
+  'java': {
+    'settings': {
+      # disable automatic dependency downloads by default (can end up downloading many GiBs for large projects)
+      'java.import.gradle.enabled': False,
+      'java.import.maven.enabled': False,
+      'java.maven.downloadSources': False,
+      'java.eclipse.downloadSources': False,
+    },
+  },
+}
+
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for
@@ -84,14 +96,19 @@ def GetCompilationInfoForFile( filename ):
 # a file.
 def Settings( **kwargs ):
   flags = []
+  lsp_config = {}
+
   data = kwargs['client_data']
   if filetype_key in data:
     filetype = data[filetype_key]
     if filetype in filetype_flags:
       flags = filetype_flags[filetype]
+    if filetype in lsp_configs:
+      lsp_config = lsp_configs[filetype]
 
   if not database:
     return {
+      'ls': lsp_config,
       'flags': flags,
       'include_paths_relative_to_dir': DirectoryOfThisScript()
     }
