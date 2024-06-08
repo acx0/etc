@@ -453,7 +453,7 @@ set autoread  " update file when externally modified
 " cd into directory of active buffer and display it
 nnoremap <Leader>cd :lcd %:p:h<CR> :pwd<CR>
 nnoremap <Leader>CD :call ChangeDirResolveSymlinks()<CR>
-function! ChangeDirResolvePathSymlinks()
+function! ChangeDirResolveSymlinks()
     execute "lcd " . fnamemodify(resolve(expand("%:p")), ":h")
     pwd
 endfunction
@@ -461,7 +461,21 @@ endfunction
 nnoremap <Leader>ww :w<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>qq :q<CR>
-nnoremap <Leader>E :e!<CR>
+nnoremap <Leader>E! :e!<CR>
+nnoremap <Leader>RE :call ReopenFileResolveSymlinks()<CR>
+function! ReopenFileResolveSymlinks()
+    let l:resolved_file = resolve(expand("%:p"))
+    " note:
+    " - `bdelete` isn't sufficient; won't clear enough buffer metadata and results in vim just
+    "   reopening file via originally-accessed symlink even with resolved path supplied
+    " - prefer vim-bufkill's `BW` command to `bwipeout` to preserve window/tab configuration
+    if exists(":BW") == 2
+        BW
+    else
+        bwipeout
+    endif
+    execute "edit " . l:resolved_file
+endfunction
 
 " write to root-owned file when running as non-root
 command! W execute 'silent write !sudo tee % >/dev/null' | edit!
