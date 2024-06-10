@@ -1,6 +1,7 @@
 " ~/.ideavimrc
 
 inoremap jk <Esc>
+set nocursorline
 set hlsearch
 set incsearch
 set clipboard^=unnamed
@@ -11,6 +12,9 @@ set visualbell
 set noerrorbells
 
 set ideajoin
+
+" enables tcomment_vim-style comment-toggle bindings, e.g. `v_gc`, `gcc`
+set commentary
 
 " redraw window so search terms are centered
 nnoremap n nzz
