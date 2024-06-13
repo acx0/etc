@@ -37,4 +37,5 @@ nnoremap <Space>im :action OptimizeImports<CR>
 " rust
 inoremap <buffer> OK Ok
 inoremap <buffer> ;; ::
-inoremap <buffer> sst String
+" note: ideavim's `inoremap` implementation isn't 1:1 with vims' behaviour
+" inoremap <buffer> sst String
