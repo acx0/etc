@@ -22,6 +22,8 @@ nnoremap N Nzz
 
 nnoremap <Space>hl :set hlsearch! hlsearch?<CR>
 
+nnoremap _$ :%s/\s\+$//e<CR>
+
 " fix broken <C-{o,i}> when navigating inside of decompiled classes
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
