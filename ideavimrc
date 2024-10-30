@@ -36,6 +36,8 @@ nnoremap <Space>rre :action ShowUsages<CR>
 
 nnoremap <Space>im :action OptimizeImports<CR>
 
+nnoremap <Space>qq :q<CR>
+
 " rust
 inoremap <buffer> OK Ok
 inoremap <buffer> ;; ::
