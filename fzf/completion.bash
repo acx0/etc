@@ -167,6 +167,7 @@ _fzf_opts_completion() {
     --version
     --with-nth
     --with-shell
+    --wrap
     --zsh
     -0 --exit-0
     -1 --select-1
@@ -263,6 +264,7 @@ _fzf_handle_dynamic_completion() {
     # _completion_loader may not have updated completion for the command
     if [[ "$(complete -p "$orig_cmd" 2> /dev/null)" != "$orig_complete" ]]; then
       __fzf_orig_completion < <(complete -p "$orig_cmd" 2> /dev/null)
+      __fzf_orig_completion_get_orig_func "$cmd" || ret=1
 
       # Update orig_complete by _fzf_orig_completion entry
       [[ $orig_complete =~ ' -F '(_fzf_[^ ]+)' ' ]] &&
@@ -288,7 +290,7 @@ __fzf_generic_path_completion() {
   fi
   COMPREPLY=()
   trigger=${FZF_COMPLETION_TRIGGER-'**'}
-  cur="${COMP_WORDS[COMP_CWORD]}"
+  [[ $COMP_CWORD -ge 0 ]] && cur="${COMP_WORDS[COMP_CWORD]}"
   if [[ "$cur" == *"$trigger" ]] && [[ $cur != *'$('* ]] && [[ $cur != *':='* ]] && [[ $cur != *'`'* ]]; then
     base=${cur:0:${#cur}-${#trigger}}
     eval "base=$base" 2> /dev/null || return
@@ -375,7 +377,7 @@ _fzf_complete() {
     selected=$(
       FZF_DEFAULT_OPTS=$(__fzf_defaults "--reverse" "${FZF_COMPLETION_OPTS-} $str_arg") \
       FZF_DEFAULT_OPTS_FILE='' \
-        __fzf_comprun "${rest[0]}" "${args[@]}" -q "$cur" | $post | command tr '\n' ' ')
+        __fzf_comprun "${rest[0]}" "${args[@]}" -q "$cur" | eval "$post" | command tr '\n' ' ')
     selected=${selected% } # Strip trailing space not to repeat "-o nospace"
     if [[ -n "$selected" ]]; then
       COMPREPLY=("$selected")
@@ -407,9 +409,10 @@ _fzf_complete_kill() {
 }
 
 _fzf_proc_completion() {
-  _fzf_complete -m --header-lines=1 --preview 'echo {}' --preview-window down:3:wrap --min-height 15 -- "$@" < <(
+  _fzf_complete -m --header-lines=1 --no-preview --wrap -- "$@" < <(
     command ps -eo user,pid,ppid,start,time,command 2> /dev/null ||
-      command ps -eo user,pid,ppid,time,args # For BusyBox
+      command ps -eo user,pid,ppid,time,args 2> /dev/null || # For BusyBox
+      command ps --everyone --full --windows # For cygwin
   )
 }
 
@@ -479,12 +482,38 @@ complete -o default -F _fzf_opts_completion fzf
 # fzf-tmux specific options (like `-w WIDTH`) are left as a future patch.
 complete -o default -F _fzf_opts_completion fzf-tmux
 
+# Default path completion
+__fzf_default_completion() {
+  __fzf_generic_path_completion _fzf_compgen_path "-m" "" "$@"
+
+  # Dynamic completion loader has updated the completion for the command
+  if [[ $? -eq 124 ]]; then
+    # We trigger _fzf_setup_completion so that fuzzy completion for the command
+    # still works. However, loader can update the completion for multiple
+    # commands at once, and fuzzy completion will no longer work for those
+    # other commands. e.g. pytest -> py.test, pytest-2, pytest-3, etc
+    _fzf_setup_completion path "$1"
+    return 124
+  fi
+}
+
+# Set fuzzy path completion as the default completion for all commands.
+# We can't set up default completion,
+# 1. if it's already set up by another script
+# 2. or if the current version of bash doesn't support -D option
+complete | command grep -q __fzf_default_completion ||
+  complete | command grep -- '-D$' | command grep -qv _comp_complete_load ||
+  complete -D -F __fzf_default_completion -o default -o bashdefault 2> /dev/null
+
 d_cmds="${FZF_COMPLETION_DIR_COMMANDS-cd pushd rmdir}"
 
 # NOTE: $FZF_COMPLETION_PATH_COMMANDS and $FZF_COMPLETION_VAR_COMMANDS are
 # undocumented and subject to change in the future.
+#
+# NOTE: Although we have default completion, we still need to set up completion
+# for each command in case they already have completion set up by another script.
 a_cmds="${FZF_COMPLETION_PATH_COMMANDS-"
-  awk bat cat diff diff3
+  awk bat cat code diff diff3
   emacs emacsclient ex file ftp g++ gcc gvim head hg hx java
   javac ld less more mvim nvim patch perl python ruby
   sed sftp sort source tail tee uniq vi view vim wc xdg-open
