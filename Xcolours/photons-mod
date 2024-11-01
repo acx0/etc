@@ -3,18 +3,17 @@
 ! - modified shades of orange to be more distinctive
 
 *background: #1A1A1A
-*foreground: #EFEFEF
+*foreground: #FCFCFC
 
 *color0: #393939
 *color1: #C72D41
 *color2: #85C600
 *color3: #FFA600
 *color4: #3465A4
-!*color4: #2A61A7
 *color5: #931645
 *color6: #0099BC
 *color7: #D9D2BD
-*color8: #2E3537
+*color8: #404A4D
 *color9: #FF5D4A
 *color10: #B3FF1D
 *color11: #FEED6C

@@ -1,6 +1,6 @@
 /* ~/.Xresources
  *
- * see: `man X` -> `/^RESOURCES` for syntax documentation
+ * see: `LESS=+/^RESOURCES man X` for syntax documentation
  *
  * note: prefer C-style comment markers to `!` marker; latter seems to error
  * out if `'` exists in comment and in other cases just silently fails to
@@ -33,6 +33,11 @@ URxvt*font:       xft:SF Mono:style=Bold:size=11
 URxvt*boldFont:   xft:SF Mono:style=Bold:size=11
 URxvt*italicFont: xft:SF Mono:style=Bold:size=11
 URxvt*letterSpace: -1
+
+/* URxvt*font:       xft:SF Mono:style=Bold:size=16 */
+/* URxvt*boldFont:   xft:SF Mono:style=Bold:size=16 */
+/* URxvt*italicFont: xft:SF Mono:style=Bold:size=16 */
+/* URxvt*letterSpace: -1 */
 
 /* note: `hinting/autohint/antialias` settings don't seem to affect terminus config */
 /* URxvt*font:      -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-* */
