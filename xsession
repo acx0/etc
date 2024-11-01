@@ -1,6 +1,4 @@
-#!/bin/bash
-
-SESSION=awesome
+# note: `lightdm` executes this with user's default shell, as set via `chsh`
 
 xrdb -merge ~/.Xresources & # load X resource preferences
 xmodmap ~/.xmodmaprc &      # load custom keyboard mappings
@@ -19,6 +17,8 @@ for bin in xfce4-power-manager blueman-applet; do
     fi
 done
 
+epoch_ts_s=$(date +%s)
+
 # ~/bin scripts
 tp off &    # disable touchpad
 sys-usage-ctl start &
@@ -26,16 +26,8 @@ sys-usage-ctl start &
 # required for qtconfig to load gtk theme
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-if [ "$SESSION" = "awesome" ]; then
-    mkdir -p ~/.cache/awesome
-    exec awesome >> ~/.cache/awesome/log 2>&1
-elif [ "$SESSION" = "dwm" ]; then
-    trayer --edge bottom --widthtype request &
+awesomewm_log_dir=~/var/log/awesomewm
+mkdir -p "$awesomewm_log_dir"
+exec awesome >"${awesomewm_log_dir}/${epoch_ts_s}" 2>&1
 
-    while true; do
-        xsetroot -name "$(date +"%a %b %d %H:%M %Z %Y")"
-        sleep 10
-    done &
-
-    exec ~/etc/dwm/dwm
-fi
+#  vim: set ft=zsh :
