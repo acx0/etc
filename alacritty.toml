@@ -1,0 +1,45 @@
+# ~/.alacritty.toml
+#   see: https://alacritty.org/config-alacritty.html
+
+[font]
+size = 10.0
+
+# see: `fc-list : family style | grep -i 'sf mono'`
+[font.normal]
+family = "SF Mono"
+style = "Bold"
+[font.bold]
+family = "SF Mono"
+style = "Bold"
+[font.italic]
+family = "SF Mono"
+style = "Bold"
+[font.bold_italic]
+family = "SF Mono"
+style = "Bold"
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+# photons-mod
+[colors.primary]
+background = "#1A1A1A"
+foreground = "#FCFCFC"
+[colors.normal]
+black = "#393939"
+red = "#C72D41"
+green = "#85C600"
+yellow = "#FFA600"
+blue = "#3465A4"
+magenta = "#931645"
+cyan = "#0099BC"
+white = "#D9D2BD"
+[colors.bright]
+black = "#404A4D"
+red = "#FF5D4A"
+green = "#B3FF1D"
+yellow = "#FEED6C"
+blue = "#3C91D2"
+magenta = "#BE4773"
+cyan = "#5CDEDE"
+white = "#85919B"
