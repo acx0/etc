@@ -7,7 +7,6 @@ xset r rate 250 40 &        # set keyboard delay and repeat rate
 xset b off &                # disable system bell
 xset dpms 0 300 600 &       # seconds before screen is in standby/suspend/off state
 
-urxvtd -q -o -f &
 redshift -Pc ~/etc/redshift.conf &
 nm-applet &
 pasystray &

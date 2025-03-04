@@ -12,6 +12,7 @@ theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
 -- }}}
 
 -- {{{ Styles
+-- note: if font loading starts failing after update run `fc-cache -fv` and reload session
 theme.font           = "SF Mono Bold 9"
 theme.dmenu_run_font = "SF Mono:style=Bold:size=11"
 
