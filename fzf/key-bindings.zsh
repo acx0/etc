@@ -41,9 +41,9 @@ if [[ -o interactive ]]; then
 __fzf_defaults() {
   # $1: Prepend to FZF_DEFAULT_OPTS_FILE and FZF_DEFAULT_OPTS
   # $2: Append to FZF_DEFAULT_OPTS_FILE and FZF_DEFAULT_OPTS
-  echo "--height ${FZF_TMUX_HEIGHT:-40%} --bind=ctrl-z:ignore $1"
+  echo -E "--height ${FZF_TMUX_HEIGHT:-40%} --min-height 20+ --bind=ctrl-z:ignore $1"
   command cat "${FZF_DEFAULT_OPTS_FILE-}" 2> /dev/null
-  echo "${FZF_DEFAULT_OPTS-} $2"
+  echo -E "${FZF_DEFAULT_OPTS-} $2"
 }
 
 # CTRL-T - Paste the selected file path(s) into the command line
@@ -111,10 +111,7 @@ fzf-history-widget() {
   # Ensure the module is loaded if not already, and the required features, such
   # as the associative 'history' array, which maps event numbers to full history
   # lines, are set. Also, make sure Perl is installed for multi-line output.
-  if zmodload -F zsh/parameter p:{commands,history,options} 2>/dev/null && (( ${#commands[perl]} )); then
-    # Import commands from other shells if SHARE_HISTORY is enabled, as the
-    # 'history' array only updates after executing a non-empty command.
-    [[ "${options[sharehistory]}" == "on" ]] && fc -RI
+  if zmodload -F zsh/parameter p:{commands,history} 2>/dev/null && (( ${+commands[perl]} )); then
     selected="$(printf '%s\t%s\000' "${(kv)history[@]}" |
       perl -0 -ne 'if (!$seen{(/^\s*[0-9]+\**\t(.*)/s, $1)}++) { s/\n/\n\t/g; print; }' |
       FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --wrap-sign '\t↳ ' --highlight-line ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m --read0") \
