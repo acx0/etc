@@ -21,6 +21,7 @@ nnoremap n nzz
 nnoremap N Nzz
 
 nnoremap <Space>hl :set hlsearch! hlsearch?<CR>
+nnoremap <Space>ih :action ToggleInlayHintsGloballyAction<CR>
 
 nnoremap _$ :%s/\s\+$//e<CR>
 
@@ -39,7 +40,6 @@ nnoremap <Space>im :action OptimizeImports<CR>
 nnoremap <Space>qq :q<CR>
 
 " rust
-inoremap <buffer> OK Ok
 inoremap <buffer> ;; ::
 " note: ideavim's `inoremap` implementation isn't 1:1 with vims' behaviour
 " inoremap <buffer> sst String
