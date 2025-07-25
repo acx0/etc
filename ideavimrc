@@ -1,4 +1,6 @@
 " ~/.ideavimrc
+" ideavim reference: https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md
+"   useful: `set trackactionids`
 " action reference: https://github.com/centic9/IntelliJ-Action-IDs
 
 inoremap jk <Esc>
@@ -23,8 +25,11 @@ nnoremap N Nzz
 
 nnoremap <Space>hl :set hlsearch! hlsearch?<CR>
 nnoremap <Space>ih :action ToggleInlayHintsGloballyAction<CR>
+
+nnoremap <Space>zn :action ToggleZenMode<CR>
 nnoremap <Space>vf :action SelectInProjectView<CR>
 
+nnoremap <Space>T :action ReopenClosedTab<CR>
 nnoremap <Space>wo :action Unsplit<CR>
 nnoremap <Space>sl :action OpenInRightSplit<CR>
 nnoremap <Space>sj :action SplitHorizontally<CR>
@@ -35,6 +40,7 @@ nnoremap _$ :%s/\s\+$//e<CR>
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
 
+nnoremap <Space>D :action ShowHoverInfo<CR>
 nnoremap <Space>gd :action GotoDeclaration<CR>
 nnoremap <Space>gi :action GotoImplementation<CR>
 nnoremap <Space>gl :action GotoDeclarationOnly<CR>
