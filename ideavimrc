@@ -1,4 +1,5 @@
 " ~/.ideavimrc
+" action reference: https://github.com/centic9/IntelliJ-Action-IDs
 
 inoremap jk <Esc>
 set nocursorline
@@ -7,9 +8,9 @@ set incsearch
 set clipboard^=unnamed
 set smartcase
 set ignorecase
+set scrolloff=5
 
 set visualbell
-set noerrorbells
 
 set ideajoin
 
@@ -22,6 +23,11 @@ nnoremap N Nzz
 
 nnoremap <Space>hl :set hlsearch! hlsearch?<CR>
 nnoremap <Space>ih :action ToggleInlayHintsGloballyAction<CR>
+nnoremap <Space>vf :action SelectInProjectView<CR>
+
+nnoremap <Space>wo :action Unsplit<CR>
+nnoremap <Space>sl :action OpenInRightSplit<CR>
+nnoremap <Space>sj :action SplitHorizontally<CR>
 
 nnoremap _$ :%s/\s\+$//e<CR>
 
