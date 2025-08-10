@@ -34,6 +34,8 @@ nnoremap <Space>wo :action Unsplit<CR>
 nnoremap <Space>sl :action OpenInRightSplit<CR>
 nnoremap <Space>sj :action SplitHorizontally<CR>
 
+nnoremap <Space>tw :setlocal wrap!<CR>
+
 nnoremap _$ :%s/\s\+$//e<CR>
 
 " fix broken <C-{o,i}> when navigating inside of decompiled classes
