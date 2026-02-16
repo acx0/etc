@@ -65,6 +65,7 @@
 [alias]
 	amm = amend-ng
 	ap = add -p
+	apply-patch = am --3way
 	authors = shortlog --numbered --summary --email
 	br = branch -vv
 	ci = commit
@@ -102,6 +103,7 @@
 	mre = log -p -G
 	mrea = log -p --pickaxe-all -G
 	mt = mergetool
+	patch = format-patch -1
 	rb = rebase
 	rbc = rebase --continue
 	rba = rebase --abort
