@@ -25,7 +25,9 @@ PATH="$PYENV_ROOT/bin:$PATH"
 # first path in GOPATH is used as target for `go get` downloads
 export GOPATH="$HOME/var/go-dist:$HOME/src/go"
 
-if command -v fdfind >/dev/null; then
+if [[ $OSTYPE == "darwin"* ]] && command -v fd >/dev/null; then
+    export FZF_DEFAULT_COMMAND='fd --type f'
+elif command -v fdfind >/dev/null; then
     export FZF_DEFAULT_COMMAND='fdfind --type f'
 fi
 
@@ -43,3 +45,5 @@ if [[ $OSTYPE == "darwin"* ]]; then
 fi
 
 export PATH
+
+# vim: set ft=bash :
