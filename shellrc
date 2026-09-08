@@ -81,6 +81,7 @@ alias sc='systemctl'
 alias jc='journalctl'
 alias dmsg='sudo dmesg --follow --human'
 alias npg='noping -g histogram'
+alias wh='wormhole'
 
 if [[ $OSTYPE == "darwin"* ]]; then
     alias swap='du -csh /var/vm/* /System/Volumes/VM/* 2>/dev/null'
